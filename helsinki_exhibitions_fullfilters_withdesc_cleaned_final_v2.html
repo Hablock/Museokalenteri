@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Helsinki Art Exhibitions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 800px; margin: auto; background: #f9f9f9; }
+    h1 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+    .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
+    .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
+    .museum-btn.special { background-color: #aaa; color: white; }
+    .exhibition { background: white; margin: 1rem 0; padding: 1rem; border-left: 6px solid; border-radius: 5px; }
+    .CURRENT { border-color: green; }
+    .UPCOMING { border-color: blue; }
+    .PAST { border-color: gray; opacity: 0.7; }
+    .tag { display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 4px; margin-top: 0.5rem; }
+    .CURRENT .tag { background: #e6ffed; color: green; }
+    .UPCOMING .tag { background: #e6f0ff; color: blue; }
+    .PAST .tag { background: #eeeeee; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Helsinki Art Exhibitions</h1>
+  <p id="today" style="text-align:center; margin-top:-1rem; margin-bottom:1rem; color:#555"></p>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="ALL">All</button>
+    <button class="filter-btn" data-filter="CURRENT">Current</button>
+    <button class="filter-btn" data-filter="UPCOMING">Upcoming</button>
+    <button class="filter-btn" data-filter="PAST">Past</button>
+    <button class="filter-btn" data-filter="OPENING_SOON">Opening in 2 weeks</button>
+    <button class="filter-btn" data-filter="CLOSING_SOON">Closing in 2 weeks</button>
+  </div>
+  <div class="museum-filter-bar">
+    <button id="select-all-museums" class="museum-btn special">Select all</button>
+    <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
+  </div>
+  <div class="sort-bar" style="margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem;">
+    <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
+    <select id="sort-select" style="padding:0.4rem 0.6rem;">
+      <option value="MUSEUM">By Museum</option>
+      <option value="TITLE">By Exhibition name</option>
+      <option value="CLOSING_DATE">By closing date</option>
+      <option value="OPENING_DATE" selected>By opening date</option>
+    </select>
+  </div>
+  <div id="exhibitionList"></div>
+
+  <script>
+let exhibitions = [];
+
+// Set today's date under the main headline
+(function setTodayDate(){
+  const todayElement = document.getElementById('today');
+  if (todayElement) {
+    const now = new Date();
+    const formatted = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    todayElement.textContent = `Today is ${formatted}`;
+  }
+})();
+
+fetch('./museonayttelyt.json')
+  .then(res => {
+    if (!res.ok) throw new Error("JSON not found");
+    return res.json();
+  })
+  .then(data => {
+    exhibitions = data;
+    initExhibitions();
+  })
+  .catch(err => {
+    document.getElementById("exhibitionList").innerHTML =
+      "<p style='color:red'>Virhe ladattaessa museonayttelyt.json: " + err.message + "</p>";
+  });
+
+function initExhibitions() {
+  // tästä alkaen sama koodi, joka oli heti const exhibitions = [...] jälkeen
+  const museumSet = Array.from(new Set(exhibitions.map(ex => ex.museum))).sort();
+  const museumFilterBar = document.querySelector('.museum-filter-bar');
+  museumSet.forEach(museum => {
+    const btn = document.createElement('button');
+    btn.className = 'museum-btn active';
+    btn.dataset.museum = museum;
+    btn.textContent = museum;
+    museumFilterBar.appendChild(btn);
+  });
+
+  const container = document.getElementById("exhibitionList");
+  const statusButtons = document.querySelectorAll(".filter-btn");
+  const selectAllBtn = document.getElementById("select-all-museums");
+  const deselectAllBtn = document.getElementById("deselect-all-museums");
+  const sortSelect = document.getElementById("sort-select");
+  let activeMuseums = new Set(museumSet);
+  let activeStatus = "ALL";
+  let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
+
+  // ✅ Korjattu: tukee sekä "DD.MM.YYYY" että "YYYY-MM-DD"
+  function parseDate(dateStr) {
+    if (!dateStr) return new Date(NaN);
+    if (dateStr.includes('.')) {
+      const [day, month, year] = dateStr.split('.').map(Number);
+      return new Date(Date.UTC(year, month - 1, day));
+    }
+    if (dateStr.includes('-')) {
+      const [year, month, day] = dateStr.split('-').map(Number);
+      return new Date(Date.UTC(year, month - 1, day));
+    }
+    return new Date(dateStr); // viimeinen oljenkorsi
+  }
+
+  function computeStatus(ex) {
+    const now = new Date();
+    const start = parseDate(ex.start);
+    const end = parseDate(ex.end);
+    if (start <= now && end >= now) return "CURRENT";
+    if (start > now) return "UPCOMING";
+    if (end < now) return "PAST";
+    return "UNKNOWN";
+  }
+
+  function getFilteredExhibitions(statusType) {
+    const now = new Date();
+    const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+
+    return exhibitions.filter(ex => {
+      if (!activeMuseums.has(ex.museum)) return false;
+
+      if (statusType === "CURRENT" || statusType === "UPCOMING" || statusType === "PAST") {
+        return computeStatus(ex) === statusType;
+      }
+
+      if (statusType === "ALL") return true;
+
+      if (statusType === "OPENING_SOON") {
+        const start = parseDate(ex.start);
+        return start >= now && start <= in2w;
+      }
+
+      if (statusType === "CLOSING_SOON") {
+        const end = parseDate(ex.end);
+        return end >= now && end <= in2w;
+      }
+
+      return true;
+    });
+  }
+
+  function sortExhibitions(list) {
+    const listCopy = [...list];
+    const compareByString = (a, b, selector) => {
+      const sa = (selector(a) || "").toString().toLowerCase();
+      const sb = (selector(b) || "").toString().toLowerCase();
+      return sa.localeCompare(sb);
+    };
+    const compareByDate = (a, b, selector) => {
+      const da = parseDate(selector(a));
+      const db = parseDate(selector(b));
+      const va = isNaN(da) ? Infinity : da.getTime();
+      const vb = isNaN(db) ? Infinity : db.getTime();
+      return va - vb;
+    };
+
+    switch (activeSort) {
+      case "MUSEUM":
+        listCopy.sort((a, b) => compareByString(a, b, ex => ex.museum));
+        break;
+      case "TITLE":
+        listCopy.sort((a, b) => compareByString(a, b, ex => ex.title));
+        break;
+      case "CLOSING_DATE":
+        listCopy.sort((a, b) => compareByDate(a, b, ex => ex.end));
+        break;
+      case "OPENING_DATE":
+      default:
+        listCopy.sort((a, b) => compareByDate(a, b, ex => ex.start));
+        break;
+    }
+    return listCopy;
+  }
+
+  function renderExhibitions(list) {
+    container.innerHTML = "";
+    if (list.length === 0) {
+      container.innerHTML = "<p style='color:#555'>No exhibitions match your filters.</p>";
+      return;
+    }
+    list.forEach(ex => {
+      const st = computeStatus(ex);
+      const div = document.createElement("div");
+      div.className = `exhibition ${st}`;
+      div.innerHTML = `
+        <h2>${ex.title}</h2>
+        <p><strong>${ex.museum}</strong></p>
+        <p>${ex.start} – ${ex.end}</p>
+        ${ex.description && ex.description.trim() ? `<p>${ex.description}</p>` : ``}
+        <span class="tag">${st}</span>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function updateStatusCounts() {
+    const now = new Date();
+    const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+    let counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
+
+    exhibitions.forEach(ex => {
+      if (!activeMuseums.has(ex.museum)) return;
+      counts.ALL++;
+
+      const st = computeStatus(ex);
+      if (st in counts) counts[st]++;
+
+      const start = parseDate(ex.start);
+      const end = parseDate(ex.end);
+      if (start >= now && start <= in2w) counts.OPENING_SOON++;
+      if (end >= now && end <= in2w) counts.CLOSING_SOON++;
+    });
+
+    statusButtons.forEach(btn => {
+      const type = btn.dataset.filter;
+      btn.textContent = btn.textContent.replace(/ \(\d+\)$/, '') + ` (${counts[type]})`;
+    });
+  }
+
+  function applyFilter(statusType) {
+    activeStatus = statusType;
+    const filtered = getFilteredExhibitions(statusType);
+    const sorted = sortExhibitions(filtered);
+    renderExhibitions(sorted);
+    statusButtons.forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`[data-filter="${statusType}"]`).classList.add("active");
+    updateStatusCounts();
+  }
+
+  function updateMuseumButtonEvents() {
+    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
+    museumButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const museum = btn.dataset.museum;
+        if (activeMuseums.has(museum)) {
+          activeMuseums.delete(museum);
+          btn.classList.remove("active");
+        } else {
+          activeMuseums.add(museum);
+          btn.classList.add("active");
+        }
+        applyFilter(activeStatus);
+      });
+    });
+  }
+
+  updateMuseumButtonEvents();
+  selectAllBtn.addEventListener("click", () => {
+    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
+    museumButtons.forEach(btn => btn.classList.add("active"));
+    activeMuseums = new Set(museumSet);
+    applyFilter(activeStatus);
+  });
+  deselectAllBtn.addEventListener("click", () => {
+    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
+    museumButtons.forEach(btn => btn.classList.remove("active"));
+    activeMuseums = new Set();
+    applyFilter(activeStatus);
+  });
+  statusButtons.forEach(btn => {
+    btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
+  });
+
+  if (sortSelect) {
+    sortSelect.addEventListener("change", () => {
+      activeSort = sortSelect.value;
+      applyFilter(activeStatus);
+    });
+  }
+
+  updateStatusCounts();
+  applyFilter("ALL");
+}
+  </script>
+</body>
+</html>
