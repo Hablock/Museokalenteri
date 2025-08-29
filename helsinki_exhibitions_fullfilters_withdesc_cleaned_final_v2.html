@@ -36,6 +36,8 @@
   <div class="museum-filter-bar">
     <button id="select-all-museums" class="museum-btn special">Select all</button>
     <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
+    <select id="museum-select" multiple size="6" style="min-width: 260px; padding: 0.4rem;">
+    </select>
   </div>
   <div class="sort-bar" style="margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem;">
     <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
@@ -95,19 +97,23 @@ fetch('./museonayttelyt.json')
 function initExhibitions() {
   // tästä alkaen sama koodi, joka oli heti const exhibitions = [...] jälkeen
   const museumSet = Array.from(new Set(exhibitions.map(ex => ex.museum))).sort();
-  const museumFilterBar = document.querySelector('.museum-filter-bar');
-  museumSet.forEach(museum => {
-    const btn = document.createElement('button');
-    btn.className = 'museum-btn active';
-    btn.dataset.museum = museum;
-    btn.textContent = museum;
-    museumFilterBar.appendChild(btn);
-  });
+  const museumSelect = document.getElementById('museum-select');
+  if (museumSelect) {
+    museumSelect.innerHTML = '';
+    museumSet.forEach(museum => {
+      const opt = document.createElement('option');
+      opt.value = museum;
+      opt.textContent = museum;
+      opt.selected = true;
+      museumSelect.appendChild(opt);
+    });
+  }
 
   const container = document.getElementById("exhibitionList");
   const statusButtons = document.querySelectorAll(".filter-btn");
   const selectAllBtn = document.getElementById("select-all-museums");
   const deselectAllBtn = document.getElementById("deselect-all-museums");
+  const museumSelectEl = document.getElementById('museum-select');
   const sortSelect = document.getElementById("sort-select");
   let activeMuseums = new Set(museumSet);
   let activeStatus = "ALL";
@@ -252,33 +258,27 @@ function initExhibitions() {
     updateStatusCounts();
   }
 
-  function updateMuseumButtonEvents() {
-    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
-    museumButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const museum = btn.dataset.museum;
-        if (activeMuseums.has(museum)) {
-          activeMuseums.delete(museum);
-          btn.classList.remove("active");
-        } else {
-          activeMuseums.add(museum);
-          btn.classList.add("active");
-        }
-        applyFilter(activeStatus);
-      });
+  if (museumSelectEl) {
+    museumSelectEl.addEventListener('change', () => {
+      const selected = Array.from(museumSelectEl.options)
+        .filter(o => o.selected)
+        .map(o => o.value);
+      activeMuseums = new Set(selected);
+      applyFilter(activeStatus);
     });
   }
 
-  updateMuseumButtonEvents();
   selectAllBtn.addEventListener("click", () => {
-    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
-    museumButtons.forEach(btn => btn.classList.add("active"));
+    if (museumSelectEl) {
+      Array.from(museumSelectEl.options).forEach(o => (o.selected = true));
+    }
     activeMuseums = new Set(museumSet);
     applyFilter(activeStatus);
   });
   deselectAllBtn.addEventListener("click", () => {
-    const museumButtons = Array.from(document.querySelectorAll(".museum-btn[data-museum]"));
-    museumButtons.forEach(btn => btn.classList.remove("active"));
+    if (museumSelectEl) {
+      Array.from(museumSelectEl.options).forEach(o => (o.selected = false));
+    }
     activeMuseums = new Set();
     applyFilter(activeStatus);
   });
