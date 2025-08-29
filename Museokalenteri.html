@@ -19,34 +19,48 @@
     .CURRENT .tag { background: #e6ffed; color: green; }
     .UPCOMING .tag { background: #e6f0ff; color: blue; }
     .PAST .tag { background: #eeeeee; color: gray; }
+    /* Sections for clearer separation */
+    .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
+    .section.header h1 { margin-top: 0; margin-bottom: 1.25rem; }
+    .section .section-title { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #444; font-weight: 600; }
+    .controls-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
   </style>
 </head>
 <body>
-  <h1>Helsinki Art Exhibitions</h1>
-  <p id="today" style="text-align:center; margin-top:-1rem; margin-bottom:0.25rem; color:#555"></p>
-  <p id="last-updated" style="text-align:center; margin-top:0; margin-bottom:1rem; color:#777; font-size:0.9rem"></p>
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="ALL">All</button>
-    <button class="filter-btn" data-filter="CURRENT">Current</button>
-    <button class="filter-btn" data-filter="UPCOMING">Upcoming</button>
-    <button class="filter-btn" data-filter="PAST">Past</button>
-    <button class="filter-btn" data-filter="OPENING_SOON">Opening in 2 weeks</button>
-    <button class="filter-btn" data-filter="CLOSING_SOON">Closing in 2 weeks</button>
+  <div class="section header">
+    <h1>Helsinki Area Art Exhibitions</h1>
+    <p id="today" style="text-align:center; margin-top:0; margin-bottom:0.25rem; color:#555"></p>
+    <p id="last-updated" style="text-align:center; margin-top:0; margin-bottom:0; color:#777; font-size:0.9rem"></p>
   </div>
-  <div class="museum-filter-bar">
-    <button id="select-all-museums" class="museum-btn special">Select all</button>
-    <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
-    <select id="museum-select" multiple size="6" style="min-width: 260px; padding: 0.4rem;">
-    </select>
+  <div class="section">
+    <p class="section-title">Time filters</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="ALL">All</button>
+      <button class="filter-btn" data-filter="CURRENT">Current</button>
+      <button class="filter-btn" data-filter="UPCOMING">Upcoming</button>
+      <button class="filter-btn" data-filter="PAST">Past</button>
+      <button class="filter-btn" data-filter="OPENING_SOON">Opening in 2 weeks</button>
+      <button class="filter-btn" data-filter="CLOSING_SOON">Closing in 2 weeks</button>
+    </div>
   </div>
-  <div class="sort-bar" style="margin-bottom: 1rem; display:flex; align-items:center; gap:0.5rem;">
-    <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
-    <select id="sort-select" style="padding:0.4rem 0.6rem;">
-      <option value="MUSEUM">By Museum</option>
-      <option value="TITLE">By Exhibition name</option>
-      <option value="CLOSING_DATE">By closing date</option>
-      <option value="OPENING_DATE" selected>By opening date</option>
-    </select>
+  <div class="section">
+    <p class="section-title">Museum filters & sorting</p>
+    <div class="controls-row">
+      <div class="museum-filter-bar" style="margin:0">
+        <button id="select-all-museums" class="museum-btn special">Select all</button>
+        <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
+        <select id="museum-select" multiple size="6" style="min-width: 260px; padding: 0.4rem;"></select>
+      </div>
+      <div class="sort-bar" style="display:flex; align-items:center; gap:0.5rem; margin:0">
+        <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
+        <select id="sort-select" style="padding:0.4rem 0.6rem;">
+          <option value="MUSEUM">By Museum</option>
+          <option value="TITLE">By Exhibition name</option>
+          <option value="CLOSING_DATE">By closing date</option>
+          <option value="OPENING_DATE" selected>By opening date</option>
+        </select>
+      </div>
+    </div>
   </div>
   <div id="exhibitionList"></div>
 

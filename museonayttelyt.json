@@ -224,14 +224,14 @@
     "description": "1800–1900-lukujen maalaustaiteen kautta avautuva matka myyttisen Espanjan kuvastoihin ja modernisoituvaan ilmaisuun."
   },
   {
-    "museum": "EMMA – Espoon modernin taiteen museo",
+    "museum": "EMMA",
     "title": "Arte Povera – Uusi luku",
     "start": "2025-03-12",
     "end": "2025-08-31",
     "description": "Arte Poveran keskeisten taiteilijoiden teoksia suomalaisesta näkökulmasta – materiaalisuuden ja arjen poetiikan tutkimista."
   },
   {
-    "museum": "EMMA – Espoon modernin taiteen museo",
+    "museum": "EMMA",
     "title": "Karin Hellman",
     "start": "2025-04-09",
     "end": "2026-02-01",
@@ -239,13 +239,6 @@
   },
   {
     "museum": "EMMA",
-    "title": "Arte Povera – A New Chapter",
-    "start": "2025-04-09",
-    "end": "2026-02-01",
-    "description": ""
-  },
-  {
-    "museum": "EMMA – Espoon modernin taiteen museo",
     "title": "Muodinmuutos",
     "start": "2025-05-23",
     "end": "2025-12-07",
@@ -253,20 +246,13 @@
   },
   {
     "museum": "EMMA",
-    "title": "Social Fabric",
-    "start": "2025-05-23",
-    "end": "2025-12-07",
-    "description": ""
-  },
-  {
-    "museum": "EMMA – Espoon modernin taiteen museo",
     "title": "Draped – Art of Printed Fabrics",
     "start": "2025-02-12",
     "end": "2027-03-14",
     "description": "Painokankaiden taide ja kulttuurihistoria – kuoseja, muotia ja designia vuosikymmenten varrelta."
   },
   {
-    "museum": "EMMA – Espoon modernin taiteen museo",
+    "museum": "EMMA",
     "title": "Mohamed Bourouissa: Riou",
     "start": "2025-09-17",
     "end": "2026-01-18",
@@ -354,13 +340,6 @@
     "title": "InCollection: Antti Laitinen",
     "start": "2025-09-24",
     "end": "2026-08-23",
-    "description": ""
-  },
-  {
-    "museum": "EMMA",
-    "title": "Mohamed Bourouissa: The Genealogy of Violence",
-    "start": "2025-09-24",
-    "end": "2026-02-15",
     "description": ""
   },
   {
