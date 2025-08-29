@@ -23,7 +23,8 @@
 </head>
 <body>
   <h1>Helsinki Art Exhibitions</h1>
-  <p id="today" style="text-align:center; margin-top:-1rem; margin-bottom:1rem; color:#555"></p>
+  <p id="today" style="text-align:center; margin-top:-1rem; margin-bottom:0.25rem; color:#555"></p>
+  <p id="last-updated" style="text-align:center; margin-top:0; margin-bottom:1rem; color:#777; font-size:0.9rem"></p>
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="ALL">All</button>
     <button class="filter-btn" data-filter="CURRENT">Current</button>
@@ -61,12 +62,15 @@ let exhibitions = [];
 })();
 
 fetch('./museonayttelyt.json')
-  .then(res => {
+  .then(async res => {
     if (!res.ok) throw new Error("JSON not found");
-    return res.json();
+    const lastModified = res.headers ? res.headers.get('Last-Modified') : null;
+    const data = await res.json();
+    return { data, lastModified };
   })
-  .then(data => {
+  .then(({ data, lastModified }) => {
     exhibitions = data;
+    updateLastUpdated(lastModified);
     initExhibitions();
   })
   .catch(err => {
@@ -277,6 +281,25 @@ function initExhibitions() {
 
   updateStatusCounts();
   applyFilter("ALL");
+}
+
+function updateLastUpdated(lastModifiedHeader) {
+  const el = document.getElementById('last-updated');
+  if (!el) return;
+  if (!lastModifiedHeader) {
+    el.textContent = '';
+    return;
+  }
+  const d = new Date(lastModifiedHeader);
+  if (isNaN(d)) {
+    el.textContent = '';
+    return;
+  }
+  const formatted = d.toLocaleString(undefined, {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+  el.textContent = `Data last updated: ${formatted}`;
 }
   </script>
 </body>
