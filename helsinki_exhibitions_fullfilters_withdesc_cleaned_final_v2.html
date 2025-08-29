@@ -61,6 +61,16 @@ let exhibitions = [];
   }
 })();
 
+// Try to read stable creation date from a sidecar meta file first
+fetch('./museonayttelyt_meta.json')
+  .then(res => res.ok ? res.json() : null)
+  .then(meta => {
+    if (meta && meta.createdAt) {
+      updateLastUpdated(meta.createdAt);
+    }
+  })
+  .catch(() => { /* ignore missing meta file */ });
+
 fetch('./museonayttelyt.json')
   .then(async res => {
     if (!res.ok) throw new Error("JSON not found");
@@ -70,7 +80,11 @@ fetch('./museonayttelyt.json')
   })
   .then(({ data, lastModified }) => {
     exhibitions = data;
-    updateLastUpdated(lastModified);
+    // Only set from Last-Modified if meta-based value not already shown
+    const el = document.getElementById('last-updated');
+    if (el && !el.textContent && lastModified) {
+      updateLastUpdated(lastModified);
+    }
     initExhibitions();
   })
   .catch(err => {
@@ -295,11 +309,10 @@ function updateLastUpdated(lastModifiedHeader) {
     el.textContent = '';
     return;
   }
-  const formatted = d.toLocaleString(undefined, {
-    year: 'numeric', month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit'
+  const formatted = d.toLocaleDateString(undefined, {
+    year: 'numeric', month: 'long', day: 'numeric'
   });
-  el.textContent = `Data last updated: ${formatted}`;
+  el.textContent = `Data created: ${formatted}`;
 }
   </script>
 </body>
