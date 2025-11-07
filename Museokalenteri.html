@@ -4,9 +4,31 @@
   <meta charset="UTF-8" />
   <title>Helsingin seudun taidenäyttelyt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://museokalenteri.fi/" />
+  <meta property="og:title" content="Helsingin seudun Museokalenteri" />
+  <meta property="og:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta property="og:image" content="./museokalenteri_logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Helsingin seudun Museokalenteri" />
+  <meta property="og:locale" content="fi_FI" />
+  <meta property="og:site_name" content="Helsingin seudun Museokalenteri" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Helsingin seudun Museokalenteri" />
+  <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta name="twitter:image" content="./museokalenteri_logo.png" />
+  <meta name="twitter:image:alt" content="Helsingin seudun Museokalenteri" />
   <style>
     body { font-family: Arial, sans-serif; padding: 2rem; max-width: 800px; margin: auto; background: #f9f9f9; }
     h1 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+    .logo-wrapper { background-color: #ffffff; padding: 1rem; border-radius: 8px; display: inline-block; margin: 0 auto; }
+    .logo { display: block; max-width: 100%; height: auto; margin: 0 auto; max-height: 300px; object-fit: contain; }
     .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
     .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
@@ -38,7 +60,8 @@
     .exhibition-link-indicator svg { width: 16px; height: 16px; }
     /* Sections for clearer separation */
     .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
-    .section.header h1 { margin-top: 0; margin-bottom: 1.25rem; }
+    .section.header { text-align: center; }
+    .section.header .logo-wrapper { margin-bottom: 1rem; }
     .section .section-title { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #444; font-weight: 600; }
     .controls-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
     
@@ -53,7 +76,9 @@
 </head>
 <body>
   <div class="section header">
-    <h1>Helsingin seudun taidenäyttelyt</h1>
+    <div class="logo-wrapper">
+      <img src="./museokalenteri_logo.png" alt="Helsingin seudun Museokalenteri" class="logo" />
+    </div>
     <p id="today" style="text-align:center; margin-top:0; margin-bottom:0.25rem; color:#555"></p>
     <p id="last-updated" style="text-align:center; margin-top:0; margin-bottom:0; color:#777; font-size:0.9rem"></p>
   </div>
