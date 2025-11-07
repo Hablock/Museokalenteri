@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
-  <title>Helsinki Art Exhibitions</title>
+  <title>Helsingin seudun taidenäyttelyt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body { font-family: Arial, sans-serif; padding: 2rem; max-width: 800px; margin: auto; background: #f9f9f9; }
@@ -45,36 +45,36 @@
 </head>
 <body>
   <div class="section header">
-    <h1>Helsinki Area Art Exhibitions</h1>
+    <h1>Helsingin seudun taidenäyttelyt</h1>
     <p id="today" style="text-align:center; margin-top:0; margin-bottom:0.25rem; color:#555"></p>
     <p id="last-updated" style="text-align:center; margin-top:0; margin-bottom:0; color:#777; font-size:0.9rem"></p>
   </div>
   <div class="section">
-    <p class="section-title">Time filters</p>
+    <p class="section-title">Aikasuodattimet</p>
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="ALL">All</button>
-      <button class="filter-btn" data-filter="CURRENT">Current</button>
-      <button class="filter-btn" data-filter="UPCOMING">Upcoming</button>
-      <button class="filter-btn" data-filter="PAST">Past</button>
-      <button class="filter-btn" data-filter="OPENING_SOON">Opening in 2 weeks</button>
-      <button class="filter-btn" data-filter="CLOSING_SOON">Closing in 2 weeks</button>
+      <button class="filter-btn active" data-filter="ALL">Kaikki</button>
+      <button class="filter-btn" data-filter="CURRENT">Käynnissä</button>
+      <button class="filter-btn" data-filter="UPCOMING">Tulossa</button>
+      <button class="filter-btn" data-filter="PAST">Päättyneet</button>
+      <button class="filter-btn" data-filter="OPENING_SOON">Avautuvat 2 vk</button>
+      <button class="filter-btn" data-filter="CLOSING_SOON">Päättyvät 2 vk</button>
     </div>
   </div>
   <div class="section">
-    <p class="section-title">Museum filters & sorting</p>
+    <p class="section-title">Museosuodattimet ja järjestys</p>
     <div class="controls-row" style="align-items:flex-start;">
       <div class="museum-filter-bar" style="margin:0; max-width:200px;">
-        <button id="select-all-museums" class="museum-btn special">Select all</button>
-        <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
+        <button id="select-all-museums" class="museum-btn special">Valitse kaikki</button>
+        <button id="deselect-all-museums" class="museum-btn special">Poista valinnat</button>
       </div>
       <select id="museum-select" multiple size="8" style="min-width: 260px; padding: 0.4rem; flex: 1 1 260px; max-width: 360px;"></select>
       <div class="sort-bar" style="display:flex; flex-direction:column; gap:0.35rem; margin:0;">
-        <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
+        <label for="sort-select" style="font-size:0.9rem; color:#333">Järjestä:</label>
         <select id="sort-select" style="padding:0.4rem 0.6rem; min-width: 180px;">
-          <option value="MUSEUM">By Museum</option>
-          <option value="TITLE">By Exhibition name</option>
-          <option value="CLOSING_DATE">By closing date</option>
-          <option value="OPENING_DATE" selected>By opening date</option>
+          <option value="MUSEUM">Museon mukaan</option>
+          <option value="TITLE">Näyttelyn nimen mukaan</option>
+          <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
+          <option value="OPENING_DATE" selected>Avautumispäivän mukaan</option>
         </select>
       </div>
     </div>
@@ -89,8 +89,8 @@ let exhibitions = [];
   const todayElement = document.getElementById('today');
   if (todayElement) {
     const now = new Date();
-    const formatted = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    todayElement.textContent = `Today is ${formatted}`;
+    const formatted = now.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+    todayElement.textContent = `Tänään on ${formatted}`;
   }
 })();
 
@@ -234,14 +234,25 @@ function initExhibitions() {
     return listCopy;
   }
 
+  function getStatusLabel(status) {
+    const statusMap = {
+      'CURRENT': 'Käynnissä',
+      'UPCOMING': 'Tulossa',
+      'PAST': 'Päättynyt',
+      'UNKNOWN': 'Tuntematon'
+    };
+    return statusMap[status] || status;
+  }
+
   function renderExhibitions(list) {
     container.innerHTML = "";
     if (list.length === 0) {
-      container.innerHTML = "<p style='color:#555'>No exhibitions match your filters.</p>";
+      container.innerHTML = "<p style='color:#555'>Suodattimillasi ei löydy näyttelyitä.</p>";
       return;
     }
     list.forEach(ex => {
       const st = computeStatus(ex);
+      const statusLabel = getStatusLabel(st);
       const linkUrl = ex.Link || ex.link || "";
       const imageUrl = ex.Image || ex.image || "";
       const card = document.createElement(linkUrl ? "a" : "div");
@@ -270,7 +281,7 @@ function initExhibitions() {
           <p class="exhibition-museum"><strong>${ex.museum}</strong></p>
           <p class="exhibition-dates">${ex.start} – ${ex.end}</p>
           ${descriptionHtml}
-          <span class="tag">${st}</span>
+          <span class="tag">${statusLabel}</span>
         </div>
       `;
       container.appendChild(card);
@@ -362,10 +373,10 @@ function updateLastUpdated(lastModifiedHeader) {
     el.textContent = '';
     return;
   }
-  const formatted = d.toLocaleDateString(undefined, {
+  const formatted = d.toLocaleDateString('fi-FI', {
     year: 'numeric', month: 'long', day: 'numeric'
   });
-  el.textContent = `Data created: ${formatted}`;
+  el.textContent = `Tiedot päivitetty: ${formatted}`;
 }
   </script>
 </body>
