@@ -1,457 +1,290 @@
 [
   {
-    "museum": "Kiasma",
-    "title": "Dafna Maimon: Oireita",
-    "start": "2025-04-25",
-    "end": "2025-09-21",
-    "description": "Kolmen videoinstallaation ja piirustusten kautta Maimon tarkastelee tunteiden roolia ja arjen toisteisuutta lempeän huumorin keinoin."
-  },
-  {
-    "museum": "Kiasma",
-    "title": "Monira Al Qadiri: Deep Fate",
-    "start": "2025-03-21",
-    "end": "2025-09-07",
-    "description": "Öljyn ja modernin elämän ristiriitoja käsittelevä näyttely pohtii ihmiskunnan yhteistä kohtaloa kiihtyvän ilmastokriisin aikakaudella."
-  },
-  {
-    "museum": "Kiasma",
-    "title": "Kivi, paperi, sakset",
-    "start": "2025-02-14",
-    "end": "2026-01-18",
-    "description": "Kiasman uusi kokoelmanäyttely avaa nykytaiteen peruskysymyksiä useissa teoskokonaisuuksissa."
-  },
-  {
-    "museum": "Kiasma",
-    "title": "Sarah Lucas: PALJAS KATSE",
+    "museum": "AD-museo",
+    "title": "Pako Muumilaaksoon",
     "start": "2025-10-10",
-    "end": "2026-03-08",
-    "description": "Young British Artists -liikkeen keskeisen taiteilijan laaja katsaus: veistoksia, valokuvia ja installaatioita, joissa arkiset materiaalit muuntuvat kehoa kommentoiviksi muodoiksi."
+    "end": "2026-09-27",
+    "description": "Näyttely avaa portin Tove Janssonin Moominlaaksoon ja tarkastelee hänen suhdettaan arkkitehtuuriin ja designiin. Se tutkii tiloja, joihin Jansson vetäytyi ja joista hän ammensi sarjakuvamaailmansa inspiraatiota.",
+    "Link": "https://admuseo.fi/nayttelyt/pako-muumilaaksoon/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2025/07/ADM_Pako-Muumilaaksoon_web-banner_FI_date-1024x576.jpg"
   },
   {
-    "museum": "Kiasma",
-    "title": "Essi Kuokkanen: Pilvenpitelijä",
-    "start": "2025-10-10",
-    "end": "2026-02-22",
-    "description": "Unenomaisia maalauksia, joissa ihmiset, eläimet ja oudot oliot limittyvät ja lajien väliset rajat hämärtyvät."
+    "museum": "AD-museo",
+    "title": "Torille! - Uuden arkkitehtuuri- ja designmuseon suunnittelukilpailun finalistit",
+    "start": "2025-10-03",
+    "end": "2026-02-08",
+    "description": "Näyttely esittelee uuden arkkitehtuuri- ja designmuseon suunnittelukilpailun finalistit ja voittajan sekä koko kilpailuprosessin. Näyttely korostaa Makasiinirannan uutta museohanketta ja arkkitehtien näkemyksiä.",
+    "Link": "https://admuseo.fi/nayttelyt/torille/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2025/09/01_JKMM-Architects_Kumma_ADM_Extra_View-from-the-Sea_image-by-Mir-scaled.jpg"
   },
   {
-    "museum": "Amos Rex",
-    "title": "Anna Estarriola: Staged Circumstances and Piles of Things",
-    "start": "2025-04-02",
-    "end": "2025-08-31",
-    "description": "Estarriolan uran laajin yksityisnäyttely, jossa mahdollisen ja mahdottoman rajat häilyvät – installaatioita, joissa todellisuuden hahmottamisen tavat kääntyilevät."
-  },
-  {
-    "museum": "Amos Rex",
-    "title": "Enni-Kukka Tuomala: Expanding Empathies",
-    "start": "2025-04-02",
-    "end": "2025-08-31",
-    "description": "Empatiaa tutkiva näyttely 3D-skannatuista tiloista suurikokoisiksi veistoksiksi muuntuvine teoksineen ja yhteisöllisine kokemuksineen."
-  },
-  {
-    "museum": "Amos Rex",
-    "title": "Yinka Ilori: Transparent Happiness (Lasipalatsin aukio)",
-    "start": "2025-06-20",
-    "end": "2025-10-12",
-    "description": "Värikäs, osallistava ulkoilmainstallaatio korostaa leikkiä ja yhdessäoloa – teoksessa voi oleskella, skeitata ja kiipeillä."
-  },
-  {
-    "museum": "Amos Rex",
-    "title": "24 Hours with Tony Cokes (tapahtumanäyttely)",
-    "start": "2025-09-12",
-    "end": "2025-09-13",
-    "description": "Vuorokauden mittainen retrospektiivinen videotaiteen näyttely ja musiikkiohjelma, maksuton ja kaikille avoin."
+    "museum": "AD-museo",
+    "title": "Industry Muscle: Five Scores for Architecture",
+    "start": "2025-05-10",
+    "end": "2025-11-23",
+    "description": "Venetsian arkkitehtuuribiennaalin näyttely tutkii modernien rakennettujen ympäristöjen materiaalisia ja sosiaalisia rakenteita transkehon näkökulmasta. Se koostuu viidestä skenaariosta, jotka tarkastelevat ympäristön ja kehon välistä suhdetta.",
+    "Link": "https://admuseo.fi/nayttelyt/industry-muscle/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2025/06/18_Teo-Ala-Ruona_Industry-Muscle_Nordic-Pavilion_Biennale-Architettura-2025_Teo-Ala-Ruona_Kid-Kokko_Romeo-Roxman-Gatt_Caroline-Suinner_Photo_Venla-Helenius-1-scaled.jpg"
   },
   {
     "museum": "Amos Rex",
     "title": "Leandro Erlich",
     "start": "2025-10-08",
-    "end": "2026-03-29",
-    "description": "Suurikokoiset, osallistavat installaatiot hämärtävät havaintoja – arkkitehtuuri, painovoima ja perspektiivi joutuvat koetukselle."
+    "end": "2026-04-06",
+    "description": "Argentiinalainen taiteilija Leandro Erlich tuo Amos Rexiin interaktiivisia ja surrealistisia installaatioita, jotka kyseenalaistavat todellisuuden ja katsojan havaintokyvyn. Näyttely tarjoaa elämyksiä, joissa voi astua teosten sisälle ja kokea perspektiivien muutoksia.",
+    "Link": "https://amosrex.fi/nayttelyt/leandro-erlich/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/08/previewlarge-TU-251006-leandro-erlich-074-e1760434732169.jpg"
   },
   {
-    "museum": "HAM Helsinki",
-    "title": "Helsinki Biennaali 2025",
-    "start": "2025-06-08",
-    "end": "2025-09-21",
-    "description": "Kuvataiteen suurtapahtuma Vallisaaressa, Esplanadissa ja HAMissa: 37 taiteilijaa, teoksia jotka tarkastelevat ihmisen ja luonnon suhdetta teemalla ”Suoja”."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Vapaa 90",
-    "start": "2025-04-25",
-    "end": "2026-01-04",
-    "description": "HAMin 90-vuotisjuhlanäyttely tarkastelee vapautta ja sen merkityksiä suomalaisessa nykytaiteessa."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Tove Jansson: Freskot ja Taikurinhattu",
-    "start": "2025-04-25",
-    "end": "2026-01-04",
-    "description": "Tennispalatsin freskojen rinnalla avautuu katsaus Tove Janssonin muumien maailmaan ja kuvataiteeseen."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Bambi Forever!",
-    "start": "2024-03-08",
-    "end": "2025-10-26",
-    "description": "Koko perheen näyttely tarkastelee Disney-klassikon kulttuurisia merkityksiä ja luontosuhdetta."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Liisa-Irmelen Liwata: Romanttinen ajatus",
-    "start": "2025-07-12",
-    "end": "2025-09-07",
-    "description": "Maalausten intiimi kokonaisuus pohtii romanttisia kuvastoja ja tunteiden estetiikkaa."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Ars Fennica 2025",
-    "start": "2025-10-24",
-    "end": "2026-03-29",
-    "description": "Suomen merkittävimpiin taidepalkintoihin kuuluva Ars Fennica – ehdokkaiden teokset esillä HAMissa."
-  },
-  {
-    "museum": "HAM Helsinki",
-    "title": "Marguerite Humeau: Soihdut",
-    "start": "2025-11-21",
-    "end": "2026-03-15",
-    "description": "Ranskalaisen taiteilijan immersiivinen näyttely, jossa mytologia ja tieteellinen spekulaatio kietoutuvat."
-  },
-  {
-    "museum": "Ateneum",
-    "title": "Rajojen rikkojat – 1800-luvun matkustavat naistaiteilijat",
-    "start": "2025-03-07",
-    "end": "2025-08-24",
-    "description": "Ensimmäinen laaja katsaus 1800-luvulla Saksassa opiskelleiden ja työskennelleiden naistaiteilijoiden tuotantoon ja urapolkuihin."
+    "museum": "Amos Rex",
+    "title": "Generation 2026",
+    "start": "2026-05-13",
+    "end": "2026-09-06",
+    "description": "Kolmen vuoden välein järjestettävä Generation-näyttely kokoaa 15-23-vuotiaita taiteilijoita, jotka kommentoivat identiteettiä, valtaa, yhteisöä ja vastarintaa. Amos Rex toimii foorumina nuoren taiteen kansainväliselle katselmukselle.",
+    "Link": "https://amosrex.fi/nayttelyt/generation-2026/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/06/Generation-2026-artists-banner-Amos-Rex-scaled-1.jpg"
   },
   {
     "museum": "Ateneum",
     "title": "Gallen-Kallela, Klimt & Wien",
     "start": "2025-09-26",
     "end": "2026-02-01",
-    "description": "Akseli Gallen‑Kallelan yhteydet wieniläiseen sesessioon – mukana Gustav Klimtin teoksia ensimmäistä kertaa Suomessa sekä modernin taiteen ja muotoilun vuoropuhelu."
+    "description": "Ateneumin näyttely tarkastelee kuinka Akseli Gallen-Kallelan taide kehittyi suhteessa wieniläisiin modernisteihin, kuten Gustav Klimtiin ja Koloman Moserin. Näyttely yhdistää taidetta, muotia ja designia ja tuo Wienin secessionin tunnelman Suomeen.",
+    "Link": "https://ateneum.fi/nayttelyt/gallen-kallela-klimt-wien/",
+    "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2025/04/Nimeton-malli-55-1024x576.png"
   },
   {
     "museum": "Didrichsenin taidemuseo",
-    "title": "Modernia! (Didrichsen 60 vuotta)",
-    "start": "2025-06-12",
-    "end": "2025-09-28",
-    "description": "Juhlavuoden näyttely modernismista: Helene Schjerfbeckistä Wassily Kandinskyyn, kokoelman teokset vuoropuhelussa lainojen kanssa."
-  },
-  {
-    "museum": "Didrichsenin taidemuseo",
-    "title": "Pro Arte – Antrei Hartikainen",
+    "title": "SYY - Antrei Hartikainen",
     "start": "2025-10-17",
     "end": "2026-01-25",
-    "description": "Vuoden 2025 Pro Arte -palkitun taiteilijan yksityisnäyttely: veistoksellisia puu- ja lasiteoksia."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "Maija Lavonen – Hiljaisia monumentteja",
-    "start": "2025-01-31",
-    "end": "2025-09-14",
-    "description": "Tekstiilitaiteen mestarin näyttely tuo esiin Lavosen monumentaaliset, hiljaisen voimakkaat teokset."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "Marie‑José Van Hee – Auringon maalaamia koteja",
-    "start": "2025-02-07",
-    "end": "2025-09-14",
-    "description": "Belgialaisarkkitehdin arkkitehtuuri ja kotien intiimit tilat – valon, materiaalien ja arjen runouden liitto."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "D‑Ark Labra",
-    "start": "2024-05-25",
-    "end": "2025-08-31",
-    "description": "Kokeellinen näyttely- ja kohtaamistila arkkitehtuurin ja muotoilun ilmiöille."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "Industry Muscle: Five Scores for Architecture",
-    "start": "2025-05-10",
-    "end": "2025-11-23",
-    "description": "Esityksellinen kokonaisuus, jossa arkkitehtuuri kohtaa koreografian ja musiikin – viisi partituuria tilalle."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "Utopia nyt – Suomalaisen muotoilun ja arkkitehtuurin tarina",
-    "start": "2024-01-01",
-    "end": "2026-12-31",
-    "description": "Kokoelmanäyttely kertoo muotoilun roolista hyvinvointivaltion rakentumisessa sekä esittelee ikonisia esineitä ja prosesseja."
-  },
-  {
-    "museum": "AD‑museo",
-    "title": "Muumi 80 ‑juhlavuoden näyttely",
-    "start": "2025-10-10",
-    "end": "2026-09-01",
-    "description": "Juhlavuoden näyttely kartoittaa Muumi-ilmiön muotoilua, kuvitusta ja kulttuurihistoriaa."
-  },
-  {
-    "museum": "Villa Gyllenberg",
-    "title": "Morbus – Sairas aika",
-    "start": "2025-05-15",
-    "end": "2025-09-07",
-    "description": "Sairautta ja hyvinvointia käsitteleviä teoksia Villa Gyllenbergin kokoelmista ja nykytaiteesta."
-  },
-  {
-    "museum": "Villa Gyllenberg",
-    "title": "Ajan hengessä – Kokoelma Ane Gyllenberg",
-    "start": "2025-10-15",
-    "end": "2026-03-15",
-    "description": "Kokoelman aarteita katsottuna nykyhetken teemoista käsin."
-  },
-  {
-    "museum": "Villa Gyllenberg",
-    "title": "Joulu Villa Gyllenbergissä",
-    "start": "2025-11-22",
-    "end": "2026-01-07",
-    "description": "Perinteinen joulukokonaisuus museokodissa – juhlatunnelmaa ja kokoelman helmiä."
-  },
-  {
-    "museum": "Sinebrychoffin taidemuseo",
-    "title": "Antiikin sankarit",
-    "start": "2025-02-13",
-    "end": "2025-08-10",
-    "description": "Kreikkalaisen mytologian sankarit Herakleesta Odysseukseen – veistoksia, grafiikkaa, maalauksia ja nykytaidetta."
-  },
-  {
-    "museum": "Sinebrychoffin taidemuseo",
-    "title": "Espanja myyttien takaa",
-    "start": "2025-09-11",
-    "end": "2026-01-11",
-    "description": "1800–1900-lukujen maalaustaiteen kautta avautuva matka myyttisen Espanjan kuvastoihin ja modernisoituvaan ilmaisuun."
+    "description": "Pro Arte -palkinnon 2025 voittaneen puusepän, muotoilijan ja taiteilijan Antrei Hartikaisen yksityisnäyttely juhlistaa Didrichsenin taidemuseon 60-vuotisjuhlavuotta. Näyttelyssä on esillä käsityöperinteeseen nojaavia veistoksia ja design-teoksia.",
+    "Link": "https://www.didrichsenmuseum.fi/proarte2025",
+    "Image": "https://static.wixstatic.com/media/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg/v1/fill/w_800,h_532,al_c,q_90/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg"
   },
   {
     "museum": "EMMA",
-    "title": "Arte Povera – Uusi luku",
-    "start": "2025-03-12",
-    "end": "2025-08-31",
-    "description": "Arte Poveran keskeisten taiteilijoiden teoksia suomalaisesta näkökulmasta – materiaalisuuden ja arjen poetiikan tutkimista."
-  },
-  {
-    "museum": "EMMA",
-    "title": "Karin Hellman",
-    "start": "2025-04-09",
-    "end": "2026-02-01",
-    "description": "Suomalaisen modernismin omaperäisen uudistajan laaja katsaus."
+    "title": "Antti Laitinen: Helisevä metsä",
+    "start": "2025-09-24",
+    "end": "2026-08-23",
+    "description": "Antti Laitisen kineettinen installaatio on rakennettu puiden paloista ja metsäjätteestä, ja se kutsuu pohtimaan ihmisen kykyä muokata luontoa. Taiteilija kerää materiaalit lähialueiltaan ja painottaa työprosessia valmiin teoksen sijaan.",
+    "Link": "https://emmamuseum.fi/nayttely/incollection-antti-laitinen/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web-anttilaitinen-scaled.jpg"
   },
   {
     "museum": "EMMA",
     "title": "Muodinmuutos",
     "start": "2025-05-23",
     "end": "2025-12-07",
-    "description": "Muodin monisyistä roolia elämässämme ja arvojemme viestijänä pohtiva näyttely."
+    "description": "Näyttely kokoaa muotisuunnittelijoita ja taiteilijoita pohtimaan muodin kulttuurista kudosta, rituaaleja ja jännitteitä. Se esittelee muotia, tekstiilitaidetta, veistoksia ja videoteoksia ja korostaa muodin merkitystä yhteisöllisyyden ja solidaarisuuden välineenä.",
+    "Link": "https://emmamuseum.fi/nayttelyt/muodinmuutos/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_sf25-ripustus_8053-scaled.jpg"
   },
   {
     "museum": "EMMA",
-    "title": "Draped – Art of Printed Fabrics",
+    "title": "Karin Hellman",
+    "start": "2025-04-09",
+    "end": "2026-02-01",
+    "description": "Karin Hellman (1915-2004) oli suomalaisen modernismin edelläkävijä, joka käytti kollaasitekniikoissa luonnonmateriaaleja ja kierrätettyjä tekstiilejä. Hänen ensimmäisessä laajassa museonäyttelyssään esitellään lähes 100 teosta, joissa toistuvat spiraalimotiivit ja vapaus.",
+    "Link": "https://emmamuseum.fi/nayttelyt/karin-hellman/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web_karin-hellman_venus-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Arte Povera - Uusi luku",
+    "start": "2025-04-09",
+    "end": "2026-02-01",
+    "description": "Arte Povera -näyttely nostaa esiin liikkeen naistaiteilijoita ja tarkastelee materiaalien ja arkisten esineiden merkitystä taiteessa. Näyttely esittelee kansainvälisiä ja suomalaisia teoksia, jotka avaavat uuden luvun liikkeen tulkinnassa.",
+    "Link": "https://emmamuseum.fi/nayttelyt/arte-povera-uusi-luku/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web-arte-povera-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Verholla - Painokankaiden taide",
     "start": "2025-02-12",
     "end": "2027-03-14",
-    "description": "Painokankaiden taide ja kulttuurihistoria – kuoseja, muotia ja designia vuosikymmenten varrelta."
+    "description": "Painokankaat ovat mukana arjessa ja juhlassa sekä identiteetin rakentamisessa. Näyttely esittelee 31 suunnittelijaa ja pohtii painokankaiden vaikutusta suomalaisessa designissa sekä yhdistää sen Bryk & Wirkkala -katseluvaraston kanssa.",
+    "Link": "https://emmamuseum.fi/nayttelyt/verholla-painokankaiden-taide/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web_verholla-scaled.jpg"
   },
   {
     "museum": "EMMA",
-    "title": "Mohamed Bourouissa: Riou",
-    "start": "2025-09-17",
-    "end": "2026-01-18",
-    "description": "Ranskalaisalgerialaisen taiteilijan teoksia vallan, yhteisöjen ja katukulttuurin risteyksissä."
+    "title": "Mohamed Bourouissa: Väkivallan syntyhistoria",
+    "start": "2025-09-24",
+    "end": "2026-03-22",
+    "description": "Elokuvallinen teos käsittelee sitä, miltä tuntuu menettää kontrolli omasta kehosta. Se seuraa pariskuntaa, jonka keskustelu keskeytyy poliisin väliintuloon, ja käyttää tehosteita kuvaamaan tunteita ja ajatuksia, jotka jäävät kehon ulkopuolelle.",
+    "Link": "https://emmamuseum.fi/nayttely/mohamed-bourouissa-the-genealogy-of-violence/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web_mohamed-bourouissa_thegenealogyofviolence-scaled.jpg"
   },
   {
-    "museum": "Helsingin Taidehalli",
-    "title": "Kollektivet – Kuvakirjakuvitusta Suomesta",
-    "start": "2025-08-15",
-    "end": "2025-09-14",
-    "description": "Leikkisä ja osallistava katsaus suomalaiseen kuvakirjakuvitukseen – koko perheen näyttely."
+    "museum": "HAM Helsinki",
+    "title": "Ars Fennica 2025",
+    "start": "2025-10-24",
+    "end": "2026-03-29",
+    "description": "Suomen merkittävimmän kuvataidepalkinnon näyttely esittelee vuoden 2025 Ars Fennica -palkinnon finalistit: Ragna Bley, Roland Persson, Jani Ruscica ja Hanna Vihriälä. Näyttely antaa läpileikkauksen nykytaiteen ajankohtaisiin ilmiöihin.",
+    "Link": "https://www.hamhelsinki.fi/nayttelyt/ars-fennica-2025/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2024/08/Ars-Fennica-2025_web.jpg"
   },
   {
-    "museum": "Helsingin Taidehalli",
-    "title": "Johanna Ehrnrooth: Chrysalis",
-    "start": "2025-09-27",
-    "end": "2025-10-26",
-    "description": "Retrospektiivinen näyttely, joka kokoaa Johanna Ehrnroothin elokuvalliset maalaukset ja myöhemmän värikylläisen tuotannon."
+    "museum": "HAM Helsinki",
+    "title": "Vapaa 90",
+    "start": "2025-04-25",
+    "end": "2026-01-04",
+    "description": "Vapaa taidekoulu täyttää 90 vuotta, ja juhlanäyttely on omistettu maalaustaiteelle. Se tarkastelee koulun historiaa, modernismin vaiheita ja taiteilijoiden välistä vuorovaikutusta sekä koulun vapaata henkeä.",
+    "Link": "https://www.hamhelsinki.fi/nayttelyt/vapaa-90/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/04/Vapaa-90_paakuva.jpg"
+  },
+  {
+    "museum": "HAM Helsinki",
+    "title": "Tove Jansson: Freskot ja Taikurinhattu",
+    "start": "2025-04-25",
+    "end": "2026-01-04",
+    "description": "Näyttelyssä voi ihailla Tove Janssonin julkisia seinämaalauksia, joissa esiintyvät Muumilaakson hahmot. Mukana ovat pysyvät freskot \"Juhlat kaupungissa\" ja \"Juhlat maalla\" sekä lastentarhaan maalattu kolmiosainen muraali \"Kesä, kevät, syksy\" (1984).",
+    "Link": "https://www.hamhelsinki.fi/nayttelyt/tove-jansson-freskot-ja-taikurinhattu/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/01/Tove-Jansson_Kesa-kevat-syksy-800x1000.jpg"
+  },
+  {
+    "museum": "HAM Helsinki",
+    "title": "Emma Luukkala: Yöpyykki",
+    "start": "2025-09-20",
+    "end": "2025-11-09",
+    "description": "HAM-galleriassa taiteilija Emma Luukkala tutkii pyhän ja arjen kohtaamista. Teokset kytkeytyvät arkisiin rutiineihin ja työympäristöön, ja taiteilija käyttää maalauksen materiaaleja uudella tavalla kysyen, mitä pyhä merkitsee uudessa materialistisessa ajassa.",
+    "Link": "https://www.hamhelsinki.fi/nayttelyt/emma-luukkala-yopyykki/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/08/Yopyykki-detail-1-pienennetty.jpg"
+  },
+  {
+    "museum": "Helsingin kaupunginmuseo",
+    "title": "Roskaa! - Mitä jätämme jälkeemme",
+    "start": "2025-04-25",
+    "end": "2025-10-05",
+    "description": "Roskaa?-näyttely pohtii, mikä on jätettä ja mikä ei. Se haastaa kävijät miettimään kuluttamisen vaikutuksia ja millaisia jälkiä jätämme ympäristöön.",
+    "Link": "https://www.helsinginkaupunginmuseo.fi/nayttelyt/roskaa/",
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/2025/04/artikkelikuva_825x513px_Roskaa_HKM_kevat25.jpg"
+  },
+  {
+    "museum": "Hakasalmen huvila",
+    "title": "Stefan Bremer - Helsinki by Night",
+    "start": "2025-10-24",
+    "end": "2026-08-30",
+    "description": "Valokuvaaja Stefan Bremerin näyttely on henkilökohtainen näkemys Helsingin yöstä. Se esittelee 1970-80-lukujen nuorisokulttuureja ja rock-keikkakuvia Hakasalmen huvilassa.",
+    "Link": "https://hakasalmenhuvila.fi/nayttelyt/stefan-bremer-helsinki-by-night/",
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/sites/2/2025/06/artikkelikuva_825x513px_Stefan_Bremer_Helsinki_by_Night_diinarit_HH_syksy25.jpg"
+  },
+  {
+    "museum": "Hakasalmen huvila",
+    "title": "Kimallus ja kumarrus - kartanonväen kaksi maailmaa",
+    "start": "2024-10-25",
+    "end": "2025-08-31",
+    "description": "Elämyksellinen näyttely vie kävijän kartanon elämään 1800-luvun Suomessa. Se tarkastelee aateliston ja palvelusväen kahta maailmaa Hakasalmen huvilassa ja herättää henkiin historiallisia rooleja.",
+    "Link": "https://hakasalmenhuvila.fi/nayttelyt/kimallus-ja-kumarrus-kartanonvaen-kaksi-maailmaa/",
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/sites/2/2024/06/kimallus_ja_kumarrus_stills_Artikkelikuva825x513px.jpg"
   },
   {
     "museum": "Helsingin Taidehalli",
     "title": "Miettinen Collection: Katson kohti maata",
     "start": "2025-11-01",
     "end": "2026-01-11",
-    "description": "Laajin katsaus Miettinen Collectioniin: yli sata teosta noin 50 taiteilijalta, abstrakteista maalauksista muotiin ja queer-taiteeseen."
+    "description": "Yli 150 teosta käsittävä näyttely tuo esiin Miettisen kokoelman, jossa teemoina ovat maisema, luonto ja intiimiys. Mukana on yli 100 taiteilijaa, ja näyttelyn ovat kuratoineet Linda Peitz ja Florian Peters-Messer.",
+    "Link": "https://taidehalli.fi/events/katson-kohti-maata/",
+    "Image": "https://taidehalli.fi/wp-content/uploads/2025/04/Sarah-Cunningham-r-scaled.jpeg"
   },
   {
-    "museum": "Amos Rex",
-    "title": "Generation 2026",
-    "start": "2026-03-01",
-    "end": "2026-06-01",
-    "description": ""
+    "museum": "Helsingin Taidehalli",
+    "title": "Nuoret 2026",
+    "start": "2026-05-30",
+    "end": "2026-07-26",
+    "description": "Taidehallin 35-vuotiaille ja sitä nuoremmille taiteilijoille suunnattu Nuoret 2026 -näyttely kutsuu esiin uusia tekijöitä. Se järjestetään avoimen haun kautta ja esittelee nuorten taiteilijoiden teoksia kesällä 2026.",
+    "Link": "https://taidehalli.fi/nuoret-2026-avoin-haku-alkaa-elokuussa/",
+    "Image": "https://taidehalli.fi/wp-content/uploads/2025/05/TH-nuoret26-draft-05-scaled.jpg"
   },
   {
-    "museum": "Designmuseo",
-    "title": "Sofia Ilmonen: Formations",
-    "start": "2025-07-08",
-    "end": "2025-08-02",
-    "description": ""
+    "museum": "Kiasma",
+    "title": "Essi Kuokkanen: Pilvenpitelijä",
+    "start": "2025-10-10",
+    "end": "2026-02-22",
+    "description": "Essi Kuokkasen maalaukset ja piirrokset tarkastelevat ihmisyyttä ja suhdettamme muihin elollisiin. Teoksissa toistuvat kasvun ja muutoksen teemat sekä koirien ja lintujen hahmot.",
+    "Link": "https://kiasma.fi/nayttelyt/essi-kuokkanen/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2024/10/EssiKuokkanen_HoldingaCloud_2020_Kuva_JussiTiainen_GalerieAnhava2.jpg"
   },
   {
-    "museum": "Taidehalli",
-    "title": "Kesäsade",
-    "start": "2025-05-17",
-    "end": "2025-08-03",
-    "description": ""
+    "museum": "Kiasma",
+    "title": "Sarah Lucas: Paljas katse",
+    "start": "2025-10-10",
+    "end": "2026-03-08",
+    "description": "Brittiläisen taiteilijan Sarah Lucasin ensimmäinen laaja näyttely Pohjoismaissa esittelee veistoksia, joissa arkipäiväisistä materiaaleista - huonekaluista, ruoasta ja sukkahousuista - rakentuu humoristisia ja kehoa kommentoivia teoksia. Näyttely käsittelee sukupuolta ja vallan dynamiikkaa.",
+    "Link": "https://kiasma.fi/nayttelyt/sarah-lucas/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2024/10/SarahLucas_SlagZenLovesong_0_PetriVirtanen_t.jpg"
   },
   {
-    "museum": "Ateneum",
-    "title": "A Question of Time",
-    "start": "2023-04-14",
-    "end": "2026-12-31",
-    "description": ""
+    "museum": "Kiasma",
+    "title": "Kivi, paperi, sakset - Kiasman kokoelmanäyttely",
+    "start": "2025-02-14",
+    "end": "2026-01-18",
+    "description": "Kokoelmanäyttely tutkii nykytaiteen materiaaleja ja tekniikoita 1970-luvulta tähän päivään. Se kysyy, miksi nykytaide näyttää siltä kuin se näyttää, ja esittelee 52 taiteilijan teoksia eri sukupolvilta.",
+    "Link": "https://kiasma.fi/nayttelyt/kivi-paperi-sakset-kiasman-kokoelmanayttely/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/02/dahlgren-1.jpg"
   },
   {
-    "museum": "Villa Gyllenberg",
-    "title": "Morbus",
-    "start": "2025-04-02",
-    "end": "2025-09-21",
-    "description": ""
-  },
-  {
-    "museum": "Villa Gyllenberg",
-    "title": "Poetic Reality",
-    "start": "2026-04-22",
-    "end": "2026-09-13",
-    "description": ""
-  },
-  {
-    "museum": "EMMA",
-    "title": "Diego Marcon: Dolle",
-    "start": "2025-02-12",
-    "end": "2025-09-07",
-    "description": ""
-  },
-  {
-    "museum": "EMMA",
-    "title": "Rashaad Newsome: Untitled (New Way)",
-    "start": "2023-11-24",
-    "end": "2025-11-23",
-    "description": ""
-  },
-  {
-    "museum": "EMMA",
-    "title": "InCollection: Antti Laitinen",
-    "start": "2025-09-24",
-    "end": "2026-08-23",
-    "description": ""
-  },
-  {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Karoliina Paatos: Heroes & Cowboy Girls",
-    "start": "2025-05-09",
-    "end": "2025-08-31",
-    "description": "Näyttely kuvaa cowboy-kulttuurin marginaalisia puolia, keskittyen tyttöjen ja naisten rooliin karjatiloilla sekä gay-rodeon alakulttuuriin."
-  },
-  {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Activestills – dokumentoimassa elämää, kuolemaa ja vastarintaa Palestiinassa",
-    "start": "2025-05-09",
-    "end": "2025-08-31",
-    "description": "Valokuvaajakollektiivi dokumentoi Israelin kolonialismia ja palestiinalaisten vastarintaa."
-  },
-  {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Navid Afzalnia: Kitchen Talk",
-    "start": "2025-06-06",
-    "end": "2025-09-07",
-    "description": "Näyttely kyseenalaistaa kodin mahdollisuuden tarjota suojaa poliittisesti epävakaassa ilmapiirissä."
-  },
-  {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Photofuss: Rakastan leikkiä valolla",
-    "start": "2025-06-27",
-    "end": "2025-08-31",
-    "description": "Ryhmänäyttely, jossa valo on keskeinen ilmaisukeino, tutkitaan leikin ja valon suhdetta."
-  },
-  {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Etsin",
-    "start": "2025-01-01",
-    "end": "2099-12-31",
-    "description": "Pysyvä näyttely: Miksi ja miten valokuvat vaikuttavat tunteisiin ja toimintaan?"
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Espanja myyttien takaa",
+    "start": "2025-09-11",
+    "end": "2026-01-11",
+    "description": "Näyttely tarkastelee Espanjan romantisoitua kuvaa ja esittelee maalauksia 1800-1900-luvuilta. Se avaa näkymiä Andalusian kulttuuriin, orientalistisiin vaikutteisiin ja taiteilijoihin, kuten Francisco de Goya, Mariano Fortuny ja Joaquín Sorolla.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/espanja-myyttien-takaa/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2025/05/Luis-Masriera_Odalisque.-Coleccion-Pedrera-Martinez_-Kuva_Coleccion-Pedrera-Martinez.-.jpg"
   },
   {
     "museum": "Suomen valokuvataiteen museo",
     "title": "Näkymätön rotu",
     "start": "2025-09-19",
-    "end": "2026-03-01",
-    "description": "Näyttely tarkastelee valkoisuuden normia ja sen suhdetta valokuvaan historian, visuaalisen kulttuurin, kauneusihanteiden ja nationalismin kautta."
+    "end": "2026-03-08",
+    "description": "Valokuvataiteen museo tutkii näyttelyssä, miten valokuva ja visuaalinen kulttuuri ovat ylläpitäneet rasistisia yhteiskuntarakenteita ja muovanneet käsityksiämme ihmisyydestä. Näyttely keskittyy valkoisuuden käsitteeseen ja tarkastelee arkistoja antirasistisesta näkökulmasta.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/nakymaton-rotu",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2025-09/saittikuva_0.jpg?itok=xv7OgJ4N"
   },
   {
     "museum": "Suomen valokuvataiteen museo",
-    "title": "Aarni Pieski + työryhmä: Carmen Baltzar, Lotta Hagelin, Ritni Ráste Pieski, Shia Conlon",
+    "title": "Wet Archives",
     "start": "2025-09-19",
     "end": "2025-11-02",
-    "description": "Näyttely tutkii marginalisoitujen, erityisesti queer-BIPOC-ihmisten historiallisia kokemuksia."
+    "description": "Wet Archives nostaa esiin vähemmistöjen näkymättömyyden arkistoissa ja kehittää keinoja dokumentoida ja muistaa uudella tavalla. Se korostaa arkiston kehollisuutta ja sisältää useiden taiteilijoiden teoksia.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/wet-archives",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2025-09/P%C3%84%C3%84KUVA_%20Aarni%20Pieski%20%2B%20working%20group%20-%20Wet%20Archives%2C%202025..jpg?itok=yuSqzMrY"
   },
   {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Salamata Mboup",
-    "start": "2025-11-07",
-    "end": "2026-01-11",
-    "description": "Näyttely kutsuu pohtimaan, miten ulkonäkö ja ennakkoluulot vaikuttavat vuorovaikutukseen ja turvallisuuden tunteeseen."
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Yö",
+    "start": "2026-02-12",
+    "end": "2026-08-23",
+    "description": "Yötä ja unimaailmaa tutkiva näyttely kuljettaa iltahämärästä aamunkoittoon ja näyttää yön monet kasvot - ystävälliset, surumieliset, puistattavat ja seesteiset. Teokset keskustelevat runouden kanssa (runoilija Henriikka Tavi) ja esillä on maalaustaidetta, grafiikkaa ja veistoksia 1800-luvulta nykypäivään Kansallisgallerian kokoelmista.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/yo/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2025/08/KG2025DK1130.jpg"
   },
   {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Vinayak",
-    "start": "2026-01-30",
-    "end": "2026-04-12",
-    "description": "Para-arkistinen installaatio, joka kehittää mediaturvallisuuden ja tekstuurien teemoja."
+    "museum": "Villa Gyllenberg",
+    "title": "Ajan hengessä. Kokoelma Ane Gyllenberg",
+    "start": "2025-10-15",
+    "end": "2026-03-15",
+    "description": "Kokoelmanäyttely tarkastelee Villa Gyllenbergin taidekokoelmaa ja sisustusta eri aikakausien ihanteiden valossa, avaten ikkunan 1930–40-lukuihin, 1950–60-lukuihin ja nykypäivään.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/ajan-hengessa-kokoelma-ane-gyllenberg-15-10-2025-15-3-2026",
+    "Image": "https://www.gyllenbergs.fi/uploads/_1200x630_crop_center-center_82_none/Schjerfbeck_Dam-i-svart-och-rott_J.jpg?mtime=1761119274"
   },
   {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Iiris Elena Rusi",
-    "start": "2026-04-17",
-    "end": "2026-06-06",
-    "description": "Näyttely keskittyy Iiris Elena Rusiin seksityötä tekevästä kuvataiteilijana."
+    "museum": "Villa Gyllenberg",
+    "title": "Villa Gyllenbergin joulu",
+    "start": "2025-11-22",
+    "end": "2026-01-07",
+    "description": "Kotimuseon pohjakerroksessa koettava teemanäyttely virittää 1960-luvun joulutunnelmaan salongissa ja ruokasalissa – aitoja aikakauden koristeluita ja juhlakattaus mukaan lukien.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/jul-pa-villa-gyllenberg-23-11-2024-12-1-2025",
+    "Image": "https://www.gyllenbergs.fi/uploads/_1200x630_crop_center-center_82_none/Villa-G_joulu_flyygeli.jpg?mtime=1669720591"
   },
   {
-    "museum": "Helsingin kaupunginmuseo",
-    "title": "M/S Baltic Queers – Kokemuksia sateenkaarisiirtolaisuudesta",
-    "start": "2024-11-15",
-    "end": "2025-03-02",
-    "description": "Näyttely pohtii seksuaali- ja sukupuolivähemmistöihin kuuluvien ihmisten siirtolaisuutta Itämeren alueella."
-  },
-  {
-    "museum": "Helsingin kaupunginmuseo",
-    "title": "Roskaa! – Mitä jätämme jälkeemme",
-    "start": "2025-04-25",
-    "end": "2025-10-05",
-    "description": "Näyttely haastaa pohtimaan, mistä helsinkiläisten roskat muodostuvat, minne ne päätyvät ja miten ne vaikuttavat ympäristöön."
-  },
-  {
-    "museum": "Helsingin kaupunginmuseo",
-    "title": "Lasten kaupunki",
-    "start": "2020-01-01",
-    "end": "2099-12-31",
-    "description": "Pysyvä näyttely Sederholmin talossa, jossa Helsingin menneisyyttä tuodaan esiin leikin ja yhdessä tekemisen kautta."
-  },
-  {
-    "museum": "Helsingin kaupunginmuseo",
-    "title": "Helsingin valitut palat",
-    "start": "2020-01-01",
-    "end": "2099-12-31",
-    "description": "Pysyvä näyttely, joka tekee sukelluksia Helsinki-historiaan ja tuo pintaan yhteisiä muistoja kaupungin menneisyydestä."
-  },
-  {
-    "museum": "Hakasalmen huvila",
-    "title": "Kimallus ja kumarrus – kartanonväen kaksi maailmaa",
-    "start": "2024-10-25",
-    "end": "2025-08-31",
-    "description": "Elämyksellinen kartanonäyttely, jossa tutustutaan 1860-1880-lukujen kartanoelämään hahmojen kautta."
-  },
-  {
-    "museum": "Hakasalmen huvila",
-    "title": "Stefan Bremer – Helsinki by Night",
-    "start": "2099-01-01",
-    "end": "2099-12-31",
-    "description": "Tuleva näyttely; päivämäärät eivät vielä ole saatavilla."
+    "museum": "Villa Gyllenberg",
+    "title": "Runollinen todellisuus – 1920–40-lukujen taidetta, muotia, muotoilua ja puutarhoja",
+    "start": "2026-04-22",
+    "end": "2026-09-13",
+    "description": "Kevään ja kesän 2026 näyttely esittelee 1920–40-lukujen ranskalaista ja suomalaista taidetta sekä ajan muotia, muotoilua ja puutarhoja; yksi teemoista on poeettisen todellisuuden maalarit.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/runollinen-todellisuus-1920-40-lukujen-taidetta-muotia-muotoilua-ja-puutarhoja",
+    "Image": "https://www.gyllenbergs.fi/uploads/_1200x630_crop_center-center_82_none/Marie-Laurencin_Nuoren-naisen-muotokuva_Sara-Hildenin-taidemuseo_mindre.jpg?mtime=1762354168"
   }
 ]

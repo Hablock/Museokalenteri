@@ -10,8 +10,13 @@
     .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
     .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
-    .museum-btn.special { background-color: #aaa; color: white; }
-    .exhibition { background: white; margin: 1rem 0; padding: 1rem; border-left: 6px solid; border-radius: 5px; }
+    .museum-filter-bar { flex-direction: column; align-items: stretch; }
+    .museum-btn.special { background-color: #333; color: white; width: 100%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+    .museum-btn.special:hover { background-color: #4a4a4a; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+    .museum-btn.special:active { background-color: #2a2a2a; }
+    .exhibition { background: white; margin: 1rem 0; padding: 1rem; border-left: 6px solid; border-radius: 5px; display: flex; gap: 1rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease; align-items: stretch; position: relative; }
+    .exhibition:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .exhibition:focus-visible { outline: 2px solid #333; outline-offset: 4px; }
     .CURRENT { border-color: green; }
     .UPCOMING { border-color: blue; }
     .PAST { border-color: gray; opacity: 0.7; }
@@ -19,6 +24,18 @@
     .CURRENT .tag { background: #e6ffed; color: green; }
     .UPCOMING .tag { background: #e6f0ff; color: blue; }
     .PAST .tag { background: #eeeeee; color: gray; }
+    .exhibition-image { flex: 0 0 140px; width: 140px; height: 140px; border-radius: 6px; overflow: hidden; background: linear-gradient(135deg, #f0f0f0, #d0d0d0); display: flex; align-items: center; justify-content: center; }
+    .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .exhibition-image.no-image { color: #666; font-weight: 600; font-size: 1.5rem; text-transform: uppercase; }
+    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 2rem; color: rgba(0,0,0,0.35); }
+    .exhibition-content { flex: 1; display: flex; flex-direction: column; }
+    .exhibition-content h2 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
+    .exhibition-museum { margin: 0 0 0.25rem 0; }
+    .exhibition-dates { margin: 0 0 0.5rem 0; color: #555; font-size: 0.95rem; }
+    .exhibition-description { margin: 0; color: #444; font-size: 0.95rem; }
+    .exhibition-content .tag { align-self: flex-start; margin-top: auto; }
+    .exhibition-link-indicator { position: absolute; top: 0; right: 0; width: 36px; height: 36px; background: rgba(51, 51, 51, 0.9); color: white; display: flex; align-items: center; justify-content: center; border-top-right-radius: 5px; border-bottom-left-radius: 12px; font-size: 1.1rem; }
+    .exhibition-link-indicator svg { width: 16px; height: 16px; }
     /* Sections for clearer separation */
     .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
     .section.header h1 { margin-top: 0; margin-bottom: 1.25rem; }
@@ -45,15 +62,15 @@
   </div>
   <div class="section">
     <p class="section-title">Museum filters & sorting</p>
-    <div class="controls-row">
-      <div class="museum-filter-bar" style="margin:0">
+    <div class="controls-row" style="align-items:flex-start;">
+      <div class="museum-filter-bar" style="margin:0; max-width:200px;">
         <button id="select-all-museums" class="museum-btn special">Select all</button>
         <button id="deselect-all-museums" class="museum-btn special">Deselect all</button>
-        <select id="museum-select" multiple size="6" style="min-width: 260px; padding: 0.4rem;"></select>
       </div>
-      <div class="sort-bar" style="display:flex; align-items:center; gap:0.5rem; margin:0">
+      <select id="museum-select" multiple size="8" style="min-width: 260px; padding: 0.4rem; flex: 1 1 260px; max-width: 360px;"></select>
+      <div class="sort-bar" style="display:flex; flex-direction:column; gap:0.35rem; margin:0;">
         <label for="sort-select" style="font-size:0.9rem; color:#333">Sort:</label>
-        <select id="sort-select" style="padding:0.4rem 0.6rem;">
+        <select id="sort-select" style="padding:0.4rem 0.6rem; min-width: 180px;">
           <option value="MUSEUM">By Museum</option>
           <option value="TITLE">By Exhibition name</option>
           <option value="CLOSING_DATE">By closing date</option>
@@ -225,16 +242,38 @@ function initExhibitions() {
     }
     list.forEach(ex => {
       const st = computeStatus(ex);
-      const div = document.createElement("div");
-      div.className = `exhibition ${st}`;
-      div.innerHTML = `
-        <h2>${ex.title}</h2>
-        <p><strong>${ex.museum}</strong></p>
-        <p>${ex.start} – ${ex.end}</p>
-        ${ex.description && ex.description.trim() ? `<p>${ex.description}</p>` : ``}
-        <span class="tag">${st}</span>
+      const linkUrl = ex.Link || ex.link || "";
+      const imageUrl = ex.Image || ex.image || "";
+      const card = document.createElement(linkUrl ? "a" : "div");
+      card.className = `exhibition ${st}`;
+      if (linkUrl) {
+        card.href = linkUrl;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+      }
+      const placeholderLetter = (ex.title || "?").trim().charAt(0).toUpperCase() || "?";
+      const descriptionHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : ``;
+      const linkIndicator = linkUrl ? `
+        <span class="exhibition-link-indicator" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14 3h7v7h-2V6.41l-8.29 8.3-1.42-1.42 8.3-8.29H14V3z" />
+            <path d="M5 5h5V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z" />
+          </svg>
+        </span>` : "";
+      card.innerHTML = `
+        ${linkIndicator}
+        <div class="exhibition-image${imageUrl ? "" : " no-image"}">
+          ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" loading="lazy" />` : `<span class="image-placeholder-text">${placeholderLetter}</span>`}
+        </div>
+        <div class="exhibition-content">
+          <h2>${ex.title}</h2>
+          <p class="exhibition-museum"><strong>${ex.museum}</strong></p>
+          <p class="exhibition-dates">${ex.start} – ${ex.end}</p>
+          ${descriptionHtml}
+          <span class="tag">${st}</span>
+        </div>
       `;
-      container.appendChild(div);
+      container.appendChild(card);
     });
   }
 
