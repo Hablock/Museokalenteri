@@ -1,0 +1,54 @@
+museot:
+  - nimi: AD-museo
+    kaupunki: Helsinki
+    nayttelysivu: https://admuseo.fi/nayttelyt-ja-tapahtumat/
+
+  - nimi: Amos Rex
+    kaupunki: Helsinki
+    nayttelysivu: https://amosrex.fi/nayttelyt/
+    tulevat: https://amosrex.fi/tulevat-nayttelyt/
+
+  - nimi: Ateneum
+    kaupunki: Helsinki
+    nayttelysivu: https://ateneum.fi/nayttelyt/
+    tulevat: https://ateneum.fi/nayttelyt/tulevat/
+
+  - nimi: Didrichsenin taidemuseo
+    kaupunki: Helsinki
+    nayttelysivu: https://www.didrichsenmuseum.fi/näyttelyt
+
+  - nimi: EMMA - Espoon modernin taiteen museo
+    kaupunki: Espoo
+    nayttelysivu: https://emmamuseum.fi/emman-nayttelyt/nyt/
+    tulevat: https://emmamuseum.fi/emman-nayttelyt/tulevat/
+
+  - nimi: Hakasalmen huvila
+    kaupunki: Helsinki
+    nayttelysivu: https://hakasalmenhuvila.fi/nayttelyt/
+
+  - nimi: HAM Helsingin taidemuseo
+    kaupunki: Helsinki
+    nayttelysivu: https://www.hamhelsinki.fi/nayttelyt-nyt/
+    tulevat: https://www.hamhelsinki.fi/tulevat-nayttelyt/
+
+  - nimi: Helsingin Taidehalli
+    kaupunki: Helsinki
+    nayttelysivu: https://taidehalli.fi/nayttelyt/
+
+  - nimi: Kiasma
+    kaupunki: Helsinki
+    nayttelysivu: https://kiasma.fi/nayttelyt/tulevat/
+
+  - nimi: Sinebrychoffin taidemuseo
+    kaupunki: Helsinki
+    nayttelysivu: https://sinebrychoffintaidemuseo.fi/nayttelyt/
+    tulevat: https://sinebrychoffintaidemuseo.fi/nayttelyt/tulevat/
+
+  - nimi: Suomen valokuvataiteen museo
+    kaupunki: Helsinki
+    nayttelysivu: https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/nayttelyt-nyt
+    tulevat: https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/tulevat-nayttelyt
+
+  - nimi: Villa Gyllenberg
+    kaupunki: Helsinki
+    nayttelysivu: https://www.villagyllenberg.fi/nayttelyt
