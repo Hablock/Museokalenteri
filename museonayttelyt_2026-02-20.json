@@ -393,7 +393,7 @@
     "end": "2026-03-15",
     "description": "Meneillään oleva näyttely Villa Gyllenbergissä.",
     "Link": "https://www.villagyllenberg.fi/nayttelyt/ajan-hengessa-kokoelma-ane-gyllenberg-15-10-2025-15-3-2026",
-    "Image": "https://gyllenberg-website.transforms.svdcdn.com/production/Schjerfbeck_Dam-i-svart-och-rott_J.jpg"
+    "Image": "https://gyllenberg-website.transforms.svdcdn.com/production/Schjerfbeck_Dam-i-svart-och-rott_J.jpg?w=1200&h=630&q=82&auto=format&fit=crop&crop=focalpoint&fp-x=0.5513&fp-y=0.2763&dm=1771506009&s=d6b511c4d8846c1693a309bf6ea1b2c3"
   },
   {
     "museum": "Villa Gyllenberg",
@@ -401,7 +401,7 @@
     "start": "2026-04-22",
     "end": "2026-09-13",
     "description": "Tuleva näyttely Villa Gyllenbergissä.",
-    "Link": "https://www.villagyllenberg.fi/nayttelyt",
-    "Image": "https://www.gyllenbergs.fi/uploads/_960x1177_crop_center-center_61_line/Marie-Laurencin_Nuoren-naisen-muotokuva_Sara-Hildenin-taidemuseo_mindre.jpg"
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/runollinen-todellisuus-1920-40-lukujen-taidetta-muotia-muotoilua-ja-puutarhoja",
+    "Image": "https://gyllenberg-website.transforms.svdcdn.com/production/Marie-Laurencin_Nuoren-naisen-muotokuva_Sara-Hildenin-taidemuseo_mindre.jpg?w=1440&q=82&fm=webp&fit=crop&dm=1762354168&s=76e7c8db1ed3ee73ac3b056b6438ac8c"
   }
 ]
