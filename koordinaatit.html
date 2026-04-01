@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Museokalenteri – Koordinaattieditori</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 900px; margin: auto; background: #f9f9f9; }
+    h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+    p.intro { color: #555; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { background: #333; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.85rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #eee; font-size: 0.9rem; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+    .museum-name { font-weight: 600; white-space: nowrap; }
+    .coord-input {
+      width: 100%;
+      padding: 0.3rem 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+    .coord-input.valid { border-color: #4caf50; background: #f0fff0; }
+    .coord-input.invalid { border-color: #e53935; background: #fff0f0; }
+    .status { font-size: 0.75rem; color: #888; margin-top: 2px; white-space: nowrap; }
+    .status.ok { color: #4caf50; }
+    .status.err { color: #e53935; }
+    .actions { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+    button { padding: 0.55rem 1.2rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; }
+    .btn-primary { background: #333; color: white; }
+    .btn-primary:hover { background: #444; }
+    .btn-secondary { background: #eee; color: #333; }
+    .btn-secondary:hover { background: #ddd; }
+    .output-section { margin-top: 1.5rem; }
+    .output-section label { font-size: 0.85rem; font-weight: 600; color: #444; display: block; margin-bottom: 0.4rem; }
+    textarea {
+      width: 100%;
+      height: 220px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      resize: vertical;
+    }
+    .copy-btn { margin-top: 0.5rem; }
+    .notice { font-size: 0.82rem; color: #777; margin-top: 0.5rem; }
+    #load-status { font-size: 0.85rem; color: #555; }
+    code { background: #eee; padding: 1px 5px; border-radius: 3px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+<h1>Koordinaattieditori</h1>
+<p class="intro">
+  Liitä koordinaatit suoraan Google Mapsista muodossa <code>60.17470705524635, 24.934158594632745</code>.
+  Pilkulla erotettu pari tai välilyönnillä erotettu – molemmat toimivat.
+</p>
+
+<p id="load-status">Ladataan museot.json...</p>
+
+<table id="coord-table" style="display:none">
+  <thead>
+    <tr>
+      <th>Museo</th>
+      <th>Nykyiset koordinaatit</th>
+      <th>Uudet koordinaatit (liitä tähän)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="table-body"></tbody>
+</table>
+
+<div class="actions" id="actions" style="display:none">
+  <button class="btn-primary" onclick="generateJson()">Generoi päivitetty museot.json</button>
+  <button class="btn-secondary" onclick="clearAll()">Tyhjennä kaikki kentät</button>
+</div>
+
+<div class="output-section" id="output-section" style="display:none">
+  <label>Päivitetty museot.json – kopioi ja tallenna tiedostoon:</label>
+  <textarea id="json-output" readonly></textarea>
+  <button class="btn-secondary copy-btn" onclick="copyJson()">Kopioi leikepöydälle</button>
+  <p class="notice">Muista tallentaa alkuperäinen museot.json varmuuskopioksi ennen korvaamista.</p>
+</div>
+
+<script>
+let museums = [];
+
+fetch('./museot.json')
+  .then(r => r.json())
+  .then(data => {
+    museums = data;
+    document.getElementById('load-status').style.display = 'none';
+    buildTable();
+    document.getElementById('coord-table').style.display = 'table';
+    document.getElementById('actions').style.display = 'flex';
+  })
+  .catch(err => {
+    document.getElementById('load-status').textContent = 'Virhe: museot.json ei löydy. (' + err.message + ')';
+  });
+
+function buildTable() {
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+  museums.forEach((m, i) => {
+    const currentCoords = (m.lat && m.lng) ? `${m.lat}, ${m.lng}` : '–';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="museum-name">${m.nimi}</td>
+      <td style="font-family:monospace; font-size:0.8rem; color:#888">${currentCoords}</td>
+      <td>
+        <input
+          class="coord-input"
+          type="text"
+          placeholder="60.12345, 24.98765"
+          data-index="${i}"
+          oninput="validateInput(this)"
+        />
+        <div class="status" id="status-${i}"></div>
+      </td>
+      <td>
+        <button class="btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.8rem" onclick="clearRow(${i})">✕</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function parseCoords(raw) {
+  const parts = raw.trim().split(/[\s,]+/).filter(Boolean);
+  if (parts.length !== 2) return null;
+  const lat = parseFloat(parts[0]);
+  const lng = parseFloat(parts[1]);
+  if (isNaN(lat) || isNaN(lng)) return null;
+  if (lat < 59 || lat > 61) return null;
+  if (lng < 24 || lng > 26) return null;
+  return { lat, lng };
+}
+
+function validateInput(el) {
+  const i = parseInt(el.dataset.index);
+  const statusEl = document.getElementById('status-' + i);
+  const raw = el.value.trim();
+  if (!raw) {
+    el.className = 'coord-input';
+    statusEl.textContent = '';
+    statusEl.className = 'status';
+    return;
+  }
+  const coords = parseCoords(raw);
+  if (coords) {
+    el.className = 'coord-input valid';
+    statusEl.textContent = `✓ ${coords.lat}, ${coords.lng}`;
+    statusEl.className = 'status ok';
+  } else {
+    el.className = 'coord-input invalid';
+    statusEl.textContent = 'Tarkista muoto tai koordinaattien alue (lat ~60, lng ~24–25)';
+    statusEl.className = 'status err';
+  }
+}
+
+function generateJson() {
+  const inputs = document.querySelectorAll('.coord-input');
+  let updated = 0;
+  const result = museums.map((m, i) => {
+    const raw = inputs[i].value.trim();
+    if (!raw) return { ...m };
+    const coords = parseCoords(raw);
+    if (!coords) return { ...m };
+    updated++;
+    return { ...m, lat: coords.lat, lng: coords.lng };
+  });
+
+  if (updated === 0) {
+    alert('Ei päivitettäviä koordinaatteja. Syötä koordinaatit ensin.');
+    return;
+  }
+
+  const json = JSON.stringify(result, null, 2);
+  document.getElementById('json-output').value = json;
+  document.getElementById('output-section').style.display = 'block';
+  document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyJson() {
+  const ta = document.getElementById('json-output');
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Kopioitu!';
+    setTimeout(() => btn.textContent = 'Kopioi leikepöydälle', 2000);
+  });
+}
+
+function clearAll() {
+  document.querySelectorAll('.coord-input').forEach(el => {
+    el.value = '';
+    el.className = 'coord-input';
+  });
+  document.querySelectorAll('.status').forEach(el => {
+    el.textContent = '';
+    el.className = 'status';
+  });
+  document.getElementById('output-section').style.display = 'none';
+}
+
+function clearRow(i) {
+  const el = document.querySelector(`[data-index="${i}"]`);
+  el.value = '';
+  el.className = 'coord-input';
+  document.getElementById('status-' + i).textContent = '';
+}
+</script>
+</body>
+</html>

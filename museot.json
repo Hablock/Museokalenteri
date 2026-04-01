@@ -1,0 +1,116 @@
+[
+  {
+    "nimi": "AD-museo",
+    "kaupunki": "Helsinki",
+    "osoite": "Korkeavuorenkatu 23, 00130 Helsinki",
+    "lat": 60.16308481331568,
+    "lng": 24.946737206659762,
+    "kotisivu": "https://admuseo.fi",
+    "nayttelysivu": "https://admuseo.fi/nayttelyt-ja-tapahtumat/"
+  },
+  {
+    "nimi": "Amos Rex",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheimintie 22–24, 00100 Helsinki",
+    "lat": 60.17064724293179,
+    "lng": 24.936591876171722,
+    "kotisivu": "https://amosrex.fi",
+    "nayttelysivu": "https://amosrex.fi/nayttelyt/",
+    "tulevat": "https://amosrex.fi/tulevat-nayttelyt/"
+  },
+  {
+    "nimi": "Ateneum",
+    "kaupunki": "Helsinki",
+    "osoite": "Kaivokatu 2, 00100 Helsinki",
+    "lat": 60.17026331087326,
+    "lng": 24.943671516474186,
+    "kotisivu": "https://ateneum.fi",
+    "nayttelysivu": "https://ateneum.fi/nayttelyt/",
+    "tulevat": "https://ateneum.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Didrichsenin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Kuusilahdenkuja 1, 00340 Helsinki",
+    "lat": 60.18527846859324,
+    "lng": 24.856568334795206,
+    "kotisivu": "https://www.didrichsenmuseum.fi",
+    "nayttelysivu": "https://www.didrichsenmuseum.fi/näyttelyt"
+  },
+  {
+    "nimi": "EMMA",
+    "kaupunki": "Espoo",
+    "osoite": "Ahertajantie 5, 02100 Espoo",
+    "lat": 60.17894869373738,
+    "lng": 24.795398544246293,
+    "kotisivu": "https://emmamuseum.fi",
+    "nayttelysivu": "https://emmamuseum.fi/emman-nayttelyt/nyt/",
+    "tulevat": "https://emmamuseum.fi/emman-nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Hakasalmen huvila",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheimintie 13b, 00100 Helsinki",
+    "lat": 60.17463837847241,
+    "lng": 24.933975784304195,
+    "kotisivu": "https://hakasalmenhuvila.fi",
+    "nayttelysivu": "https://hakasalmenhuvila.fi/nayttelyt/"
+  },
+  {
+    "nimi": "HAM Helsingin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Eteläinen Rautatiekatu 8, 00100 Helsinki",
+    "lat": 60.17016615846151,
+    "lng": 24.930488900066383,
+    "kotisivu": "https://www.hamhelsinki.fi",
+    "nayttelysivu": "https://www.hamhelsinki.fi/nayttelyt-nyt/",
+    "tulevat": "https://www.hamhelsinki.fi/tulevat-nayttelyt/"
+  },
+  {
+    "nimi": "Helsingin Taidehalli",
+    "kaupunki": "Helsinki",
+    "osoite": "Nervanderinkatu 3, 00100 Helsinki",
+    "lat": 60.17217156802964,
+    "lng": 24.931024813459754,
+    "kotisivu": "https://taidehalli.fi",
+    "nayttelysivu": "https://taidehalli.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Kiasma",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheiminaukio 2, 00100 Helsinki",
+    "lat": 60.1715747793913,
+    "lng": 24.936889672854665,
+    "kotisivu": "https://kiasma.fi",
+    "nayttelysivu": "https://kiasma.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Sinebrychoffin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Bulevardi 40, 00120 Helsinki",
+    "lat": 60.162538514199724,
+    "lng": 24.93263805091384,
+    "kotisivu": "https://sinebrychoffintaidemuseo.fi",
+    "nayttelysivu": "https://sinebrychoffintaidemuseo.fi/nayttelyt/",
+    "tulevat": "https://sinebrychoffintaidemuseo.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Suomen valokuvataiteen museo",
+    "kaupunki": "Helsinki",
+    "osoite": "Kaapeliaukio 3, 00180 Helsinki",
+    "lat": 60.16203807065474,
+    "lng": 24.90526187414568,
+    "kotisivu": "https://www.valokuvataiteenmuseo.fi",
+    "nayttelysivu": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/nayttelyt-nyt",
+    "tulevat": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/tulevat-nayttelyt"
+  },
+  {
+    "nimi": "Villa Gyllenberg",
+    "kaupunki": "Helsinki",
+    "osoite": "Kuusisaarenpolku 11, 00340 Helsinki",
+    "lat": 60.18399766903339,
+    "lng": 24.852235518542084,
+    "kotisivu": "https://www.villagyllenberg.fi",
+    "nayttelysivu": "https://www.villagyllenberg.fi/nayttelyt"
+  }
+]
