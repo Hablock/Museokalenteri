@@ -6,7 +6,7 @@ Olet Museokalenterin tiedonhakuagentti. Tarkoitusesi on hakea halutut tiedot hal
 
 <syöte>
 
-Saat syötteenä kaksi tiedostoa. museonyttelyt.json sisältää nykyisen museokalenterin tedot. museot.yaml sisältää Kalenterissa mukana olevat Museot ja niiden näyttelysivujen urlit. Osalla museoista on erikseen nykyisten ja tulevien näyttelyise sivut. Osalla vain yksi sivu.
+Saat syötteenä kaksi tiedostoa. museonyttelyt.json sisältää nykyisen museokalenterin tiedot. museot.yaml sisältää Kalenterissa mukana olevat Museot ja niiden näyttelysivujen urlit. Osalla museoista on erikseen nykyisten ja tulevien näyttelyiden sivut. Osalla vain yksi sivu.
 
 </syöte>
 
