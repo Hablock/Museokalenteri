@@ -255,12 +255,27 @@
       </div>
 
       <div class="section">
-        <p class="section-title">Museot</p>
+        <p class="section-title" style="display:flex; align-items:center; gap:0.4rem;">
+          <img src="./museokalenteri_museo.marker.svg" width="32" height="32" style="flex-shrink:0;" alt="">
+          Museot
+        </p>
         <div class="museum-filter-bar" style="margin:0 0 0.5rem;">
           <button id="select-all-museums" class="museum-btn special">Valitse kaikki</button>
           <button id="deselect-all-museums" class="museum-btn special" style="margin-top:0.35rem;">Poista valinnat</button>
         </div>
         <div id="museum-checkbox-list"></div>
+      </div>
+
+      <div class="section">
+        <p class="section-title" style="display:flex; align-items:center; gap:0.4rem;">
+          <img src="./museokalenteri_galleria.marker.svg" width="32" height="32" style="flex-shrink:0;" alt="">
+          Galleriat (beta)
+        </p>
+        <div class="museum-filter-bar" style="margin:0 0 0.5rem;">
+          <button id="select-all-galleries" class="museum-btn special">Valitse kaikki</button>
+          <button id="deselect-all-galleries" class="museum-btn special" style="margin-top:0.35rem;">Poista valinnat</button>
+        </div>
+        <div id="gallery-checkbox-list"></div>
       </div>
 
       <div class="section">
@@ -292,24 +307,23 @@
     .then(data => { data.forEach(m => { museumData[m.nimi] = m; }); })
     .catch(() => {});
 
-  // Mustavalkoinen markkeri-SVG
-  const markerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32">
-    <rect x="10" y="30" width="180" height="155" rx="28" ry="28" fill="white" stroke="black" stroke-width="16"/>
-    <rect x="50" y="10" width="22" height="44" rx="11" ry="11" fill="white" stroke="black" stroke-width="14"/>
-    <rect x="128" y="10" width="22" height="44" rx="11" ry="11" fill="white" stroke="black" stroke-width="14"/>
-    <polygon points="100,58 158,88 42,88" fill="none" stroke="black" stroke-width="12" stroke-linejoin="round"/>
-    <rect x="42" y="85" width="116" height="11" fill="black"/>
-    <rect x="55" y="96" width="12" height="50" fill="black"/>
-    <rect x="75" y="96" width="12" height="50" fill="black"/>
-    <rect x="95" y="96" width="12" height="50" fill="black"/>
-    <rect x="115" y="96" width="12" height="50" fill="black"/>
-    <rect x="135" y="96" width="12" height="50" fill="black"/>
-    <rect x="38" y="146" width="124" height="10" fill="black"/>
-    <rect x="32" y="157" width="136" height="10" fill="black"/>
-  </svg>`;
+  // Galleriatiedot haetaan galleriat.json:sta
+  let galleryData = [];
+  fetch('./galleriat.json')
+    .then(res => res.json())
+    .then(data => { galleryData = data; initGalleries(); })
+    .catch(() => {});
 
   const markerIcon = L.divIcon({
-    html: markerSvg,
+    html: '<img src="./museokalenteri_museo.marker.svg" width="32" height="32" alt="">',
+    className: '',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -20]
+  });
+
+  const galleryMarkerIcon = L.divIcon({
+    html: '<img src="./museokalenteri_galleria.marker.svg" width="32" height="32" alt="">',
     className: '',
     iconSize: [32, 32],
     iconAnchor: [16, 16],
@@ -323,8 +337,9 @@
     maxZoom: 19
   }).addTo(map);
 
-  // Markkerikerros – päivitetään museovalinnan mukaan
+  // Markkerikerrokset
   let markerLayer = L.layerGroup().addTo(map);
+  let galleryMarkerLayer = L.layerGroup().addTo(map);
 
   function parseDate(s) {
     if (!s) return new Date(NaN);
@@ -364,11 +379,67 @@
         <p class="popup-address">${info.osoite || ''}</p>
         <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Museon verkkosivut →</a>
       `;
-      L.marker([info.lat, info.lng], { icon: markerIcon, title: museumName })
+      const icon = (info.tyyppi === 'galleria') ? galleryMarkerIcon : markerIcon;
+      L.marker([info.lat, info.lng], { icon, title: museumName })
         .on('add', function() { this.getElement()?.setAttribute('aria-label', museumName); })
         .addTo(markerLayer)
         .bindPopup(popupHtml, { maxWidth: 240 });
     });
+  }
+
+  function updateGalleryMap(activeGalleries) {
+    galleryMarkerLayer.clearLayers();
+    activeGalleries.forEach(name => {
+      const info = galleryData.find(g => g.nimi === name);
+      if (!info || !info.lat || !info.lng) return;
+      const popupHtml = `
+        <p class="popup-title">${name}</p>
+        <p class="popup-address">${info.osoite || ''}</p>
+        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Gallerian verkkosivut →</a>
+      `;
+      L.marker([info.lat, info.lng], { icon: galleryMarkerIcon, title: name })
+        .on('add', function() { this.getElement()?.setAttribute('aria-label', name); })
+        .addTo(galleryMarkerLayer)
+        .bindPopup(popupHtml, { maxWidth: 240 });
+    });
+  }
+
+  function initGalleries() {
+    const galleryList = galleryData.map(g => g.nimi).sort();
+    let activeGalleries = new Set(galleryList);
+
+    const checkboxContainer = document.getElementById('gallery-checkbox-list');
+    if (checkboxContainer) {
+      checkboxContainer.innerHTML = '';
+      galleryList.forEach(name => {
+        const id = 'gcb-' + name.replace(/\s+/g, '-');
+        const item = document.createElement('div');
+        item.className = 'museum-checkbox-item';
+        item.innerHTML = `<input type="checkbox" id="${id}" value="${name}" checked><label for="${id}">${name}</label>`;
+        checkboxContainer.appendChild(item);
+      });
+      checkboxContainer.addEventListener('change', () => {
+        activeGalleries = new Set(
+          Array.from(checkboxContainer.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(cb => cb.value)
+        );
+        updateGalleryMap(activeGalleries);
+      });
+    }
+
+    document.getElementById('select-all-galleries').addEventListener('click', () => {
+      checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      activeGalleries = new Set(galleryList);
+      updateGalleryMap(activeGalleries);
+    });
+
+    document.getElementById('deselect-all-galleries').addEventListener('click', () => {
+      checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      activeGalleries = new Set();
+      updateGalleryMap(activeGalleries);
+    });
+
+    updateGalleryMap(activeGalleries);
   }
 
   // ------- Alkuperäinen kalenteri-logiikka -------
