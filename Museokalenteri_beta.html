@@ -211,7 +211,7 @@
 
   <div class="section header">
     <div class="logo-wrapper">
-      <img src="./img/museokalenteri_logo.png" alt="Helsingin seudun Museokalenteri" class="logo" />
+      <img src="./img/museokalenteri_logo_wide_beta.png" alt="Helsingin seudun Museokalenteri" class="logo" />
     </div>
     <button id="rajaukset-btn" style="align-items:center; gap:0.4rem; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-weight:500;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
@@ -327,9 +327,23 @@
 
   // Galleriatiedot haetaan galleriat.json:sta
   let galleryData = [];
+  let galleryExhibitions = [];
+  let gallerySet = [];
+  let activeGalleries = new Set();
+  let galleriesReady = false;
+  let refilterExhibitions = null;  // initExhibitions asettaa
+  let resetGalleries = null;       // initGalleries asettaa
   fetch('./galleriat.json')
     .then(res => res.json())
     .then(data => { galleryData = data; initGalleries(); })
+    .catch(() => {});
+
+  // Gallerianäyttelyt haetaan gallerianayttelyt.json:sta ja yhdistetään korttilistaan.
+  // Normalisoidaan gallery -> museum, jotta sama renderöinti/suodatus toimii sellaisenaan.
+  fetch('./gallerianayttelyt.json')
+    .then(res => res.ok ? res.json() : [])
+    .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery })); })
+    .then(() => { if (refilterExhibitions) refilterExhibitions(); })
     .catch(() => {});
 
   const markerIcon = L.divIcon({
@@ -424,7 +438,9 @@
 
   function initGalleries() {
     const galleryList = galleryData.map(g => g.nimi).sort();
-    let activeGalleries = new Set(galleryList);
+    gallerySet = galleryList;
+    activeGalleries = new Set(galleryList);
+    galleriesReady = true;
 
     const checkboxContainer = document.getElementById('gallery-checkbox-list');
     if (checkboxContainer) {
@@ -442,6 +458,7 @@
             .map(cb => cb.value)
         );
         updateGalleryMap(activeGalleries);
+        if (refilterExhibitions) refilterExhibitions();
       });
     }
 
@@ -449,15 +466,24 @@
       checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
       activeGalleries = new Set(galleryList);
       updateGalleryMap(activeGalleries);
+      if (refilterExhibitions) refilterExhibitions();
     });
 
     document.getElementById('deselect-all-galleries').addEventListener('click', () => {
       checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
       activeGalleries = new Set();
       updateGalleryMap(activeGalleries);
+      if (refilterExhibitions) refilterExhibitions();
     });
 
+    resetGalleries = () => {
+      if (checkboxContainer) checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      activeGalleries = new Set(galleryList);
+      updateGalleryMap(activeGalleries);
+    };
+
     updateGalleryMap(activeGalleries);
+    if (refilterExhibitions) refilterExhibitions();
   }
 
   // ------- Alkuperäinen kalenteri-logiikka -------
@@ -535,11 +561,19 @@
     // Alkupiirto kartalle
     updateMap(activeMuseums, exhibitions);
 
+    // Näkyvät näyttelyt ennen aikasuodatusta: museot (museovalinnan mukaan) +
+    // gallerianäyttelyt (galleriavalinnan mukaan). Galleriat näytetään kaikki,
+    // kunnes galleriavalinta on alustettu (galleriesReady).
+    function getVisibleBase() {
+      const m = exhibitions.filter(ex => activeMuseums.has(ex.museum));
+      const g = galleryExhibitions.filter(ex => !galleriesReady || activeGalleries.has(ex.museum));
+      return m.concat(g);
+    }
+
     function getFilteredExhibitions(statusType) {
       const now = new Date();
       const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
-      return exhibitions.filter(ex => {
-        if (!activeMuseums.has(ex.museum)) return false;
+      return getVisibleBase().filter(ex => {
         if (statusType === "CURRENT" || statusType === "UPCOMING" || statusType === "PAST")
           return computeStatus(ex) === statusType;
         if (statusType === "ALL") return true;
@@ -620,8 +654,7 @@
       const now = new Date();
       const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
       const counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
-      exhibitions.forEach(ex => {
-        if (!activeMuseums.has(ex.museum)) return;
+      getVisibleBase().forEach(ex => {
         counts.ALL++;
         const st = computeStatus(ex);
         if (st in counts) counts[st]++;
@@ -649,8 +682,10 @@
 
     function updateResultsBar(shown) {
       if (!resultsBar || !resultsCount) return;
-      const total = exhibitions.length;
-      const filtersActive = activeStatus !== "ALL" || activeMuseums.size !== museumSet.length;
+      const total = exhibitions.length + galleryExhibitions.length;
+      const filtersActive = activeStatus !== "ALL"
+        || activeMuseums.size !== museumSet.length
+        || (galleriesReady && activeGalleries.size !== gallerySet.length);
       resultsCount.innerHTML = `Näytetään <strong>${shown}</strong> / ${total} näyttelyä`;
       resultsBar.classList.toggle("filtered", filtersActive);
     }
@@ -660,6 +695,7 @@
       activeMuseums = new Set(museumSet);
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
       updateMap(activeMuseums, exhibitions);
+      if (resetGalleries) resetGalleries();
       applyFilter("ALL");
     }
 
@@ -697,6 +733,8 @@
         applyFilter(activeStatus);
       });
     }
+
+    refilterExhibitions = () => applyFilter(activeStatus);
 
     updateStatusCounts();
     applyFilter("ALL");
