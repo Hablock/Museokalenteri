@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exhibition Card · Design Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f9f9f9; font-family: Arial, sans-serif; padding: 2rem 1rem; }
+    .ref-wrap { max-width: 620px; margin: 0 auto; }
+    .ref-wrap > h1 { font-size: 1rem; color: #666; font-weight: 600; margin: 0 0 1rem; }
+    .ex-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="ref-wrap">
+    <h1>Exhibition card — design reference (Option B)</h1>
+    <div id="root"></div>
+  </div>
+
+  <script type="text/babel">
+    /* ============================================================
+       EXHIBITION CARD — design reference
+       Layout "Option B": description + divider indented under the
+       title/date column; solid status pill under the thumbnail;
+       neutral museum eyebrow; arrow in the top-right corner.
+       Variable card height is intentional — full text always shown.
+       ============================================================ */
+
+    // Sample data (shape matches the app's museonayttelyt.json entries)
+    const CARD_DATA = [
+      { museum: "EMMA", title: "Antti Laitinen: Helisevä metsä",
+        start: "2025-09-24", end: "2026-08-23",
+        description: "Kineettinen installaatio herättää pohtimaan ihmisen kykyä ja keinoja muokata luontoa.",
+        image: "https://emmamuseum.fi/wp-content/uploads/2024/10/web-anttilaitinen-scaled.jpg", link: "#" },
+      { museum: "Amos Rex", title: "Generation 2026",
+        start: "2026-05-13", end: "2026-09-06",
+        description: "Generation-triennaali tuo yhteen 50 taiteilijaa ja työryhmää; nuorten taiteilijoiden huolia, kamppailuja ja unelmia esiin tuova näyttely.",
+        image: "https://amosrex.fi/wp-content/uploads/2025/08/Amos-Generation26-Stilli-Artistit-1920x1080-Tuplaresoluutio3-scaled.jpg", link: "#" },
+      { museum: "AD-museo", title: "Juha Vehmaanperä: Craft Punk",
+        start: "2026-02-20", end: "2026-09-06",
+        description: "Neuletaiteilija Juha Vehmaanperän ensimmäinen laajamittainen yksityisnäyttely Craft Punk kutsuu Arkkitehtuuri- ja designmuseon Galleriaan. Vehmaanperän työ keskittyy hitaaseen muotiin, queer-teoriaan ja käsityötaitoon, yhdistäen perinteiset tekniikat moderneihin lähestymistapoihin ja teknologioihin.",
+        image: "https://admuseo.fi/wp-content/uploads/2026/01/Juha_Main_LR_Final_Final-1024x630.jpg", link: "#" },
+      { museum: "Amos Rex", title: "The Other Side of the Mountain",
+        start: "2026-10-14", end: "2027-03-21",
+        description: "Amos Rexin syksyn 2026 päänäyttely esittelee nykytaidetta Afrikan mantereella ja afro-pohjoismaisessa diasporassa työskenteleviltä taiteilijoilta. Näyttelyssä on mukana 11 taiteilijaa, lähes 60 teosta ja kolme uutta tilaustyötä.",
+        image: "https://amosrex.fi/wp-content/uploads/2025/04/amosrex.png", link: "#" },
+    ];
+
+    // Status palette — color drives the border + solid pill
+    const STATUS_META = {
+      CURRENT:  { label: "Käynnissä", color: "#1f8a3b" },
+      UPCOMING: { label: "Tulossa",   color: "#1f5fd6" },
+      PAST:     { label: "Päättynyt", color: "#8a8a8a" },
+    };
+
+    // Derive status from today's date vs the run dates
+    function computeStatus(ex, now = new Date()) {
+      const start = new Date(ex.start), end = new Date(ex.end);
+      if (now < start) return "UPCOMING";
+      if (now > end)   return "PAST";
+      return "CURRENT";
+    }
+
+    // 2026-05-13 -> 13.5.2026 (Finnish, no leading zeros)
+    function fiDate(iso) {
+      const [y, m, d] = iso.split("-");
+      return `${parseInt(d, 10)}.${parseInt(m, 10)}.${y}`;
+    }
+
+    // Small fixed square thumbnail; image CONTAINED in the box.
+    // Graceful fallback to a first-letter placeholder if the image fails.
+    function Thumb({ src, title, size = 96 }) {
+      const [failed, setFailed] = React.useState(!src);
+      const letter = (title || "?").trim().charAt(0).toUpperCase();
+      return (
+        <div style={{
+          position: "relative", width: size, height: size,
+          borderRadius: 8, overflow: "hidden", background: "#eef0f1",
+          boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.05)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>
+          {failed
+            ? <span style={{ fontSize: size * 0.4, fontWeight: 700, color: "rgba(0,0,0,0.25)" }}>{letter}</span>
+            : <img src={src} alt={title} loading="lazy" onError={() => setFailed(true)}
+                style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />}
+        </div>
+      );
+    }
+
+    function StatusPill({ status }) {
+      const m = STATUS_META[status];
+      return (
+        <span style={{
+          display: "inline-block", whiteSpace: "nowrap", padding: "0.18rem 0.55rem",
+          fontSize: "0.7rem", fontWeight: 700, borderRadius: 999,
+          background: m.color, color: "#fff",
+        }}>{m.label}</span>
+      );
+    }
+
+    function ExhibitionCard({ ex }) {
+      const status = computeStatus(ex);
+      const m = STATUS_META[status];
+      return (
+        <a href={ex.link} target="_blank" rel="noopener noreferrer" style={{
+          position: "relative", display: "block", textDecoration: "none", color: "inherit",
+          fontFamily: "Arial, sans-serif", background: "#fff", borderRadius: 10,
+          boxShadow: "0 1px 3px rgba(0,0,0,0.07)", overflow: "hidden",
+          borderLeft: `4px solid ${m.color}`, padding: "0.95rem 1.05rem 1rem 0.95rem",
+        }}>
+          {/* outbound-link cue, top-right corner */}
+          <span aria-hidden="true" style={{ position: "absolute", top: "0.7rem", right: "0.85rem", color: "#c2c2c2", fontSize: "1.05rem", lineHeight: 1 }}>↗</span>
+
+          <div style={{ display: "flex", gap: "0.95rem", alignItems: "flex-start" }}>
+            {/* left rail: thumbnail + status pill, hugging the colored border */}
+            <div style={{ flex: "0 0 96px", width: 96, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "0.5rem" }}>
+              <Thumb src={ex.image} title={ex.title} size={96} />
+              <StatusPill status={status} />
+            </div>
+
+            {/* text column: museum eyebrow · title · dates · (divider) description */}
+            <div style={{ flex: 1, minWidth: 0, paddingRight: "1.2rem" }}>
+              <p style={{ margin: "0 0 0.28rem", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.07em", textTransform: "uppercase", color: "#7a7a7a" }}>{ex.museum}</p>
+              <h2 style={{ margin: "0 0 0.25rem", fontSize: "1.12rem", fontWeight: 700, lineHeight: 1.25, color: "#181818", textWrap: "pretty" }}>{ex.title}</h2>
+              <p style={{ margin: 0, fontSize: "0.83rem", color: "#888" }}>{fiDate(ex.start)} – {fiDate(ex.end)}</p>
+              <p style={{ margin: "0.8rem 0 0", paddingTop: "0.8rem", borderTop: "1px solid #f0f0f0", fontSize: "0.9rem", lineHeight: 1.55, color: "#454545", textWrap: "pretty" }}>{ex.description}</p>
+            </div>
+          </div>
+        </a>
+      );
+    }
+
+    function ExhibitionList() {
+      return (
+        <div className="ex-list">
+          {CARD_DATA.map((ex, i) => <ExhibitionCard key={i} ex={ex} />)}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<ExhibitionList />);
+  </script>
+</body>
+</html>

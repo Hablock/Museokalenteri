@@ -42,10 +42,24 @@
     .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
     .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
+    .filter-btn::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.5rem; vertical-align: middle; background: #8a8a8a; }
+    .filter-btn[data-filter="ALL"]::before { display: none; }
+    .filter-btn[data-filter="CURRENT"]::before { background: #1f8a3b; }
+    .filter-btn[data-filter="UPCOMING"]::before { background: #1f5fd6; }
+    .filter-btn[data-filter="PAST"]::before { background: #8a8a8a; }
+    .filter-btn[data-filter="OPENING_SOON"]::before { background: #1f5fd6; }
+    .filter-btn[data-filter="CLOSING_SOON"]::before { background: #1f8a3b; }
     .museum-filter-bar { flex-direction: column; align-items: stretch; }
     .museum-btn.special { background-color: #333; color: white; width: 100%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
     .museum-btn.special:hover { background-color: #4a4a4a; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
     .museum-btn.special:active { background-color: #2a2a2a; }
+    #results-status-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; padding: 0.6rem 0.85rem; margin: 0.25rem 0 0.5rem; background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    .results-count { margin: 0; font-size: 0.9rem; color: #333333; }
+    .results-count strong { color: #111; }
+    #reset-filters-btn { display: none; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 500; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; white-space: nowrap; cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease; }
+    #reset-filters-btn:hover { background: #f4f4f4; border-color: #b5b5b5; }
+    #reset-filters-btn:active { background: #ececec; }
+    #results-status-bar.filtered #reset-filters-btn { display: inline-flex; }
     #exhibitionList { display: flex; flex-direction: column; gap: 0.75rem; }
     .exhibition { background: #fff; margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid #8a8a8a; border-radius: 10px; display: block; position: relative; text-decoration: none; color: inherit; font-family: Roboto, Arial, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.07); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
     .exhibition:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
@@ -227,6 +241,11 @@
           </svg>
         </button>
         <div id="map"></div>
+      </div>
+
+      <div id="results-status-bar">
+        <p id="results-count" class="results-count"></p>
+        <button id="reset-filters-btn" type="button">Nollaa suodattimet</button>
       </div>
 
       <div id="exhibitionList"></div>
@@ -436,6 +455,10 @@
     const sortSelect = document.getElementById("sort-select");
     let activeMuseums = new Set(museumSet);
     let activeStatus = "ALL";
+
+    const resultsBar      = document.getElementById("results-status-bar");
+    const resultsCount    = document.getElementById("results-count");
+    const resetFiltersBtn = document.getElementById("reset-filters-btn");
     let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
 
     // Alkupiirto kartalle
@@ -550,7 +573,26 @@
       statusButtons.forEach(btn => btn.classList.remove("active"));
       document.querySelector(`[data-filter="${statusType}"]`).classList.add("active");
       updateStatusCounts();
+      updateResultsBar(sorted.length);
     }
+
+    function updateResultsBar(shown) {
+      if (!resultsBar || !resultsCount) return;
+      const total = exhibitions.length;
+      const filtersActive = activeStatus !== "ALL" || activeMuseums.size !== museumSet.length;
+      resultsCount.innerHTML = `Näytetään <strong>${shown}</strong> / ${total} näyttelyä`;
+      resultsBar.classList.toggle("filtered", filtersActive);
+    }
+
+    function resetFilters() {
+      activeStatus = "ALL";
+      activeMuseums = new Set(museumSet);
+      document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+      updateMap(activeMuseums, exhibitions);
+      applyFilter("ALL");
+    }
+
+    if (resetFiltersBtn) resetFiltersBtn.addEventListener("click", resetFilters);
 
     function syncMuseums() {
       activeMuseums = getCheckedMuseums();

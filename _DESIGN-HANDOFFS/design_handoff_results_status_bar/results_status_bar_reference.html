@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Results status bar — reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 720px; margin: auto; background: #f9f9f9; color: #222; }
+    h1 { font-size: 1.2rem; }
+    .demo-label { font-size: 0.8rem; color: #777; margin: 1.5rem 0 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ---- THE COMPONENT ---- */
+    .results-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 0.6rem 0.85rem;
+      margin: 0.25rem 0 0.5rem;
+      background: #ffffff;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .results-count { margin: 0; font-size: 0.9rem; color: #333333; }
+    .results-count strong { color: #111; }
+    .reset-filters-btn {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.82rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .reset-filters-btn:hover { background: #f4f4f4; border-color: #b5b5b5; }
+    .reset-filters-btn:active { background: #ececec; }
+    .results-status-bar.filtered .reset-filters-btn { display: inline-flex; }
+    /* ---- /COMPONENT ---- */
+  </style>
+</head>
+<body>
+  <h1>Results status bar — design reference</h1>
+  <p style="font-size:0.9rem;color:#555;">Permanent bar that sits above the exhibition list. Always shows shown/total counts. The reset button appears only when filters are active.</p>
+
+  <p class="demo-label">State A — no filters active (button hidden)</p>
+  <div class="results-status-bar">
+    <p class="results-count">Näytetään <strong>48</strong> / 48 näyttelyä</p>
+    <button class="reset-filters-btn" type="button">Nollaa suodattimet</button>
+  </div>
+
+  <p class="demo-label">State B — filters active (button visible)</p>
+  <div class="results-status-bar filtered">
+    <p class="results-count">Näytetään <strong>7</strong> / 48 näyttelyä</p>
+    <button class="reset-filters-btn" type="button">Nollaa suodattimet</button>
+  </div>
+
+  <p class="demo-label">State C — filters active, zero matches (bar persists)</p>
+  <div class="results-status-bar filtered">
+    <p class="results-count">Näytetään <strong>0</strong> / 48 näyttelyä</p>
+    <button class="reset-filters-btn" type="button">Nollaa suodattimet</button>
+  </div>
+</body>
+</html>
