@@ -1,0 +1,402 @@
+[
+  {
+    "nimi": "Galleria 4-kuus",
+    "kaupunki": "Helsinki",
+    "osoite": "Uudenmaankatu 4-6, 00120 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://galleria4-kuus.fi/",
+    "nayttelysivu": "https://galleria4-kuus.fi/445612429",
+    "tulevanayttelysivu": "https://galleria4-kuus.fi/445612429"
+  },
+  {
+    "nimi": "Galleria A2",
+    "kaupunki": "Helsinki",
+    "osoite": "Annankatu 12, 00120 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.galleria-a2.fi/",
+    "nayttelysivu": "https://www.galleria-a2.fi/",
+    "tulevanayttelysivu": "https://www.galleria-a2.fi/"
+  },
+  {
+    "nimi": "AKVART Galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Humalistonkatu 1, 00250 Helsinki",
+    "lat": 60.1850508,
+    "lng": 24.9209387,
+    "kotisivu": "https://akvart.fi/",
+    "nayttelysivu": "https://akvart.fi/nayttelyt-ja-tapahtumat/",
+    "tulevanayttelysivu": "https://akvart.fi/nayttelyt-ja-tapahtumat/"
+  },
+  {
+    "nimi": "Galerie Anhava",
+    "kaupunki": "Helsinki",
+    "osoite": "Fredrikinkatu 43, 00120 Helsinki",
+    "lat": 60.1656392,
+    "lng": 24.9353601,
+    "kotisivu": "https://anhava.com/",
+    "nayttelysivu": "https://anhava.com/exhibitions/",
+    "tulevanayttelysivu": "https://anhava.com/exhibitions/"
+  },
+  {
+    "nimi": "Galleria ARS Longa",
+    "kaupunki": "Helsinki",
+    "osoite": "Annankatu 12, 00120 Helsinki",
+    "lat": 60.1645018,
+    "lng": 24.9400185,
+    "kotisivu": "https://www.arslonga.fi/",
+    "nayttelysivu": "https://www.arslonga.fi/nayttelyt",
+    "tulevanayttelysivu": "https://www.arslonga.fi/nayttelyt"
+  },
+  {
+    "nimi": "Art Kaarisilta",
+    "kaupunki": "Helsinki",
+    "osoite": "Elielinaukio 2, 00100 Helsinki",
+    "lat": 60.1723819,
+    "lng": 24.938181,
+    "kotisivu": "https://www.artkaarisilta.fi/",
+    "nayttelysivu": "https://www.artkaarisilta.fi/nayttelyt",
+    "tulevanayttelysivu": "https://www.artkaarisilta.fi/nayttelyt"
+  },
+  {
+    "nimi": "Galleria Arthur",
+    "kaupunki": "Helsinki",
+    "osoite": "Rikhardinkatu 3, 00130 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
+    "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+  },
+  {
+    "nimi": "Galleria Bronda",
+    "kaupunki": "Helsinki",
+    "osoite": "Annankatu 16, 00120 Helsinki",
+    "lat": 60.1652898,
+    "lng": 24.9389139,
+    "kotisivu": "http://www.bronda.fi/",
+    "nayttelysivu": "http://www.bronda.fi/nayttelyt/",
+    "tulevanayttelysivu": "http://www.bronda.fi/nayttelykalenteri/"
+  },
+  {
+    "nimi": "Galleria Contempo",
+    "kaupunki": "Helsinki",
+    "osoite": "Lönnrotinkatu 23, 00120 Helsinki",
+    "lat": 60.1648541,
+    "lng": 24.9339211,
+    "kotisivu": "http://www.galleriacontempo.fi/",
+    "nayttelysivu": "http://www.galleriacontempo.fi/nayttelyt/nyt/",
+    "tulevanayttelysivu": "http://www.galleriacontempo.fi/nayttelyt/tulossa/"
+  },
+  {
+    "nimi": "Galleria Duetto",
+    "kaupunki": "Helsinki",
+    "osoite": "Kalevankatu 15, 00100 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.galleriaduetto.fi/",
+    "nayttelysivu": "https://www.galleriaduetto.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://www.galleriaduetto.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Galleria Fogga",
+    "kaupunki": "Helsinki",
+    "osoite": "Lauttasaarentie 6, 00200 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.fogga.fi/",
+    "nayttelysivu": "https://www.fogga.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://www.fogga.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Galerie Forsblom",
+    "kaupunki": "Helsinki",
+    "osoite": "Yrjönkatu 22, 00120 Helsinki",
+    "lat": 60.167115,
+    "lng": 24.939836,
+    "kotisivu": "https://galerieforsblom.com/",
+    "nayttelysivu": "https://galerieforsblom.com/exhibitions/",
+    "tulevanayttelysivu": "https://galerieforsblom.com/exhibitions/"
+  },
+  {
+    "nimi": "Forum Box",
+    "kaupunki": "Helsinki",
+    "osoite": "Ruoholahdenranta 3 A, 00180 Helsinki",
+    "lat": 60.1616062,
+    "lng": 24.9248801,
+    "kotisivu": "https://forumbox.fi/",
+    "nayttelysivu": "https://forumbox.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://forumbox.fi/nayttelyt/"
+  },
+  {
+    "nimi": "G12 Helsinki",
+    "kaupunki": "Helsinki",
+    "osoite": "Annankatu 16, 00120 Helsinki",
+    "lat": 60.1653308,
+    "lng": 24.9389005,
+    "kotisivu": "https://www.galleria12.fi/",
+    "nayttelysivu": "https://www.galleria12.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://www.galleria12.fi/nayttelyt/"
+  },
+  {
+    "nimi": "HAA Galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Suomenlinna C 1, 00190 Helsinki",
+    "lat": 60.1488913,
+    "lng": 24.9851069,
+    "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
+    "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+  },
+  {
+    "nimi": "Gallery Halmetoja",
+    "kaupunki": "Helsinki",
+    "osoite": "Kalevankatu 16, 00100 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://galleryhalmetoja.com/",
+    "nayttelysivu": "https://galleryhalmetoja.com/exhibitions/",
+    "tulevanayttelysivu": "https://galleryhalmetoja.com/exhibitions/"
+  },
+  {
+    "nimi": "Galleria Heino",
+    "kaupunki": "Helsinki",
+    "osoite": "Erottajankatu 9, 00130 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "http://www.galleriaheino.fi/",
+    "nayttelysivu": "http://www.galleriaheino.fi/nayttelyt.html?type=1",
+    "tulevanayttelysivu": "http://www.galleriaheino.fi/nayttelyt.html?type=2"
+  },
+  {
+    "nimi": "Helsinki Contemporary",
+    "kaupunki": "Helsinki",
+    "osoite": "Bulevardi 10, 00120 Helsinki",
+    "lat": 60.165561,
+    "lng": 24.94082,
+    "kotisivu": "https://helsinkicontemporary.com/",
+    "nayttelysivu": "https://helsinkicontemporary.com/exhibitions",
+    "tulevanayttelysivu": "https://helsinkicontemporary.com/exhibitions"
+  },
+  {
+    "nimi": "Valokuvagalleria Hippolyte",
+    "kaupunki": "Helsinki",
+    "osoite": "Yrjönkatu 8-10, 00120 Helsinki",
+    "lat": 60.1645544,
+    "lng": 24.943427,
+    "kotisivu": "https://hippolyte.fi/",
+    "nayttelysivu": "https://hippolyte.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://hippolyte.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Galleria Huuto",
+    "kaupunki": "Helsinki",
+    "osoite": "Panimokatu 1, 00580 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.galleriahuuto.fi/",
+    "nayttelysivu": "https://www.galleriahuuto.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://www.galleriahuuto.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Kamera-galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Tallberginkatu 1 B, 00180 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://kameraseura.fi/",
+    "nayttelysivu": "https://kameraseura.fi/nayttelyt/kamera-galleria/",
+    "tulevanayttelysivu": "https://kameraseura.fi/nayttelyt/kamera-galleria/"
+  },
+  {
+    "nimi": "Kamiter-Ars",
+    "kaupunki": "Helsinki",
+    "osoite": "Kaarlenkatu 12, 00530 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.kamiter.fi/",
+    "nayttelysivu": "https://www.kamiter.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://www.kamiter.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Galleria Katariina",
+    "kaupunki": "Helsinki",
+    "osoite": "Rikhardinkatu 1, 00130 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
+    "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+  },
+  {
+    "nimi": "Kohta",
+    "kaupunki": "Helsinki",
+    "osoite": "Työpajankatu 2 B, 00580 Helsinki",
+    "lat": 60.1897703,
+    "lng": 24.9722312,
+    "kotisivu": "https://www.kohta.fi/",
+    "nayttelysivu": "https://www.kohta.fi/exhibitions/",
+    "tulevanayttelysivu": "https://www.kohta.fi/exhibitions/"
+  },
+  {
+    "nimi": "Kuva/Tila",
+    "kaupunki": "Helsinki",
+    "osoite": "Sörnäisten rantatie 19, 00530 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://kuvatila.uniarts.fi/",
+    "nayttelysivu": "https://kuvatila.uniarts.fi/exhibitions/",
+    "tulevanayttelysivu": "https://kuvatila.uniarts.fi/exhibitions/"
+  },
+  {
+    "nimi": "Galleria Kuvitus",
+    "kaupunki": "Helsinki",
+    "osoite": "Hämeentie 28, 00530 Helsinki",
+    "lat": 60.1831962,
+    "lng": 24.9578948,
+    "kotisivu": "https://kuvittajat.fi/galleria-kuvitus",
+    "nayttelysivu": "https://kuvittajat.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://kuvittajat.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Laterna Magica",
+    "kaupunki": "Helsinki",
+    "osoite": "Rauhankatu 7, 00170 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.laterna.net/",
+    "nayttelysivu": "https://www.laterna.net/nayttelyt",
+    "tulevanayttelysivu": "https://www.laterna.net/nayttelyt"
+  },
+  {
+    "nimi": "LOKAL",
+    "kaupunki": "Helsinki",
+    "osoite": "Annankatu 9, 00120 Helsinki",
+    "lat": 60.1640453,
+    "lng": 24.9410859,
+    "kotisivu": "https://lokalhelsinki.com/",
+    "nayttelysivu": "https://lokalhelsinki.com/exhibitions/",
+    "tulevanayttelysivu": "https://lokalhelsinki.com/exhibitions/"
+  },
+  {
+    "nimi": "Malmitalon galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Ala-Malmin tori 1, 00700 Helsinki",
+    "lat": 60.250688,
+    "lng": 25.0138174,
+    "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
+    "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+  },
+  {
+    "nimi": "MUU Helsinki nykytaidekeskus",
+    "kaupunki": "Helsinki",
+    "osoite": "Tallberginkatu 1 C, 00180 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.muu.fi/",
+    "nayttelysivu": "https://www.muu.fi/ohjelma/",
+    "tulevanayttelysivu": "https://www.muu.fi/ohjelma/"
+  },
+  {
+    "nimi": "Myymälä2",
+    "kaupunki": "Helsinki",
+    "osoite": "Uudenmaankatu 23, 00120 Helsinki",
+    "lat": 60.1638936,
+    "lng": 24.938776,
+    "kotisivu": "http://www.myymala2.com/",
+    "nayttelysivu": "http://www.myymala2.com/exhibitions/",
+    "tulevanayttelysivu": "http://www.myymala2.com/exhibitions/"
+  },
+  {
+    "nimi": "OHO Galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Pursimiehenkatu 29-31 A, 00150 Helsinki",
+    "lat": 60.1586143,
+    "lng": 24.934099,
+    "kotisivu": "https://www.ohogallery.com/",
+    "nayttelysivu": "https://www.ohogallery.com/exhibitions",
+    "tulevanayttelysivu": "https://www.ohogallery.com/exhibitions"
+  },
+  {
+    "nimi": "Oksasenkatu 11 -galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Oksasenkatu 11, 00100 Helsinki",
+    "lat": 60.1759649,
+    "lng": 24.923296,
+    "kotisivu": "http://www.oksasenkatu11.fi/",
+    "nayttelysivu": "http://www.oksasenkatu11.fi/nayttelyt/",
+    "tulevanayttelysivu": "http://www.oksasenkatu11.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Galleria Pirkko-Liisa Topelius",
+    "kaupunki": "Helsinki",
+    "osoite": "Hietalahdenranta 17, 00180 Helsinki",
+    "lat": 60.1614368,
+    "lng": 24.9266968,
+    "kotisivu": "https://galleria.pirkkoliisatopelius.com/",
+    "nayttelysivu": "https://galleria.pirkkoliisatopelius.com/nayttelyt/",
+    "tulevanayttelysivu": "https://galleria.pirkkoliisatopelius.com/tulevat-nayttelyt/"
+  },
+  {
+    "nimi": "Galleria Rankka",
+    "kaupunki": "Helsinki",
+    "osoite": "Eerikinkatu 36, 00180 Helsinki",
+    "lat": 60.1651232,
+    "lng": 24.9296934,
+    "kotisivu": "http://galleriarankka.com/",
+    "nayttelysivu": "http://galleriarankka.com/exhibitions/",
+    "tulevanayttelysivu": "http://galleriarankka.com/exhibitions/"
+  },
+  {
+    "nimi": "Galleria Sculptor",
+    "kaupunki": "Helsinki",
+    "osoite": "Eteläranta 12, 00130 Helsinki",
+    "lat": 60.1659042,
+    "lng": 24.9522998,
+    "kotisivu": "https://sculptors.fi/",
+    "nayttelysivu": "https://sculptors.fi/nayttelyt/nyt/",
+    "tulevanayttelysivu": "https://sculptors.fi/nayttelyt/tulossa/"
+  },
+  {
+    "nimi": "Taidesalonki Piirto",
+    "kaupunki": "Helsinki",
+    "osoite": "Salakkakuja 4 A, 00210 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.piirto.com/",
+    "nayttelysivu": "https://www.piirto.com/nayttelyt/",
+    "tulevanayttelysivu": "https://www.piirto.com/nayttelyt/"
+  },
+  {
+    "nimi": "tm•galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Erottajankatu 9 B, 00130 Helsinki",
+    "lat": 60.1650773,
+    "lng": 24.9441615,
+    "kotisivu": "https://painters.fi/tmgalleria/",
+    "nayttelysivu": "https://painters.fi/tmgalleria/nayttelyt/nyt/",
+    "tulevanayttelysivu": "https://painters.fi/tmgalleria/nayttelyt/tulossa/"
+  },
+  {
+    "nimi": "Yö Galleria",
+    "kaupunki": "Helsinki",
+    "osoite": "Lönnrotinkatu 33, 00180 Helsinki",
+    "lat": null,
+    "lng": null,
+    "kotisivu": "https://www.yory.fi/",
+    "nayttelysivu": "https://www.yory.fi/fi/nayttelyt",
+    "tulevanayttelysivu": "https://www.yory.fi/fi/nayttelyt"
+  },
+  {
+    "nimi": "Zetterberg Gallery",
+    "kaupunki": "Helsinki",
+    "osoite": "Ludviginkatu 3-5 A, 00130 Helsinki",
+    "lat": 60.165875,
+    "lng": 24.945121,
+    "kotisivu": "https://zetterberggallery.com/",
+    "nayttelysivu": "https://zetterberggallery.com/exhibitions/",
+    "tulevanayttelysivu": "https://zetterberggallery.com/exhibitions/"
+  }
+]

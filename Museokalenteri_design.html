@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Helsingin seudun taidenäyttelyt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://museokalenteri.fi/" />
+  <meta property="og:title" content="Helsingin seudun Museokalenteri" />
+  <meta property="og:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta property="og:image" content="https://hablock.github.io/Museokalenteri/museokalenteri_og_image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
+  <meta property="og:image:alt" content="Helsingin seudun Museokalenteri" />
+  <meta property="og:locale" content="fi_FI" />
+  <meta property="og:site_name" content="Helsingin seudun Museokalenteri" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Helsingin seudun Museokalenteri" />
+  <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta name="twitter:image" content="./museokalenteri_logo.png" />
+  <meta name="twitter:image:alt" content="Helsingin seudun Museokalenteri" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 980px; margin: auto; background: #f9f9f9; }
+    .page-layout { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: 1rem; }
+    .main-content { flex: 1; min-width: 0; }
+    .sidebar .filter-bar { flex-direction: column; gap: 0.35rem; margin-bottom: 0; }
+    .sidebar .filter-btn { text-align: left; width: 100%; }
+    .sidebar #museum-select { width: 100%; min-width: unset; max-width: unset; }
+    .sidebar #sort-select { width: 100%; min-width: unset; }
+    h1 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+    .logo-wrapper { background-color: #ffffff; padding: 1rem; border-radius: 8px; display: inline-block; margin: 0 auto; }
+    .logo { display: block; max-width: 100%; height: auto; margin: 0 auto; max-height: 300px; object-fit: contain; }
+    .section.header { padding: 0.75rem 0.75rem 0; }
+    .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
+    .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
+    .museum-filter-bar { flex-direction: column; align-items: stretch; }
+    .museum-btn.special { background-color: #333; color: white; width: 100%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+    .museum-btn.special:hover { background-color: #4a4a4a; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+    .museum-btn.special:active { background-color: #2a2a2a; }
+    #exhibitionList { display: flex; flex-direction: column; gap: 0.75rem; }
+    .exhibition { background: #fff; margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid #8a8a8a; border-radius: 10px; display: block; position: relative; text-decoration: none; color: inherit; font-family: Arial, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.07); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
+    .exhibition:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .exhibition:focus-visible { outline: 2px solid #333; outline-offset: 4px; }
+    .CURRENT { border-left-color: #1f8a3b; }
+    .UPCOMING { border-left-color: #1f5fd6; }
+    .PAST { border-left-color: #8a8a8a; }
+    .exhibition-row { display: flex; gap: 0.95rem; align-items: flex-start; }
+    .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .exhibition-image { width: 96px; height: 96px; border-radius: 8px; overflow: hidden; background: #eef0f1; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; }
+    .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 38px; font-weight: 700; color: rgba(0,0,0,0.25); }
+    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: 999px; color: #fff; background: #8a8a8a; }
+    .CURRENT .status-pill { background: #1f8a3b; }
+    .UPCOMING .status-pill { background: #1f5fd6; }
+    .PAST .status-pill { background: #8a8a8a; }
+    .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; }
+    .exhibition-content h2 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: #181818; text-wrap: pretty; }
+    .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #7a7a7a; }
+    .exhibition-dates { margin: 0; font-size: 0.83rem; color: #888; }
+    .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.55; color: #454545; text-wrap: pretty; }
+    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: #c2c2c2; font-size: 1.05rem; line-height: 1; }
+    .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
+    .section.header { text-align: center; }
+    .section.header .logo-wrapper { margin-bottom: 1rem; }
+    .section .section-title { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #444; font-weight: 600; }
+    .controls-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+    /* Checkbox-museolista */
+    .museum-checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 0.85rem; }
+    .museum-checkbox-item:last-child { border-bottom: none; }
+    .museum-checkbox-item input[type="checkbox"] { cursor: pointer; width: 15px; height: 15px; flex-shrink: 0; accent-color: #333; }
+    .museum-checkbox-item label { cursor: pointer; flex: 1; line-height: 1.3; }
+    #map-section { position: relative; }
+    #map {
+      width: 100%;
+      height: 420px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      transition: border-radius 0.2s;
+    }
+    #map-fullscreen-btn {
+      position: absolute;
+      top: 38px;
+      right: 8px;
+      z-index: 1000;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      padding: 0;
+    }
+    #map-fullscreen-btn:hover { background: #f4f4f4; }
+    #map-fullscreen-btn svg { width: 16px; height: 16px; display: block; }
+
+    /* Koko näyttö -tila */
+    .map-fullscreen #map-section {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      border: none;
+      background: white;
+    }
+    .map-fullscreen #map {
+      height: 100vh !important;
+      border-radius: 0;
+      border: none;
+    }
+
+    /* Popup */
+    .popup-title { font-size: 13px; font-weight: 700; margin: 0 0 4px; color: #222; }
+    .popup-address { font-size: 12px; color: #666; margin: 0 0 6px; }
+    .popup-link { font-size: 12px; color: #1a6fb5; text-decoration: none; }
+    .popup-link:hover { text-decoration: underline; }
+
+    /* Desktop: piilota mobiilinapit */
+    #rajaukset-btn { display: none; }
+    #sulje-btn { display: none; }
+    #sidebar-overlay { display: none !important; }
+
+    @media (max-width: 768px) {
+      body { padding: 0.75rem; }
+
+      /* Header mobiilissa: logo vasemmalle, Rajaukset-nappi oikealle */
+      .section.header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+      }
+      .section.header .logo-wrapper {
+        padding: 0.4rem 0.6rem;
+        margin: 0;
+      }
+      .logo { max-height: 225px; }
+      #rajaukset-btn { display: flex; }
+
+      /* Sivupalkki drawer */
+      .sidebar {
+        position: fixed;
+        top: 0; right: 0;
+        width: 280px;
+        height: 100%;
+        background: #f9f9f9;
+        z-index: 10000;
+        overflow-y: auto;
+        padding: 1rem;
+        box-shadow: -4px 0 16px rgba(0,0,0,0.18);
+        transform: translateX(110%);
+        transition: transform 0.25s ease;
+        flex: unset;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      /* Overlay */
+      #sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 9999;
+      }
+      #sidebar-overlay.open { display: block; }
+
+      /* Sulje-nappi sivupalkissa */
+      #sulje-btn { display: flex; }
+
+      .page-layout { flex-direction: column; }
+      .exhibition-rail { flex-basis: 80px; width: 80px; }
+      .exhibition-image { width: 80px; height: 80px; }
+      #map { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section header">
+    <div class="logo-wrapper">
+      <img src="./museokalenteri_logo.png" alt="Helsingin seudun Museokalenteri" class="logo" />
+    </div>
+    <button id="rajaukset-btn" style="align-items:center; gap:0.4rem; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-weight:500;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+      Rajaukset
+    </button>
+  </div>
+
+  <div id="sidebar-overlay"></div>
+
+  <div class="page-layout">
+
+    <!-- PÄÄSISÄLTÖ -->
+    <div class="main-content">
+
+      <!-- KARTTA -->
+      <div class="section" id="map-section">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
+          <p class="section-title" id="map-section-title" style="margin:0;">Valitut museot kartalla</p>
+          <button id="map-toggle-btn" style="font-size:0.8rem; padding:0.25rem 0.6rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Piilota kartta</button>
+        </div>
+        <button id="map-fullscreen-btn" title="Koko näyttö">
+          <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+          <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
+          </svg>
+        </button>
+        <div id="map"></div>
+      </div>
+
+      <div id="exhibitionList"></div>
+
+    </div><!-- /.main-content -->
+
+    <!-- SIVUPALKKI -->
+    <aside class="sidebar">
+
+      <button id="sulje-btn" style="align-items:center; justify-content:space-between; width:100%; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-weight:500; margin-bottom:0.25rem;">
+        Sulje
+        <span style="font-size:1.1rem; line-height:1;">&#x2715;</span>
+      </button>
+
+      <div class="section">
+        <p class="section-title">Aikasuodattimet</p>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="ALL">Kaikki</button>
+          <button class="filter-btn" data-filter="CURRENT">Käynnissä</button>
+          <button class="filter-btn" data-filter="UPCOMING">Tulossa</button>
+          <button class="filter-btn" data-filter="PAST">Päättyneet</button>
+          <button class="filter-btn" data-filter="OPENING_SOON">Avautuvat 2 vk</button>
+          <button class="filter-btn" data-filter="CLOSING_SOON">Päättyvät 2 vk</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-title">Museot</p>
+        <div class="museum-filter-bar" style="margin:0 0 0.5rem;">
+          <button id="select-all-museums" class="museum-btn special">Valitse kaikki</button>
+          <button id="deselect-all-museums" class="museum-btn special" style="margin-top:0.35rem;">Poista valinnat</button>
+        </div>
+        <div id="museum-checkbox-list"></div>
+      </div>
+
+      <div class="section">
+        <p class="section-title">Järjestys</p>
+        <select id="sort-select" aria-label="Järjestä lista" style="width:100%; padding:0.4rem 0.6rem;">
+          <option value="MUSEUM">Museon mukaan</option>
+          <option value="TITLE">Näyttelyn nimen mukaan</option>
+          <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
+          <option value="OPENING_DATE" selected>Avautumispäivän mukaan</option>
+        </select>
+      </div>
+
+      <div class="section" style="margin-bottom:0;">
+        <p id="today" style="margin:0 0 0.2rem; color:#333333; font-size:0.8rem;"></p>
+        <p id="last-updated" style="margin:0; color:#333333; font-size:0.8rem;"></p>
+      </div>
+
+    </aside>
+
+  </div><!-- /.page-layout -->
+
+  <script type="application/json" id="embedded-nayttelyt">
+[
+  {
+    "museum": "AD-museo",
+    "title": "Pako Muumilaaksoon",
+    "start": "2025-10-10",
+    "end": "2026-11-01",
+    "description": "Näyttely avaa portin Tove Janssonin Moominlaaksoon ja tarkastelee hänen suhdettaan arkkitehtuuriin ja designiin. Se tutkii tiloja, joihin Jansson vetäytyi ja joista hän ammensi sarjakuvamaailmansa inspiraatiota.",
+    "Link": "https://admuseo.fi/nayttelyt/pako-muumilaaksoon/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2025/07/ADM_Pako-Muumilaaksoon_web-banner_FI_date-1024x576.jpg"
+  },
+  {
+    "museum": "AD-museo",
+    "title": "Juha Vehmaanperä: Craft Punk",
+    "start": "2026-02-20",
+    "end": "2026-09-06",
+    "description": "Neuletaiteilija Juha Vehmaanperän ensimmäinen laajamittainen yksityisnäyttely Craft Punk kutsuu Arkkitehtuuri- ja designmuseon Galleriaan 20.2.2026. Vehmaanperä on neuletaiteilija, jonka työ keskittyy hitaaseen muotiin, queer-teoriaan ja käsityötaitoon, yhdistäen perinteiset tekniikat moderneihin lähestymistapoihin ja teknologioihin.",
+    "Link": "https://admuseo.fi/nayttelyt/juha-vehmaanpera-craft-punk/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2026/01/Juha_Main_LR_Final_Final-1024x630.jpg"
+  },
+  {
+    "museum": "AD-museo",
+    "title": "Aalto Design - Hyvinvoinnin muodot",
+    "start": "2026-06-05",
+    "end": "2027-01-03",
+    "description": "Näyttely Aalto Design - Hyvinvoinnin muodot tarkastelee Alvar, Aino ja Elissa Aallon perintöä hyvinvoinnin näkökulmasta. Monitaiteinen näyttely kysyy, mitä annettavaa klassikoilla on ajankohtaiseen keskusteluun hyvinvoinnin muotoilusta.",
+    "Link": "https://admuseo.fi/nayttelyt/aalto-design-hyvinvoinnin-muodot/",
+    "Image": "https://admuseo.fi/wp-content/uploads/2026/02/Other-Actors_Ilona-Sagar_2025-1024x576.jpg"
+  },
+  {
+    "museum": "Amos Rex",
+    "title": "Generation 2026",
+    "start": "2026-05-13",
+    "end": "2026-09-06",
+    "description": "Generation-triennaali tuo yhteen 50 taiteilijaa ja työryhmää; nuorten taiteilijoiden huolia, kamppailuja ja unelmia esiin tuova näyttely.",
+    "Link": "https://amosrex.fi/nayttelyt/generation-2026/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/08/Amos-Generation26-Stilli-Artistit-1920x1080-Tuplaresoluutio3-scaled.jpg"
+  },
+  {
+    "museum": "Amos Rex",
+    "title": "Natasha Tontey: The Phantom Combatants and the Metabolism of Disobedient Organs",
+    "start": "2026-05-09",
+    "end": "2026-10-25",
+    "description": "Amos Rexin ja LAS Art Foundationin tilausteos, joka esitetään Ateneo Venetossa Venetsiassa. Tonteyn tähän mennessä kunnianhimoisin teos on multimediainstallaatio, joka seuraa 1950-luvun indonesialaisen naispuolisen vastarintataistelijan tarinaa.",
+    "Link": "https://amosrex.fi/nayttelyt/natasha-tontey/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/12/4_LAS-Art-Foundation-x-Amos-Rex_Portrait-Natasha-Tontey_c-Stella-Ojala-1600x1113.jpg"
+  },
+  {
+    "museum": "Amos Rex",
+    "title": "Dansbana!",
+    "start": "2026-06-12",
+    "end": "2026-10-04",
+    "description": "Amos Rexin kesän tilaustyö muuttaa Lasipalatsin aukion kaikille avoimeksi tanssilattiaksi. Kolmen ruotsalaisen arkkitehdin suunnittelema installaatio päivittää ajatuksen perinteisestä tanssilavasta: tanssilattia ja veistokselliset kasvihahmot muodostavat yhdessä Amos Rexin kumpujen kanssa tilataideteoksen.",
+    "Link": "https://amosrex.fi/nayttelyt/dansbana/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/04/amosrex.png"
+  },
+  {
+    "museum": "Amos Rex",
+    "title": "The Other Side of the Mountain",
+    "start": "2026-10-14",
+    "end": "2027-03-21",
+    "description": "Amos Rexin syksyn 2026 päänäyttely esittelee nykytaidetta Afrikan mantereella ja afro-pohjoismaisessa diasporassa työskenteleviltä taiteilijoilta. Yhteistyössä ruotsalaisen Southnordin kanssa järjestetty näyttely lähestyy kaupunkia elävänä organismina. Näyttelyssä on mukana 11 taiteilijaa, lähes 60 teosta ja kolme uutta tilaustyötä.",
+    "Link": "https://amosrex.fi/nayttelyt/the-other-side-of-the-mountain/",
+    "Image": "https://amosrex.fi/wp-content/uploads/2025/04/amosrex.png"
+  },
+  {
+    "museum": "Ateneum",
+    "title": "Eero Nelimarkka",
+    "start": "2026-03-13",
+    "end": "2026-09-13",
+    "description": "Eero Nelimarkan (1891-1977) koko uran kattava näyttely katsoo monipuolista taiteilijaa uusin silmin ja valottaa sitä, millaisen linssin läpi hän katsoi maailmaa.",
+    "Link": "https://ateneum.fi/nayttelyt/eero-nelimarkka/",
+    "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2025/10/Nimeton-malli-30.png"
+  },
+  {
+    "museum": "Ateneum",
+    "title": "Modernit klassikot: Elga Sesemann",
+    "start": "2026-08-18",
+    "end": "2027-08-08",
+    "description": "Modernit klassikot -näyttelysarja esittää Kansallisgallerian kokoelmien taiteilijoita 1900-luvulta. Sarjan ensimmäinen taiteilija on Elga Sesemann.",
+    "Link": "https://ateneum.fi/nayttelyt/modernit-klassikot-elga-sesemann/",
+    "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2025/11/Elga_Sesemann_Omakuva_Odotus_Hannu_Pakarinen-1-scaled-745x1080.jpg"
+  },
+  {
+    "museum": "Ateneum",
+    "title": "Arcana Borealis - pohjoisen naiset ja esoteerisuus",
+    "start": "2026-10-23",
+    "end": "2027-02-28",
+    "description": "Arcana Borealis - pohjoisen naiset ja esoteerisuus kertoo, miten pohjoisen taiteilijanaiset ovat 1800-luvun lopulta nykypäivään yhdistäneet taiteen ja vaihtoehtoiset henkiset virtaukset.",
+    "Link": "https://ateneum.fi/nayttelyt/arcana-borealis-pohjoisen-naiset-ja-esoteerisuus/",
+    "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2024/05/northern-women.jpg"
+  },
+  {
+    "museum": "Didrichsenin taidemuseo",
+    "title": "William Morris",
+    "start": "2026-05-29",
+    "end": "2026-08-30",
+    "description": "William Morrisin (1834-1896) tuotantoa esittelevä näyttely Suomessa.",
+    "Link": "https://www.didrichsenmuseum.fi/n%C3%A4yttelyt",
+    "Image": "https://static.wixstatic.com/media/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg/v1/fill/w_800,h_532,al_c,q_90/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg"
+  },
+  {
+    "museum": "Didrichsenin taidemuseo",
+    "title": "Elin Danielson-Gambogi",
+    "start": "2026-09-12",
+    "end": "2027-01-31",
+    "description": "Näyttely Elin Danielson-Gambogin rohkeasta ja monikerroksisesta maailmasta.",
+    "Link": "https://www.didrichsenmuseum.fi/n%C3%A4yttelyt",
+    "Image": "https://static.wixstatic.com/media/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg/v1/fill/w_800,h_532,al_c,q_90/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Antti Laitinen: Helisevä metsä",
+    "start": "2025-09-24",
+    "end": "2026-08-23",
+    "description": "Kineettinen installaatio herättää pohtimaan ihmisen kykyä ja keinoja muokata luontoa.",
+    "Link": "https://emmamuseum.fi/nayttely/incollection-antti-laitinen/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web-anttilaitinen-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Axel Straschnoy",
+    "start": "2026-04-15",
+    "end": "2026-08-09",
+    "description": "Suomen taideakatemian säätiön palkintoon kuuluva näyttely koettelee poliittisen mielikuvituksemme rajoja.",
+    "Link": "https://emmamuseum.fi/nayttely/axel-straschnoy/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_alex-straschnoy_radioobservatorio_0036-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Nykyaikaa etsimässä",
+    "start": "2026-03-14",
+    "end": "2027-02-07",
+    "description": "Kansainvälinen ryhmänäyttely juhlistaa EMMAn 20-vuotisjuhlavuotta ja tutkii nykyhetkeä.",
+    "Link": "https://emmamuseum.fi/nayttely/nykyaikaa-etsimassa-26/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_nykari26-2-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Verholla - Painokankaiden taide",
+    "start": "2025-02-12",
+    "end": "2027-03-14",
+    "description": "Näyttely käärii EMMAn näyttelytilan painokankaiden väriloistoon ja kiehtoviin kuvioihin.",
+    "Link": "https://emmamuseum.fi/nayttely/verholla-painokankaiden-taide/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web_verholla-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Howard Smith",
+    "start": "2026-09-09",
+    "end": "2027-02-07",
+    "description": "Retrospektiivinäyttely kunnianosoituksena Howard Smithin visuaaliselle ilmaisulle.",
+    "Link": "https://emmamuseum.fi/nayttely/howard-smith/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_howard_smith_tunnuskuva-scaled.jpg"
+  },
+  {
+    "museum": "EMMA",
+    "title": "Gerda Thesleff",
+    "start": "2026-11-25",
+    "end": "2027-11-28",
+    "description": "Collection Kakkosen rinnalle tuleva näyttely keramiikkataiteilija Gerda Thesleffistä (1871-1939).",
+    "Link": "https://emmamuseum.fi/nayttely/gerda-thesleff/",
+    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_gt25_thesleff-mavi_0034-scaled.jpg"
+  },
+  {
+    "museum": "Hakasalmen huvila",
+    "title": "Stefan Bremer - Helsinki by Night",
+    "start": "2025-10-24",
+    "end": "2026-08-30",
+    "description": "Stefan Bremer valokuvasi 1970- ja 1980-luvuilla Helsingin yössä; takautuva näyttely Hakasalmen huvilassa.",
+    "Link": "https://hakasalmenhuvila.fi/nayttelyt/stefan-bremer-helsinki-by-night/",
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/sites/2/2025/06/artikkelikuva_825x513px_Stefan_Bremer_Helsinki_by_Night_diinarit_HH_syksy25.jpg"
+  },
+  {
+    "museum": "Hakasalmen huvila",
+    "title": "PUNK",
+    "start": "2026-10-23",
+    "end": "2027-08-29",
+    "description": "Punkin 50-vuotista taivalta Helsingissä juhlistava näyttely. Punkmuseo valtaa Hakasalmen huvilan: hikiset keikat, repaleiset julisteet ja äänivalli, joka ei suostu hiljenemään. Näyttely kattaa punkin historian marginaalista tähän päivään.",
+    "Link": "https://hakasalmenhuvila.fi/nayttelyt/punk/",
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/themes/hkmini/minisite-css/img/2_fi.png"
+  },
+  {
+    "museum": "HAM",
+    "title": "Tove Jansson -galleria: Taiteilijaperhe Jansson",
+    "start": "2026-02-13",
+    "end": "2027-01-10",
+    "description": "HAMin Tove Jansson -galleria avautuu entistä laajempana, kolmeen näyttelysaliin levittäytyvänä kokonaisuutena. Gallerian ensimmäinen näyttely keskittyy Janssonin taiteilijaperheeseen ja avaa oven kotiin, jossa taide oli elämäntapa. Näyttelyssä on esillä yli 140 teosta ja esinettä.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/tove-jansson-galleria/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Taiteilijaperhe-Jansson.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "Petri Ala-Maunus ja Mauno Markkula",
+    "start": "2026-03-13",
+    "end": "2027-01-31",
+    "description": "HAMin uuden kokoelmatilan avajaisnäyttely tuo yhteen kaksi eri aikakauden taidemaalaria, joita yhdistää maiseman tunnepitoinen tarkastelu. Petri Ala-Maunuksen suurikokoiset, yksityiskohtaiset ja yliromanttiset maalaukset kohtaavat Mauno Markkulan ekspressiiviset, mielikuvitukselliset ja fantasianomaiset näkymät.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/petri-ala-maunus-ja-mauno-markkula/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Petri-Ala-Maunus_Ubernatur.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "Magdalena Abakanowicz: Rajojen ylittäjä",
+    "start": "2026-05-06",
+    "end": "2026-08-30",
+    "description": "Puolan tunnetuimpiin taiteilijoihin kuuluvan Magdalena Abakanowiczin (1930–2017) ensimmäinen yksityisnäyttely Suomessa. HAMin suuret kaarihallit täyttyvät taiteilijan ikonisilla tekstiiliveistoksilla Abakaneilla sekä vaikuttavilla juuttiveistossarjoilla.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/magdalena-abakanowicz/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Magdalena-Abakanowicz_portrait.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "KOKIMO: Tablescape",
+    "start": "2026-05-29",
+    "end": "2026-08-23",
+    "description": "KOKIMO-kollektiivin näyttely HAMissa.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/kokimo-tablescape/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/KOKIMO_2025_MV_crop.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "Antti Tolvi: Sävellys uruille ja tauolle",
+    "start": "2026-09-25",
+    "end": "2027-01-10",
+    "description": "Antti Tolvin näyttely HAMissa.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/antti-tolvi/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2026/02/sinne4-1.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "Leena Luostarinen: Sopeutumaton",
+    "start": "2026-10-09",
+    "end": "2027-04-04",
+    "description": "Leena Luostarisen näyttely HAMissa.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/leena-luostarinen/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Leena-Luostarinen_Yo-leopardi-II.jpg"
+  },
+  {
+    "museum": "HAM",
+    "title": "Emma Talbot: Et ole keskipiste",
+    "start": "2026-10-09",
+    "end": "2027-04-04",
+    "description": "Emma Talbotin näyttely HAMissa.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/emma-talbot/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Emma-Talbot.jpg"
+  },
+  {
+    "museum": "Helsingin Taidehalli",
+    "title": "Nuoret 2026",
+    "start": "2026-05-29",
+    "end": "2026-07-19",
+    "description": "Taidehallin alle 35-vuotiaille taiteilijoille suunnattu Nuoret 2026 -näyttely esittelee 26 kiinnostavaa nuorta tekijää. Avoimen haun kautta valitut taiteilijat heijastelevat ajankohtaisia ilmiöitä.",
+    "Link": "https://taidehalli.fi/events/nuoret-2026/",
+    "Image": "https://taidehalli.fi/wp-content/uploads/2025/10/TH-nuoret26-blank-2160x1800.jpg"
+  },
+  {
+    "museum": "Helsingin Taidehalli",
+    "title": "Alia Ali: In Light of…",
+    "start": "2026-08-20",
+    "end": "2026-11-01",
+    "description": "Kansainvälisesti menestyneen Alia Alin ensimmäinen yksityisnäyttely Pohjoismaissa. Immersiivinen kokonaisuus on runsas kudelma kuoseja, symboleita ja kertomuksia. Kauttaaltaan tekstiilillä verhoiltu huone upottaa batiikkikankaan historiaan ja käsityöperinteeseen. Näyttely toteutetaan yhteistyössä Helsingin juhlaviikkojen kanssa.",
+    "Link": "https://taidehalli.fi/events/alia-ali-in-light-of/",
+    "Image": "https://taidehalli.fi/wp-content/uploads/2026/03/DSF1298B-2500x1800.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Nelivärinen uni",
+    "start": "2026-02-27",
+    "end": "2027-01-10",
+    "description": "Kiasman kokoelmanäyttely, jossa todellinen ja kuviteltu sekoittuvat unenomaisiksi kohtaamisiksi. Näyttely esittelee noin 40 taiteilijan teoksia ja avautuu katkelmina ja ihmeellisinä kohtaamisina, joissa merkitykset liukuvat ja muuttavat muotoaan.",
+    "Link": "https://kiasma.fi/nayttelyt/nelivarinen-uni/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/08/MerenmiesElina_ASnakeFullofSighs2023-24_KuvaKG_PetriVirtanen.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Entiset ainoat",
+    "start": "2026-03-27",
+    "end": "2026-09-06",
+    "description": "Kiasman ja Saamelaismuseo Siidan yhteisnäyttely esittelee saamelaista nykytaidetta ja saamelaisuuden monikerroksisia kokemuksia Saamenmaalta Suomesta, Ruotsista ja Norjasta.",
+    "Link": "https://kiasma.fi/nayttelyt/entiset-ainoat/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/siriBaggerman_Drone2021_KuvaSiriBaggerman.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Edith Karlson: Sarastus",
+    "start": "2026-04-17",
+    "end": "2026-09-27",
+    "description": "Kuvanveistäjä Edith Karlsonin synkän salaperäiset installaatiot ovat eläin- ja ihmishahmojen asuttamia. Hän tarkastelee ihmistä eläimellisenä olentona ja hämärtää lajienvälisiä rajoja käyttäen erilaisia materiaaleja kuten savea, betonia ja silikonia.",
+    "Link": "https://kiasma.fi/nayttelyt/edith-karlson/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/08/EdithKarlson_SapiehaPalace_photo-by-AndrejVasilenko.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Emma Ainala",
+    "start": "2026-10-09",
+    "end": "2027-02-14",
+    "description": "Emma Ainalan suuret, unenomaiset öljymaalaukset käsittelevät naiseutta, tyttöyttä sekä katseen ja katsottuna olemisen teemoja. Hänen yksityiskohtaiset teoksensa ammentavat vaikutteita kauhukuvastosta, internet-kulttuurista, muodista ja taidehistoriasta.",
+    "Link": "https://kiasma.fi/nayttelyt/emma-ainala/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/Emma-Ainala_Philosophers-picnic_2021_Photo_Jussi-Tiainen.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Oliver Beer - Resonance Project: The Cave",
+    "start": "2026-11-06",
+    "end": "2027-03-28",
+    "description": "Oliver Beer yhdistää musiikkia ja kuvataiteita video-oopperassaan, joka on kuvattu esihistoriallisessa luolassa Ranskassa. Teoksessa kahdeksan eri kulttuuritaustoista tulevaa laulajaa esittää varhaisimpia musiikillisia muistojaan, ja luolan akustiikka vahvistaa heidän äänensä moniääniseksi kokonaisuudeksi.",
+    "Link": "https://kiasma.fi/nayttelyt/oliver-beer-resonance-project-the-cave/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/Exhibition-view_Resonance-Project_The-Cave_Lyon-Biennale2024-c-Oliver-Beer.jpg"
+  },
+  {
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Yö",
+    "start": "2026-02-12",
+    "end": "2026-08-23",
+    "description": "Näyttely tutkii yön salaperäistä maailmaa ja unta. Se kuljettaa katsojan iltahämärästä aamunkoittoon ja näyttää yön monet kasvot - ystävälliset, surumieliset, puistattavat ja seesteiset. Teokset käyvät vuoropuhelua runouden kanssa ja esittelevät maalaus-, grafiikka- ja veistostaidetta 1800-luvulta nykypäivään.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/yo/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2026/01/Nettisivukuva-1.jpg"
+  },
+  {
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Anna Sinebrychoff - Edelläkävijä",
+    "start": "2026-03-03",
+    "end": "2027-08-29",
+    "description": "Näyttely kertoo poikkeuksellisen liikekumppanin ja hyväntekeväisyysvaikuttajan Anna Sinebrychoffin (1830-1904) elämästä. Se esittelee hänen muotokuviaan ja asettaa Annan aikansa yhteiskunnallisten ja taloudellisten murrosten keskelle.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/anna-sinebrychoff-edellakavija/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2025/11/KG2021DK1206-825x1024.jpg"
+  },
+  {
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Riikinkukko puutarhassa - Mathias Withoosin Rooma",
+    "start": "2026-09-24",
+    "end": "2027-01-10",
+    "description": "Näyttely esittelee hollantilaisen taidemaalarin Mathias Withoosin (1627-1703) teoksia ja Bentvueghels-taiteilijaryhmää, johon hän kuului. Näyttelyssä nähdään 1600-luvun maalauksia, piirroksia ja grafiikkaa, jotka yhdistävät kasviaiheita ja italialaisia maisemia.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/riikinkukko-puutarhassa-mathias-withoosin-rooma/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2025/11/stilleven_2_pauwen_woudenberg_DSC2000_klaar-951x1024.jpg"
+  },
+  {
+    "museum": "Suomen valokuvataiteen museo",
+    "title": "Film still - Malla Hukkasen valokuvia elokuvista",
+    "start": "2026-03-27",
+    "end": "2026-09-20",
+    "description": "Näyttely esittelee Marja-Leena \"Malla\" Hukkasen yli 40-vuotisen uran elokuvien stillkuvaajana. Hukkanen on kuvannut esimerkiksi lähes kaikkien Aki Kaurismäen elokuvien ikoniset stillkuvat. Näyttelyssä nähdään myös työkuvia, jotka tallentavat kulissien takaisia hetkiä.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/film-still-malla-hukkasen-valokuvia-elokuvista",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2026-01/MVM%20Kati%20ja%20Peltsi%20Pelastusarmeijan%20edess%C3%A4%20L%20jpeg_0.jpg"
+  },
+  {
+    "museum": "Suomen valokuvataiteen museo",
+    "title": "Z Walsh: Feminine Man",
+    "start": "2026-03-27",
+    "end": "2026-09-20",
+    "description": "Z Walshin Feminine Man dokumentoi taiteilijan suhdetta naisiin ja naisellisuuteen transmiehen näkökulmasta. Walsh kunnioittaa omaa ja muiden naisellisuutta ja tutkii sukupuolen moniäänisyyttä.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/en/exhibitions/feminine-man",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2025-11/000300600008_rajattu.jpg"
+  },
+  {
+    "museum": "Suomen valokuvataiteen museo",
+    "title": "Iiris Elena Rusi",
+    "start": "2026-10-09",
+    "end": "2026-11-29",
+    "description": "Iiris Elena Rusi tunnetaan kuvataiteilijana, joka harjoittaa seksityötä. Tämä näyttely jatkaa Killer Queen -teoksen teemoja ja tuo keskusteluun mukaan muita erotiikkapalveluiden tarjoajia, peilaten yleisön suhtautumista aiheeseen. Se on osa Turvan tekstuurit -sarjaa.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/iiris-elena-rusi",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2024-12/Iiris%20Rusi_Tales%20of%20s%20work%20(1).jpg"
+  },
+  {
+    "museum": "Villa Gyllenberg",
+    "title": "Runollinen todellisuus - 1920-40-lukujen taidetta, muotia, muotoilua ja puutarhoja",
+    "start": "2026-04-22",
+    "end": "2026-09-13",
+    "description": "Tuleva näyttely Villa Gyllenbergissä.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/runollinen-todellisuus-1920-40-lukujen-taidetta-muotia-muotoilua-ja-puutarhoja",
+    "Image": "https://gyllenberg-website.transforms.svdcdn.com/production/Marie-Laurencin_Nuoren-naisen-muotokuva_Sara-Hildenin-taidemuseo_mindre.jpg?w=1440&q=82&fm=webp&fit=crop&dm=1762354168&s=76e7c8db1ed3ee73ac3b056b6438ac8c"
+  },
+  {
+    "museum": "Helsingin Taidehalli",
+    "title": "Jiri Gellerin täydellinen maailma",
+    "start": "2026-11-21",
+    "end": "2027-01-10",
+    "description": "Jiri Gellerin laaja retrospektiivinen näyttely esittelee teoksia taiteilijan uran alkumetreiltä 1990-luvun lopusta viime vuosille. Esillä on useita suurikokoisia veistosinstallaatioita, kuten God Says No -rullaportaat ja The Big Time -hyökyaalto, sekä mekaanisia, liikkuvia veistoksia. Geller flirttailee populaarikulttuurin, provokaation ja taidekonventioiden kanssa.",
+    "Link": "https://taidehalli.fi/events/jiri-gellerin-taydellinen-maailma/",
+    "Image": "https://taidehalli.fi/wp-content/uploads/2026/04/image0.jpeg"
+  },
+  {
+    "museum": "Suomen valokuvataiteen museo",
+    "title": "Photofuss: Kontakti",
+    "start": "2026-05-29",
+    "end": "2026-09-06",
+    "description": "Photofussin näyttely tarkastelee yhteyksiä eri tasoilla: minkälaisia vuorovaikutuksia meillä on ympärillämme olevaan maailmaan ja muihin ihmisiin? Teokset käsittelevät kuvan tekijän ja katsojan välistä vuorovaikutusta, ihmisen ja luonnon suhdetta sekä omaa paikkaamme osana globaalia yhteiskuntaa. Photofuss on Suomen valokuvataiteen museon nuortenryhmä.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/photofuss-kontakti",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/cols_2_crop/public/exhibitions/2026-05/Emiliano%20Espinosa%20jpeg%20nosto.jpg"
+  },
+  {
+    "museum": "Villa Gyllenberg",
+    "title": "Kurkistus Sammon kokoelmaan",
+    "start": "2026-10-10",
+    "end": "2027-02-14",
+    "description": "Harvinainen tilaisuus päästä kurkistamaan Sampo-konsernin korkeatasoiseen taidekokoelmaan. Klassiseen esillepanoon on valikoitu noin 50 teosta Sammon yli 1000 teoksen kokoelmasta. Näyttelyssä esitellään 1800-luvun maisemamaalauksia, Suomen taiteen kultakauden teoksia, 1900-luvun abstraktia taidetta sekä 1980-1990-lukujen maalauksia ja veistoksia.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/kurkistus-sammon-kokoelmaan",
+    "Image": "https://images.gyllenbergs.fi/production/HS-Virkkaava-tytto-Sampo-kuva_-Rauno-Traskelin_pienempi.jpg?w=1200&h=630&q=82&auto=format&fit=crop&crop=focalpoint&fp-x=0.6081&fp-y=0.1951&dm=1773660538&s=80e4c84d6ee89992179f6b9f7854bec0"
+  },
+  {
+    "museum": "Villa Gyllenberg",
+    "title": "Villa Gyllenbergin joulu",
+    "start": "2026-11-28",
+    "end": "2027-01-03",
+    "description": "Tervetuloa virittäytymään joulutunnelmaan! Signe ja Ane Gyllenbergin kodin salongissa ja ruokasalissa voidaan kokea 1960-luvun joulunviettoa. Ruokasalissa nähdään juhlakattaus ja salongista löytyy aikakaudelle tyypillinen makeis- ja jälkiruokapöytä. Salonkiin viritetty komea kuusi on somistettu aikakauden aidoilla lasikoristeilla. Näyttely on rekonstruoitu perheen valokuva-albumien pohjalta.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/jul-pa-villa-gyllenberg-23-11-2024-12-1-2025",
+    "Image": "https://images.gyllenbergs.fi/production/Villa-G_joulu_flyygeli.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1669720587&s=9ba2831b4946c1323e87f493da5537de"
+  }
+]
+  </script>
+  <script type="application/json" id="embedded-museot">
+[
+  {
+    "nimi": "AD-museo",
+    "kaupunki": "Helsinki",
+    "osoite": "Korkeavuorenkatu 23, 00130 Helsinki",
+    "lat": 60.16308481331568,
+    "lng": 24.946737206659762,
+    "kotisivu": "https://admuseo.fi",
+    "nayttelysivu": "https://admuseo.fi/nayttelyt-ja-tapahtumat/"
+  },
+  {
+    "nimi": "Amos Rex",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheimintie 22–24, 00100 Helsinki",
+    "lat": 60.17064724293179,
+    "lng": 24.936591876171722,
+    "kotisivu": "https://amosrex.fi",
+    "nayttelysivu": "https://amosrex.fi/nayttelyt/",
+    "tulevat": "https://amosrex.fi/tulevat-nayttelyt/"
+  },
+  {
+    "nimi": "Ateneum",
+    "kaupunki": "Helsinki",
+    "osoite": "Kaivokatu 2, 00100 Helsinki",
+    "lat": 60.17026331087326,
+    "lng": 24.943671516474186,
+    "kotisivu": "https://ateneum.fi",
+    "nayttelysivu": "https://ateneum.fi/nayttelyt/",
+    "tulevat": "https://ateneum.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Didrichsenin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Kuusilahdenkuja 1, 00340 Helsinki",
+    "lat": 60.18527846859324,
+    "lng": 24.856568334795206,
+    "kotisivu": "https://www.didrichsenmuseum.fi",
+    "nayttelysivu": "https://www.didrichsenmuseum.fi/näyttelyt"
+  },
+  {
+    "nimi": "EMMA",
+    "kaupunki": "Espoo",
+    "osoite": "Ahertajantie 5, 02100 Espoo",
+    "lat": 60.17894869373738,
+    "lng": 24.795398544246293,
+    "kotisivu": "https://emmamuseum.fi",
+    "nayttelysivu": "https://emmamuseum.fi/emman-nayttelyt/nyt/",
+    "tulevat": "https://emmamuseum.fi/emman-nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Hakasalmen huvila",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheimintie 13b, 00100 Helsinki",
+    "lat": 60.17463837847241,
+    "lng": 24.933975784304195,
+    "kotisivu": "https://hakasalmenhuvila.fi",
+    "nayttelysivu": "https://hakasalmenhuvila.fi/nayttelyt/"
+  },
+  {
+    "nimi": "HAM Helsingin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Eteläinen Rautatiekatu 8, 00100 Helsinki",
+    "lat": 60.17016615846151,
+    "lng": 24.930488900066383,
+    "kotisivu": "https://www.hamhelsinki.fi",
+    "nayttelysivu": "https://www.hamhelsinki.fi/nayttelyt-nyt/",
+    "tulevat": "https://www.hamhelsinki.fi/tulevat-nayttelyt/"
+  },
+  {
+    "nimi": "Helsingin Taidehalli",
+    "kaupunki": "Helsinki",
+    "osoite": "Nervanderinkatu 3, 00100 Helsinki",
+    "lat": 60.17217156802964,
+    "lng": 24.931024813459754,
+    "kotisivu": "https://taidehalli.fi",
+    "nayttelysivu": "https://taidehalli.fi/nayttelyt/"
+  },
+  {
+    "nimi": "Kiasma",
+    "kaupunki": "Helsinki",
+    "osoite": "Mannerheiminaukio 2, 00100 Helsinki",
+    "lat": 60.1715747793913,
+    "lng": 24.936889672854665,
+    "kotisivu": "https://kiasma.fi",
+    "nayttelysivu": "https://kiasma.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Sinebrychoffin taidemuseo",
+    "kaupunki": "Helsinki",
+    "osoite": "Bulevardi 40, 00120 Helsinki",
+    "lat": 60.162538514199724,
+    "lng": 24.93263805091384,
+    "kotisivu": "https://sinebrychoffintaidemuseo.fi",
+    "nayttelysivu": "https://sinebrychoffintaidemuseo.fi/nayttelyt/",
+    "tulevat": "https://sinebrychoffintaidemuseo.fi/nayttelyt/tulevat/"
+  },
+  {
+    "nimi": "Suomen valokuvataiteen museo",
+    "kaupunki": "Helsinki",
+    "osoite": "Kaapeliaukio 3, 00180 Helsinki",
+    "lat": 60.16203807065474,
+    "lng": 24.90526187414568,
+    "kotisivu": "https://www.valokuvataiteenmuseo.fi",
+    "nayttelysivu": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/nayttelyt-nyt",
+    "tulevat": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/tulevat-nayttelyt"
+  },
+  {
+    "nimi": "Villa Gyllenberg",
+    "kaupunki": "Helsinki",
+    "osoite": "Kuusisaarenpolku 11, 00340 Helsinki",
+    "lat": 60.18399766903339,
+    "lng": 24.852235518542084,
+    "kotisivu": "https://www.villagyllenberg.fi",
+    "nayttelysivu": "https://www.villagyllenberg.fi/nayttelyt"
+  }
+]
+  </script>
+  <script type="application/json" id="embedded-meta">
+{
+  "createdAt": "2026-05-21"
+}
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+
+  // Lukee upotetun JSON-datan annetusta <script>-lohkosta
+  function readEmbedded(id) {
+    const el = document.getElementById(id);
+    if (!el) return null;
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+
+  // Hakee JSON:n fetchillä; jos se epäonnistuu (esim. Claude Design
+  // -ympäristö ilman tiedostojärjestelmää), palautetaan upotettu data.
+  async function loadJson(url, embeddedId) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return await res.json();
+    } catch (e) { /* fallback alla */ }
+    return readEmbedded(embeddedId);
+  }
+
+  // Museotiedot haetaan museot.json:sta (fallback: upotettu data)
+  let museumData = {};
+  const museoDataPromise = loadJson('./museot.json', 'embedded-museot')
+    .then(data => { if (data) data.forEach(m => { museumData[m.nimi] = m; }); })
+    .catch(() => {});
+
+  // Mustavalkoinen markkeri-SVG
+  const markerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32">
+    <rect x="10" y="30" width="180" height="155" rx="28" ry="28" fill="white" stroke="black" stroke-width="16"/>
+    <rect x="50" y="10" width="22" height="44" rx="11" ry="11" fill="white" stroke="black" stroke-width="14"/>
+    <rect x="128" y="10" width="22" height="44" rx="11" ry="11" fill="white" stroke="black" stroke-width="14"/>
+    <polygon points="100,58 158,88 42,88" fill="none" stroke="black" stroke-width="12" stroke-linejoin="round"/>
+    <rect x="42" y="85" width="116" height="11" fill="black"/>
+    <rect x="55" y="96" width="12" height="50" fill="black"/>
+    <rect x="75" y="96" width="12" height="50" fill="black"/>
+    <rect x="95" y="96" width="12" height="50" fill="black"/>
+    <rect x="115" y="96" width="12" height="50" fill="black"/>
+    <rect x="135" y="96" width="12" height="50" fill="black"/>
+    <rect x="38" y="146" width="124" height="10" fill="black"/>
+    <rect x="32" y="157" width="136" height="10" fill="black"/>
+  </svg>`;
+
+  const markerIcon = L.divIcon({
+    html: markerSvg,
+    className: '',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -20]
+  });
+
+  // Kartta
+  const map = L.map('map').setView([60.1680, 24.9200], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  // Markkerikerros – päivitetään museovalinnan mukaan
+  let markerLayer = L.layerGroup().addTo(map);
+
+  function parseDate(s) {
+    if (!s) return new Date(NaN);
+    if (s.includes('.')) {
+      const [d, m, y] = s.split('.').map(Number);
+      return new Date(Date.UTC(y, m - 1, d));
+    }
+    const [y, m, d] = s.split('-').map(Number);
+    return new Date(Date.UTC(y, m - 1, d));
+  }
+
+  function computeStatus(ex) {
+    const now = new Date();
+    const start = parseDate(ex.start);
+    const end   = parseDate(ex.end);
+    if (start <= now && end >= now) return "CURRENT";
+    if (start > now) return "UPCOMING";
+    return "PAST";
+  }
+
+  function statusLabel(s) {
+    return { CURRENT: "Käynnissä", UPCOMING: "Tulossa", PAST: "Päättynyt" }[s] || s;
+  }
+
+  function formatDate(s) {
+    if (!s) return "";
+    return parseDate(s).toLocaleDateString('fi-FI', { day: 'numeric', month: 'numeric', year: 'numeric' });
+  }
+
+  function updateMap(activeMuseums, allExhibitions) {
+    markerLayer.clearLayers();
+    activeMuseums.forEach(museumName => {
+      const info = museumData[museumName];
+      if (!info || !info.lat || !info.lng) return;
+      const popupHtml = `
+        <p class="popup-title">${museumName}</p>
+        <p class="popup-address">${info.osoite || ''}</p>
+        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Museon verkkosivut →</a>
+      `;
+      L.marker([info.lat, info.lng], { icon: markerIcon, title: museumName })
+        .on('add', function() { this.getElement()?.setAttribute('aria-label', museumName); })
+        .addTo(markerLayer)
+        .bindPopup(popupHtml, { maxWidth: 240 });
+    });
+  }
+
+  // ------- Alkuperäinen kalenteri-logiikka -------
+
+  let exhibitions = [];
+
+  (function setTodayDate() {
+    const el = document.getElementById('today');
+    if (el) {
+      const f = new Date().toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+      el.textContent = `Tänään on ${f}`;
+    }
+  })();
+
+  loadJson('./museonayttelyt_meta.json', 'embedded-meta')
+    .then(meta => { if (meta && meta.createdAt) updateLastUpdated(meta.createdAt); })
+    .catch(() => {});
+
+  const nayttelytPromise = (async () => {
+    try {
+      const res = await fetch('./museonayttelyt.json');
+      if (res.ok) {
+        const lastModified = res.headers ? res.headers.get('Last-Modified') : null;
+        const data = await res.json();
+        return { data, lastModified };
+      }
+    } catch (e) { /* fallback alla */ }
+    return { data: readEmbedded('embedded-nayttelyt') || [], lastModified: null };
+  })();
+
+  Promise.all([nayttelytPromise, museoDataPromise])
+    .then(([{ data, lastModified }]) => {
+      exhibitions = data;
+      const el = document.getElementById('last-updated');
+      if (el && !el.textContent && lastModified) updateLastUpdated(lastModified);
+      initExhibitions();
+    })
+    .catch(err => {
+      document.getElementById("exhibitionList").innerHTML =
+        "<p style='color:red'>Virhe ladattaessa museonayttelyt.json: " + err.message + "</p>";
+    });
+
+  function initExhibitions() {
+    const museumSet = Array.from(new Set(exhibitions.map(ex => ex.museum))).sort();
+
+    // Rakennetaan checkbox-lista
+    const checkboxContainer = document.getElementById('museum-checkbox-list');
+    if (checkboxContainer) {
+      checkboxContainer.innerHTML = '';
+      museumSet.forEach(museum => {
+        const id = 'cb-' + museum.replace(/\s+/g, '-');
+        const item = document.createElement('div');
+        item.className = 'museum-checkbox-item';
+        item.innerHTML = `<input type="checkbox" id="${id}" value="${museum}" checked><label for="${id}">${museum}</label>`;
+        checkboxContainer.appendChild(item);
+      });
+    }
+
+    function getCheckedMuseums() {
+      return new Set(
+        Array.from(document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]:checked'))
+          .map(cb => cb.value)
+      );
+    }
+
+    const container = document.getElementById("exhibitionList");
+    const statusButtons = document.querySelectorAll(".filter-btn");
+    const selectAllBtn = document.getElementById("select-all-museums");
+    const deselectAllBtn = document.getElementById("deselect-all-museums");
+    const sortSelect = document.getElementById("sort-select");
+    let activeMuseums = new Set(museumSet);
+    let activeStatus = "ALL";
+    let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
+
+    // Alkupiirto kartalle
+    updateMap(activeMuseums, exhibitions);
+
+    function getFilteredExhibitions(statusType) {
+      const now = new Date();
+      const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+      return exhibitions.filter(ex => {
+        if (!activeMuseums.has(ex.museum)) return false;
+        if (statusType === "CURRENT" || statusType === "UPCOMING" || statusType === "PAST")
+          return computeStatus(ex) === statusType;
+        if (statusType === "ALL") return true;
+        if (statusType === "OPENING_SOON") {
+          const start = parseDate(ex.start);
+          return start >= now && start <= in2w;
+        }
+        if (statusType === "CLOSING_SOON") {
+          const end = parseDate(ex.end);
+          return end >= now && end <= in2w;
+        }
+        return true;
+      });
+    }
+
+    function sortExhibitions(list) {
+      const copy = [...list];
+      const byStr  = (a, b, fn) => (fn(a)||"").toString().toLowerCase().localeCompare((fn(b)||"").toString().toLowerCase());
+      const byDate = (a, b, fn) => { const va = parseDate(fn(a)); const vb = parseDate(fn(b)); return (isNaN(va)?Infinity:va) - (isNaN(vb)?Infinity:vb); };
+      switch (activeSort) {
+        case "MUSEUM":       copy.sort((a,b) => byStr(a,b,e=>e.museum)); break;
+        case "TITLE":        copy.sort((a,b) => byStr(a,b,e=>e.title)); break;
+        case "CLOSING_DATE": copy.sort((a,b) => byDate(a,b,e=>e.end)); break;
+        default:             copy.sort((a,b) => byDate(a,b,e=>e.start)); break;
+      }
+      return copy;
+    }
+
+    function getStatusLabel(s) {
+      return { CURRENT:'Käynnissä', UPCOMING:'Tulossa', PAST:'Päättynyt', UNKNOWN:'Tuntematon' }[s] || s;
+    }
+
+    function exhibitionImgFallback(img) {
+      const span = document.createElement('span');
+      span.className = 'image-placeholder-text';
+      span.textContent = img.dataset.letter || '?';
+      img.replaceWith(span);
+    }
+
+    function renderExhibitions(list) {
+      container.innerHTML = "";
+      if (list.length === 0) {
+        container.innerHTML = "<p style='color:#555'>Suodattimillasi ei löydy näyttelyitä.</p>";
+        return;
+      }
+      list.forEach(ex => {
+        const st = computeStatus(ex);
+        const linkUrl  = ex.Link || ex.link || "";
+        const imageUrl = ex.Image || ex.image || "";
+        const card = document.createElement(linkUrl ? "a" : "div");
+        card.className = `exhibition ${st}`;
+        if (linkUrl) { card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer"; }
+        const placeholderLetter = (ex.title || "?").trim().charAt(0).toUpperCase();
+        const descHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : '';
+        const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true">\u2197</span>` : '';
+        const imgHtml = imageUrl
+          ? `<img src="${imageUrl}" alt="${ex.title}" loading="lazy" data-letter="${placeholderLetter}" onerror="exhibitionImgFallback(this)" />`
+          : `<span class="image-placeholder-text">${placeholderLetter}</span>`;
+        card.innerHTML = `
+          ${linkIndicator}
+          <div class="exhibition-row">
+            <div class="exhibition-rail">
+              <div class="exhibition-image">${imgHtml}</div>
+              <span class="status-pill">${getStatusLabel(st)}</span>
+            </div>
+            <div class="exhibition-content">
+              <p class="exhibition-museum">${ex.museum}</p>
+              <h2>${ex.title}</h2>
+              <p class="exhibition-dates">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
+              ${descHtml}
+            </div>
+          </div>`;
+        container.appendChild(card);
+      });
+    }
+
+    function updateStatusCounts() {
+      const now = new Date();
+      const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+      const counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
+      exhibitions.forEach(ex => {
+        if (!activeMuseums.has(ex.museum)) return;
+        counts.ALL++;
+        const st = computeStatus(ex);
+        if (st in counts) counts[st]++;
+        const start = parseDate(ex.start);
+        const end   = parseDate(ex.end);
+        if (start >= now && start <= in2w) counts.OPENING_SOON++;
+        if (end   >= now && end   <= in2w) counts.CLOSING_SOON++;
+      });
+      statusButtons.forEach(btn => {
+        const t = btn.dataset.filter;
+        btn.textContent = btn.textContent.replace(/ \(\d+\)$/, '') + ` (${counts[t]})`;
+      });
+    }
+
+    function applyFilter(statusType) {
+      activeStatus = statusType;
+      const filtered = getFilteredExhibitions(statusType);
+      const sorted   = sortExhibitions(filtered);
+      renderExhibitions(sorted);
+      statusButtons.forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`[data-filter="${statusType}"]`).classList.add("active");
+      updateStatusCounts();
+    }
+
+    function syncMuseums() {
+      activeMuseums = getCheckedMuseums();
+      updateMap(activeMuseums, exhibitions);
+      applyFilter(activeStatus);
+    }
+
+    if (checkboxContainer) {
+      checkboxContainer.addEventListener('change', syncMuseums);
+    }
+
+    selectAllBtn.addEventListener("click", () => {
+      document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
+      activeMuseums = new Set(museumSet);
+      updateMap(activeMuseums, exhibitions);
+      applyFilter(activeStatus);
+    });
+
+    deselectAllBtn.addEventListener("click", () => {
+      document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+      activeMuseums = new Set();
+      updateMap(activeMuseums, exhibitions);
+      applyFilter(activeStatus);
+    });
+
+    statusButtons.forEach(btn => btn.addEventListener("click", () => applyFilter(btn.dataset.filter)));
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        activeSort = sortSelect.value;
+        applyFilter(activeStatus);
+      });
+    }
+
+    updateStatusCounts();
+    applyFilter("ALL");
+  }
+
+  function updateLastUpdated(header) {
+    const el = document.getElementById('last-updated');
+    if (!el) return;
+    const d = new Date(header);
+    if (isNaN(d)) return;
+    el.textContent = `Tiedot päivitetty: ${d.toLocaleDateString('fi-FI', { year:'numeric', month:'long', day:'numeric' })}`;
+  }
+
+  // Mobiili-drawer
+  const rajauksetBtn = document.getElementById('rajaukset-btn');
+  const suljeBtn = document.getElementById('sulje-btn');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  function openDrawer() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+  function closeDrawer() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  rajauksetBtn.addEventListener('click', openDrawer);
+  suljeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  // Kartan piilota/näytä
+  const mapToggleBtn = document.getElementById('map-toggle-btn');
+  const mapEl = document.getElementById('map');
+  const mapSectionTitle = document.getElementById('map-section-title');
+  const mapFullscreenBtn = document.getElementById('map-fullscreen-btn');
+  let mapVisible = true;
+  mapToggleBtn.addEventListener('click', () => {
+    mapVisible = !mapVisible;
+    mapEl.style.display = mapVisible ? '' : 'none';
+    mapFullscreenBtn.style.display = mapVisible ? '' : 'none';
+    mapSectionTitle.style.display = mapVisible ? '' : 'none';
+    mapToggleBtn.textContent = mapVisible ? 'Piilota kartta' : 'Näytä kartta';
+    if (mapVisible) setTimeout(() => map.invalidateSize(), 50);
+  });
+
+  // Kartan koko näyttö -toiminto
+  document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
+    const isFullscreen = document.body.classList.toggle('map-fullscreen');
+    document.getElementById('icon-expand').style.display  = isFullscreen ? 'none'  : 'block';
+    document.getElementById('icon-collapse').style.display = isFullscreen ? 'block' : 'none';
+    setTimeout(() => map.invalidateSize(), 200);
+  });
+
+  </script>
+</body>
+</html>

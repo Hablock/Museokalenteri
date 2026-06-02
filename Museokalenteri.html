@@ -46,28 +46,28 @@
     .museum-btn.special { background-color: #333; color: white; width: 100%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
     .museum-btn.special:hover { background-color: #4a4a4a; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
     .museum-btn.special:active { background-color: #2a2a2a; }
-    .exhibition { background: white; margin: 1rem 0; padding: 1rem; border-left: 6px solid; border-radius: 5px; display: flex; gap: 1rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease; align-items: stretch; position: relative; }
+    #exhibitionList { display: flex; flex-direction: column; gap: 0.75rem; }
+    .exhibition { background: #fff; margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid #8a8a8a; border-radius: 10px; display: block; position: relative; text-decoration: none; color: inherit; font-family: Arial, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.07); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
     .exhibition:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
     .exhibition:focus-visible { outline: 2px solid #333; outline-offset: 4px; }
-    .CURRENT { border-color: green; }
-    .UPCOMING { border-color: blue; }
-    .PAST { border-color: #aaaaaa; }
-    .tag { display: inline-block; padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 4px; margin-top: 0.5rem; }
-    .CURRENT .tag { background: #e6ffed; color: green; }
-    .UPCOMING .tag { background: #e6f0ff; color: blue; }
-    .PAST .tag { background: #eeeeee; color: #333333; }
-    .exhibition-image { flex: 0 0 140px; width: 140px; height: 140px; border-radius: 6px; overflow: hidden; background: linear-gradient(135deg, #f0f0f0, #d0d0d0); display: flex; align-items: center; justify-content: center; }
+    .CURRENT { border-left-color: #1f8a3b; }
+    .UPCOMING { border-left-color: #1f5fd6; }
+    .PAST { border-left-color: #8a8a8a; }
+    .exhibition-row { display: flex; gap: 0.95rem; align-items: flex-start; }
+    .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .exhibition-image { width: 96px; height: 96px; border-radius: 8px; overflow: hidden; background: #eef0f1; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; }
     .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-    .exhibition-image.no-image { color: #666; font-weight: 600; font-size: 1.5rem; text-transform: uppercase; }
-    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 2rem; color: rgba(0,0,0,0.35); }
-    .exhibition-content { flex: 1; display: flex; flex-direction: column; }
-    .exhibition-content h2 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
-    .exhibition-museum { margin: 0 0 0.25rem 0; }
-    .exhibition-dates { margin: 0 0 0.5rem 0; color: #333333; font-size: 0.95rem; }
-    .exhibition-description { margin: 0; color: #333333; font-size: 0.95rem; }
-    .exhibition-content .tag { align-self: flex-start; margin-top: 0.6rem; }
-    .exhibition-link-indicator { position: absolute; top: 0; right: 0; width: 36px; height: 36px; background: rgba(51,51,51,0.9); color: white; display: flex; align-items: center; justify-content: center; border-top-right-radius: 5px; border-bottom-left-radius: 12px; font-size: 1.1rem; }
-    .exhibition-link-indicator svg { width: 16px; height: 16px; }
+    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 38px; font-weight: 700; color: rgba(0,0,0,0.25); }
+    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: 999px; color: #fff; background: #8a8a8a; }
+    .CURRENT .status-pill { background: #1f8a3b; }
+    .UPCOMING .status-pill { background: #1f5fd6; }
+    .PAST .status-pill { background: #8a8a8a; }
+    .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; }
+    .exhibition-content h2 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: #181818; text-wrap: pretty; }
+    .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #7a7a7a; }
+    .exhibition-dates { margin: 0; font-size: 0.83rem; color: #888; }
+    .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.55; color: #454545; text-wrap: pretty; }
+    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: #c2c2c2; font-size: 1.05rem; line-height: 1; }
     .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
     .section.header { text-align: center; }
     .section.header .logo-wrapper { margin-bottom: 1rem; }
@@ -187,9 +187,8 @@
       #sulje-btn { display: flex; }
 
       .page-layout { flex-direction: column; }
-      .exhibition { flex-direction: column; }
-      .exhibition-image { width: 100%; max-width: 100%; height: 200px; flex: 1 1 auto; }
-      .exhibition-content { width: 100%; }
+      .exhibition-rail { flex-basis: 80px; width: 80px; }
+      .exhibition-image { width: 80px; height: 80px; }
       #map { height: 300px; }
     }
   </style>
@@ -479,6 +478,13 @@
       return { CURRENT:'Käynnissä', UPCOMING:'Tulossa', PAST:'Päättynyt', UNKNOWN:'Tuntematon' }[s] || s;
     }
 
+    function exhibitionImgFallback(img) {
+      const span = document.createElement('span');
+      span.className = 'image-placeholder-text';
+      span.textContent = img.dataset.letter || '?';
+      img.replaceWith(span);
+    }
+
     function renderExhibitions(list) {
       container.innerHTML = "";
       if (list.length === 0) {
@@ -494,18 +500,23 @@
         if (linkUrl) { card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer"; }
         const placeholderLetter = (ex.title || "?").trim().charAt(0).toUpperCase();
         const descHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : '';
-        const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3h7v7h-2V6.41l-8.29 8.3-1.42-1.42 8.3-8.29H14V3z"/><path d="M5 5h5V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg></span>` : '';
+        const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true">\u2197</span>` : '';
+        const imgHtml = imageUrl
+          ? `<img src="${imageUrl}" alt="${ex.title}" loading="lazy" data-letter="${placeholderLetter}" onerror="exhibitionImgFallback(this)" />`
+          : `<span class="image-placeholder-text">${placeholderLetter}</span>`;
         card.innerHTML = `
           ${linkIndicator}
-          <div class="exhibition-image${imageUrl ? "" : " no-image"}">
-            ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" loading="lazy" />` : `<span class="image-placeholder-text">${placeholderLetter}</span>`}
-          </div>
-          <div class="exhibition-content">
-            <h2>${ex.title}</h2>
-            <p class="exhibition-museum"><strong>${ex.museum}</strong></p>
-            <p class="exhibition-dates">${ex.start} – ${ex.end}</p>
-            ${descHtml}
-            <span class="tag">${getStatusLabel(st)}</span>
+          <div class="exhibition-row">
+            <div class="exhibition-rail">
+              <div class="exhibition-image">${imgHtml}</div>
+              <span class="status-pill">${getStatusLabel(st)}</span>
+            </div>
+            <div class="exhibition-content">
+              <p class="exhibition-museum">${ex.museum}</p>
+              <h2>${ex.title}</h2>
+              <p class="exhibition-dates">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
+              ${descHtml}
+            </div>
           </div>`;
         container.appendChild(card);
       });
