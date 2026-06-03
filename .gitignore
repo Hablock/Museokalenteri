@@ -1,2 +1,5 @@
 .DS_Store
-DESIGN_HANDOFFS/
+_DESIGN_HANDOFFS/
+.claude/
+archive/
+.DS_Store
