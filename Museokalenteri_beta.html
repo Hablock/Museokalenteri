@@ -71,8 +71,9 @@
     .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
     .exhibition-image { width: 96px; height: 96px; border-radius: 8px; overflow: hidden; background: #eef0f1; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; }
     .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .image-marker-fallback { width: 48px; height: 48px; object-fit: contain; opacity: 0.45; }
     .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 38px; font-weight: 700; color: rgba(0,0,0,0.25); }
-    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: 999px; color: #fff; background: #8a8a8a; }
+    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.8rem; font-weight: 700; border-radius: 999px; color: #fff; background: #8a8a8a; }
     .CURRENT .status-pill { background: #1f8a3b; }
     .UPCOMING .status-pill { background: #1f5fd6; }
     .PAST .status-pill { background: #8a8a8a; }
@@ -306,9 +307,10 @@
         </select>
       </div>
 
-      <div class="section" style="margin-bottom:0;">
-        <p id="today" style="margin:0 0 0.2rem; color:#333333; font-size:0.8rem;"></p>
-        <p id="last-updated" style="margin:0; color:#333333; font-size:0.8rem;"></p>
+      <div class="section" style="margin-bottom:0; display:flex; flex-direction:column; gap:0.5rem;">
+        <p id="today" style="margin:0; color:#333333; font-size:0.8rem;"></p>
+        <p id="last-updated-museo" style="margin:0; color:#333333; font-size:0.8rem;"></p>
+        <p id="last-updated-gallery" style="margin:0; color:#333333; font-size:0.8rem;"></p>
       </div>
 
     </aside>
@@ -342,7 +344,7 @@
   // Normalisoidaan gallery -> museum, jotta sama renderöinti/suodatus toimii sellaisenaan.
   fetch('./gallerianayttelyt.json')
     .then(res => res.ok ? res.json() : [])
-    .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery })); })
+    .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery, isGallery: true })); })
     .then(() => { if (refilterExhibitions) refilterExhibitions(); })
     .catch(() => {});
 
@@ -500,21 +502,23 @@
 
   fetch('./museonayttelyt_meta.json')
     .then(res => res.ok ? res.json() : null)
-    .then(meta => { if (meta && meta.createdAt) updateLastUpdated(meta.createdAt); })
+    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('museo', meta.createdAt); })
+    .catch(() => {});
+
+  fetch('./gallerianayttelyt_meta.json')
+    .then(res => res.ok ? res.json() : null)
+    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('gallery', meta.createdAt); })
     .catch(() => {});
 
   const nayttelytPromise = fetch('./museonayttelyt.json')
     .then(async res => {
-      const lastModified = res.headers ? res.headers.get('Last-Modified') : null;
       const data = await res.json();
-      return { data, lastModified };
+      return { data };
     });
 
   Promise.all([nayttelytPromise, museoDataPromise])
-    .then(([{ data, lastModified }]) => {
+    .then(([{ data }]) => {
       exhibitions = data;
-      const el = document.getElementById('last-updated');
-      if (el && !el.textContent && lastModified) updateLastUpdated(lastModified);
       initExhibitions();
     })
     .catch(err => {
@@ -606,11 +610,13 @@
       return { CURRENT:'Käynnissä', UPCOMING:'Tulossa', PAST:'Päättynyt', UNKNOWN:'Tuntematon' }[s] || s;
     }
 
-    function exhibitionImgFallback(img) {
-      const span = document.createElement('span');
-      span.className = 'image-placeholder-text';
-      span.textContent = img.dataset.letter || '?';
-      img.replaceWith(span);
+    function tryLoadImage(url) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
     }
 
     function renderExhibitions(list) {
@@ -626,17 +632,14 @@
         const card = document.createElement(linkUrl ? "a" : "div");
         card.className = `exhibition ${st}`;
         if (linkUrl) { card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer"; }
-        const placeholderLetter = (ex.title || "?").trim().charAt(0).toUpperCase();
         const descHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : '';
         const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true">\u2197</span>` : '';
-        const imgHtml = imageUrl
-          ? `<img src="${imageUrl}" alt="${ex.title}" loading="lazy" data-letter="${placeholderLetter}" onerror="exhibitionImgFallback(this)" />`
-          : `<span class="image-placeholder-text">${placeholderLetter}</span>`;
+        const markerSrc = ex.isGallery ? './img/museokalenteri_galleria.marker.png' : './img/museokalenteri_museo.marker.png';
         card.innerHTML = `
           ${linkIndicator}
           <div class="exhibition-row">
             <div class="exhibition-rail">
-              <div class="exhibition-image">${imgHtml}</div>
+              <div class="exhibition-image"><img src="${markerSrc}" alt="" class="image-marker-fallback" /></div>
               <span class="status-pill">${getStatusLabel(st)}</span>
             </div>
             <div class="exhibition-content">
@@ -647,9 +650,20 @@
             </div>
           </div>`;
         container.appendChild(card);
+        if (imageUrl) {
+          const imgContainer = card.querySelector('.exhibition-image');
+          tryLoadImage(imageUrl).then(ok => {
+            if (ok && imgContainer) {
+              const realImg = document.createElement('img');
+              realImg.src = imageUrl;
+              realImg.alt = ex.title;
+              imgContainer.innerHTML = '';
+              imgContainer.appendChild(realImg);
+            }
+          });
+        }
       });
     }
-
     function updateStatusCounts() {
       const now = new Date();
       const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
@@ -740,12 +754,14 @@
     applyFilter("ALL");
   }
 
-  function updateLastUpdated(header) {
-    const el = document.getElementById('last-updated');
+  function updateLastUpdated(type, dateStr) {
+    const id = type === 'gallery' ? 'last-updated-gallery' : 'last-updated-museo';
+    const el = document.getElementById(id);
     if (!el) return;
-    const d = new Date(header);
+    const d = new Date(dateStr);
     if (isNaN(d)) return;
-    el.textContent = `Tiedot päivitetty: ${d.toLocaleDateString('fi-FI', { year:'numeric', month:'long', day:'numeric' })}`;
+    const label = type === 'gallery' ? 'Galleriatiedot' : 'Museotiedot';
+    el.textContent = `${label} päivitetty: ${d.toLocaleDateString('fi-FI', { year:'numeric', month:'long', day:'numeric' })}`;
   }
 
   // Mobiili-drawer
