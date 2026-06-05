@@ -210,11 +210,13 @@
       .exhibition-image { width: 80px; height: 80px; }
       #map { height: 300px; }
     }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
 <body>
 
-  <div class="section header">
+  <header class="section header">
+    <h1 class="visually-hidden">Helsingin seudun Museokalenteri</h1>
     <div class="logo-wrapper">
       <img src="./img/museokalenteri_logo.png" alt="Helsingin seudun Museokalenteri" class="logo" />
     </div>
@@ -222,11 +224,11 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
       Rajaukset
     </button>
-  </div>
+  </header>
 
-  <div id="sidebar-overlay"></div>
+  <div id="sidebar-overlay" aria-hidden="true"></div>
 
-  <div class="page-layout">
+  <main class="page-layout">
 
     <!-- PÄÄSISÄLTÖ -->
     <div class="main-content">
@@ -303,7 +305,7 @@
 
     </aside>
 
-  </div><!-- /.page-layout -->
+  </main><!-- /.page-layout -->
 
   <script type="application/json" id="embedded-nayttelyt">
 [
