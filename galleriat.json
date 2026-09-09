@@ -196,8 +196,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "https://www.galleriahuuto.fi/",
-    "nayttelysivu": "https://www.galleriahuuto.fi/nayttelyt/",
-    "tulevanayttelysivu": "https://www.galleriahuuto.fi/nayttelyt/"
+    "nayttelysivu": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
+    "tulevanayttelysivu": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/"
   },
   {
     "nimi": "Kamera-galleria",
@@ -245,9 +245,9 @@
     "osoite": "Sörnäisten rantatie 19, 00530 Helsinki",
     "lat": null,
     "lng": null,
-    "kotisivu": "https://kuvatila.uniarts.fi/",
-    "nayttelysivu": "https://kuvatila.uniarts.fi/exhibitions/",
-    "tulevanayttelysivu": "https://kuvatila.uniarts.fi/exhibitions/"
+    "kotisivu": "https://www.uniarts.fi/kuva-tila/",
+    "nayttelysivu": "https://www.uniarts.fi/kuva-tila/",
+    "tulevanayttelysivu": "https://www.uniarts.fi/kuva-tila/"
   },
   {
     "nimi": "Galleria Kuvitus",
