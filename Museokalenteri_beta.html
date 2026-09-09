@@ -681,17 +681,11 @@
       });
     }
     function updateStatusCounts() {
-      const now = new Date();
-      const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
       const counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
       getVisibleBase().forEach(ex => {
         counts.ALL++;
         const st = computeStatus(ex);
         if (st in counts) counts[st]++;
-        const start = parseDate(ex.start);
-        const end   = parseDate(ex.end);
-        if (start >= now && start <= in2w) counts.OPENING_SOON++;
-        if (end   >= now && end   <= in2w) counts.CLOSING_SOON++;
       });
       statusButtons.forEach(btn => {
         const t = btn.dataset.filter;
