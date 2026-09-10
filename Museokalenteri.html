@@ -137,7 +137,6 @@
     .exhibition-image { width: 96px; height: 96px; border-radius: var(--rounded-md); overflow: hidden; background: var(--image-bg); box-shadow: var(--shadow-image-inset); display: flex; align-items: center; justify-content: center; }
     .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .image-marker-fallback { width: 48px; height: 48px; object-fit: contain; opacity: 0.45; }
-    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 38px; font-weight: 700; color: rgba(0,0,0,0.25); }
     .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: var(--rounded-pill); color: var(--gallery-white); background: var(--slate); }
     .CURRENT .status-pill { background: var(--status-current); }
     .UPCOMING .status-pill { background: var(--status-upcoming); }
@@ -282,7 +281,7 @@
   <header class="section header">
     <h1 class="visually-hidden">Helsingin seudun Museokalenteri</h1>
     <div class="logo-wrapper">
-      <img src="./img/museokalenteri_logo_wide.png" alt="Helsingin seudun Museokalenteri" class="logo" />
+      <img src="./img/museokalenteri_logo_wide.png" alt="Helsingin seudun Museokalenteri" class="logo" width="1218" height="360" />
     </div>
     <button id="rajaukset-btn" style="align-items:center; gap:0.4rem; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid var(--border-gray); border-radius:var(--rounded-btn); background:var(--gallery-white); cursor:pointer; font-weight:500; min-height:var(--touch-min);">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
@@ -581,15 +580,6 @@
       return { CURRENT:'Käynnissä', UPCOMING:'Tulossa', PAST:'Päättynyt', OPENING_SOON:'Aukeaa pian', CLOSING_SOON:'Päättyy pian', UNKNOWN:'Tuntematon' }[s] || s;
     }
 
-    function tryLoadImage(url) {
-      return new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
-    }
-
     function renderExhibitions(list) {
       container.innerHTML = "";
       if (list.length === 0) {
@@ -609,7 +599,10 @@
           ${linkIndicator}
           <div class="exhibition-row">
             <div class="exhibition-rail">
-              <div class="exhibition-image"><img src="./img/museokalenteri_museo.marker.png" alt="" class="image-marker-fallback" /></div>
+              <div class="exhibition-image">
+                <img src="./img/museokalenteri_museo.marker.png" alt="" class="image-marker-fallback" />
+                ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" class="exhibition-photo" style="display:none;" loading="lazy" decoding="async" />` : ''}
+              </div>
               <span class="status-pill">${getStatusLabel(st)}</span>
             </div>
             <div class="exhibition-content">
@@ -621,15 +614,11 @@
           </div>`;
         container.appendChild(card);
         if (imageUrl) {
-          const imgContainer = card.querySelector('.exhibition-image');
-          tryLoadImage(imageUrl).then(ok => {
-            if (ok && imgContainer) {
-              const realImg = document.createElement('img');
-              realImg.src = imageUrl;
-              realImg.alt = ex.title;
-              imgContainer.innerHTML = '';
-              imgContainer.appendChild(realImg);
-            }
+          const fallbackImg = card.querySelector('.image-marker-fallback');
+          const photoImg = card.querySelector('.exhibition-photo');
+          photoImg.addEventListener('load', () => {
+            fallbackImg.style.display = 'none';
+            photoImg.style.display = 'block';
           });
         }
       });
