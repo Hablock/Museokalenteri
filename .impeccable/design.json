@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-10T00:00:00.000Z",
+  "title": "Design System: Museokalenteri",
+  "extensions": {
+    "colorMeta": {
+      "ink-black":          { "role": "primary", "displayName": "Ink Black",        "canonical": "#181818", "tonalRamp": ["#0d0d0d", "#181818", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a8a8a8", "#e8e8e8"] },
+      "charcoal":           { "role": "primary", "displayName": "Charcoal",         "canonical": "#333333", "tonalRamp": ["#141414", "#2a2a2a", "#333333", "#4a4a4a", "#6b6b6b", "#8f8f8f", "#bdbdbd", "#e8e8e8"] },
+      "charcoal-hover":     { "role": "primary", "displayName": "Charcoal Hover",   "canonical": "#4a4a4a" },
+      "charcoal-active":    { "role": "primary", "displayName": "Charcoal Active",  "canonical": "#2a2a2a" },
+      "map-link-blue":      { "role": "secondary", "displayName": "Map Link Blue",  "canonical": "#1a6fb5", "tonalRamp": ["#0d3a5f", "#134f80", "#1a6fb5", "#2a8ad6", "#5aa8e2", "#8ec4ec", "#c3e0f5", "#eaf4fb"] },
+      "status-current":     { "role": "status", "displayName": "Verdant Now",       "canonical": "#047857", "tonalRamp": ["#022f22", "#04503a", "#047857", "#0a9c73", "#3ebd97", "#7dd4bb", "#bfe9dc", "#e9f8f2"] },
+      "status-upcoming":    { "role": "status", "displayName": "Indigo Ahead",      "canonical": "#4338ca", "tonalRamp": ["#1e1a5c", "#2e2790", "#4338ca", "#5c4fe0", "#8479ea", "#aca4f0", "#d4d0f8", "#f0eefc"] },
+      "status-opening-soon":{ "role": "status", "displayName": "Harbor Blue",       "canonical": "#0369a1", "tonalRamp": ["#022e45", "#04486b", "#0369a1", "#0c86c9", "#4aa8db", "#8cc7e8", "#c8e4f3", "#eef8fc"] },
+      "status-closing-soon":{ "role": "status", "displayName": "Signal Red",        "canonical": "#b91c1c", "tonalRamp": ["#5c0d0d", "#851414", "#b91c1c", "#dc2f2f", "#e86a6a", "#f0a0a0", "#f8d0d0", "#fcefef"] },
+      "status-past":        { "role": "status", "displayName": "Archive Gray",     "canonical": "#737373", "tonalRamp": ["#2e2e2e", "#4d4d4d", "#737373", "#8f8f8f", "#adadad", "#c7c7c7", "#e0e0e0", "#f4f4f4"] },
+      "paper-fog":          { "role": "neutral", "displayName": "Paper Fog",        "canonical": "#f9f9f9" },
+      "gallery-white":      { "role": "neutral", "displayName": "Gallery White",    "canonical": "#ffffff" },
+      "hairline-gray":      { "role": "neutral", "displayName": "Hairline Gray",    "canonical": "#e6e6e6" },
+      "divider-gray":       { "role": "neutral", "displayName": "Divider Gray",     "canonical": "#f0f0f0" },
+      "slate":              { "role": "neutral", "displayName": "Slate",            "canonical": "#8a8a8a" },
+      "body-gray":          { "role": "neutral", "displayName": "Body Gray",        "canonical": "#454545" },
+      "meta-gray":          { "role": "neutral", "displayName": "Meta Gray",        "canonical": "#636363" },
+      "label-gray":         { "role": "neutral", "displayName": "Label Gray",       "canonical": "#595959" },
+      "whisper-gray":       { "role": "neutral", "displayName": "Whisper Gray",     "canonical": "#c2c2c2" },
+      "title-gray":         { "role": "neutral", "displayName": "Section Title Gray", "canonical": "#444444" },
+      "chip-bg":            { "role": "neutral", "displayName": "Chip Gray",        "canonical": "#eeeeee" },
+      "border-gray":        { "role": "neutral", "displayName": "Ghost Border",     "canonical": "#cccccc" },
+      "border-hover-gray":  { "role": "neutral", "displayName": "Ghost Border Hover", "canonical": "#b5b5b5" },
+      "image-bg":           { "role": "neutral", "displayName": "Image Backdrop",   "canonical": "#eef0f1" },
+      "hover-tint":         { "role": "neutral", "displayName": "Hover Tint",       "canonical": "#f4f4f4" },
+      "active-tint":        { "role": "neutral", "displayName": "Active Tint",      "canonical": "#ececec" },
+      "popup-ink":          { "role": "neutral", "displayName": "Popup Ink",        "canonical": "#222222" },
+      "popup-meta":         { "role": "neutral", "displayName": "Popup Meta",       "canonical": "#666666" }
+    },
+    "typographyMeta": {
+      "title":   { "displayName": "Title",   "purpose": "Exhibition name — the de facto headline of every card." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "Uppercase museum-name tag above the title." },
+      "body":    { "displayName": "Body",    "purpose": "Optional exhibition description text." },
+      "label":   { "displayName": "Label",   "purpose": "Dates, filter/checkbox labels, results count." },
+      "micro":   { "displayName": "Micro",   "purpose": "Status pill text — smallest, always bold for legibility." }
+    },
+    "shadows": [
+      { "name": "ambient-rest",  "value": "0 1px 3px rgba(0,0,0,0.07)", "purpose": "Default resting shadow for exhibition cards." },
+      { "name": "ambient-panel", "value": "0 1px 2px rgba(0,0,0,0.03)", "purpose": "Resting shadow for sections/panels (map, status bar)." },
+      { "name": "hover-lift",    "value": "0 6px 20px rgba(0,0,0,0.08)", "purpose": "Exhibition card hover — paired with translateY(-2px)." },
+      { "name": "action-rest",   "value": "0 2px 4px rgba(0,0,0,0.08)", "purpose": "Filled primary buttons (Select all / Deselect all) at rest." },
+      { "name": "action-hover",  "value": "0 4px 10px rgba(0,0,0,0.12)", "purpose": "Filled primary buttons on hover." }
+    ],
+    "motion": [
+      { "name": "ease-card",   "value": "box-shadow 0.2s ease, transform 0.2s ease", "purpose": "Exhibition card hover lift." },
+      { "name": "ease-action", "value": "background-color 0.2s ease, box-shadow 0.2s ease", "purpose": "Filled button state changes." },
+      { "name": "ease-ghost",  "value": "background-color 0.15s ease, border-color 0.15s ease", "purpose": "Reset-filters ghost button." },
+      { "name": "ease-drawer", "value": "transform 0.25s ease", "purpose": "Mobile sidebar drawer slide-in/out." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Exhibition Card",
+      "kind": "card",
+      "refersTo": "card-exhibition",
+      "description": "The signature repeated unit: status-colored left border, image/status rail, and title/date/description content.",
+      "html": "<a class=\"ds-exhibition ds-status-current\" href=\"#\"><span class=\"ds-link-indicator\" aria-hidden=\"true\">&#8599;</span><div class=\"ds-exhibition-row\"><div class=\"ds-exhibition-rail\"><div class=\"ds-exhibition-image\"><img src=\"\" alt=\"\" class=\"ds-image-fallback\" /></div><span class=\"ds-status-pill\">Käynnissä</span></div><div class=\"ds-exhibition-content\"><p class=\"ds-eyebrow\">Ateneum</p><h2 class=\"ds-title\">Helene Schjerfbeck</h2><p class=\"ds-dates\">1.3.2026 – 30.6.2026</p><p class=\"ds-description\">Laaja retrospektiivi Schjerfbeckin tuotannosta.</p></div></div></a>",
+      "css": ".ds-exhibition { background:#fff; padding:0.95rem 1.05rem 1rem 0.95rem; border-left:4px solid #047857; border-radius:10px; display:block; position:relative; text-decoration:none; color:inherit; font-family:Roboto,Arial,sans-serif; box-shadow:0 1px 3px rgba(0,0,0,0.07); transition:box-shadow 0.2s ease, transform 0.2s ease; } .ds-exhibition:hover { box-shadow:0 6px 20px rgba(0,0,0,0.08); transform:translateY(-2px); } .ds-exhibition:focus-visible { outline:2px solid #333; outline-offset:4px; } .ds-link-indicator { position:absolute; top:0.7rem; right:0.85rem; color:#c2c2c2; font-size:1.05rem; } .ds-exhibition-row { display:flex; gap:0.95rem; align-items:flex-start; } .ds-exhibition-rail { flex:0 0 96px; width:96px; display:flex; flex-direction:column; gap:0.5rem; align-items:flex-start; } .ds-exhibition-image { width:96px; height:96px; border-radius:8px; overflow:hidden; background:#eef0f1; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05); display:flex; align-items:center; justify-content:center; } .ds-exhibition-image img { max-width:100%; max-height:100%; object-fit:contain; } .ds-status-pill { display:inline-block; padding:0.18rem 0.55rem; font-size:0.7rem; font-weight:700; border-radius:999px; color:#fff; background:#047857; } .ds-exhibition-content { flex:1; min-width:0; padding-right:1.2rem; } .ds-eyebrow { margin:0 0 0.28rem; font-size:0.78rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:#595959; } .ds-title { margin:0 0 0.25rem; font-size:1.12rem; font-weight:700; line-height:1.25; color:#181818; } .ds-dates { margin:0; font-size:0.88rem; color:#636363; } .ds-description { margin:0.8rem 0 0; padding-top:0.8rem; border-top:1px solid #f0f0f0; font-size:0.9rem; line-height:1.55; color:#454545; }"
+    },
+    {
+      "name": "Filter Button",
+      "kind": "button",
+      "refersTo": "button-filter",
+      "description": "Time-status filter chip with a leading colored dot; active state is neutral charcoal, never a status color.",
+      "html": "<div class=\"ds-filter-row\"><button class=\"ds-filter-btn\" data-status=\"current\">Käynnissä</button><button class=\"ds-filter-btn ds-filter-btn--active\">Kaikki</button></div>",
+      "css": ".ds-filter-row { display:flex; flex-wrap:wrap; gap:0.5rem; } .ds-filter-btn { padding:0.5rem 1rem; font-size:0.85rem; border:none; border-radius:4px; cursor:pointer; background:#eee; color:#333; font-family:Roboto,Arial,sans-serif; } .ds-filter-btn::before { content:''; display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:0.5rem; vertical-align:middle; background:#047857; } .ds-filter-btn--active { background:#333; color:#fff; } .ds-filter-btn--active::before { display:none; } .ds-filter-btn:hover { filter:brightness(0.97); }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid charcoal action button (Select all / Deselect all) — the only confidently-filled control in the system.",
+      "html": "<button class=\"ds-btn-primary\">Valitse kaikki</button>",
+      "css": ".ds-btn-primary { background:#333; color:#fff; width:100%; text-align:center; padding:0.5rem 1rem; font-size:0.85rem; font-weight:500; border:none; border-radius:4px; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.08); transition:background-color 0.2s ease, box-shadow 0.2s ease; font-family:Roboto,Arial,sans-serif; } .ds-btn-primary:hover { background:#4a4a4a; box-shadow:0 4px 10px rgba(0,0,0,0.12); } .ds-btn-primary:active { background:#2a2a2a; } .ds-btn-primary:focus-visible { outline:2px solid #333; outline-offset:4px; }"
+    },
+    {
+      "name": "Museum Checkbox Row",
+      "kind": "input",
+      "description": "A single row in the museum filter checklist — full-row click target, thin divider, charcoal accent checkbox.",
+      "html": "<div class=\"ds-checkbox-item\"><input type=\"checkbox\" id=\"ds-cb-1\" checked /><label for=\"ds-cb-1\">Ateneum</label></div>",
+      "css": ".ds-checkbox-item { display:flex; align-items:center; gap:0.5rem; padding:0.3rem 0; border-bottom:1px solid #f0f0f0; cursor:pointer; font-size:0.85rem; font-family:Roboto,Arial,sans-serif; } .ds-checkbox-item input[type=checkbox] { cursor:pointer; width:15px; height:15px; flex-shrink:0; accent-color:#333; } .ds-checkbox-item label { cursor:pointer; flex:1; line-height:1.3; }"
+    },
+    {
+      "name": "Section Panel",
+      "kind": "card",
+      "description": "The generic white panel used for the map, sidebar groups, and the results status bar.",
+      "html": "<div class=\"ds-section\"><p class=\"ds-section-title\">Aikasuodattimet</p></div>",
+      "css": ".ds-section { background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:1rem; box-shadow:0 1px 2px rgba(0,0,0,0.03); } .ds-section-title { margin:0 0 0.5rem; font-size:0.95rem; color:#444; font-weight:600; font-family:Roboto,Arial,sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The City Noticeboard",
+    "overview": "Museokalenteri reads like a well-run public noticeboard, not a marketing site: a neutral paper-gray ground, one workhorse typeface, and color spent on exactly one job — telling you whether an exhibition is running now, opening soon, or already over. Nothing competes with that signal. There is no brand hue, no illustration beyond a single bespoke museum-building glyph, and no gradient or drop shadow heavier than an ambient hint of paper lifting off a table.\n\nThe system is unapologetically flat and quiet at rest — sections and cards sit almost invisibly on the page (1–2px ambient shadows only) — and only animates in direct response to a hand on it: a card lifts 2px and its shadow deepens on hover, a filled button darkens on press. Depth is a reaction, not a decoration.\n\nIts one recurring discipline is triple-redundant status coding: the same five colors always appear in the same three places for the same meaning (a card's left border, its status pill, and the matching filter button's leading dot), so no visitor has to rely on color alone to know what's on. That discipline is also why this system holds up as a small public service rather than a personal sketch, even though it started as one.",
+    "keyCharacteristics": [
+      "Neutral paper/charcoal base with color reserved entirely for exhibition status",
+      "One typeface (Roboto/Arial), hierarchy from weight and size, never a second face",
+      "Flat at rest, lift-on-hover as the only elevation event",
+      "Rounded-rectangle geometry throughout; no sharp corners, no illustration except one line-art museum mark",
+      "Status is always shown in both color and text — never color alone"
+    ],
+    "rules": [
+      { "name": "The Triple-Coding Rule", "body": "Every exhibition status is shown three ways at once — a color, a plain-language label, and consistent position — never through color alone. The card's left border, its status pill text, and the matching filter's leading dot always share the same hue for the same status.", "section": "colors" },
+      { "name": "The Selection-Is-Neutral Rule", "body": "\"Selected\" or \"active\" never borrows a status color. Active filters and primary buttons are always Charcoal, so a selected control can never be mistaken for a CURRENT/UPCOMING/etc. status.", "section": "colors" },
+      { "name": "The One Family Rule", "body": "Roboto/Arial is the only typeface anywhere in the system.", "section": "typography" },
+      { "name": "The Flat-Until-Touched Rule", "body": "Nothing sits elevated at rest. Shadow only deepens in direct response to hover or focus, never as ambient decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do spend color on exhibition status only — the five status hues are the system's entire chromatic vocabulary outside of Map Link Blue.",
+      "Do show every status as both a color and a text label; never color alone (WCAG AA commitment).",
+      "Do keep shadows near-invisible at rest and reserve visible depth for hover/focus feedback only.",
+      "Do build all hierarchy from Roboto/Arial weight, size, and color — never introduce a second typeface.",
+      "Do prove any visual change in Museokalenteri_beta.html before it reaches the stable, publicly-shared Museokalenteri.html.",
+      "Do keep every interactive control at a 44px minimum touch height, and expose toggle/selection state through aria-pressed rather than a CSS class alone.",
+      "Do reference the :root custom properties for every color, radius, and spacing value instead of a new literal."
+    ],
+    "donts": [
+      "Don't give a \"selected/active\" control (filters, buttons) a status color — active state is always Charcoal.",
+      "Don't add gradients, heavy drop shadows, or decorative imagery — the museum-marker glyph is the only illustration allowed.",
+      "Don't introduce a second brand/accent hue — this system is neutral-plus-status, not neutral-plus-brand.",
+      "Don't port beta-only gallery features into the stable or design build without an explicit request."
+    ]
+  }
+}

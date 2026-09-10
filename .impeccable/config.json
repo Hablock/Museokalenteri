@@ -1,0 +1,15 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "roboto",
+        "createdAt": "2026-09-10T20:44:28.392Z",
+        "reason": "Incumbent typeface, documented as deliberate in DESIGN.md ('The One Family Rule') and PRODUCT.md's functional/civic positioning — not a distinctiveness play, so the generic-AI-font heuristic doesn't apply here."
+      }
+    ]
+  }
+}

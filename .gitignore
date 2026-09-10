@@ -2,3 +2,5 @@
 _DESIGN_HANDOFFS/
 .claude/
 archive/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
