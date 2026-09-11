@@ -20,9 +20,13 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Helsingin seudun Museokalenteri" />
   <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
-  <meta name="twitter:image" content="./img/museokalenteri_logo.png" />
+  <meta name="twitter:image" content="https://hablock.github.io/Museokalenteri/img/museokalenteri_og_image.png" />
   <meta name="twitter:image:alt" content="Helsingin seudun Museokalenteri" />
 
+  <link rel="icon" href="./img/museokalenteri_museo.marker.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./img/museokalenteri_museo.marker.png" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://tile.openstreetmap.org" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
   <script data-goatcounter="https://museokalenteri.goatcounter.com/count"
@@ -102,7 +106,6 @@
     .sidebar .filter-btn { text-align: left; width: 100%; }
     .sidebar #museum-select { width: 100%; min-width: unset; max-width: unset; }
     .sidebar #sort-select { width: 100%; min-width: unset; }
-    h1 { text-align: center; font-size: 2rem; margin-bottom: var(--space-2xl); }
     .logo-wrapper { background-color: var(--gallery-white); padding: var(--space-lg); border-radius: var(--rounded-md); display: inline-block; margin: 0 auto; }
     .logo { display: block; max-width: 100%; height: auto; margin: 0 auto; max-height: 300px; object-fit: contain; }
     .section.header { padding: var(--space-md) var(--space-md) 0; }
@@ -231,6 +234,7 @@
     }
     .map-fullscreen #map {
       height: 100vh !important;
+      height: 100dvh !important;
       border-radius: 0;
       border: none;
     }
@@ -478,16 +482,12 @@
     return "PAST";
   }
 
-  function statusLabel(s) {
-    return { CURRENT: "Käynnissä", UPCOMING: "Tulossa", PAST: "Päättynyt", OPENING_SOON: "Aukeaa pian", CLOSING_SOON: "Päättyy pian" }[s] || s;
-  }
-
   function formatDate(s) {
     if (!s) return "";
     return parseDate(s).toLocaleDateString('fi-FI', { day: 'numeric', month: 'numeric', year: 'numeric' });
   }
 
-  function updateMap(activeMuseums, allExhibitions) {
+  function updateMap(activeMuseums) {
     markerLayer.clearLayers();
     activeMuseums.forEach(museumName => {
       const info = museumData[museumName];
@@ -577,7 +577,7 @@
     let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
 
     // Alkupiirto kartalle
-    updateMap(activeMuseums, exhibitions);
+    updateMap(activeMuseums);
 
     function getFilteredExhibitions(statusType) {
       const now = new Date();
@@ -636,8 +636,8 @@
           <div class="exhibition-row">
             <div class="exhibition-rail">
               <div class="exhibition-image">
-                <img src="./img/museokalenteri_museo.marker.png" alt="" class="image-marker-fallback" />
-                ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
+                <img src="./img/museokalenteri_museo.marker.svg" alt="" class="image-marker-fallback" />
+                ${imageUrl ? `<img src="${imageUrl}" alt="" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
               </div>
               <span class="status-pill">${getStatusLabel(st)}</span>
             </div>
@@ -701,7 +701,7 @@
       activeStatus = "ALL";
       activeMuseums = new Set(museumSet);
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter("ALL");
     }
 
@@ -709,7 +709,7 @@
 
     function syncMuseums() {
       activeMuseums = getCheckedMuseums();
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     }
 
@@ -720,14 +720,14 @@
     selectAllBtn.addEventListener("click", () => {
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
       activeMuseums = new Set(museumSet);
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     });
 
     deselectAllBtn.addEventListener("click", () => {
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = false);
       activeMuseums = new Set();
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     });
 
