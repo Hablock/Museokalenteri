@@ -90,6 +90,8 @@
       --overlay-backdrop: rgba(0,0,0,0.35);
     }
     * { box-sizing: border-box; }
+    /* Lomake-elementit eivät peri fonttia oletuksena (One Family Rule) */
+    button, select, input { font-family: inherit; }
     body { font-family: Roboto, Arial, sans-serif; padding: var(--space-2xl); max-width: 980px; margin: auto; background: var(--paper-fog); }
     .page-layout { display: flex; gap: var(--space-xl); align-items: flex-start; }
     .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--space-lg); }
@@ -147,7 +149,7 @@
     .OPENING_SOON .status-pill { background: var(--status-opening-soon); }
     .CLOSING_SOON .status-pill { background: var(--status-closing-soon); }
     .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; }
-    .exhibition-content h2 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: var(--ink-black); text-wrap: pretty; }
+    .exhibition-content h3 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: var(--ink-black); text-wrap: pretty; }
     .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--label-gray); }
     .exhibition-dates { margin: 0; font-size: 0.88rem; color: var(--meta-gray); }
     .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid var(--divider-gray); font-size: 0.9rem; line-height: 1.55; color: var(--body-gray); text-wrap: pretty; }
@@ -156,7 +158,25 @@
     .section.header { text-align: center; }
     .section.header .logo-wrapper { margin-bottom: var(--space-lg); }
     .section .section-title { margin: 0 0 var(--space-sm) 0; font-size: 0.95rem; color: var(--title-gray); font-weight: 600; }
-    .controls-row { display: flex; flex-wrap: wrap; gap: var(--space-md); align-items: center; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+    .section-head .section-title { margin: 0; }
+    .sidebar .section:last-child { margin-bottom: 0; }
+    .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
+    #deselect-all-museums { margin-top: var(--space-xs); }
+    #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
+    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; }
+    .sidebar-meta + .sidebar-meta { margin-top: 0.2rem; }
+    .list-message { margin: 0; padding: var(--space-lg) 0; color: var(--body-gray); font-size: 0.9rem; }
+    .list-message--error { color: var(--status-closing-soon); }
+
+    /* Ghost-napit: Rajaukset, Sulje, Piilota kartta */
+    .ghost-btn { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border-gray); background: var(--gallery-white); color: var(--charcoal); font-weight: 500; cursor: pointer; min-height: var(--touch-min); transition: background-color 0.15s ease, border-color 0.15s ease; }
+    .ghost-btn:hover { background: var(--hover-tint); border-color: var(--border-hover-gray); }
+    .ghost-btn:active { background: var(--active-tint); }
+    .ghost-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .drawer-btn { padding: 0.45rem 0.8rem; font-size: 0.85rem; border-radius: var(--rounded-btn); }
+    #sulje-btn { justify-content: space-between; width: 100%; margin-bottom: 0.25rem; }
+    #map-toggle-btn { padding: 0.25rem 0.6rem; font-size: 0.8rem; border-radius: var(--rounded-sm); }
 
     /* Checkbox-museolista */
     .museum-checkbox-item { display: flex; align-items: center; gap: var(--space-sm); padding: 0.85rem 0; border-bottom: 1px solid var(--divider-gray); cursor: pointer; font-size: 0.85rem; }
@@ -182,8 +202,8 @@
       background: var(--gallery-white);
       border: 1px solid var(--border-gray);
       border-radius: var(--rounded-sm);
-      width: 30px;
-      height: 30px;
+      width: var(--touch-min);
+      height: var(--touch-min);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -192,7 +212,9 @@
       padding: 0;
     }
     #map-fullscreen-btn:hover { background: var(--hover-tint); }
-    #map-fullscreen-btn svg { width: 16px; height: 16px; display: block; }
+    #map-fullscreen-btn svg { width: 18px; height: 18px; display: block; }
+    /* Leafletin zoom-napit samaan 44px kosketuskokoon */
+    .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: var(--touch-min); height: var(--touch-min); line-height: var(--touch-min); font-size: 20px; }
 
     /* Koko näyttö -tila */
     .map-fullscreen #map-section {
@@ -221,6 +243,12 @@
     #rajaukset-btn { display: none; }
     #sulje-btn { display: none; }
     #sidebar-overlay { display: none; }
+
+    /* Liikeherkkyys: tilanmuutokset säilyvät (varjo, väri), siirtymät ja nosto poistuvat */
+    @media (prefers-reduced-motion: reduce) {
+      .exhibition, .museum-btn.special, #reset-filters-btn, .ghost-btn, .sidebar, #map, .exhibition-photo { transition: none; }
+      .exhibition:hover { transform: none; }
+    }
 
     @media (max-width: 768px) {
       body { padding: var(--space-md); }
@@ -252,13 +280,14 @@
         padding: var(--space-lg);
         box-shadow: var(--shadow-drawer);
         transform: translateX(110%);
-        transition: transform 0.25s ease;
+        visibility: hidden; /* suljettu drawer pois tab-järjestyksestä ja ruudunlukijalta */
+        transition: transform 0.25s ease, visibility 0s linear 0.25s;
         flex: unset;
         display: flex;
         flex-direction: column;
         gap: var(--space-lg);
       }
-      .sidebar.open { transform: translateX(0); }
+      .sidebar.open { transform: translateX(0); visibility: visible; transition: transform 0.25s ease, visibility 0s; }
 
       /* Overlay */
       #sidebar-overlay {
@@ -288,8 +317,8 @@
     <div class="logo-wrapper">
       <img src="./img/museokalenteri_logo_wide.png" alt="Helsingin seudun Museokalenteri" class="logo" width="1218" height="360" />
     </div>
-    <button id="rajaukset-btn" style="align-items:center; gap:0.4rem; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid var(--border-gray); border-radius:var(--rounded-btn); background:var(--gallery-white); cursor:pointer; font-weight:500; min-height:var(--touch-min);">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+    <button id="rajaukset-btn" class="ghost-btn drawer-btn" type="button" aria-expanded="false" aria-controls="sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
       Rajaukset
     </button>
   </header>
@@ -303,16 +332,16 @@
 
       <!-- KARTTA -->
       <div class="section" id="map-section">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
-          <p class="section-title" id="map-section-title" style="margin:0;">Valitut museot kartalla</p>
-          <button id="map-toggle-btn" style="font-size:0.8rem; padding:0.25rem 0.6rem; border:1px solid var(--border-gray); border-radius:var(--rounded-sm); background:var(--gallery-white); cursor:pointer; min-height:var(--touch-min); display:inline-flex; align-items:center;">Piilota kartta</button>
+        <div class="section-head">
+          <h2 class="section-title" id="map-section-title">Valitut museot kartalla</h2>
+          <button id="map-toggle-btn" class="ghost-btn" type="button" aria-expanded="true" aria-controls="map">Piilota kartta</button>
         </div>
         <div class="map-canvas">
-          <button id="map-fullscreen-btn" title="Koko näyttö">
-            <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <button id="map-fullscreen-btn" type="button" title="Koko näyttö" aria-label="Kartta koko näytölle" aria-pressed="false">
+            <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
             </svg>
-            <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
               <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
             </svg>
           </button>
@@ -330,15 +359,15 @@
     </div><!-- /.main-content -->
 
     <!-- SIVUPALKKI -->
-    <aside class="sidebar" aria-label="Rajaukset">
+    <aside class="sidebar" id="sidebar" aria-label="Rajaukset">
 
-      <button id="sulje-btn" style="align-items:center; justify-content:space-between; width:100%; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid var(--border-gray); border-radius:var(--rounded-btn); background:var(--gallery-white); cursor:pointer; font-weight:500; margin-bottom:0.25rem; min-height:var(--touch-min);">
+      <button id="sulje-btn" class="ghost-btn drawer-btn" type="button">
         Sulje
-        <span style="font-size:1.1rem; line-height:1;">&#x2715;</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
 
       <div class="section">
-        <p class="section-title">Aikasuodattimet</p>
+        <h2 class="section-title">Aikasuodattimet</h2>
         <div class="filter-bar" role="group" aria-label="Aikasuodattimet">
           <button class="filter-btn active" data-filter="ALL" aria-pressed="true">Kaikki</button>
           <button class="filter-btn" data-filter="UPCOMING" aria-pressed="false">Tulossa</button>
@@ -350,17 +379,17 @@
       </div>
 
       <div class="section">
-        <p class="section-title">Museot</p>
-        <div class="museum-filter-bar" style="margin:0 0 0.5rem;">
-          <button id="select-all-museums" class="museum-btn special">Valitse kaikki</button>
-          <button id="deselect-all-museums" class="museum-btn special" style="margin-top:0.35rem;">Poista valinnat</button>
+        <h2 class="section-title">Museot</h2>
+        <div class="museum-filter-bar">
+          <button id="select-all-museums" class="museum-btn special" type="button">Valitse kaikki</button>
+          <button id="deselect-all-museums" class="museum-btn special">Poista valinnat</button>
         </div>
         <div id="museum-checkbox-list"></div>
       </div>
 
       <div class="section">
-        <p class="section-title">Järjestys</p>
-        <select id="sort-select" aria-label="Järjestä lista" style="width:100%; padding:0.4rem 0.6rem;">
+        <h2 class="section-title">Järjestys</h2>
+        <select id="sort-select" aria-label="Järjestä lista">
           <option value="MUSEUM">Museon mukaan</option>
           <option value="TITLE">Näyttelyn nimen mukaan</option>
           <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
@@ -368,9 +397,9 @@
         </select>
       </div>
 
-      <div class="section" style="margin-bottom:0;">
-        <p id="today" style="margin:0 0 0.2rem; color:var(--charcoal); font-size:0.8rem;"></p>
-        <p id="last-updated" style="margin:0; color:var(--charcoal); font-size:0.8rem;"></p>
+      <div class="section">
+        <p id="today" class="sidebar-meta"></p>
+        <p id="last-updated" class="sidebar-meta"></p>
       </div>
 
     </aside>
@@ -506,7 +535,7 @@
     })
     .catch(err => {
       document.getElementById("exhibitionList").innerHTML =
-        "<p style='color:red'>Virhe ladattaessa museonayttelyt.json: " + err.message + "</p>";
+        "<p class='list-message list-message--error'>Näyttelyiden lataus epäonnistui (" + err.message + "). Päivitä sivu hetken kuluttua.</p>";
     });
 
   function initExhibitions() {
@@ -588,7 +617,7 @@
     function renderExhibitions(list) {
       container.innerHTML = "";
       if (list.length === 0) {
-        container.innerHTML = "<p style='color:#555'>Suodattimillasi ei löydy näyttelyitä.</p>";
+        container.innerHTML = "<p class='list-message'>Suodattimillasi ei löydy näyttelyitä.</p>";
         return;
       }
       list.forEach(ex => {
@@ -612,7 +641,7 @@
             </div>
             <div class="exhibition-content">
               <p class="exhibition-museum">${ex.museum}</p>
-              <h2>${ex.title}</h2>
+              <h3>${ex.title}</h3>
               <p class="exhibition-dates">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
               ${descHtml}
             </div>
@@ -736,6 +765,7 @@
   function openDrawer() {
     sidebar.classList.add('open');
     overlay.classList.add('open');
+    rajauksetBtn.setAttribute('aria-expanded', 'true');
     sidebar.setAttribute('role', 'dialog');
     sidebar.setAttribute('aria-modal', 'true');
     headerEl.setAttribute('inert', '');
@@ -746,6 +776,7 @@
   function closeDrawer() {
     sidebar.classList.remove('open');
     overlay.classList.remove('open');
+    rajauksetBtn.setAttribute('aria-expanded', 'false');
     sidebar.removeAttribute('role');
     sidebar.removeAttribute('aria-modal');
     headerEl.removeAttribute('inert');
@@ -769,14 +800,17 @@
     mapFullscreenBtn.style.display = mapVisible ? '' : 'none';
     mapSectionTitle.style.display = mapVisible ? '' : 'none';
     mapToggleBtn.textContent = mapVisible ? 'Piilota kartta' : 'Näytä kartta';
+    mapToggleBtn.setAttribute('aria-expanded', String(mapVisible));
     if (mapVisible) setTimeout(() => map.invalidateSize(), 50);
   });
 
   // Kartan koko näyttö -toiminto
   document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
     const isFullscreen = document.body.classList.toggle('map-fullscreen');
-    document.getElementById('icon-expand').style.display  = isFullscreen ? 'none'  : 'block';
-    document.getElementById('icon-collapse').style.display = isFullscreen ? 'block' : 'none';
+    document.getElementById('icon-expand').hidden  = isFullscreen;
+    document.getElementById('icon-collapse').hidden = !isFullscreen;
+    mapFullscreenBtn.setAttribute('aria-pressed', String(isFullscreen));
+    mapFullscreenBtn.setAttribute('aria-label', isFullscreen ? 'Sulje koko näyttö' : 'Kartta koko näytölle');
     setTimeout(() => map.invalidateSize(), 200);
   });
 
