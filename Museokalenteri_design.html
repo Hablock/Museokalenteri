@@ -20,115 +20,206 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Helsingin seudun Museokalenteri" />
   <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
-  <meta name="twitter:image" content="./img/museokalenteri_logo.png" />
+  <meta name="twitter:image" content="https://hablock.github.io/Museokalenteri/img/museokalenteri_og_image.png" />
   <meta name="twitter:image:alt" content="Helsingin seudun Museokalenteri" />
 
+  <link rel="icon" href="./img/museokalenteri_museo.marker.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./img/museokalenteri_museo.marker.png" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://tile.openstreetmap.org" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
   <script data-goatcounter="https://museokalenteri.goatcounter.com/count"
-  async src="//gc.zgo.at/count.js"></script>
+        async src="//gc.zgo.at/count.js"></script>
 
   <style>
+    :root {
+      /* Colors — see DESIGN.md */
+      --ink-black: #181818;
+      --charcoal: #333333;
+      --charcoal-hover: #4a4a4a;
+      --charcoal-active: #2a2a2a;
+      --paper-fog: #f9f9f9;
+      --gallery-white: #ffffff;
+      --hairline-gray: #e6e6e6;
+      --divider-gray: #f0f0f0;
+      --slate: #8a8a8a;
+      --body-gray: #454545;
+      --meta-gray: #636363;
+      --label-gray: #595959;
+      --whisper-gray: #c2c2c2;
+      --title-gray: #444444;
+      --chip-bg: #eeeeee;
+      --border-gray: #cccccc;
+      --border-hover-gray: #b5b5b5;
+      --image-bg: #eef0f1;
+      --hover-tint: #f4f4f4;
+      --active-tint: #ececec;
+      --popup-ink: #222222;
+      --popup-meta: #666666;
+      --map-link-blue: #1a6fb5;
+      --status-current: #047857;
+      --status-upcoming: #4338ca;
+      --status-opening-soon: #0369a1;
+      --status-closing-soon: #b91c1c;
+      --status-past: #737373;
+
+      /* Shape */
+      --rounded-sm: 4px;
+      --rounded-btn: 6px;
+      --rounded-md: 8px;
+      --rounded-lg: 10px;
+      --rounded-pill: 999px;
+
+      /* Spacing */
+      --space-xs: 0.35rem;
+      --space-sm: 0.5rem;
+      --space-md: 0.75rem;
+      --space-lg: 1rem;
+      --space-xl: 1.5rem;
+      --space-2xl: 2rem;
+
+      /* Touch target floor */
+      --touch-min: 44px;
+
+      /* Elevation */
+      --shadow-ambient-panel: 0 1px 2px rgba(0,0,0,0.03);
+      --shadow-ambient-rest: 0 1px 3px rgba(0,0,0,0.07);
+      --shadow-hover-lift: 0 6px 20px rgba(0,0,0,0.08);
+      --shadow-action-rest: 0 2px 4px rgba(0,0,0,0.08);
+      --shadow-action-hover: 0 4px 10px rgba(0,0,0,0.12);
+      --shadow-fullscreen-btn: 0 1px 4px rgba(0,0,0,0.15);
+      --shadow-image-inset: inset 0 0 0 1px rgba(0,0,0,0.05);
+      --shadow-drawer: -4px 0 16px rgba(0,0,0,0.18);
+      --overlay-backdrop: rgba(0,0,0,0.35);
+    }
     * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; padding: 2rem; max-width: 980px; margin: auto; background: #f9f9f9; }
-    .page-layout { display: flex; gap: 1.5rem; align-items: flex-start; }
-    .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: 1rem; }
+    /* Lomake-elementit eivät peri fonttia oletuksena (One Family Rule) */
+    button, select, input { font-family: inherit; }
+    /* hidden-attribuutti voittaa aina omat display-säännöt */
+    [hidden] { display: none !important; }
+    body { font-family: Roboto, Arial, sans-serif; padding: var(--space-2xl); max-width: 980px; margin: auto; background: var(--paper-fog); }
+    .page-layout { display: flex; gap: var(--space-xl); align-items: flex-start; }
+    .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--space-lg); }
     .main-content { flex: 1; min-width: 0; }
-    .sidebar .filter-bar { flex-direction: column; gap: 0.35rem; margin-bottom: 0; }
+    .sidebar .filter-bar { flex-direction: column; gap: var(--space-xs); margin-bottom: 0; }
     .sidebar .filter-btn { text-align: left; width: 100%; }
     .sidebar #museum-select { width: 100%; min-width: unset; max-width: unset; }
     .sidebar #sort-select { width: 100%; min-width: unset; }
-    h1 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
-    .logo-wrapper { background-color: #ffffff; padding: 1rem; border-radius: 8px; display: inline-block; margin: 0 auto; }
+    .logo-wrapper { background-color: var(--gallery-white); padding: var(--space-lg); border-radius: var(--rounded-md); display: inline-block; margin: 0 auto; }
     .logo { display: block; max-width: 100%; height: auto; margin: 0 auto; max-height: 300px; object-fit: contain; }
-    .section.header { padding: 0.75rem 0.75rem 0; }
-    .filter-bar, .museum-filter-bar { margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .filter-btn, .museum-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border: none; border-radius: 4px; cursor: pointer; background-color: #eee; }
-    .filter-btn.active, .museum-btn.active { background-color: #333; color: white; }
-    .filter-btn::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.5rem; vertical-align: middle; background: #8a8a8a; }
+    .section.header { padding: var(--space-md) var(--space-md) 0; }
+    .filter-bar, .museum-filter-bar { margin-bottom: var(--space-lg); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .filter-btn, .museum-btn { padding: var(--space-sm) var(--space-lg); font-size: 0.85rem; border: none; border-radius: var(--rounded-sm); cursor: pointer; background-color: var(--chip-bg); min-height: var(--touch-min); display: inline-flex; align-items: center; }
+    .filter-btn.active, .museum-btn.active { background-color: var(--charcoal); color: var(--gallery-white); }
+    .filter-btn::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: var(--space-sm); vertical-align: middle; background: var(--slate); }
     .filter-btn[data-filter="ALL"]::before { display: none; }
-    .filter-btn[data-filter="CURRENT"]::before { background: #047857; }
-    .filter-btn[data-filter="UPCOMING"]::before { background: #4338ca; }
-    .filter-btn[data-filter="PAST"]::before { background: #737373; }
-    .filter-btn[data-filter="OPENING_SOON"]::before { background: #0369a1; }
-    .filter-btn[data-filter="CLOSING_SOON"]::before { background: #b91c1c; }
+    .filter-btn[data-filter="CURRENT"]::before { background: var(--status-current); }
+    .filter-btn[data-filter="UPCOMING"]::before { background: var(--status-upcoming); }
+    .filter-btn[data-filter="PAST"]::before { background: var(--status-past); }
+    .filter-btn[data-filter="OPENING_SOON"]::before { background: var(--status-opening-soon); }
+    .filter-btn[data-filter="CLOSING_SOON"]::before { background: var(--status-closing-soon); }
     .museum-filter-bar { flex-direction: column; align-items: stretch; }
-    .museum-btn.special { background-color: #333; color: white; width: 100%; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
-    .museum-btn.special:hover { background-color: #4a4a4a; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
-    .museum-btn.special:active { background-color: #2a2a2a; }
-    #results-status-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; padding: 0.6rem 0.85rem; margin: 0.25rem 0 0.5rem; background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
-    .results-count { margin: 0; font-size: 0.9rem; color: #333333; }
-    .results-count strong { color: #111; }
-    #reset-filters-btn { display: none; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 500; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; white-space: nowrap; cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease; }
-    #reset-filters-btn:hover { background: #f4f4f4; border-color: #b5b5b5; }
-    #reset-filters-btn:active { background: #ececec; }
+    .museum-btn.special { background-color: var(--charcoal); color: var(--gallery-white); width: 100%; text-align: center; justify-content: center; box-shadow: var(--shadow-action-rest); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+    .museum-btn.special:hover { background-color: var(--charcoal-hover); box-shadow: var(--shadow-action-hover); }
+    .museum-btn.special:active { background-color: var(--charcoal-active); }
+    #results-status-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; padding: 0.6rem 0.85rem; margin: 0.25rem 0 var(--space-sm); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); }
+    .results-count { margin: 0; font-size: 0.9rem; color: var(--charcoal); }
+    .results-count strong { color: var(--ink-black); }
+    #reset-filters-btn { display: none; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 500; border: 1px solid var(--border-gray); border-radius: var(--rounded-btn); background: var(--gallery-white); color: var(--charcoal); white-space: nowrap; cursor: pointer; min-height: var(--touch-min); transition: background-color 0.15s ease, border-color 0.15s ease; }
+    #reset-filters-btn:hover { background: var(--hover-tint); border-color: var(--border-hover-gray); }
+    #reset-filters-btn:active { background: var(--active-tint); }
     #results-status-bar.filtered #reset-filters-btn { display: inline-flex; }
-    #exhibitionList { display: flex; flex-direction: column; gap: 0.75rem; }
-    .exhibition { background: #fff; margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid #8a8a8a; border-radius: 10px; display: block; position: relative; text-decoration: none; color: inherit; font-family: Arial, sans-serif; box-shadow: 0 1px 3px rgba(0,0,0,0.07); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
-    .exhibition:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .exhibition:focus-visible { outline: 2px solid #333; outline-offset: 4px; }
-    .CURRENT { border-left-color: #047857; }
-    .UPCOMING { border-left-color: #4338ca; }
-    .PAST { border-left-color: #737373; }
-    .OPENING_SOON { border-left-color: #0369a1; }
-    .CLOSING_SOON { border-left-color: #b91c1c; }
+    #exhibitionList { display: flex; flex-direction: column; gap: var(--space-md); }
+    .exhibition { background: var(--gallery-white); margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid var(--slate); border-radius: var(--rounded-lg); display: block; position: relative; text-decoration: none; color: inherit; font-family: Roboto, Arial, sans-serif; box-shadow: var(--shadow-ambient-rest); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
+    .exhibition:hover { box-shadow: var(--shadow-hover-lift); transform: translateY(-2px); }
+    .exhibition:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 4px; }
+    .CURRENT { border-left-color: var(--status-current); }
+    .UPCOMING { border-left-color: var(--status-upcoming); }
+    .PAST { border-left-color: var(--status-past); }
+    .OPENING_SOON { border-left-color: var(--status-opening-soon); }
+    .CLOSING_SOON { border-left-color: var(--status-closing-soon); }
     .exhibition-row { display: flex; gap: 0.95rem; align-items: flex-start; }
-    .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-    .exhibition-image { width: 96px; height: 96px; border-radius: 8px; overflow: hidden; background: #eef0f1; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; }
+    .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: var(--space-sm); align-items: flex-start; }
+    .exhibition-image { position: relative; width: 96px; height: 96px; border-radius: var(--rounded-md); overflow: hidden; background: var(--image-bg); box-shadow: var(--shadow-image-inset); display: flex; align-items: center; justify-content: center; }
     .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .image-marker-fallback { width: 48px; height: 48px; object-fit: contain; opacity: 0.45; }
-    .image-placeholder-text { display: block; width: 100%; text-align: center; font-size: 38px; font-weight: 700; color: rgba(0,0,0,0.25); }
-    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: 999px; color: #fff; background: #8a8a8a; }
-    .CURRENT .status-pill { background: #047857; }
-    .UPCOMING .status-pill { background: #4338ca; }
-    .PAST .status-pill { background: #737373; }
-    .OPENING_SOON .status-pill { background: #0369a1; }
-    .CLOSING_SOON .status-pill { background: #b91c1c; }
+    /* Kuva pysyy renderöitynä (opacity, ei display:none), jotta loading="lazy" käynnistyy */
+    .exhibition-photo { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; opacity: 0; transition: opacity 0.2s ease; }
+    .exhibition-photo.is-loaded { opacity: 1; }
+    .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: var(--rounded-pill); color: var(--gallery-white); background: var(--slate); }
+    .CURRENT .status-pill { background: var(--status-current); }
+    .UPCOMING .status-pill { background: var(--status-upcoming); }
+    .PAST .status-pill { background: var(--status-past); }
+    .OPENING_SOON .status-pill { background: var(--status-opening-soon); }
+    .CLOSING_SOON .status-pill { background: var(--status-closing-soon); }
     .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; }
-    .exhibition-content h2 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: #181818; text-wrap: pretty; }
-    .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #595959; }
-    .exhibition-dates { margin: 0; font-size: 0.88rem; color: #636363; }
-    .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.55; color: #454545; text-wrap: pretty; }
-    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: #c2c2c2; font-size: 1.05rem; line-height: 1; }
-    .section { background: #ffffff; border: 1px solid #e6e6e6; border-radius: 8px; padding: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 1rem; }
+    .exhibition-content h3 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: var(--ink-black); text-wrap: pretty; }
+    .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--label-gray); }
+    .exhibition-dates { margin: 0; font-size: 0.88rem; color: var(--meta-gray); }
+    .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid var(--divider-gray); font-size: 0.9rem; line-height: 1.55; color: var(--body-gray); text-wrap: pretty; }
+    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--whisper-gray); font-size: 1.05rem; line-height: 1; }
+    .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--space-lg); }
     .section.header { text-align: center; }
-    .section.header .logo-wrapper { margin-bottom: 1rem; }
-    .section .section-title { margin: 0 0 0.5rem 0; font-size: 0.95rem; color: #444; font-weight: 600; }
-    .controls-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .section.header .logo-wrapper { margin-bottom: var(--space-lg); }
+    .section .section-title { margin: 0 0 var(--space-sm) 0; font-size: 0.95rem; color: var(--title-gray); font-weight: 600; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+    .section-head .section-title { margin: 0; }
+    .sidebar .section:last-child { margin-bottom: 0; }
+    .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
+    .museum-filter-bar .museum-btn.special + .museum-btn.special { margin-top: var(--space-xs); }
+    #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
+    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; }
+    .sidebar-meta + .sidebar-meta { margin-top: 0.2rem; }
+    .list-message { margin: 0; padding: var(--space-lg) 0; color: var(--body-gray); font-size: 0.9rem; }
+    .list-message--error { color: var(--status-closing-soon); }
+
+    /* Ghost-napit: Rajaukset, Sulje, Piilota kartta */
+    .ghost-btn { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--border-gray); background: var(--gallery-white); color: var(--charcoal); font-weight: 500; cursor: pointer; min-height: var(--touch-min); transition: background-color 0.15s ease, border-color 0.15s ease; }
+    .ghost-btn:hover { background: var(--hover-tint); border-color: var(--border-hover-gray); }
+    .ghost-btn:active { background: var(--active-tint); }
+    .ghost-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .drawer-btn { padding: 0.45rem 0.8rem; font-size: 0.85rem; border-radius: var(--rounded-btn); }
+    #sulje-btn { justify-content: space-between; width: 100%; margin-bottom: 0.25rem; }
+    #map-toggle-btn { padding: 0.25rem 0.6rem; font-size: 0.8rem; border-radius: var(--rounded-sm); }
 
     /* Checkbox-museolista */
-    .museum-checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 0.85rem; }
+    .museum-checkbox-item { display: flex; align-items: center; gap: var(--space-sm); padding: 0.85rem 0; border-bottom: 1px solid var(--divider-gray); cursor: pointer; font-size: 0.85rem; }
     .museum-checkbox-item:last-child { border-bottom: none; }
-    .museum-checkbox-item input[type="checkbox"] { cursor: pointer; width: 15px; height: 15px; flex-shrink: 0; accent-color: #333; }
+    .museum-checkbox-item input[type="checkbox"] { cursor: pointer; width: 15px; height: 15px; flex-shrink: 0; accent-color: var(--charcoal); }
     .museum-checkbox-item label { cursor: pointer; flex: 1; line-height: 1.3; }
     #map-section { position: relative; }
-    .leaflet-tile-pane { filter: grayscale(1) brightness(1.06); }
     #map {
       width: 100%;
       height: 420px;
-      border-radius: 6px;
-      border: 1px solid #e0e0e0;
+      border-radius: var(--rounded-btn);
+      border: 1px solid var(--hairline-gray);
       transition: border-radius 0.2s;
     }
+    .map-canvas { position: relative; }
+    /* Harmaasävyiset OSM-laatat: kartta pysyy taustana, värit jäävät tilamerkinnöille */
+    .leaflet-tile-pane { filter: grayscale(1) brightness(1.06); }
     #map-fullscreen-btn {
       position: absolute;
-      top: 38px;
+      top: 8px;
       right: 8px;
       z-index: 1000;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      width: 30px;
-      height: 30px;
+      background: var(--gallery-white);
+      border: 1px solid var(--border-gray);
+      border-radius: var(--rounded-sm);
+      width: var(--touch-min);
+      height: var(--touch-min);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-fullscreen-btn);
       padding: 0;
     }
-    #map-fullscreen-btn:hover { background: #f4f4f4; }
-    #map-fullscreen-btn svg { width: 16px; height: 16px; display: block; }
+    #map-fullscreen-btn:hover { background: var(--hover-tint); }
+    #map-fullscreen-btn svg { width: 18px; height: 18px; display: block; }
+    /* Leafletin zoom-napit samaan 44px kosketuskokoon */
+    .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: var(--touch-min); height: var(--touch-min); line-height: var(--touch-min); font-size: 20px; }
 
     /* Koko näyttö -tila */
     .map-fullscreen #map-section {
@@ -139,18 +230,19 @@
       padding: 0;
       border-radius: 0;
       border: none;
-      background: white;
+      background: var(--gallery-white);
     }
     .map-fullscreen #map {
       height: 100vh !important;
+      height: 100dvh !important;
       border-radius: 0;
       border: none;
     }
 
     /* Popup */
-    .popup-title { font-size: 13px; font-weight: 700; margin: 0 0 4px; color: #222; }
-    .popup-address { font-size: 12px; color: #666; margin: 0 0 6px; }
-    .popup-link { font-size: 12px; color: #1a6fb5; text-decoration: none; }
+    .popup-title { font-size: 13px; font-weight: 700; margin: 0 0 4px; color: var(--popup-ink); }
+    .popup-address { font-size: 12px; color: var(--popup-meta); margin: 0 0 6px; }
+    .popup-link { font-size: 12px; color: var(--map-link-blue); text-decoration: none; }
     .popup-link:hover { text-decoration: underline; }
 
     /* Desktop: piilota mobiilinapit */
@@ -158,8 +250,14 @@
     #sulje-btn { display: none; }
     #sidebar-overlay { display: none; }
 
+    /* Liikeherkkyys: tilanmuutokset säilyvät (varjo, väri), siirtymät ja nosto poistuvat */
+    @media (prefers-reduced-motion: reduce) {
+      .exhibition, .museum-btn.special, #reset-filters-btn, .ghost-btn, .sidebar, #map, .exhibition-photo { transition: none; }
+      .exhibition:hover { transform: none; }
+    }
+
     @media (max-width: 768px) {
-      body { padding: 0.75rem; }
+      body { padding: var(--space-md); }
 
       /* Header mobiilissa: logo vasemmalle, Rajaukset-nappi oikealle */
       .section.header {
@@ -182,26 +280,27 @@
         top: 0; right: 0;
         width: 280px;
         height: 100%;
-        background: #f9f9f9;
+        background: var(--paper-fog);
         z-index: 10000;
         overflow-y: auto;
-        padding: 1rem;
-        box-shadow: -4px 0 16px rgba(0,0,0,0.18);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-drawer);
         transform: translateX(110%);
-        transition: transform 0.25s ease;
+        visibility: hidden; /* suljettu drawer pois tab-järjestyksestä ja ruudunlukijalta */
+        transition: transform 0.25s ease, visibility 0s linear 0.25s;
         flex: unset;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--space-lg);
       }
-      .sidebar.open { transform: translateX(0); }
+      .sidebar.open { transform: translateX(0); visibility: visible; transition: transform 0.25s ease, visibility 0s; }
 
       /* Overlay */
       #sidebar-overlay {
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.35);
+        background: var(--overlay-backdrop);
         z-index: 9999;
       }
       #sidebar-overlay.open { display: block; }
@@ -222,10 +321,10 @@
   <header class="section header">
     <h1 class="visually-hidden">Helsingin seudun Museokalenteri</h1>
     <div class="logo-wrapper">
-      <img src="./img/museokalenteri_logo.png" alt="Helsingin seudun Museokalenteri" class="logo" />
+      <img src="./img/museokalenteri_logo_wide.png" alt="Helsingin seudun Museokalenteri" class="logo" width="1218" height="360" />
     </div>
-    <button id="rajaukset-btn" style="align-items:center; gap:0.4rem; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-weight:500;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;flex-shrink:0;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+    <button id="rajaukset-btn" class="ghost-btn drawer-btn" type="button" aria-expanded="false" aria-controls="sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
       Rajaukset
     </button>
   </header>
@@ -239,23 +338,25 @@
 
       <!-- KARTTA -->
       <div class="section" id="map-section">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.5rem;">
-          <p class="section-title" id="map-section-title" style="margin:0;">Valitut museot kartalla</p>
-          <button id="map-toggle-btn" style="font-size:0.8rem; padding:0.25rem 0.6rem; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;">Piilota kartta</button>
+        <div class="section-head">
+          <h2 class="section-title" id="map-section-title">Valitut museot kartalla</h2>
+          <button id="map-toggle-btn" class="ghost-btn" type="button" aria-expanded="true" aria-controls="map">Piilota kartta</button>
         </div>
-        <button id="map-fullscreen-btn" title="Koko näyttö">
-          <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-          <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
-            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
-          </svg>
-        </button>
-        <div id="map"></div>
+        <div class="map-canvas">
+          <button id="map-fullscreen-btn" type="button" title="Koko näyttö" aria-label="Kartta koko näytölle" aria-pressed="false">
+            <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
+            </svg>
+          </button>
+          <div id="map"></div>
+        </div>
       </div>
 
       <div id="results-status-bar">
-        <p id="results-count" class="results-count"></p>
+        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true"></p>
         <button id="reset-filters-btn" type="button">Nollaa suodattimet</button>
       </div>
 
@@ -264,37 +365,37 @@
     </div><!-- /.main-content -->
 
     <!-- SIVUPALKKI -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar" aria-label="Rajaukset">
 
-      <button id="sulje-btn" style="align-items:center; justify-content:space-between; width:100%; padding:0.45rem 0.8rem; font-size:0.85rem; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; font-weight:500; margin-bottom:0.25rem;">
+      <button id="sulje-btn" class="ghost-btn drawer-btn" type="button">
         Sulje
-        <span style="font-size:1.1rem; line-height:1;">&#x2715;</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
       </button>
 
       <div class="section">
-        <p class="section-title">Aikasuodattimet</p>
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="ALL">Kaikki</button>
-          <button class="filter-btn" data-filter="UPCOMING">Tulossa</button>
-          <button class="filter-btn" data-filter="OPENING_SOON">Aukeaa pian</button>
-          <button class="filter-btn" data-filter="CURRENT">Käynnissä</button>
-          <button class="filter-btn" data-filter="CLOSING_SOON">Päättyy pian</button>
-          <button class="filter-btn" data-filter="PAST">Päättyneet</button>
+        <h2 class="section-title">Aikasuodattimet</h2>
+        <div class="filter-bar" role="group" aria-label="Aikasuodattimet">
+          <button class="filter-btn active" data-filter="ALL" aria-pressed="true">Kaikki</button>
+          <button class="filter-btn" data-filter="UPCOMING" aria-pressed="false">Tulossa</button>
+          <button class="filter-btn" data-filter="OPENING_SOON" aria-pressed="false">Aukeaa pian</button>
+          <button class="filter-btn" data-filter="CURRENT" aria-pressed="false">Käynnissä</button>
+          <button class="filter-btn" data-filter="CLOSING_SOON" aria-pressed="false">Päättyy pian</button>
+          <button class="filter-btn" data-filter="PAST" aria-pressed="false">Päättyneet</button>
         </div>
       </div>
 
       <div class="section">
-        <p class="section-title">Museot</p>
-        <div class="museum-filter-bar" style="margin:0 0 0.5rem;">
-          <button id="select-all-museums" class="museum-btn special">Valitse kaikki</button>
-          <button id="deselect-all-museums" class="museum-btn special" style="margin-top:0.35rem;">Poista valinnat</button>
+        <h2 class="section-title">Museot</h2>
+        <div class="museum-filter-bar">
+          <button id="select-all-museums" class="museum-btn special" type="button">Valitse kaikki</button>
+          <button id="deselect-all-museums" class="museum-btn special">Poista valinnat</button>
         </div>
         <div id="museum-checkbox-list"></div>
       </div>
 
       <div class="section">
-        <p class="section-title">Järjestys</p>
-        <select id="sort-select" aria-label="Järjestä lista" style="width:100%; padding:0.4rem 0.6rem;">
+        <h2 class="section-title">Järjestys</h2>
+        <select id="sort-select" aria-label="Järjestä lista">
           <option value="MUSEUM">Museon mukaan</option>
           <option value="TITLE">Näyttelyn nimen mukaan</option>
           <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
@@ -302,22 +403,23 @@
         </select>
       </div>
 
-      <div class="section" style="margin-bottom:0;">
-        <p id="today" style="margin:0 0 0.2rem; color:#333333; font-size:0.8rem;"></p>
-        <p id="last-updated" style="margin:0; color:#333333; font-size:0.8rem;"></p>
+      <div class="section">
+        <p id="today" class="sidebar-meta"></p>
+        <p id="last-updated" class="sidebar-meta"></p>
       </div>
 
     </aside>
 
   </main><!-- /.page-layout -->
 
+  <!-- Upotettu data Claude Design -esikatselua varten (fetch ei toimi siellä). -->
   <script type="application/json" id="embedded-nayttelyt">
 [
   {
     "museum": "AD-museo",
     "title": "Pako Muumilaaksoon",
     "start": "2025-10-10",
-    "end": "2026-11-01",
+    "end": "2027-01-06",
     "description": "Näyttely avaa portin Tove Janssonin Moominlaaksoon ja tarkastelee hänen suhdettaan arkkitehtuuriin ja designiin. Se tutkii tiloja, joihin Jansson vetäytyi ja joista hän ammensi sarjakuvamaailmansa inspiraatiota.",
     "Link": "https://admuseo.fi/nayttelyt/pako-muumilaaksoon/",
     "Image": "https://admuseo.fi/wp-content/uploads/2025/07/ADM_Pako-Muumilaaksoon_web-banner_FI_date-1024x576.jpg"
@@ -326,7 +428,7 @@
     "museum": "AD-museo",
     "title": "Juha Vehmaanperä: Craft Punk",
     "start": "2026-02-20",
-    "end": "2026-09-06",
+    "end": "2027-01-06",
     "description": "Neuletaiteilija Juha Vehmaanperän ensimmäinen laajamittainen yksityisnäyttely Craft Punk kutsuu Arkkitehtuuri- ja designmuseon Galleriaan 20.2.2026. Vehmaanperä on neuletaiteilija, jonka työ keskittyy hitaaseen muotiin, queer-teoriaan ja käsityötaitoon, yhdistäen perinteiset tekniikat moderneihin lähestymistapoihin ja teknologioihin.",
     "Link": "https://admuseo.fi/nayttelyt/juha-vehmaanpera-craft-punk/",
     "Image": "https://admuseo.fi/wp-content/uploads/2026/01/Juha_Main_LR_Final_Final-1024x630.jpg"
@@ -335,19 +437,10 @@
     "museum": "AD-museo",
     "title": "Aalto Design - Hyvinvoinnin muodot",
     "start": "2026-06-05",
-    "end": "2027-01-03",
+    "end": "2027-01-06",
     "description": "Näyttely Aalto Design - Hyvinvoinnin muodot tarkastelee Alvar, Aino ja Elissa Aallon perintöä hyvinvoinnin näkökulmasta. Monitaiteinen näyttely kysyy, mitä annettavaa klassikoilla on ajankohtaiseen keskusteluun hyvinvoinnin muotoilusta.",
     "Link": "https://admuseo.fi/nayttelyt/aalto-design-hyvinvoinnin-muodot/",
     "Image": "https://admuseo.fi/wp-content/uploads/2026/02/Other-Actors_Ilona-Sagar_2025-1024x576.jpg"
-  },
-  {
-    "museum": "Amos Rex",
-    "title": "Generation 2026",
-    "start": "2026-05-13",
-    "end": "2026-09-06",
-    "description": "Generation-triennaali tuo yhteen 50 taiteilijaa ja työryhmää; nuorten taiteilijoiden huolia, kamppailuja ja unelmia esiin tuova näyttely.",
-    "Link": "https://amosrex.fi/nayttelyt/generation-2026/",
-    "Image": "https://amosrex.fi/wp-content/uploads/2025/08/Amos-Generation26-Stilli-Artistit-1920x1080-Tuplaresoluutio3-scaled.jpg"
   },
   {
     "museum": "Amos Rex",
@@ -365,7 +458,7 @@
     "end": "2026-10-04",
     "description": "Amos Rexin kesän tilaustyö muuttaa Lasipalatsin aukion kaikille avoimeksi tanssilattiaksi. Kolmen ruotsalaisen arkkitehdin suunnittelema installaatio päivittää ajatuksen perinteisestä tanssilavasta: tanssilattia ja veistokselliset kasvihahmot muodostavat yhdessä Amos Rexin kumpujen kanssa tilataideteoksen.",
     "Link": "https://amosrex.fi/nayttelyt/dansbana/",
-    "Image": "https://amosrex.fi/wp-content/uploads/2025/04/amosrex.png"
+    "Image": " https://amosrex.fi/wp-content/uploads/2026/01/Amos-Rex-Summer-2026-DANSBANA-1728x900-1.png"
   },
   {
     "museum": "Amos Rex",
@@ -404,13 +497,13 @@
     "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2024/05/northern-women.jpg"
   },
   {
-    "museum": "Didrichsenin taidemuseo",
-    "title": "William Morris",
-    "start": "2026-05-29",
-    "end": "2026-08-30",
-    "description": "William Morrisin (1834-1896) tuotantoa esittelevä näyttely Suomessa.",
-    "Link": "https://www.didrichsenmuseum.fi/n%C3%A4yttelyt",
-    "Image": "https://static.wixstatic.com/media/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg/v1/fill/w_800,h_532,al_c,q_90/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg"
+    "museum": "Ateneum",
+    "title": "Elin Danielson-Gambogi",
+    "start": "2027-04-09",
+    "end": "2027-09-19",
+    "description": "Laaja näyttely esittelee suomalaisen taiteilija Elin Danielson-Gambogin (1861-1919) poikkeuksellista uraa, joka rikkoi aikansa normeja niin arjessa kuin taiteessa. Esillä on lähes 200 teosta, mukaan lukien hänen tunnetuimpia töitään sekä aiemmin näkemättömiä teoksia.",
+    "Link": "https://ateneum.fi/nayttelyt/elin-danielson-gambogi/",
+    "Image": "https://ateneum.fi/wp-content/uploads/sites/3/2026/03/Nimeton-malli-17.png"
   },
   {
     "museum": "Didrichsenin taidemuseo",
@@ -419,25 +512,7 @@
     "end": "2027-01-31",
     "description": "Näyttely Elin Danielson-Gambogin rohkeasta ja monikerroksisesta maailmasta.",
     "Link": "https://www.didrichsenmuseum.fi/n%C3%A4yttelyt",
-    "Image": "https://static.wixstatic.com/media/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg/v1/fill/w_800,h_532,al_c,q_90/f109db_f73f3df6d1bf46a6b05a1cf707213fbd~mv2.jpg"
-  },
-  {
-    "museum": "EMMA",
-    "title": "Antti Laitinen: Helisevä metsä",
-    "start": "2025-09-24",
-    "end": "2026-08-23",
-    "description": "Kineettinen installaatio herättää pohtimaan ihmisen kykyä ja keinoja muokata luontoa.",
-    "Link": "https://emmamuseum.fi/nayttely/incollection-antti-laitinen/",
-    "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web-anttilaitinen-scaled.jpg"
-  },
-  {
-    "museum": "EMMA",
-    "title": "Axel Straschnoy",
-    "start": "2026-04-15",
-    "end": "2026-08-09",
-    "description": "Suomen taideakatemian säätiön palkintoon kuuluva näyttely koettelee poliittisen mielikuvituksemme rajoja.",
-    "Link": "https://emmamuseum.fi/nayttely/axel-straschnoy/",
-    "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_alex-straschnoy_radioobservatorio_0036-scaled.jpg"
+    "Image": "https://static.wixstatic.com/media/f109db_ea6eecb2657f455fb1c8a846bf75a62d~mv2.jpg/v1/fill/w_809,h_697,fp_0.41_0.60,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/o%2Cemapuu%20nettiin.jpg"
   },
   {
     "museum": "EMMA",
@@ -452,7 +527,7 @@
     "museum": "EMMA",
     "title": "Verholla - Painokankaiden taide",
     "start": "2025-02-12",
-    "end": "2027-03-14",
+    "end": "2026-11-01",
     "description": "Näyttely käärii EMMAn näyttelytilan painokankaiden väriloistoon ja kiehtoviin kuvioihin.",
     "Link": "https://emmamuseum.fi/nayttely/verholla-painokankaiden-taide/",
     "Image": "https://emmamuseum.fi/wp-content/uploads/2024/10/web_verholla-scaled.jpg"
@@ -460,7 +535,7 @@
   {
     "museum": "EMMA",
     "title": "Howard Smith",
-    "start": "2026-09-09",
+    "start": "2026-09-05",
     "end": "2027-02-07",
     "description": "Retrospektiivinäyttely kunnianosoituksena Howard Smithin visuaaliselle ilmaisulle.",
     "Link": "https://emmamuseum.fi/nayttely/howard-smith/",
@@ -474,15 +549,6 @@
     "description": "Collection Kakkosen rinnalle tuleva näyttely keramiikkataiteilija Gerda Thesleffistä (1871-1939).",
     "Link": "https://emmamuseum.fi/nayttely/gerda-thesleff/",
     "Image": "https://emmamuseum.fi/wp-content/uploads/2025/11/web_gt25_thesleff-mavi_0034-scaled.jpg"
-  },
-  {
-    "museum": "Hakasalmen huvila",
-    "title": "Stefan Bremer - Helsinki by Night",
-    "start": "2025-10-24",
-    "end": "2026-08-30",
-    "description": "Stefan Bremer valokuvasi 1970- ja 1980-luvuilla Helsingin yössä; takautuva näyttely Hakasalmen huvilassa.",
-    "Link": "https://hakasalmenhuvila.fi/nayttelyt/stefan-bremer-helsinki-by-night/",
-    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/sites/2/2025/06/artikkelikuva_825x513px_Stefan_Bremer_Helsinki_by_Night_diinarit_HH_syksy25.jpg"
   },
   {
     "museum": "Hakasalmen huvila",
@@ -513,24 +579,6 @@
   },
   {
     "museum": "HAM",
-    "title": "Magdalena Abakanowicz: Rajojen ylittäjä",
-    "start": "2026-05-06",
-    "end": "2026-08-30",
-    "description": "Puolan tunnetuimpiin taiteilijoihin kuuluvan Magdalena Abakanowiczin (1930–2017) ensimmäinen yksityisnäyttely Suomessa. HAMin suuret kaarihallit täyttyvät taiteilijan ikonisilla tekstiiliveistoksilla Abakaneilla sekä vaikuttavilla juuttiveistossarjoilla.",
-    "Link": "https://www.hamhelsinki.fi/exhibitions/magdalena-abakanowicz/",
-    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Magdalena-Abakanowicz_portrait.jpg"
-  },
-  {
-    "museum": "HAM",
-    "title": "KOKIMO: Tablescape",
-    "start": "2026-05-29",
-    "end": "2026-08-23",
-    "description": "KOKIMO-kollektiivin näyttely HAMissa.",
-    "Link": "https://www.hamhelsinki.fi/exhibitions/kokimo-tablescape/",
-    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/KOKIMO_2025_MV_crop.jpg"
-  },
-  {
-    "museum": "HAM",
     "title": "Antti Tolvi: Sävellys uruille ja tauolle",
     "start": "2026-09-25",
     "end": "2027-01-10",
@@ -551,19 +599,19 @@
     "museum": "HAM",
     "title": "Emma Talbot: Et ole keskipiste",
     "start": "2026-10-09",
-    "end": "2027-04-04",
+    "end": "2027-04-25",
     "description": "Emma Talbotin näyttely HAMissa.",
     "Link": "https://www.hamhelsinki.fi/exhibitions/emma-talbot/",
     "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2025/09/Emma-Talbot.jpg"
   },
   {
-    "museum": "Helsingin Taidehalli",
-    "title": "Nuoret 2026",
-    "start": "2026-05-29",
-    "end": "2026-07-19",
-    "description": "Taidehallin alle 35-vuotiaille taiteilijoille suunnattu Nuoret 2026 -näyttely esittelee 26 kiinnostavaa nuorta tekijää. Avoimen haun kautta valitut taiteilijat heijastelevat ajankohtaisia ilmiöitä.",
-    "Link": "https://taidehalli.fi/events/nuoret-2026/",
-    "Image": "https://taidehalli.fi/wp-content/uploads/2025/10/TH-nuoret26-blank-2160x1800.jpg"
+    "museum": "HAM",
+    "title": "Helsinki Biennaali 2027",
+    "start": "2027-06-06",
+    "end": "2027-09-19",
+    "description": "Suomen suurimman kuvataidetapahtuman neljäs toteutus tuo yhteen kansainvälisesti tunnettuja taiteilijoita. Kuraattoreina toimivat Mami Kataoka ja Arja Miller, ja biennaalin teemana on \"Tuntemattomat\". Näyttely levittäytyy Vallisaareen, Esplanadin puistoon ja HAMin tiloihin Tennispalatsissa, ja mukana on noin 45 taiteilijaa tai taiteilijaryhmää.",
+    "Link": "https://www.hamhelsinki.fi/exhibitions/helsinki-biennaali-2027/",
+    "Image": "https://www.hamhelsinki.fi/wp-content/uploads/2026/08/HB21_MattiPyykko_Megasize-scaled.jpg"
   },
   {
     "museum": "Helsingin Taidehalli",
@@ -582,15 +630,6 @@
     "description": "Kiasman kokoelmanäyttely, jossa todellinen ja kuviteltu sekoittuvat unenomaisiksi kohtaamisiksi. Näyttely esittelee noin 40 taiteilijan teoksia ja avautuu katkelmina ja ihmeellisinä kohtaamisina, joissa merkitykset liukuvat ja muuttavat muotoaan.",
     "Link": "https://kiasma.fi/nayttelyt/nelivarinen-uni/",
     "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/08/MerenmiesElina_ASnakeFullofSighs2023-24_KuvaKG_PetriVirtanen.jpg"
-  },
-  {
-    "museum": "Kiasma",
-    "title": "Entiset ainoat",
-    "start": "2026-03-27",
-    "end": "2026-09-06",
-    "description": "Kiasman ja Saamelaismuseo Siidan yhteisnäyttely esittelee saamelaista nykytaidetta ja saamelaisuuden monikerroksisia kokemuksia Saamenmaalta Suomesta, Ruotsista ja Norjasta.",
-    "Link": "https://kiasma.fi/nayttelyt/entiset-ainoat/",
-    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/siriBaggerman_Drone2021_KuvaSiriBaggerman.jpg"
   },
   {
     "museum": "Kiasma",
@@ -618,15 +657,6 @@
     "description": "Oliver Beer yhdistää musiikkia ja kuvataiteita video-oopperassaan, joka on kuvattu esihistoriallisessa luolassa Ranskassa. Teoksessa kahdeksan eri kulttuuritaustoista tulevaa laulajaa esittää varhaisimpia musiikillisia muistojaan, ja luolan akustiikka vahvistaa heidän äänensä moniääniseksi kokonaisuudeksi.",
     "Link": "https://kiasma.fi/nayttelyt/oliver-beer-resonance-project-the-cave/",
     "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/Exhibition-view_Resonance-Project_The-Cave_Lyon-Biennale2024-c-Oliver-Beer.jpg"
-  },
-  {
-    "museum": "Sinebrychoffin taidemuseo",
-    "title": "Yö",
-    "start": "2026-02-12",
-    "end": "2026-08-23",
-    "description": "Näyttely tutkii yön salaperäistä maailmaa ja unta. Se kuljettaa katsojan iltahämärästä aamunkoittoon ja näyttää yön monet kasvot - ystävälliset, surumieliset, puistattavat ja seesteiset. Teokset käyvät vuoropuhelua runouden kanssa ja esittelevät maalaus-, grafiikka- ja veistostaidetta 1800-luvulta nykypäivään.",
-    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/yo/",
-    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2026/01/Nettisivukuva-1.jpg"
   },
   {
     "museum": "Sinebrychoffin taidemuseo",
@@ -674,6 +704,15 @@
     "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2024-12/Iiris%20Rusi_Tales%20of%20s%20work%20(1).jpg"
   },
   {
+    "museum": "Suomen valokuvataiteen museo",
+    "title": "Kuvan houkutus",
+    "start": "2026-10-09",
+    "end": "2027-02-28",
+    "description": "Näyttely tarkastelee digitaalisen valokuvan toimintaa internetkulttuurissa ja sen kykyä vangita katsojan huomio. Neljätoista taiteellista näkökulmaa tutkii visuaalisia ilmiöitä, jotka muovaavat verkon viestintää, kritiikkiä ja huumoria, ja paljastavat kuvien merkittävän roolin sosiaalisten, kulttuuristen ja poliittisten kontekstien muodostumisessa.",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/kuvan-houkutus",
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/location/svm_logo_fi_6x6_s_rgb_2.png"
+  },
+  {
     "museum": "Villa Gyllenberg",
     "title": "Runollinen todellisuus - 1920-40-lukujen taidetta, muotia, muotoilua ja puutarhoja",
     "start": "2026-04-22",
@@ -692,15 +731,6 @@
     "Image": "https://taidehalli.fi/wp-content/uploads/2026/04/image0.jpeg"
   },
   {
-    "museum": "Suomen valokuvataiteen museo",
-    "title": "Photofuss: Kontakti",
-    "start": "2026-05-29",
-    "end": "2026-09-06",
-    "description": "Photofussin näyttely tarkastelee yhteyksiä eri tasoilla: minkälaisia vuorovaikutuksia meillä on ympärillämme olevaan maailmaan ja muihin ihmisiin? Teokset käsittelevät kuvan tekijän ja katsojan välistä vuorovaikutusta, ihmisen ja luonnon suhdetta sekä omaa paikkaamme osana globaalia yhteiskuntaa. Photofuss on Suomen valokuvataiteen museon nuortenryhmä.",
-    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/photofuss-kontakti",
-    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/cols_2_crop/public/exhibitions/2026-05/Emiliano%20Espinosa%20jpeg%20nosto.jpg"
-  },
-  {
     "museum": "Villa Gyllenberg",
     "title": "Kurkistus Sammon kokoelmaan",
     "start": "2026-10-10",
@@ -717,6 +747,15 @@
     "description": "Tervetuloa virittäytymään joulutunnelmaan! Signe ja Ane Gyllenbergin kodin salongissa ja ruokasalissa voidaan kokea 1960-luvun joulunviettoa. Ruokasalissa nähdään juhlakattaus ja salongista löytyy aikakaudelle tyypillinen makeis- ja jälkiruokapöytä. Salonkiin viritetty komea kuusi on somistettu aikakauden aidoilla lasikoristeilla. Näyttely on rekonstruoitu perheen valokuva-albumien pohjalta.",
     "Link": "https://www.villagyllenberg.fi/nayttelyt/jul-pa-villa-gyllenberg-23-11-2024-12-1-2025",
     "Image": "https://images.gyllenbergs.fi/production/Villa-G_joulu_flyygeli.jpg?w=1200&h=630&q=82&auto=format&fit=crop&dm=1669720587&s=9ba2831b4946c1323e87f493da5537de"
+  },
+  {
+    "museum": "Villa Gyllenberg",
+    "title": "Kuvanveistäjänaiset",
+    "start": "2027-03-17",
+    "end": "2027-08-29",
+    "description": "Näyttely esittelee suomalaisten naisveistäjien teoksia 1800-luvulta 1900-luvun puoliväliin. Esillä on taiteilijoita, joiden panos on jäänyt historiallisesti aliedustetuksi museokokoelmissa ja julkisessa taiteessa, erityisesti ennen toista maailmansotaa, jolloin naisveistäjien mahdollisuudet olivat hyvin rajalliset.",
+    "Link": "https://www.villagyllenberg.fi/nayttelyt/kuvanveistajanaiset",
+    "Image": "https://images.gyllenbergs.fi/production/IDAAFI2.JPG?w=1440&q=82&fm=webp&fit=crop&dm=1784109687&s=a834f8ceae9a5121e9392fa2f0947f38"
   }
 ]
   </script>
@@ -840,7 +879,7 @@
   </script>
   <script type="application/json" id="embedded-meta">
 {
-  "createdAt": "2026-05-21"
+  "createdAt": "2026-09-09"
 }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -929,16 +968,12 @@
     return "PAST";
   }
 
-  function statusLabel(s) {
-    return { CURRENT: "Käynnissä", UPCOMING: "Tulossa", PAST: "Päättynyt", OPENING_SOON: "Aukeaa pian", CLOSING_SOON: "Päättyy pian" }[s] || s;
-  }
-
   function formatDate(s) {
     if (!s) return "";
     return parseDate(s).toLocaleDateString('fi-FI', { day: 'numeric', month: 'numeric', year: 'numeric' });
   }
 
-  function updateMap(activeMuseums, allExhibitions) {
+  function updateMap(activeMuseums) {
     markerLayer.clearLayers();
     activeMuseums.forEach(museumName => {
       const info = museumData[museumName];
@@ -992,7 +1027,7 @@
     })
     .catch(err => {
       document.getElementById("exhibitionList").innerHTML =
-        "<p style='color:red'>Virhe ladattaessa museonayttelyt.json: " + err.message + "</p>";
+        "<p class='list-message list-message--error'>Näyttelyiden lataus epäonnistui (" + err.message + "). Päivitä sivu hetken kuluttua.</p>";
     });
 
   function initExhibitions() {
@@ -1032,7 +1067,7 @@
     let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
 
     // Alkupiirto kartalle
-    updateMap(activeMuseums, exhibitions);
+    updateMap(activeMuseums);
 
     function getFilteredExhibitions(statusType) {
       const now = new Date();
@@ -1071,19 +1106,10 @@
       return { CURRENT:'Käynnissä', UPCOMING:'Tulossa', PAST:'Päättynyt', OPENING_SOON:'Aukeaa pian', CLOSING_SOON:'Päättyy pian', UNKNOWN:'Tuntematon' }[s] || s;
     }
 
-    function tryLoadImage(url) {
-      return new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
-    }
-
     function renderExhibitions(list) {
       container.innerHTML = "";
       if (list.length === 0) {
-        container.innerHTML = "<p style='color:#555'>Suodattimillasi ei löydy näyttelyitä.</p>";
+        container.innerHTML = "<p class='list-message'>Suodattimillasi ei löydy näyttelyitä.</p>";
         return;
       }
       list.forEach(ex => {
@@ -1099,28 +1125,30 @@
           ${linkIndicator}
           <div class="exhibition-row">
             <div class="exhibition-rail">
-              <div class="exhibition-image"><img src="./img/museokalenteri_museo.marker.png" alt="" class="image-marker-fallback" /></div>
+              <div class="exhibition-image">
+                <img src="./img/museokalenteri_museo.marker.svg" alt="" class="image-marker-fallback" />
+                ${imageUrl ? `<img src="${imageUrl}" alt="" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
+              </div>
               <span class="status-pill">${getStatusLabel(st)}</span>
             </div>
             <div class="exhibition-content">
               <p class="exhibition-museum">${ex.museum}</p>
-              <h2>${ex.title}</h2>
+              <h3>${ex.title}</h3>
               <p class="exhibition-dates">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
               ${descHtml}
             </div>
           </div>`;
         container.appendChild(card);
         if (imageUrl) {
-          const imgContainer = card.querySelector('.exhibition-image');
-          tryLoadImage(imageUrl).then(ok => {
-            if (ok && imgContainer) {
-              const realImg = document.createElement('img');
-              realImg.src = imageUrl;
-              realImg.alt = ex.title;
-              imgContainer.innerHTML = '';
-              imgContainer.appendChild(realImg);
-            }
-          });
+          const fallbackImg = card.querySelector('.image-marker-fallback');
+          const photoImg = card.querySelector('.exhibition-photo');
+          const showPhoto = () => {
+            fallbackImg.style.display = 'none';
+            photoImg.classList.add('is-loaded');
+          };
+          if (photoImg.complete && photoImg.naturalWidth > 0) showPhoto();
+          else photoImg.addEventListener('load', showPhoto);
+          photoImg.addEventListener('error', () => photoImg.remove());
         }
       });
     }
@@ -1143,8 +1171,10 @@
       const filtered = getFilteredExhibitions(statusType);
       const sorted   = sortExhibitions(filtered);
       renderExhibitions(sorted);
-      statusButtons.forEach(btn => btn.classList.remove("active"));
-      document.querySelector(`[data-filter="${statusType}"]`).classList.add("active");
+      statusButtons.forEach(btn => { btn.classList.remove("active"); btn.setAttribute("aria-pressed", "false"); });
+      const activeBtn = document.querySelector(`[data-filter="${statusType}"]`);
+      activeBtn.classList.add("active");
+      activeBtn.setAttribute("aria-pressed", "true");
       updateStatusCounts();
       updateResultsBar(sorted.length);
     }
@@ -1161,7 +1191,7 @@
       activeStatus = "ALL";
       activeMuseums = new Set(museumSet);
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter("ALL");
     }
 
@@ -1169,7 +1199,7 @@
 
     function syncMuseums() {
       activeMuseums = getCheckedMuseums();
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     }
 
@@ -1180,14 +1210,14 @@
     selectAllBtn.addEventListener("click", () => {
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
       activeMuseums = new Set(museumSet);
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     });
 
     deselectAllBtn.addEventListener("click", () => {
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = false);
       activeMuseums = new Set();
-      updateMap(activeMuseums, exhibitions);
+      updateMap(activeMuseums);
       applyFilter(activeStatus);
     });
 
@@ -1217,8 +1247,35 @@
   const suljeBtn = document.getElementById('sulje-btn');
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.getElementById('sidebar-overlay');
-  function openDrawer() { sidebar.classList.add('open'); overlay.classList.add('open'); }
-  function closeDrawer() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+  const headerEl = document.querySelector('header.section');
+  const mainContentEl = document.querySelector('.main-content');
+
+  function onDrawerKeydown(e) {
+    if (e.key === 'Escape') closeDrawer();
+  }
+
+  function openDrawer() {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    rajauksetBtn.setAttribute('aria-expanded', 'true');
+    sidebar.setAttribute('role', 'dialog');
+    sidebar.setAttribute('aria-modal', 'true');
+    headerEl.setAttribute('inert', '');
+    mainContentEl.setAttribute('inert', '');
+    document.addEventListener('keydown', onDrawerKeydown);
+    suljeBtn.focus();
+  }
+  function closeDrawer() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    rajauksetBtn.setAttribute('aria-expanded', 'false');
+    sidebar.removeAttribute('role');
+    sidebar.removeAttribute('aria-modal');
+    headerEl.removeAttribute('inert');
+    mainContentEl.removeAttribute('inert');
+    document.removeEventListener('keydown', onDrawerKeydown);
+    rajauksetBtn.focus();
+  }
   rajauksetBtn.addEventListener('click', openDrawer);
   suljeBtn.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
@@ -1235,14 +1292,18 @@
     mapFullscreenBtn.style.display = mapVisible ? '' : 'none';
     mapSectionTitle.style.display = mapVisible ? '' : 'none';
     mapToggleBtn.textContent = mapVisible ? 'Piilota kartta' : 'Näytä kartta';
+    mapToggleBtn.setAttribute('aria-expanded', String(mapVisible));
     if (mapVisible) setTimeout(() => map.invalidateSize(), 50);
   });
 
   // Kartan koko näyttö -toiminto
   document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
     const isFullscreen = document.body.classList.toggle('map-fullscreen');
-    document.getElementById('icon-expand').style.display  = isFullscreen ? 'none'  : 'block';
-    document.getElementById('icon-collapse').style.display = isFullscreen ? 'block' : 'none';
+    // SVG-elementeillä ei ole hidden-ominaisuutta, joten attribuutti vaihdetaan suoraan
+    document.getElementById('icon-expand').toggleAttribute('hidden', isFullscreen);
+    document.getElementById('icon-collapse').toggleAttribute('hidden', !isFullscreen);
+    mapFullscreenBtn.setAttribute('aria-pressed', String(isFullscreen));
+    mapFullscreenBtn.setAttribute('aria-label', isFullscreen ? 'Sulje koko näyttö' : 'Kartta koko näytölle');
     setTimeout(() => map.invalidateSize(), 200);
   });
 
