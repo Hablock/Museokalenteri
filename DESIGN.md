@@ -226,7 +226,7 @@ Rounded rectangles throughout, scaled by role: sections and cards use the larges
 - **Style:** plain list rows with a 1px bottom divider (last row has none), Charcoal `accent-color` checkbox, full row width as the click target via a paired `<label>`.
 
 ### Navigation / Map
-- **Style:** Leaflet map on muted "CARTO light" tiles; the sole marker is the bespoke black-line museum-building icon. Popups are minimal: bold venue name (13px/700), gray address (12px), Map Link Blue website link (12px, underline on hover).
+- **Style:** Leaflet map on OpenStreetMap tiles, rendered grayscale via a CSS filter on the tile pane so the map stays a neutral background; the sole marker is the bespoke black-line museum-building icon. Popups are minimal: bold venue name (13px/700), gray address (12px), Map Link Blue website link (12px, underline on hover).
 - **Mobile treatment:** the map collapses to 300px height and gains a fullscreen toggle that pins it to the viewport.
 
 ## Do's and Don'ts

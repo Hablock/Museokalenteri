@@ -134,9 +134,12 @@
     .CLOSING_SOON { border-left-color: var(--status-closing-soon); }
     .exhibition-row { display: flex; gap: 0.95rem; align-items: flex-start; }
     .exhibition-rail { flex: 0 0 96px; width: 96px; display: flex; flex-direction: column; gap: var(--space-sm); align-items: flex-start; }
-    .exhibition-image { width: 96px; height: 96px; border-radius: var(--rounded-md); overflow: hidden; background: var(--image-bg); box-shadow: var(--shadow-image-inset); display: flex; align-items: center; justify-content: center; }
+    .exhibition-image { position: relative; width: 96px; height: 96px; border-radius: var(--rounded-md); overflow: hidden; background: var(--image-bg); box-shadow: var(--shadow-image-inset); display: flex; align-items: center; justify-content: center; }
     .exhibition-image img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .image-marker-fallback { width: 48px; height: 48px; object-fit: contain; opacity: 0.45; }
+    /* Kuva pysyy renderöitynä (opacity, ei display:none), jotta loading="lazy" käynnistyy */
+    .exhibition-photo { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; opacity: 0; transition: opacity 0.2s ease; }
+    .exhibition-photo.is-loaded { opacity: 1; }
     .status-pill { display: inline-block; white-space: nowrap; padding: 0.18rem 0.55rem; font-size: 0.7rem; font-weight: 700; border-radius: var(--rounded-pill); color: var(--gallery-white); background: var(--slate); }
     .CURRENT .status-pill { background: var(--status-current); }
     .UPCOMING .status-pill { background: var(--status-upcoming); }
@@ -169,6 +172,8 @@
       transition: border-radius 0.2s;
     }
     .map-canvas { position: relative; }
+    /* Harmaasävyiset OSM-laatat: kartta pysyy taustana, värit jäävät tilamerkinnöille */
+    .leaflet-tile-pane { filter: grayscale(1) brightness(1.06); }
     #map-fullscreen-btn {
       position: absolute;
       top: 8px;
@@ -215,7 +220,7 @@
     /* Desktop: piilota mobiilinapit */
     #rajaukset-btn { display: none; }
     #sulje-btn { display: none; }
-    #sidebar-overlay { display: none !important; }
+    #sidebar-overlay { display: none; }
 
     @media (max-width: 768px) {
       body { padding: var(--space-md); }
@@ -408,8 +413,8 @@
 
   // Kartta
   const map = L.map('map').setView([60.1680, 24.9200], 12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19
   }).addTo(map);
 
@@ -601,7 +606,7 @@
             <div class="exhibition-rail">
               <div class="exhibition-image">
                 <img src="./img/museokalenteri_museo.marker.png" alt="" class="image-marker-fallback" />
-                ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" class="exhibition-photo" style="display:none;" loading="lazy" decoding="async" />` : ''}
+                ${imageUrl ? `<img src="${imageUrl}" alt="${ex.title}" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
               </div>
               <span class="status-pill">${getStatusLabel(st)}</span>
             </div>
@@ -616,10 +621,13 @@
         if (imageUrl) {
           const fallbackImg = card.querySelector('.image-marker-fallback');
           const photoImg = card.querySelector('.exhibition-photo');
-          photoImg.addEventListener('load', () => {
+          const showPhoto = () => {
             fallbackImg.style.display = 'none';
-            photoImg.style.display = 'block';
-          });
+            photoImg.classList.add('is-loaded');
+          };
+          if (photoImg.complete && photoImg.naturalWidth > 0) showPhoto();
+          else photoImg.addEventListener('load', showPhoto);
+          photoImg.addEventListener('error', () => photoImg.remove());
         }
       });
     }
