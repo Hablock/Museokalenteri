@@ -92,6 +92,8 @@
     * { box-sizing: border-box; }
     /* Lomake-elementit eivät peri fonttia oletuksena (One Family Rule) */
     button, select, input { font-family: inherit; }
+    /* hidden-attribuutti voittaa aina omat display-säännöt */
+    [hidden] { display: none !important; }
     body { font-family: Roboto, Arial, sans-serif; padding: var(--space-2xl); max-width: 980px; margin: auto; background: var(--paper-fog); }
     .page-layout { display: flex; gap: var(--space-xl); align-items: flex-start; }
     .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--space-lg); }
@@ -807,8 +809,9 @@
   // Kartan koko näyttö -toiminto
   document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
     const isFullscreen = document.body.classList.toggle('map-fullscreen');
-    document.getElementById('icon-expand').hidden  = isFullscreen;
-    document.getElementById('icon-collapse').hidden = !isFullscreen;
+    // SVG-elementeillä ei ole hidden-ominaisuutta, joten attribuutti vaihdetaan suoraan
+    document.getElementById('icon-expand').toggleAttribute('hidden', isFullscreen);
+    document.getElementById('icon-collapse').toggleAttribute('hidden', !isFullscreen);
     mapFullscreenBtn.setAttribute('aria-pressed', String(isFullscreen));
     mapFullscreenBtn.setAttribute('aria-label', isFullscreen ? 'Sulje koko näyttö' : 'Kartta koko näytölle');
     setTimeout(() => map.invalidateSize(), 200);
