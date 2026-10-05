@@ -4,3 +4,5 @@ _DESIGN_HANDOFFS/
 archive/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+automation/cache/
+__pycache__/

@@ -1,0 +1,119 @@
+name: Kalenterin automaattipäivitys
+
+on:
+  schedule:
+    - cron: "0 4 1,15 * *"
+  workflow_dispatch:
+    inputs:
+      full_run:
+        description: "Käsittele kaikki lähteet (ei vain muuttuneita)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+
+concurrency:
+  group: auto-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: automation/requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Asenna riippuvuudet
+        run: |
+          pip install -r automation/requirements.txt
+          python -m playwright install --with-deps chromium
+          npm install -g @anthropic-ai/claude-code
+
+      - name: Valmistelu (päättyneiden poisto, lähteiden haku, työlista)
+        id: prepare
+        env:
+          FULL_RUN: ${{ inputs.full_run && '1' || '0' }}
+        run: python3 automation/prepare.py
+
+      - name: Tulkinta Claudella
+        if: steps.prepare.outputs.batches != '0'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ""
+        run: |
+          if [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
+            echo "::warning::CLAUDE_CODE_OAUTH_TOKEN puuttuu, ajetaan pelkkä haku."
+            exit 0
+          fi
+          bash automation/run_claude.sh
+
+      - name: Varmista, että vain datatiedostot muuttuivat
+        run: |
+          allowed='^(museonayttelyt-auto\.json|gallerianayttelyt-auto\.json|automation/state/status\.json)$'
+          unexpected=$(git status --porcelain --untracked-files=all | cut -c4- | grep -Ev "$allowed" || true)
+          if [ -n "$unexpected" ]; then
+            echo "::error::Odottamattomia muutoksia: $unexpected"
+            exit 1
+          fi
+
+      - name: Validointi
+        run: python3 automation/validate.py --check-urls
+
+      - name: Raportti
+        run: python3 automation/report.py
+
+      - name: Commit ja push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add museonayttelyt-auto.json gallerianayttelyt-auto.json \
+            museonayttelyt-auto_meta.json gallerianayttelyt-auto_meta.json \
+            automation/state automation/reports
+          if git diff --cached --quiet; then
+            echo "Ei muutoksia."
+            exit 0
+          fi
+          git commit -m "Automaattipäivitys $(date -u +%F)"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git pull --rebase
+          git push
+
+      - name: Käynnistä Pages-julkaisu
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+
+      - name: Lähetä raportti issuena
+        run: |
+          gh label create automaattiraportti --color 0e8a16 --description "Kalenterin automaattiajon raportti" --force
+          for n in $(gh issue list --label automaattiraportti --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --reason completed
+          done
+          gh issue create \
+            --title "Kalenterin automaattipäivitys $(date -u +%F)" \
+            --body-file automation/cache/issue_body.md \
+            --label automaattiraportti \
+            --assignee "${{ github.repository_owner }}"
+
+      - name: Ilmoita epäonnistumisesta
+        if: failure()
+        run: |
+          gh issue create \
+            --title "Kalenterin automaattipäivitys epäonnistui $(date -u +%F)" \
+            --body "Ajo epäonnistui, eikä muutoksia julkaistu. Loki: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --assignee "${{ github.repository_owner }}"
