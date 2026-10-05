@@ -1,33 +1,54 @@
 {
   "defaults": {
     "exclude_patterns": [
-      "klubi-ilta", "kurssi", "työpaja", "osallistumiskutsu", "open call", "haettavissa",
-      "näyttelyaikaa", "varattu", "luento", "taiteilijatapaaminen", "opastus", "konsertti"
+      "klubi-ilta",
+      "kurssi",
+      "työpaja",
+      "osallistumiskutsu",
+      "open call",
+      "haettavissa",
+      "näyttelyaikaa",
+      "varattu",
+      "luento",
+      "taiteilijatapaaminen",
+      "opastus",
+      "konsertti"
     ]
   },
   "sources": {
     "Galleria Arthur": {
-      "venue": ["Galleria Arthur", "Galleria Rikhard & Galleria Arthur"],
+      "venue": [
+        "Galleria Arthur",
+        "Galleria Rikhard & Galleria Arthur"
+      ],
       "note": "Jaettu Helsingin Taiteilijaseuran sivu. Muut tilat (Arabianrannan kirjasto, Home Hotel Jugend) eivät kuulu kalenteriin."
     },
     "HAA Galleria": {
-      "venue": ["HAA Galleria"],
+      "venue": [
+        "HAA Galleria"
+      ],
       "multi_room": true,
       "note": "Jaettu Helsingin Taiteilijaseuran sivu. Sali 1 ja Sali 2 ovat erillisiä näyttelyitä."
     },
     "Galleria Katariina": {
-      "venue": ["Galleria Katariina"],
+      "venue": [
+        "Galleria Katariina"
+      ],
       "note": "Jaettu Helsingin Taiteilijaseuran sivu."
     },
     "Malmitalon galleria": {
-      "venue": ["Malmitalon galleria"],
+      "venue": [
+        "Malmitalon galleria"
+      ],
       "note": "Jaettu Helsingin Taiteilijaseuran sivu."
     },
     "Galleria Huuto": {
       "multi_room": true,
-      "extra_urls": ["https://www.galleriahuuto.fi/"],
+      "extra_urls": [
+        "https://www.galleriahuuto.fi/"
+      ],
       "logo": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png",
-      "note": "Kausikohtainen listaus (esim. /syksyn-2026-nayttelyt/). Jos se on 404 tai vanha, etsi etusivun linkeistä uusi kausisivu ja kirjaa se needs_user-listaan. Sivu /nayttelyt/ on vuoden 2013 arkisto. Taiteilijan nimellä muodostettu url voi osoittaa saman taiteilijan vanhaan näyttelyyn: tarkista vuosi."
+      "note": "Kausikohtainen listaus (esim. /syksyn-2026-nayttelyt/). Jos se on 404 tai vanha, etsi etusivun linkeistä uusi kausisivu ja kirjaa se needs_user-listaan. Sivu /nayttelyt/ on vuoden 2013 arkisto. Taiteilijan nimellä muodostettu url voi osoittaa saman taiteilijan vanhaan näyttelyyn: tarkista vuosi. Sivusto (one.com-palvelin) ei vastannut GitHubin palvelimilta 2026-10-05: jos haku epäonnistuu taas, kirjaa needs_user-listaan ja jätä rivit ennalleen."
     },
     "Galleria Sculptor": {
       "multi_room": true,
@@ -51,8 +72,8 @@
       "note": "Sivu renderöidään JavaScriptillä."
     },
     "Galleria Bronda": {
-      "logo": "http://www.bronda.fi/css/images/bronda_logo.png",
-      "note": "TLS-varmenne on väärälle domainille; hakija ohittaa sen. Nykyinen ja tulevat näyttelyt ovat etusivulla, yksittäinen näyttely muotoa /nayttely/<nro>."
+      "logo": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png",
+      "note": "TLS-varmenne on väärälle domainille; käytä linkeissä ja kuvissa http://-osoitteita. Nykyinen ja tulevat näyttelyt ovat etusivulla, yksittäinen näyttely muotoa /nayttely/<nro>. Vanha /nayttelykalenteri/-sivu on 404."
     },
     "Galleria Heino": {
       "logo": "http://www.galleriaheino.fi/kuvat/galleriaheino-23.svg"
@@ -65,13 +86,20 @@
       "note": "Sivulla on ollut vuosilukuvirhe (2027 vs 2026). Historia on aikajärjestyksessä: käytä järjestystä vuoden päättelyyn ja kirjaa uncertain-listaan."
     },
     "Galleria ARS Longa": {
-      "exclude_patterns": ["varattu", "haettavissa"]
+      "exclude_patterns": [
+        "varattu",
+        "haettavissa"
+      ]
     },
     "AKVART Galleria": {
-      "exclude_patterns": ["klubi-ilta", "kurssi", "osallistumiskutsu"]
+      "exclude_patterns": [
+        "klubi-ilta",
+        "kurssi",
+        "osallistumiskutsu"
+      ]
     },
     "Galleria Fogga": {
-      "logo": "https://www.fogga.fi/wp-content/uploads/2023/12/cropped-fogga_logo_color-1.png"
+      "logo": "https://www.fogga.fi/wp-content/uploads/2021/03/Galleria_Fogga.png"
     },
     "Forum Box": {
       "logo": "https://forumbox.fi/hallinta/wp-content/uploads/2021/07/box-logo-ilman-boxia.jpg",
@@ -90,7 +118,8 @@
       "logo": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
     },
     "Galleria 4-kuus": {
-      "logo": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+      "logo": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg",
+      "note": "Sivusto (one.com-palvelin) ei vastannut GitHubin palvelimilta 2026-10-05: jos haku epäonnistuu taas, kirjaa needs_user-listaan ja jätä rivit ennalleen."
     },
     "Galleria A2": {
       "logo": "https://www.galleria-a2.fi/wp-content/uploads/2025/05/galleria-a2-web.jpg"
@@ -107,6 +136,14 @@
     },
     "EMMA": {
       "note": "Collection Kakkonen, Saastamoisen säätiön kokoelma ja Bryk & Wirkkala -katseluvarasto ovat pysyviä."
+    },
+    "Art Kaarisilta": {
+      "inactive": true,
+      "reason": "Galleria lopetti toimintansa 19.6.2025 (havaittu 2026-10-05)."
+    },
+    "Myymälä2": {
+      "browser": true,
+      "note": "Näyttelyt löytyvät etusivulta; yksittäiset sivut muotoa /?p=<nro>. Vanha /exhibitions/ on 404."
     }
   }
 }

@@ -140,8 +140,8 @@
     "start": "2026-10-07",
     "end": "2026-11-01",
     "description": "Rosa Liksomin näyttely.",
-    "Link": "http://www.bronda.fi/nayttelykalenteri/",
-    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+    "Link": "http://www.bronda.fi/",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Bronda",
@@ -149,8 +149,8 @@
     "start": "2026-11-04",
     "end": "2026-11-29",
     "description": "Tiina Kivisen näyttely.",
-    "Link": "http://www.bronda.fi/nayttelykalenteri/",
-    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+    "Link": "http://www.bronda.fi/",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Bronda",
@@ -158,8 +158,8 @@
     "start": "2026-12-02",
     "end": "2026-12-31",
     "description": "Riikka Soinisen näyttely.",
-    "Link": "http://www.bronda.fi/nayttelykalenteri/",
-    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+    "Link": "http://www.bronda.fi/",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Bronda",
@@ -167,8 +167,8 @@
     "start": "2027-01-13",
     "end": "2027-02-07",
     "description": "Panu Ruotsalon näyttely.",
-    "Link": "http://www.bronda.fi/nayttelykalenteri/",
-    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+    "Link": "http://www.bronda.fi/",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Bronda",
@@ -176,8 +176,8 @@
     "start": "2027-02-10",
     "end": "2027-03-07",
     "description": "Elina Förstin näyttely.",
-    "Link": "http://www.bronda.fi/nayttelykalenteri/",
-    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+    "Link": "http://www.bronda.fi/",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Contempo",
@@ -222,7 +222,7 @@
     "end": "2026-11-10",
     "description": "Kimmo Laitisen, Maritta Neronin ja Kaisa Nyströmin yhteisnäyttely typografiasta ja mielestä.",
     "Link": "https://www.fogga.fi/to-be-nominated-28/",
-    "Image": "https://www.fogga.fi/wp-content/uploads/2023/12/cropped-fogga_logo_color-1.png"
+    "Image": "https://www.fogga.fi/wp-content/uploads/2021/03/Galleria_Fogga.png"
   },
   {
     "gallery": "Galleria Fogga",
@@ -231,7 +231,7 @@
     "end": "2027-03-23",
     "description": "Galleria Foggan näyttely.",
     "Link": "https://www.fogga.fi/muuttuva-maisemani/",
-    "Image": "https://www.fogga.fi/wp-content/uploads/2023/12/cropped-fogga_logo_color-1.png"
+    "Image": "https://www.fogga.fi/wp-content/uploads/2021/03/Galleria_Fogga.png"
   },
   {
     "gallery": "Galerie Forsblom",

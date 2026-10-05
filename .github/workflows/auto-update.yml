@@ -22,7 +22,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 240
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -54,6 +54,8 @@ jobs:
 
       - name: Tulkinta Claudella
         if: steps.prepare.outputs.batches != '0'
+        timeout-minutes: 210
+        continue-on-error: true
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GH_TOKEN: ""
