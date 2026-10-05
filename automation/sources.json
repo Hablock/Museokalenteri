@@ -137,13 +137,12 @@
     "EMMA": {
       "note": "Collection Kakkonen, Saastamoisen säätiön kokoelma ja Bryk & Wirkkala -katseluvarasto ovat pysyviä."
     },
-    "Art Kaarisilta": {
-      "inactive": true,
-      "reason": "Galleria lopetti toimintansa 19.6.2025 (havaittu 2026-10-05)."
-    },
     "Myymälä2": {
       "browser": true,
       "note": "Näyttelyt löytyvät etusivulta; yksittäiset sivut muotoa /?p=<nro>. Vanha /exhibitions/ on 404."
+    },
+    "Galleria Pirkko-Liisa Topelius": {
+      "note": "Verkkosivut ovat olleet alhaalla syksyllä 2026, mutta galleria toimii (Instagram, TikTok, Facebook). Jos haku epäonnistuu, kirjaa needs_user-listaan pyyntö kuvakaappauksesta somesta ja jätä rivit ennalleen."
     }
   }
 }

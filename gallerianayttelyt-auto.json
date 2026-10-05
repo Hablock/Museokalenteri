@@ -2,7 +2,7 @@
   {
     "gallery": "Galleria 4-kuus",
     "title": "Pauliina Purmonen: \"Tiedän sen olleen\"",
-    "start": "2026-09-26",
+    "start": "2026-09-27",
     "end": "2026-10-23",
     "description": "Maalauksia. Sekatekniikkatöitä kankaalle.",
     "Link": "https://galleria4-kuus.fi/445612429",
@@ -11,7 +11,7 @@
   {
     "gallery": "Galleria 4-kuus",
     "title": "Juha Saxberg (Studio): Sirkus",
-    "start": "2026-09-26",
+    "start": "2026-09-27",
     "end": "2026-10-23",
     "description": "Maalauksia. Sirkusaiheisia teoksia. Studio-tila.",
     "Link": "https://galleria4-kuus.fi/445612429",
@@ -20,18 +20,108 @@
   {
     "gallery": "Galleria 4-kuus",
     "title": "Juha Tikanoja & Maria Juudin: Pieni tuulahdus runoutta elämäämme",
-    "start": "2026-10-24",
+    "start": "2026-10-25",
     "end": "2026-11-20",
-    "description": "Maalauksia ja keramiikkaa.",
+    "description": "Maalauksia, keramiikkaa ja nukketeoksia.",
     "Link": "https://galleria4-kuus.fi/445612429",
     "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
   },
   {
     "gallery": "Galleria 4-kuus",
     "title": "Marja Saarikoski, ryhmä",
-    "start": "2026-11-21",
+    "start": "2026-11-22",
     "end": "2026-12-18",
-    "description": "Outi Hägg, Catarina Honkaharju, Marja Saarikoski, Marjatta Järvi, Pauliina Ruokokoski, Aino Tiihonen. Vahamaalauksia ja keramiikkaa.",
+    "description": "Outi Hägg, Catariina Honkaharju, Marja Saarikoski, Marjatta Järvi, Pauliina Ruokokoski, Aino Tiihonen. Kylmävahamaalauksia ja keramiikkaa.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Auli Rantala, Arja Leinonen, Lea Karvala, Ritva Isteri",
+    "start": "2027-01-03",
+    "end": "2027-01-29",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Maritta Neronin & Susanna Seriola-Vesa",
+    "start": "2027-01-31",
+    "end": "2027-02-26",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Marju Karlsson (Studio)",
+    "start": "2027-01-31",
+    "end": "2027-02-26",
+    "description": "Maalauksia. Studio-tila.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Helsingin Taideyhdistys ry",
+    "start": "2027-02-27",
+    "end": "2027-03-25",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Leena Raussi & Eeva Saunio",
+    "start": "2027-03-27",
+    "end": "2027-04-23",
+    "description": "Maalauksia ja keramiikkaa.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Elvi Rangell",
+    "start": "2027-04-25",
+    "end": "2027-05-21",
+    "description": "Maalauksia. 20-vuotisjuhlanäyttely.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Asta Vehviläinen",
+    "start": "2027-05-23",
+    "end": "2027-06-18",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Olli Malmivaara",
+    "start": "2027-08-07",
+    "end": "2027-09-03",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Pia Hovi",
+    "start": "2027-10-02",
+    "end": "2027-10-29",
+    "description": "Maalauksia.",
+    "Link": "https://galleria4-kuus.fi/445612429",
+    "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
+  },
+  {
+    "gallery": "Galleria 4-kuus",
+    "title": "Anu Puro",
+    "start": "2027-11-27",
+    "end": "2027-12-23",
+    "description": "Maalauksia.",
     "Link": "https://galleria4-kuus.fi/445612429",
     "Image": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg"
   },
