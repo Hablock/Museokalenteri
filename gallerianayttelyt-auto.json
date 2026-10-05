@@ -54,6 +54,15 @@
     "Image": "https://www.galleria-a2.fi/wp-content/uploads/2025/05/galleria-a2-web.jpg"
   },
   {
+    "gallery": "Galleria A2",
+    "title": "Carita Maury: Eräs matka / En resa",
+    "start": "2026-10-21",
+    "end": "2026-11-08",
+    "description": "Carita Mauryn juhlanäyttely, aikamatka taiteilijan uran eri vaiheisiin öljy-, tempera- ja tussimaalausten sekä installaatioiden kautta.",
+    "Link": "https://www.galleria-a2.fi/exhibition/carita-maury-eras-matka-en-resa/",
+    "Image": "https://www.galleria-a2.fi/wp-content/uploads/2026/09/1-Carita-Maury-Voimaa-Kraft-oljymaalaus-176x190-1984.jpg"
+  },
+  {
     "gallery": "AKVART Galleria",
     "title": "Hentun Liisa karkuteillä",
     "start": "2026-09-28",
@@ -63,13 +72,22 @@
     "Image": "https://akvart.fi/wp-content/uploads/2026/08/20260812_202822-scaled-e1787486399391.jpg"
   },
   {
+    "gallery": "AKVART Galleria",
+    "title": "Metsän aarteita",
+    "start": "2026-10-13",
+    "end": "2026-11-01",
+    "description": "Akvartin kuvataiteilija Kalle Turakka Purhosen juryttämä vuosinäyttely, jossa esillä 44 metsäaiheista maalausta 28 taiteilijalta.",
+    "Link": "https://akvart.fi/2026/09/30/metsan-aarteita/",
+    "Image": "https://akvart.fi/wp-content/uploads/2026/09/kuule-maisema-scaled.jpg"
+  },
+  {
     "gallery": "Galerie Anhava",
-    "title": "Milja Havas, Loji Höskuldsson, Helga Páley",
+    "title": "Helga Páley Friðþjófsdóttir, Milja Havas, Loji Höskuldsson: A Scene from an Untold Tale",
     "start": "2026-10-01",
     "end": "2026-10-25",
     "description": "Kolmen taiteilijan yhteisnäyttely.",
-    "Link": "https://anhava.com/exhibitions/",
-    "Image": "https://anhava.com/wp-content/themes/anhava/img/logo.png"
+    "Link": "https://anhava.com/exhibitions/loji-hoskuldsson-helga-paley-milja-havas/",
+    "Image": "https://anhava.com/wp-content/uploads/2026/06/installation-view_A-scene-from-an-untold-tale_Photo_Jussi-Tiainen_GA0707_edit.jpg"
   },
   {
     "gallery": "Galerie Anhava",
@@ -97,6 +115,24 @@
     "description": "Antti Virkkusen näyttely.",
     "Link": "https://www.arslonga.fi/items",
     "Image": "https://static.wixstatic.com/media/e0490d_889c3e9f0d2c4ab69bd56eed4e1b381c%7Emv2.png"
+  },
+  {
+    "gallery": "Galleria Arthur",
+    "title": "Hieman vinossa",
+    "start": "2026-10-02",
+    "end": "2026-10-30",
+    "description": "Tiina Sipilän näyttely vapaudesta olla oma itsensä ja ottaa tilaa; teoksissa 1900-luvun alun naishahmot tanssivat ja poseeraavat omalla tavallaan.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/index.php/nayttelytoiminta/hieman-vinossa",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-09/Sipil%C3%A4_Askel%20eteen.jpg?itok=MmElj8b1"
+  },
+  {
+    "gallery": "Galleria Arthur",
+    "title": "Vapaus",
+    "start": "2026-10-02",
+    "end": "2026-10-30",
+    "description": "Mervi Karhusen maalausnäyttely, joka tutkii vapautta taiteilijan työssä irrallaan toimeentulon ja uran paineista.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/index.php/nayttelytoiminta/vapaus",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-09/Karhunen_Olemassaolon%20kieli.jpg?itok=DJf9B8ET"
   },
   {
     "gallery": "Galleria Bronda",
@@ -135,6 +171,24 @@
     "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
   },
   {
+    "gallery": "Galleria Bronda",
+    "title": "Elina Försti",
+    "start": "2027-02-10",
+    "end": "2027-03-07",
+    "description": "Elina Förstin näyttely.",
+    "Link": "http://www.bronda.fi/nayttelykalenteri/",
+    "Image": "http://www.bronda.fi/css/images/bronda_logo.png"
+  },
+  {
+    "gallery": "Galleria Contempo",
+    "title": "ANIMA",
+    "start": "2026-10-08",
+    "end": "2026-10-31",
+    "description": "Italialaisen Gianluca Motton maalausnäyttely väristä, liikkeestä ja pysähtyneistä hetkistä; abstraktit muodot ja ihmiskasvot avautuvat katsojan omille tulkinnoille.",
+    "Link": "https://galleriacontempo.fi/exhibition-anima",
+    "Image": "https://galleriacontempo.fi/img/anima-page-hero.jpg"
+  },
+  {
     "gallery": "Galleria Duetto",
     "title": "Jaana Erkkilä",
     "start": "2026-10-01",
@@ -171,6 +225,42 @@
     "Image": "https://www.fogga.fi/wp-content/uploads/2023/12/cropped-fogga_logo_color-1.png"
   },
   {
+    "gallery": "Galleria Fogga",
+    "title": "Muuttuva maisemani",
+    "start": "2027-03-02",
+    "end": "2027-03-23",
+    "description": "Galleria Foggan näyttely.",
+    "Link": "https://www.fogga.fi/muuttuva-maisemani/",
+    "Image": "https://www.fogga.fi/wp-content/uploads/2023/12/cropped-fogga_logo_color-1.png"
+  },
+  {
+    "gallery": "Galerie Forsblom",
+    "title": "Viljami Heinonen: Threshold",
+    "start": "2026-09-18",
+    "end": "2026-10-18",
+    "description": "Viljami Heinosen maalausnäyttely sisätiloista, joissa esineiden jäljet viittaavat poissaoleviin ihmisiin.",
+    "Link": "https://galerieforsblom.com/exhibitions/117-viljami-heinonen-threshold/",
+    "Image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2667/usr/images/exhibitions/main_image_override/117/viljami-kutsari-sans-turvaraja-kopio.jpg"
+  },
+  {
+    "gallery": "Galerie Forsblom",
+    "title": "Hannu Väisänen: Derrière les portes",
+    "start": "2026-09-18",
+    "end": "2026-10-18",
+    "description": "Hannu Väisäsen maalaussarja ovista ja porteista.",
+    "Link": "https://galerieforsblom.com/exhibitions/116-hannu-vaisanen-derriere-les-portes/",
+    "Image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2667/usr/images/exhibitions/main_image_override/116/na-ytto-kuva-2026-09-16-kello-15.43.54.png"
+  },
+  {
+    "gallery": "Galerie Forsblom",
+    "title": "Miisa Mäkeläinen: Lemmenlätäkkö",
+    "start": "2026-09-18",
+    "end": "2026-10-18",
+    "description": "Miisa Mäkeläisen maalauksia, joissa luonnon kierto ja kehollisuus sulautuvat toisiinsa.",
+    "Link": "https://galerieforsblom.com/exhibitions/115-miisa-makelainen-lemmenlatakko/",
+    "Image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2667/usr/images/exhibitions/main_image_override/115/miisa-kutsari-sans-turvaraja-kopio.jpg"
+  },
+  {
     "gallery": "Forum Box",
     "title": "Eetu Huhtala",
     "start": "2026-10-02",
@@ -180,9 +270,27 @@
     "Image": "https://forumbox.fi/hallinta/wp-content/uploads/2021/07/box-logo-ilman-boxia.jpg"
   },
   {
+    "gallery": "Forum Box",
+    "title": "Alisa Javits: Pelosta ja pahuudesta",
+    "start": "2026-10-02",
+    "end": "2026-10-25",
+    "description": "Alisa Javitsin 25-minuuttinen lyhytelokuva pelosta, pahuudesta ja niiden välisestä suhteesta.",
+    "Link": "https://forumbox.fi/exhibition/pelosta-ja-pahuudesta/",
+    "Image": "https://forumbox.fi/hallinta/wp-content/uploads/2026/06/On_Fear_and_Evil_Javits.jpg"
+  },
+  {
+    "gallery": "Forum Box",
+    "title": "Linda Roschier, Tommi Pasanen, Hemmo Siponen",
+    "start": "2026-10-30",
+    "end": "2026-11-22",
+    "description": "Linda Roschierin, Tommi Pasasen ja Hemmo Siposen yhteisnäyttely maalauksista ja vesiväritöistä.",
+    "Link": "https://forumbox.fi/exhibition/linda-roschier-tommi-pasanen-hemmo-siponen/",
+    "Image": "https://forumbox.fi/hallinta/wp-content/uploads/2025/05/LRBOX1-1268x1123.jpg"
+  },
+  {
     "gallery": "G12 Helsinki",
     "title": "Hans Withoos",
-    "start": "2026-09-19",
+    "start": "2026-09-17",
     "end": "2026-10-06",
     "description": "Hans Withoosin valokuvia.",
     "Link": "https://www.galleria12.fi/nayttely/hans-withoos-valokuvia/",
@@ -232,6 +340,141 @@
     "description": "Mikko Hallikaisen maalauksia.",
     "Link": "https://www.galleria12.fi/nayttely/hallikainen-mikko-maalauksia/",
     "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Sanna Savenius",
+    "start": "2027-01-07",
+    "end": "2027-01-26",
+    "description": "Sanna Saveniuksen maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/savenius-sanna-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/uploads/2025/06/IMG_6805-scaled-e1791022390194.jpeg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Petronella Lukka",
+    "start": "2027-01-07",
+    "end": "2027-01-26",
+    "description": "Petronella Lukan maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/petronella-lukka-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Pirjo Hassinen",
+    "start": "2027-01-28",
+    "end": "2027-02-16",
+    "description": "Pirjo Hassisen maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/pirjo-hassinen-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Teija Kosenius",
+    "start": "2027-02-18",
+    "end": "2027-03-09",
+    "description": "Teija Koseniuksen maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/teija-kosenius-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Elena Maijala",
+    "start": "2027-03-11",
+    "end": "2027-03-30",
+    "description": "Elena Maijalan maalauksia, joissa käytetään lehtikultaa ja öljyväriä.",
+    "Link": "https://www.galleria12.fi/nayttely/elena-maijala-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/uploads/2024/03/elena_maijala_kaislat-300x405.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Kaisa Soini: Flora",
+    "start": "2027-04-01",
+    "end": "2027-04-20",
+    "description": "Kaisa Soinin Flora-näyttely koostuu muste- ja maalaustöistä.",
+    "Link": "https://www.galleria12.fi/nayttely/flora/",
+    "Image": "https://www.galleria12.fi/app/uploads/2025/04/4-soini-FLORA-VII-300x400.jpeg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Jenni Tuulia Siltala",
+    "start": "2027-04-01",
+    "end": "2027-04-20",
+    "description": "Jenni Tuulia Siltalan maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/jenni-tuulia-siltala-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Javier Torres",
+    "start": "2027-04-22",
+    "end": "2027-05-11",
+    "description": "Javier Torresin keraamisia veistoksia.",
+    "Link": "https://www.galleria12.fi/nayttely/javier-torres-veistoksia/",
+    "Image": "https://www.galleria12.fi/app/uploads/2025/01/Torres-Listening-20x20x3_-300x138.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Anu Kauhaniemi",
+    "start": "2027-05-13",
+    "end": "2027-06-01",
+    "description": "Anu Kauhaniemen maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/kauhaniemi-anu-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Maria Aaltonen",
+    "start": "2027-06-03",
+    "end": "2027-06-29",
+    "description": "Maria Aaltosen maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/maria-aaltonen-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "HAA Galleria",
+    "title": "Ikuisuus puutarhassa (Sali 2)",
+    "start": "2026-09-25",
+    "end": "2026-10-18",
+    "description": "Raana Lehtisen maalausnäyttely, jossa taiteilijan nuoruusmuistot sekoittuvat tuoreisiin havaintoihin lähiluonnosta.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/ikuisuus-puutarhassa-sali-2",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-09/1000030117%20%282%29.jpg?itok=q7gLQ6VQ"
+  },
+  {
+    "gallery": "HAA Galleria",
+    "title": "Villi Sininen (Sali 1)",
+    "start": "2026-09-25",
+    "end": "2026-10-18",
+    "description": "Eeva-Liisa Puhakan videoinstallaatio- ja veistosnäyttely, joka tutkii Latvian tarunomaisia sinisiä lehmiä sekä ihmisen ja eläimen suhdetta.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/villi-sininen-sali-1",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-09/Puhakka%20Eeva-Liisa%2C%20Villi%20Sininen%2C%202021-2025%2C%20videostill_2%20%281%29%20%281%29.jpg?itok=xWU2pXfK"
+  },
+  {
+    "gallery": "Gallery Halmetoja",
+    "title": "Samppa Törmälehto: Picnic for Humanoids",
+    "start": "2026-10-02",
+    "end": "2026-10-25",
+    "description": "Samppa Törmälehdon maalausnäyttely, jossa väri ja muotokieli ovat keskiössä; teokset ovat tulkittavissa nykyilmiöiden vertauskuvina tai suoraan asetelmina ja luontokuvina.",
+    "Link": "https://galleryhalmetoja.com/exhibitions/picnic-for-humanoids/",
+    "Image": "https://galleryhalmetoja.com/wp-content/uploads/2026/09/unnamed-25-2-scaled.jpg"
+  },
+  {
+    "gallery": "Helsinki Contemporary",
+    "title": "Ken Matsubara: Moon, no thought of reflection. Water, no thought of reflecting.",
+    "start": "2026-10-02",
+    "end": "2026-10-25",
+    "description": "Japanilaisen videotaiteilija Ken Matsubaran ensimmäinen yksityisnäyttely Suomessa, joka yhdistää esineitä ja liikkuvaa kuvaa sekä uuden paikkasidonnaisen videoinstallaation.",
+    "Link": "https://helsinkicontemporary.com/exhibitions/moon-no-thought-of-reflection-water-no-thought-of-reflecting",
+    "Image": "https://helsinkicontemporary.com/media/pages/exhibitions/moon-no-thought-of-reflection-water-no-thought-of-reflecting/d59b2c1b70-1789563548/ken-matsubara-helsinki-contemporary-2026.png"
+  },
+  {
+    "gallery": "Helsinki Contemporary",
+    "title": "Kosen Ohtsubo & Tuomas A. Laitinen: Mitate 見立て",
+    "start": "2026-10-30",
+    "end": "2026-11-22",
+    "description": "Kosen Ohtsubon ja Tuomas A. Laitisen yhteisnäyttely Mitate 見立て.",
+    "Link": "https://helsinkicontemporary.com/exhibitions/mitate",
+    "Image": "https://helsinkicontemporary.com/media/pages/exhibitions/mitate/c2b8b668da-1790767127/ohtsubolaitinen-mitate1-3-mb.jpg"
   },
   {
     "gallery": "Galleria Heino",
@@ -455,7 +698,7 @@
     "start": "2026-11-20",
     "end": "2026-12-20",
     "description": "Tuomas Lehtomaan ja Tuure Leppäsen yhteisnäyttely.",
-    "Link": "https://hippolyte.fi/nayttelyt/",
+    "Link": "https://hippolyte.fi/nayttely/tuomas-lehtomaa-tuure-leppanen/",
     "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
   },
   {
@@ -464,8 +707,17 @@
     "start": "2026-11-20",
     "end": "2026-12-20",
     "description": "Amanda Lonon näyttely.",
-    "Link": "https://hippolyte.fi/nayttelyt/",
+    "Link": "https://hippolyte.fi/nayttely/amanda-lono/",
     "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
+  },
+  {
+    "gallery": "Galleria Katariina",
+    "title": "LAYERS 2.0",
+    "start": "2026-10-02",
+    "end": "2026-10-25",
+    "description": "Jussi TwoSevenin eläinaiheinen näyttely, jossa maalausten värikerrokset muuntuvat spraymaalilla ja sabluunoilla kolmiulotteisiksi fyysisiksi kerroksiksi.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/layers-20",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-09/JUSSI_TWOSEVEN_layers27_pieni.jpg?itok=VfdvxpLP"
   },
   {
     "gallery": "Kohta",
@@ -475,6 +727,24 @@
     "description": "Uusia maalauksia, jotka tutkivat maalaamista tilallisena käytäntönä ja muistin välineenä. Taustalla topografian ja kartografian tutkimus, epätavalliset pinnat kuten läpinäkyvä kangas ja kierrätetty lattialauta.",
     "Link": "https://kohta.fi/exhibition/magdalena-aberg/",
     "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:1190/h:1190/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/06/1000037352.jpg"
+  },
+  {
+    "gallery": "Kohta",
+    "title": "Dorothee Sauter: Walking the Unknown (studio)",
+    "start": "2026-10-15",
+    "end": "2026-11-15",
+    "description": "Kohta esittelee sveitsiläisen Dorothee Sauterin uusien keraamisten veistosten sarjan Walking the Unknown.",
+    "Link": "https://kohta.fi/exhibition/dorothee-sauter-walking-the-unknown-studio/",
+    "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:auto/h:auto/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/09/XY7B1183-Kopie-scaled.jpg"
+  },
+  {
+    "gallery": "Kohta",
+    "title": "Ville Laurinkoski: Domesticity (studio)",
+    "start": "2026-11-18",
+    "end": "2026-12-20",
+    "description": "Ville Laurinkosken installaatio Domesticity koostuu kotitalousesineistä.",
+    "Link": "https://kohta.fi/exhibition/ville-laurinkoski-domesticity-studio/",
+    "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:auto/h:auto/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/06/Ville_Laurinkoski_Photo_Kofi_Moeller_2026.jpg"
   },
   {
     "gallery": "Kuva/Tila",
@@ -594,6 +864,87 @@
     "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6a439ee009086eeabd37d990_Johan%20Eichhorn%20Burnout%201200.png"
   },
   {
+    "gallery": "Laterna Magica",
+    "title": "Tuija Vertainen: Sanakirjan kuvakirja",
+    "start": "2026-11-18",
+    "end": "2026-12-05",
+    "description": "Paperi- ja esinekollaaseja, jotka kuvittavat suomen kielen ranskalaislainojen taustoja ja lainautumatta jääneitä merkityksiä.",
+    "Link": "https://www.laterna.net/nayttelyt/sanakirjan-kuvakirja",
+    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6aa5086089a2bfbe472501e5_Tuija%20Vertainen%201200.jpg"
+  },
+  {
+    "gallery": "Laterna Magica",
+    "title": "Tapani Hirvi: Kaduilla ja kujilla, valokuvia",
+    "start": "2027-01-13",
+    "end": "2027-01-30",
+    "description": "Katuvalokuvia, joissa tarttuu sattumanvaraisia hetkiä kaupunkien kaduilta ja kujilta eri maissa 1980-luvulta nykypäivään.",
+    "Link": "https://www.laterna.net/nayttelyt/kaduilla-ja-kujilla-valokuvia",
+    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6aa26f18a5b0f1fce8c257bc_Tapani%20Hirvi%20Helsinki%201982.jpg"
+  },
+  {
+    "gallery": "LOKAL",
+    "title": "Linda Linko: Not Just One",
+    "start": "2026-09-25",
+    "end": "2026-10-24",
+    "description": "Linda Linkon maalauksia kasvoista ja hahmoista, jotka tutkivat ihmisen moninaisuutta ja muuttuvia tunnetiloja.",
+    "Link": "https://lokalhelsinki.com/exhibition-110-linda-linko-not-just-one/",
+    "Image": "https://lokalhelsinki.com/wp-content/uploads/2026/09/NotJustOne_Facebook.jpg"
+  },
+  {
+    "gallery": "LOKAL",
+    "title": "Anna Niskanen: Limbo",
+    "start": "2026-10-01",
+    "end": "2026-10-24",
+    "description": "Anna Niskasen käsin vedostettuja valokuvatöitä taivaasta, pilvistä ja auringonlaskuista. Esillä Lokalin White Wall -tilassa.",
+    "Link": "https://lokalhelsinki.com/product-category/exhibitions/white-wall-anna-niskanen-limbo/",
+    "Image": "https://lokalhelsinki.com/wp-content/uploads/2026/09/limbo_annaniskanen-10-550x677.jpg"
+  },
+  {
+    "gallery": "LOKAL",
+    "title": "Mari Isopahkala",
+    "start": "2026-10-30",
+    "end": "2026-11-28",
+    "description": "Mari Isopahkalan näyttely Lokalin päägalleriassa.",
+    "Link": "https://lokalhelsinki.com/exhibitions/upcoming/",
+    "Image": ""
+  },
+  {
+    "gallery": "LOKAL",
+    "title": "Matti Pikkujämsä & Jenni Rope: Red Things",
+    "start": "2026-12-04",
+    "end": "2026-12-22",
+    "description": "Matti Pikkujämsän ja Jenni Ropen yhteisnäyttely Red Things Lokalin päägalleriassa.",
+    "Link": "https://lokalhelsinki.com/exhibitions/upcoming/",
+    "Image": ""
+  },
+  {
+    "gallery": "MUU Helsinki nykytaidekeskus",
+    "title": "Salla Myllylä & Sari Palosaari: CHIM",
+    "start": "2026-10-17",
+    "end": "2026-11-15",
+    "description": "Salla Myllylän ja Sari Palosaaren video- ja veistosinstallaatioita, jotka ammentavat taiteilijoiden päällekkäisistä aika- ja paikkakokemuksista Kemistä Meri-Lapissa.",
+    "Link": "https://www.muu.fi/muuspace/exhibitons/salla-myllyla-and-sari-palosaari-chim/",
+    "Image": "https://muu.fi/site/assets/files/5739/salla-myllyla_kajavakari_2025-2026_web.png"
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Tuomas Auvinen: (A PERSON HABITS)",
+    "start": "2026-10-14",
+    "end": "2026-10-25",
+    "description": "Tuomas Auvisen Process Wall -näyttely, kuraattorina Monika Eva Hauck.",
+    "Link": "http://www.myymala2.com/?p=10884",
+    "Image": ""
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Amado Peña: Smoking Mirror 1",
+    "start": "2026-11-11",
+    "end": "2026-11-22",
+    "description": "Amado Peñan Smoking Mirror 1 on obsidiaanin sirpaleista, hartsista ja heijastavasta kalvosta kootun peilirakenteen avulla tehty tutkielma heijastavista rajatiloista, kuraattorina Monika Eva Hauck.",
+    "Link": "http://www.myymala2.com/?p=10859",
+    "Image": ""
+  },
+  {
     "gallery": "Taidesalonki Piirto",
     "title": "Tapani Piirto & Marja Uusiluoto-Raaska: STILLNESS",
     "start": "2026-10-06",
@@ -648,6 +999,42 @@
     "Image": "https://sculptors.fi/wp-content/uploads/2026/06/tiedotuskuva-ripatti-sculptor-1080x650.jpeg"
   },
   {
+    "gallery": "OHO Galleria",
+    "title": "Mirella Salo",
+    "start": "2026-09-17",
+    "end": "2026-12-18",
+    "description": "Mirella Salon maalauksia, joissa tutut muodot ja aiheet muuttuvat teoksesta toiseen omiksi jatkumoikseen. Salo työskentelee itse tehdyillä öljypuikoilla.",
+    "Link": "https://ohogallery.com/mirella-salo/",
+    "Image": "https://ohogallery.com/wp-content/uploads/2026/09/mirella.jpg"
+  },
+  {
+    "gallery": "OHO Galleria",
+    "title": "Lorenzo Marotti",
+    "start": "2026-09-17",
+    "end": "2026-12-18",
+    "description": "Lorenzo Marottin syanotypiatekniikalla tehtyjä nimettömiä, abstrakteja teoksia puuvillakankaalle.",
+    "Link": "https://ohogallery.com/lorenzo-marotti/",
+    "Image": "https://ohogallery.com/wp-content/uploads/2026/09/lorenzo.jpg"
+  },
+  {
+    "gallery": "Oksasenkatu 11 -galleria",
+    "title": "Essi Immonen, Anna-Stiina Korhonen, Eeva-Maija Pulkkinen: Tänään harjoittelin tulen piirtämistä...",
+    "start": "2026-10-04",
+    "end": "2026-10-31",
+    "description": "Kolmen taiteilijan yhteistyönä vuoden aikana syntynyt ryhmänäyttely, joka yhdistää välähdyksiä heidän elämästään ja työskentelystään.",
+    "Link": "https://oksasenkatu11.fi/essi-immonen-annastiina-korhonen-eevamaija-pulkkinen-tnn-harjoittelin-tulen-piirtmist",
+    "Image": "https://images.squarespace-cdn.com/content/v1/5dcd957bce42fc626350b4c6/4f405f6b-dae2-4589-a6eb-9d67e646139f/OK11_juliste_B2_final.jpg"
+  },
+  {
+    "gallery": "Galleria Rankka",
+    "title": "Syksyn Sävel",
+    "start": "2026-10-09",
+    "end": "2026-11-22",
+    "description": "Ryhmänäyttely, taiteilijoina mm. Tero Antero, Vilja Joensuu, Lauri Mäkimurto ja Erkki Nampajärvi.",
+    "Link": "https://galleriarankka.com/post/829290936951521280/galleria-rankka",
+    "Image": ""
+  },
+  {
     "gallery": "tm•galleria",
     "title": "Syyssalonki III",
     "start": "2026-10-02",
@@ -673,5 +1060,122 @@
     "description": "PULP tutkii vallan rakentumista esityksen ja katsojuuden kautta, suomalaisen elokuva-arkiston materiaalin pohjalta.",
     "Link": "https://www.painters.fi/galleria/meri-toivanen/",
     "Image": "https://www.painters.fi/wp-content/uploads/2024/12/Meri-Toivanen_Run-Like-a-Thief_2026-1024x879.jpg"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Marjatta Holma",
+    "start": "2027-01-06",
+    "end": "2027-01-31",
+    "description": "Marjatta Holma, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/marjatta-holma-3/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Mira Kankaanranta",
+    "start": "2027-02-03",
+    "end": "2027-02-28",
+    "description": "Mira Kankaanranta, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/mira-kankaanranta/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Kati Ruohomäki",
+    "start": "2027-03-03",
+    "end": "2027-03-28",
+    "description": "Kati Ruohomäki, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/kati-ruohomaki/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2026/02/Kati_Ruohomaki_Silmaovesta_ankat_-334x250.jpeg"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Haruka Kashima",
+    "start": "2027-04-01",
+    "end": "2027-04-25",
+    "description": "Haruka Kashima, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/haruka-kashima-2/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Arttu Hartikainen",
+    "start": "2027-04-28",
+    "end": "2027-05-23",
+    "description": "Arttu Hartikainen, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/arttu-hartikainen/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2026/01/Arttu_Hartikainen_Mitakohan_ne_tastakin_sanoo_2025_akryyli_muste-kankaalle_35-cmx41cm-213x250.jpg"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Milla Aska",
+    "start": "2027-05-26",
+    "end": "2027-06-20",
+    "description": "Milla Aska, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/milla-aska/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Laura Hetemäki",
+    "start": "2027-06-23",
+    "end": "2027-07-24",
+    "description": "Laura Hetemäki, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/laura-hetemaki/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Taru Happonen",
+    "start": "2027-08-04",
+    "end": "2027-08-29",
+    "description": "Taru Happonen, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/taru-happonen/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Kaarina Haka",
+    "start": "2027-09-01",
+    "end": "2027-09-26",
+    "description": "Kaarina Haka, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/kaarina-haka/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Syyssalonki IV",
+    "start": "2027-10-01",
+    "end": "2027-10-21",
+    "description": "Taidemaalariliiton kausittainen ryhmänäyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/syyssalonki-iv/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Ville Vuorenmaa",
+    "start": "2027-10-27",
+    "end": "2027-11-21",
+    "description": "Ville Vuorenmaa (s. 1980) tekee esittäviä akvarellimaalauksia henkilökohtaisista aiheista, usein tekstiä yhdistäen. Näyttely on hänen ensimmäinen yksityisnäyttelynsä Helsingissä seitsemään vuoteen.",
+    "Link": "https://www.painters.fi/galleria/ville-vuorenmaa/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2026/01/Ville_Vuorenmaa_Muistatko_Minut-214x250.jpeg"
+  },
+  {
+    "gallery": "tm•galleria",
+    "title": "Panu Ollikainen",
+    "start": "2027-11-24",
+    "end": "2027-12-19",
+    "description": "Panu Ollikainen, näyttely tm•galleriassa.",
+    "Link": "https://www.painters.fi/galleria/panu-ollikainen-2/",
+    "Image": "https://www.painters.fi/wp-content/uploads/2015/12/taidemaalariliitto.png"
+  },
+  {
+    "gallery": "Zetterberg Gallery",
+    "title": "Diamonds Are Forever",
+    "start": "2026-10-02",
+    "end": "2026-10-25",
+    "description": "Ryhmänäyttely, jossa Jani Leinonen, Erwin Laiho, Mari Keto ja Riikka Hyvönen tarkastelevat timantin myyttiä pysyvyyden, arvon ja uskomusten vertauskuvana.",
+    "Link": "https://zetterberggallery.com/more-info-coming-soon/",
+    "Image": ""
   }
 ]

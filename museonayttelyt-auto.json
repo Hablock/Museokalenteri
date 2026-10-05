@@ -77,12 +77,12 @@
     "start": "2026-09-12",
     "end": "2027-01-31",
     "description": "Näyttely Elin Danielson-Gambogin rohkeasta ja monikerroksisesta maailmasta.",
-    "Link": "https://www.didrichsenmuseum.fi/n%C3%A4yttelyt",
-    "Image": "https://static.wixstatic.com/media/f109db_ea6eecb2657f455fb1c8a846bf75a62d~mv2.jpg/v1/fill/w_809,h_697,fp_0.41_0.60,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/o%2Cemapuu%20nettiin.jpg"
+    "Link": "https://www.didrichsenmuseum.fi/edg",
+    "Image": "https://static.wixstatic.com/media/f109db_7ae9da29273b431c954446a763e1ab39~mv2.jpg/v1/fill/w_900,h_716,al_c/f109db_7ae9da29273b431c954446a763e1ab39~mv2.jpg"
   },
   {
     "museum": "EMMA",
-    "title": "Nykyaikaa etsimässä",
+    "title": "Nykyaikaa etsimässä: Juurettomuudesta",
     "start": "2026-03-14",
     "end": "2027-02-07",
     "description": "Kansainvälinen ryhmänäyttely juhlistaa EMMAn 20-vuotisjuhlavuotta ja tutkii nykyhetkeä.",
@@ -100,7 +100,7 @@
   },
   {
     "museum": "EMMA",
-    "title": "Howard Smith",
+    "title": "Howard Smith: Retrospektiivi 1965–2010",
     "start": "2026-09-05",
     "end": "2027-02-07",
     "description": "Retrospektiivinäyttely kunnianosoituksena Howard Smithin visuaaliselle ilmaisulle.",
@@ -109,7 +109,7 @@
   },
   {
     "museum": "EMMA",
-    "title": "Gerda Thesleff",
+    "title": "Collection Kakkonen esittelee: Gerda Thesleff",
     "start": "2026-11-25",
     "end": "2027-11-28",
     "description": "Collection Kakkosen rinnalle tuleva näyttely keramiikkataiteilija Gerda Thesleffistä (1871-1939).",
@@ -136,7 +136,7 @@
   },
   {
     "museum": "HAM Helsingin taidemuseo",
-    "title": "Petri Ala-Maunus ja Mauno Markkula",
+    "title": "Petri Ala-Maunus ja Mauno Markkula: Palava taivas",
     "start": "2026-03-13",
     "end": "2027-01-31",
     "description": "HAMin uuden kokoelmatilan avajaisnäyttely tuo yhteen kaksi eri aikakauden taidemaalaria, joita yhdistää maiseman tunnepitoinen tarkastelu. Petri Ala-Maunuksen suurikokoiset, yksityiskohtaiset ja yliromanttiset maalaukset kohtaavat Mauno Markkulan ekspressiiviset, mielikuvitukselliset ja fantasianomaiset näkymät.",
@@ -199,7 +199,7 @@
   },
   {
     "museum": "Kiasma",
-    "title": "Emma Ainala",
+    "title": "Emma Ainala: Like a Prayer",
     "start": "2026-10-09",
     "end": "2027-02-14",
     "description": "Emma Ainalan suuret, unenomaiset öljymaalaukset käsittelevät naiseutta, tyttöyttä sekä katseen ja katsottuna olemisen teemoja. Hänen yksityiskohtaiset teoksensa ammentavat vaikutteita kauhukuvastosta, internet-kulttuurista, muodista ja taidehistoriasta.",
@@ -214,6 +214,51 @@
     "description": "Oliver Beer yhdistää musiikkia ja kuvataiteita video-oopperassaan, joka on kuvattu esihistoriallisessa luolassa Ranskassa. Teoksessa kahdeksan eri kulttuuritaustoista tulevaa laulajaa esittää varhaisimpia musiikillisia muistojaan, ja luolan akustiikka vahvistaa heidän äänensä moniääniseksi kokonaisuudeksi.",
     "Link": "https://kiasma.fi/nayttelyt/oliver-beer-resonance-project-the-cave/",
     "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/Exhibition-view_Resonance-Project_The-Cave_Lyon-Biennale2024-c-Oliver-Beer.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Antony Gormley: Hold",
+    "start": "2027-02-12",
+    "end": "2027-11-21",
+    "description": "Antony Gormleyn näyttely käsittelee ihmiskehon suhdetta ympäröivään tilaan ja arkkitehtuuriin. Esillä on veistoksia ja installaatioita, joiden sisällä ja läpi voi liikkua.",
+    "Link": "https://kiasma.fi/nayttelyt/antony-gormley-hold/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2026/09/GormleyClearingVIII2022Photograph-by-Antoine-van-Kaam_museumvoorlinden.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Kalervo Palsan maailmassa",
+    "start": "2027-03-19",
+    "end": "2027-09-12",
+    "description": "Kiasman kokoelmanäyttely esittelee laajasti Kalervo Palsan (1947–1987) teoksia yksinäisyydestä, kuolemasta ja syrjäseudun elämästä, rinnastettuna nykytaiteilijoiden töihin.",
+    "Link": "https://kiasma.fi/nayttelyt/kalervo-palsan-maailmassa/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2026/09/Kalervo-Palsa-Kitti-Kalle-1984-photo-Petri-Virtanen.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Monster Chetwynd",
+    "start": "2027-04-30",
+    "end": "2028-01-09",
+    "description": "Monster Chetwyndin mielikuvituksellinen installaatio paperimassasta ja kierrätysmateriaaleista muistuttaa teatterilavastusta, ja yleisö voi tulla osaksi teosta.",
+    "Link": "https://kiasma.fi/nayttelyt/monster-chetwynd/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2026/09/Monster-Chetwynd-A-Cat-Is-Not-a-Dog.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Ars Fennica 2027",
+    "start": "2027-10-15",
+    "end": "2028-03-26",
+    "description": "Näyttelyssä esillä teoksia Ars Fennica -palkintoehdokkailta Anna Camnerilta, Anna Estarriolalta, Sandra Mujingalta ja Joel Slottelta.",
+    "Link": "https://kiasma.fi/nayttelyt/ars-fennica-2027/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2026/09/Ars-Fennica-2027-artists.jpg"
+  },
+  {
+    "museum": "Kiasma",
+    "title": "Ann Lislegaard: ANIMOID",
+    "start": "2027-11-05",
+    "end": "2028-02-27",
+    "description": "Norjalaisen Ann Lislegaardin näyttely tarkastelee teknologian ja kielen vaikutusta ihmisyyden kokemukseen scifi-vaikutteisten teosten kautta.",
+    "Link": "https://kiasma.fi/nayttelyt/ann-lislegaard-animoid/",
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2026/09/AnnLislegaard_OraclesOwls_2021-2012.jpg"
   },
   {
     "museum": "Sinebrychoffin taidemuseo",
@@ -234,12 +279,21 @@
     "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2025/11/stilleven_2_pauwen_woudenberg_DSC2000_klaar-951x1024.jpg"
   },
   {
+    "museum": "Sinebrychoffin taidemuseo",
+    "title": "Maailman napa – Välähdyksiä lapsuuteen",
+    "start": "2027-03-04",
+    "end": "2027-09-05",
+    "description": "Näyttely tutkii taiteen kautta lapsen ja aikuisen välistä vuorovaikutusta 1500-luvulta nykypäivään, pääosin Kansallisgallerian kokoelmasta.",
+    "Link": "https://sinebrychoffintaidemuseo.fi/nayttelyt/maailman-napa-valahdyksia-lapsuuteen/",
+    "Image": "https://sinebrychoffintaidemuseo.fi/wp-content/uploads/sites/4/2026/09/Maailman-napa_Nettisivukuva.jpg"
+  },
+  {
     "museum": "Suomen valokuvataiteen museo",
-    "title": "Iiris Elena Rusi",
+    "title": "Iiris Elena Rusi: Myös meidän sydämet voivat särkyä",
     "start": "2026-10-09",
     "end": "2026-11-29",
     "description": "Iiris Elena Rusi tunnetaan kuvataiteilijana, joka harjoittaa seksityötä. Tämä näyttely jatkaa Killer Queen -teoksen teemoja ja tuo keskusteluun mukaan muita erotiikkapalveluiden tarjoajia, peilaten yleisön suhtautumista aiheeseen. Se on osa Turvan tekstuurit -sarjaa.",
-    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/iiris-elena-rusi",
+    "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/myos-meidan-sydamet-voivat-sarkya",
     "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/main_image/public/exhibitions/2024-12/Iiris%20Rusi_Tales%20of%20s%20work%20(1).jpg"
   },
   {
@@ -249,7 +303,7 @@
     "end": "2027-02-28",
     "description": "Näyttely tarkastelee digitaalisen valokuvan toimintaa internetkulttuurissa ja sen kykyä vangita katsojan huomio. Neljätoista taiteellista näkökulmaa tutkii visuaalisia ilmiöitä, jotka muovaavat verkon viestintää, kritiikkiä ja huumoria, ja paljastavat kuvien merkittävän roolin sosiaalisten, kulttuuristen ja poliittisten kontekstien muodostumisessa.",
     "Link": "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/kuvan-houkutus",
-    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/location/svm_logo_fi_6x6_s_rgb_2.png"
+    "Image": "https://www.valokuvataiteenmuseo.fi/sites/default/files/styles/cols_2_crop/public/exhibitions/2026-10/Binschtok_01%20nosto.jpg?itok=geticUFS"
   },
   {
     "museum": "Helsingin Taidehalli",
