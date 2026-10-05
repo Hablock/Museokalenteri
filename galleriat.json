@@ -67,7 +67,7 @@
     "lng": null,
     "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
     "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
-    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/"
   },
   {
     "nimi": "Galleria Bronda",
@@ -76,8 +76,8 @@
     "lat": 60.1652898,
     "lng": 24.9389139,
     "kotisivu": "http://www.bronda.fi/",
-    "nayttelysivu": "http://www.bronda.fi/nayttelyt/",
-    "tulevanayttelysivu": "http://www.bronda.fi/nayttelykalenteri/"
+    "nayttelysivu": "https://www.bronda.fi/",
+    "tulevanayttelysivu": "https://www.bronda.fi/"
   },
   {
     "nimi": "Galleria Contempo",
@@ -86,8 +86,8 @@
     "lat": 60.1648541,
     "lng": 24.9339211,
     "kotisivu": "http://www.galleriacontempo.fi/",
-    "nayttelysivu": "http://www.galleriacontempo.fi/nayttelyt/nyt/",
-    "tulevanayttelysivu": "http://www.galleriacontempo.fi/nayttelyt/tulossa/"
+    "nayttelysivu": "http://www.galleriacontempo.fi/",
+    "tulevanayttelysivu": "http://www.galleriacontempo.fi/"
   },
   {
     "nimi": "Galleria Duetto",
@@ -96,8 +96,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "https://www.galleriaduetto.fi/",
-    "nayttelysivu": "https://www.galleriaduetto.fi/nayttelyt/",
-    "tulevanayttelysivu": "https://www.galleriaduetto.fi/nayttelyt/"
+    "nayttelysivu": "https://www.galleriaduetto.fi/",
+    "tulevanayttelysivu": "https://www.galleriaduetto.fi/"
   },
   {
     "nimi": "Galleria Fogga",
@@ -126,8 +126,8 @@
     "lat": 60.1616062,
     "lng": 24.9248801,
     "kotisivu": "https://forumbox.fi/",
-    "nayttelysivu": "https://forumbox.fi/nayttelyt/",
-    "tulevanayttelysivu": "https://forumbox.fi/nayttelyt/"
+    "nayttelysivu": "https://forumbox.fi/",
+    "tulevanayttelysivu": "https://forumbox.fi/"
   },
   {
     "nimi": "G12 Helsinki",
@@ -147,7 +147,7 @@
     "lng": 24.9851069,
     "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
     "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
-    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/"
   },
   {
     "nimi": "Gallery Halmetoja",
@@ -166,8 +166,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "http://www.galleriaheino.fi/",
-    "nayttelysivu": "http://www.galleriaheino.fi/nayttelyt.html?type=1",
-    "tulevanayttelysivu": "http://www.galleriaheino.fi/nayttelyt.html?type=2"
+    "nayttelysivu": "https://www.galleriaheino.fi/nayttelyt/nyt",
+    "tulevanayttelysivu": "https://www.galleriaheino.fi/nayttelyt/tulevat/"
   },
   {
     "nimi": "Helsinki Contemporary",
@@ -177,7 +177,7 @@
     "lng": 24.94082,
     "kotisivu": "https://helsinkicontemporary.com/",
     "nayttelysivu": "https://helsinkicontemporary.com/exhibitions",
-    "tulevanayttelysivu": "https://helsinkicontemporary.com/exhibitions"
+    "tulevanayttelysivu": "https://helsinkicontemporary.com/exhibitions/upcoming"
   },
   {
     "nimi": "Valokuvagalleria Hippolyte",
@@ -227,7 +227,7 @@
     "lng": null,
     "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
     "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
-    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/"
   },
   {
     "nimi": "Kohta",
@@ -256,8 +256,8 @@
     "lat": 60.1831962,
     "lng": 24.9578948,
     "kotisivu": "https://kuvittajat.fi/galleria-kuvitus",
-    "nayttelysivu": "https://kuvittajat.fi/nayttelyt/",
-    "tulevanayttelysivu": "https://kuvittajat.fi/nayttelyt/"
+    "nayttelysivu": "https://kuvittajat.fi/galleriakuvitus/",
+    "tulevanayttelysivu": "https://kuvittajat.fi/galleriakuvitus/"
   },
   {
     "nimi": "Laterna Magica",
@@ -287,7 +287,7 @@
     "lng": 25.0138174,
     "kotisivu": "https://www.helsingintaiteilijaseura.fi/",
     "nayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/",
-    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/nayttelykalenteri/"
+    "tulevanayttelysivu": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/"
   },
   {
     "nimi": "MUU Helsinki nykytaidekeskus",
@@ -296,8 +296,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "https://www.muu.fi/",
-    "nayttelysivu": "https://www.muu.fi/ohjelma/",
-    "tulevanayttelysivu": "https://www.muu.fi/ohjelma/"
+    "nayttelysivu": "https://www.muu.fi/",
+    "tulevanayttelysivu": "https://www.muu.fi/"
   },
   {
     "nimi": "Myymälä2",
@@ -316,8 +316,8 @@
     "lat": 60.1586143,
     "lng": 24.934099,
     "kotisivu": "https://www.ohogallery.com/",
-    "nayttelysivu": "https://www.ohogallery.com/exhibitions",
-    "tulevanayttelysivu": "https://www.ohogallery.com/exhibitions"
+    "nayttelysivu": "https://www.ohogallery.com/",
+    "tulevanayttelysivu": "https://www.ohogallery.com/"
   },
   {
     "nimi": "Oksasenkatu 11 -galleria",
@@ -326,8 +326,8 @@
     "lat": 60.1759649,
     "lng": 24.923296,
     "kotisivu": "http://www.oksasenkatu11.fi/",
-    "nayttelysivu": "http://www.oksasenkatu11.fi/nayttelyt/",
-    "tulevanayttelysivu": "http://www.oksasenkatu11.fi/nayttelyt/"
+    "nayttelysivu": "http://www.oksasenkatu11.fi/",
+    "tulevanayttelysivu": "http://www.oksasenkatu11.fi/"
   },
   {
     "nimi": "Galleria Pirkko-Liisa Topelius",
@@ -346,8 +346,8 @@
     "lat": 60.1651232,
     "lng": 24.9296934,
     "kotisivu": "http://galleriarankka.com/",
-    "nayttelysivu": "http://galleriarankka.com/exhibitions/",
-    "tulevanayttelysivu": "http://galleriarankka.com/exhibitions/"
+    "nayttelysivu": "http://galleriarankka.com/",
+    "tulevanayttelysivu": "http://galleriarankka.com/"
   },
   {
     "nimi": "Galleria Sculptor",
@@ -356,8 +356,8 @@
     "lat": 60.1659042,
     "lng": 24.9522998,
     "kotisivu": "https://sculptors.fi/",
-    "nayttelysivu": "https://sculptors.fi/nayttelyt/nyt/",
-    "tulevanayttelysivu": "https://sculptors.fi/nayttelyt/tulossa/"
+    "nayttelysivu": "https://sculptors.fi/nayttelyt/",
+    "tulevanayttelysivu": "https://sculptors.fi/nayttelyt/"
   },
   {
     "nimi": "Taidesalonki Piirto",
@@ -366,8 +366,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "https://www.piirto.com/",
-    "nayttelysivu": "https://www.piirto.com/nayttelyt/",
-    "tulevanayttelysivu": "https://www.piirto.com/nayttelyt/"
+    "nayttelysivu": "https://www.piirto.com/fi/vierailevat-taiteilijat-2/menossa-olevaa/",
+    "tulevanayttelysivu": "https://www.piirto.com/fi/tulevat-nayttelyt/"
   },
   {
     "nimi": "tm•galleria",
@@ -376,8 +376,8 @@
     "lat": 60.1650773,
     "lng": 24.9441615,
     "kotisivu": "https://painters.fi/tmgalleria/",
-    "nayttelysivu": "https://painters.fi/tmgalleria/nayttelyt/nyt/",
-    "tulevanayttelysivu": "https://painters.fi/tmgalleria/nayttelyt/tulossa/"
+    "nayttelysivu": "https://painters.fi/tmgalleria/",
+    "tulevanayttelysivu": "https://painters.fi/tmgalleria/"
   },
   {
     "nimi": "Yö Galleria",
@@ -386,8 +386,8 @@
     "lat": null,
     "lng": null,
     "kotisivu": "https://www.yory.fi/",
-    "nayttelysivu": "https://www.yory.fi/fi/nayttelyt",
-    "tulevanayttelysivu": "https://www.yory.fi/fi/nayttelyt"
+    "nayttelysivu": "https://www.yory.fi/",
+    "tulevanayttelysivu": "https://www.yory.fi/"
   },
   {
     "nimi": "Zetterberg Gallery",
@@ -396,7 +396,7 @@
     "lat": 60.165875,
     "lng": 24.945121,
     "kotisivu": "https://zetterberggallery.com/",
-    "nayttelysivu": "https://zetterberggallery.com/exhibitions/",
-    "tulevanayttelysivu": "https://zetterberggallery.com/exhibitions/"
+    "nayttelysivu": "https://zetterberggallery.com/category/exhibitions/current/",
+    "tulevanayttelysivu": "https://zetterberggallery.com/category/exhibitions/upcoming/"
   }
 ]

@@ -82,7 +82,8 @@
     "lat": 60.1715747793913,
     "lng": 24.936889672854665,
     "kotisivu": "https://kiasma.fi",
-    "nayttelysivu": "https://kiasma.fi/nayttelyt/tulevat/"
+    "nayttelysivu": "https://kiasma.fi/nayttelyt/",
+    "tulevat": "https://kiasma.fi/nayttelyt/tulevat/"
   },
   {
     "nimi": "Sinebrychoffin taidemuseo",
