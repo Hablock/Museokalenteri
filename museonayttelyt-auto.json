@@ -81,6 +81,33 @@
     "Image": "https://static.wixstatic.com/media/f109db_7ae9da29273b431c954446a763e1ab39~mv2.jpg/v1/fill/w_900,h_716,al_c/f109db_7ae9da29273b431c954446a763e1ab39~mv2.jpg"
   },
   {
+    "museum": "Didrichsenin taidemuseo",
+    "title": "Uusrealismi ja pop-taide",
+    "start": "2027-02-20",
+    "end": "2027-05-30",
+    "description": "Didrichsenin taidemuseon kevään 2027 näyttely esittelee 1960-luvun taidemaailmaa mullistanutta uusrealismia ja laajenee sen keskeisistä taiteilijoista suuntauksen eurooppalaiseen vaikutuspiiriin ja kansainväliseen pop-taiteeseen.",
+    "Link": "https://www.didrichsenmuseum.fi/näyttelyt",
+    "Image": ""
+  },
+  {
+    "museum": "Didrichsenin taidemuseo",
+    "title": "Ikko Tanaka & Erik Bruun",
+    "start": "2027-06-12",
+    "end": "2027-08-29",
+    "description": "Didrichsenin taidemuseon kesänäyttely tuo yhteen kaksi kansainvälisesti merkittävää graafikkoa: japanilaisen Ikko Tanakan (1930–2002) ja suomalaisen Erik Bruunin (s. 1926).",
+    "Link": "https://www.didrichsenmuseum.fi/näyttelyt",
+    "Image": ""
+  },
+  {
+    "museum": "Didrichsenin taidemuseo",
+    "title": "Fortumin Taidesäätiö",
+    "start": "2027-09-10",
+    "end": "2028-01-30",
+    "description": "Didrichsenin taidemuseo täyttyy Fortumin Taidesäätiön kokoelman teoksista. Maalaus- ja veistotaiteen lisäksi taidekäsityöt sekä taideteolliset teokset asettuvat taidemuseon saleihin dynaamiseksi kokonaisuudeksi.",
+    "Link": "https://www.didrichsenmuseum.fi/näyttelyt",
+    "Image": ""
+  },
+  {
     "museum": "EMMA",
     "title": "Nykyaikaa etsimässä: Juurettomuudesta",
     "start": "2026-03-14",
@@ -204,7 +231,7 @@
     "end": "2027-02-14",
     "description": "Emma Ainalan suuret, unenomaiset öljymaalaukset käsittelevät naiseutta, tyttöyttä sekä katseen ja katsottuna olemisen teemoja. Hänen yksityiskohtaiset teoksensa ammentavat vaikutteita kauhukuvastosta, internet-kulttuurista, muodista ja taidehistoriasta.",
     "Link": "https://kiasma.fi/nayttelyt/emma-ainala/",
-    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/Emma-Ainala_Philosophers-picnic_2021_Photo_Jussi-Tiainen.jpg"
+    "Image": "https://kiasma.fi/wp-content/uploads/sites/2/2025/09/EmmaAinala_HighMaintenance_2026_Photo_JohannesEkholm.jpg"
   },
   {
     "museum": "Kiasma",
@@ -217,7 +244,7 @@
   },
   {
     "museum": "Kiasma",
-    "title": "Antony Gormley: Hold",
+    "title": "Antony Gormley: Tilassa",
     "start": "2027-02-12",
     "end": "2027-11-21",
     "description": "Antony Gormleyn näyttely käsittelee ihmiskehon suhdetta ympäröivään tilaan ja arkkitehtuuriin. Esillä on veistoksia ja installaatioita, joiden sisällä ja läpi voi liikkua.",

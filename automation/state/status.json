@@ -4,123 +4,123 @@
     "sources": [
       "AD-museo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "f2ff7182e5b5a95319f5068ebebf29d58570d788",
-    "processed_hash": "f2ff7182e5b5a95319f5068ebebf29d58570d788",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "2f9a9cd174592ae7b3e7a39c886c2af564d94e1c",
+    "processed_hash": "2f9a9cd174592ae7b3e7a39c886c2af564d94e1c",
+    "last_processed": "2026-10-15"
   },
   "https://amosrex.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Amos Rex"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "d90ec5a4d00bb568ad1e271e5a4349c46829d196",
-    "processed_hash": "d90ec5a4d00bb568ad1e271e5a4349c46829d196",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "c5251d1cfbadc0923a2f2cb2effcb30647a3a19b",
+    "processed_hash": "c5251d1cfbadc0923a2f2cb2effcb30647a3a19b",
+    "last_processed": "2026-10-15"
   },
   "https://amosrex.fi/tulevat-nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Amos Rex"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "263b87058e0dffe4d7a5adfaeaad6075dd6896d9",
-    "processed_hash": "263b87058e0dffe4d7a5adfaeaad6075dd6896d9",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "73e78fdf52aa6d04ff3bd2952529b5137bd2e9a4",
+    "processed_hash": "73e78fdf52aa6d04ff3bd2952529b5137bd2e9a4",
+    "last_processed": "2026-10-15"
   },
   "https://ateneum.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Ateneum"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "a1a595af485989541ab2d7648f32f6a1f59610c1",
-    "processed_hash": "a1a595af485989541ab2d7648f32f6a1f59610c1",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "cc20d99b3be4515f44f0464be365647dbe20741b",
+    "processed_hash": "cc20d99b3be4515f44f0464be365647dbe20741b",
+    "last_processed": "2026-10-15"
   },
   "https://ateneum.fi/nayttelyt/tulevat/": {
     "consecutive_failures": 0,
     "sources": [
       "Ateneum"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "08e588a07be69e7892cc9d7dce4f0e0bb05291ad",
-    "processed_hash": "08e588a07be69e7892cc9d7dce4f0e0bb05291ad",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "804545d0b75931e6757820e56a14703d875d8efe",
+    "processed_hash": "804545d0b75931e6757820e56a14703d875d8efe",
+    "last_processed": "2026-10-15"
   },
   "https://www.didrichsenmuseum.fi/näyttelyt": {
     "consecutive_failures": 0,
     "sources": [
       "Didrichsenin taidemuseo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "0537f0b4c90589e69038718f40b7bdaad48e01ca",
-    "processed_hash": "0537f0b4c90589e69038718f40b7bdaad48e01ca",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "577a834fe54e7ac258e3488df3432cbb20330482",
+    "processed_hash": "577a834fe54e7ac258e3488df3432cbb20330482",
+    "last_processed": "2026-10-15"
   },
   "https://emmamuseum.fi/emman-nayttelyt/nyt/": {
     "consecutive_failures": 0,
     "sources": [
       "EMMA"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "d5ede50b9ff1a1d634f6b56e8003898236af296c",
-    "processed_hash": "d5ede50b9ff1a1d634f6b56e8003898236af296c",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "69e041a0da9dd0bc55bb1dbff9c51935e98b4612",
+    "processed_hash": "69e041a0da9dd0bc55bb1dbff9c51935e98b4612",
+    "last_processed": "2026-10-15"
   },
   "https://emmamuseum.fi/emman-nayttelyt/tulevat/": {
     "consecutive_failures": 0,
     "sources": [
       "EMMA"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "08f6c1f6765fd6ea1b50483bd9eefeb9c6f72118",
-    "processed_hash": "08f6c1f6765fd6ea1b50483bd9eefeb9c6f72118",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "b83d0c48e4ff0ccebdae241e1c4eac21498cba66",
+    "processed_hash": "b83d0c48e4ff0ccebdae241e1c4eac21498cba66",
+    "last_processed": "2026-10-15"
   },
   "https://hakasalmenhuvila.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Hakasalmen huvila"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "24b6c0046fef223faad093a6af494cd2de0e9dc5",
     "processed_hash": "24b6c0046fef223faad093a6af494cd2de0e9dc5",
     "last_processed": "2026-10-05"
@@ -130,189 +130,193 @@
     "sources": [
       "HAM Helsingin taidemuseo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "e20975b54d03b1c1f5e9adc1baf0f3c520d3dd41",
-    "processed_hash": "e20975b54d03b1c1f5e9adc1baf0f3c520d3dd41",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "cf85ad1ddaab52727290f9e5e5baf5195c2c3be5",
+    "processed_hash": "cf85ad1ddaab52727290f9e5e5baf5195c2c3be5",
+    "last_processed": "2026-10-15"
   },
   "https://www.hamhelsinki.fi/tulevat-nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "HAM Helsingin taidemuseo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "25a90cf94ddb054833e95a62ea3a8729926c9993",
-    "processed_hash": "25a90cf94ddb054833e95a62ea3a8729926c9993",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "d96b76f5bf21d3d082ac87f7292673da393a12c4",
+    "processed_hash": "d96b76f5bf21d3d082ac87f7292673da393a12c4",
+    "last_processed": "2026-10-15"
   },
   "https://taidehalli.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Helsingin Taidehalli"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "db44868639f70f9894b29ec803def97d6030cb36",
-    "processed_hash": "db44868639f70f9894b29ec803def97d6030cb36",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "59e4696a641af998448cd256ecb16901252d3689",
+    "processed_hash": "59e4696a641af998448cd256ecb16901252d3689",
+    "last_processed": "2026-10-15"
   },
   "https://kiasma.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Kiasma"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "ccfb7ec85e571320b042fa14a39ea26cf3d9a76a",
-    "processed_hash": "ccfb7ec85e571320b042fa14a39ea26cf3d9a76a",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "941682a4865294b55f3b3fef7c8b941e0f4539ab",
+    "processed_hash": "941682a4865294b55f3b3fef7c8b941e0f4539ab",
+    "last_processed": "2026-10-15"
   },
   "https://kiasma.fi/nayttelyt/tulevat/": {
     "consecutive_failures": 0,
     "sources": [
       "Kiasma"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "f7688377c422851b63e8406b82c538b5c65ae984",
-    "processed_hash": "f7688377c422851b63e8406b82c538b5c65ae984",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "50d38f2ee3671b88a4879c0639fa88384bab550f",
+    "processed_hash": "50d38f2ee3671b88a4879c0639fa88384bab550f",
+    "last_processed": "2026-10-15"
   },
   "https://sinebrychoffintaidemuseo.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Sinebrychoffin taidemuseo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "3f8251efcff254452f023cca89df7a365c459605",
-    "processed_hash": "3f8251efcff254452f023cca89df7a365c459605",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "61984383b2ebb28c80a2e5271bb4032aeb905f41",
+    "processed_hash": "61984383b2ebb28c80a2e5271bb4032aeb905f41",
+    "last_processed": "2026-10-15"
   },
   "https://sinebrychoffintaidemuseo.fi/nayttelyt/tulevat/": {
     "consecutive_failures": 0,
     "sources": [
       "Sinebrychoffin taidemuseo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "d2732e0efa92467e0df8cbe9ab46ec7bde1f31c2",
-    "processed_hash": "d2732e0efa92467e0df8cbe9ab46ec7bde1f31c2",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "fa23b87d3569eba763a324e8cd0589d880d5da98",
+    "processed_hash": "fa23b87d3569eba763a324e8cd0589d880d5da98",
+    "last_processed": "2026-10-15"
   },
   "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/nayttelyt-nyt": {
     "consecutive_failures": 0,
     "sources": [
       "Suomen valokuvataiteen museo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "5464cda17eb2cb583c0cd0b90d30302ba1ece512",
-    "processed_hash": "5464cda17eb2cb583c0cd0b90d30302ba1ece512",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "8e93167d707f15fe04dcc744e723c3bedfd6604e",
+    "processed_hash": "8e93167d707f15fe04dcc744e723c3bedfd6604e",
+    "last_processed": "2026-10-15"
   },
   "https://www.valokuvataiteenmuseo.fi/fi/nayttelyt/tulevat-nayttelyt": {
     "consecutive_failures": 0,
     "sources": [
       "Suomen valokuvataiteen museo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "b9746e81bb98f0e4ce7033154bbab0f584ae95e2",
-    "processed_hash": "b9746e81bb98f0e4ce7033154bbab0f584ae95e2",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "2ff24fdfb2e49fbbe4aba2969993504db2bfc057",
+    "processed_hash": "2ff24fdfb2e49fbbe4aba2969993504db2bfc057",
+    "last_processed": "2026-10-15"
   },
   "https://www.villagyllenberg.fi/nayttelyt": {
     "consecutive_failures": 0,
     "sources": [
       "Villa Gyllenberg"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "f751a9d23cb38b288780d6ae6aad23693ede7530",
-    "processed_hash": "f751a9d23cb38b288780d6ae6aad23693ede7530",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "b081d9406ee7924e4016bd465eedb5b35e6f3aad",
+    "processed_hash": "b081d9406ee7924e4016bd465eedb5b35e6f3aad",
+    "last_processed": "2026-10-15"
   },
   "https://galleria4-kuus.fi/445612429": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "sources": [
       "Galleria 4-kuus"
     ],
-    "last_checked": "2026-10-05",
-    "status": 0,
-    "method": "",
-    "error": "playwright: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://galleria4-kuus.fi/445612429\", waiting until \"domcontentloaded\"\n"
+    "last_checked": "2026-10-15",
+    "status": 200,
+    "method": "requests",
+    "error": "",
+    "last_ok": "2026-10-15",
+    "hash": "90ceb2e72d12b3561e0cd2ada9e3016284646c83",
+    "processed_hash": "90ceb2e72d12b3561e0cd2ada9e3016284646c83",
+    "last_processed": "2026-10-15"
   },
   "https://www.galleria-a2.fi/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria A2"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "934bae5a35b4d67a29b008ce1e22b27c6bafa72f",
-    "processed_hash": "934bae5a35b4d67a29b008ce1e22b27c6bafa72f",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "7034fbfe2e02b8c45c3182f43eabf02c0b5bdcde",
+    "processed_hash": "7034fbfe2e02b8c45c3182f43eabf02c0b5bdcde",
+    "last_processed": "2026-10-15"
   },
   "https://akvart.fi/nayttelyt-ja-tapahtumat/": {
     "consecutive_failures": 0,
     "sources": [
       "AKVART Galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "b5129ea0cfa6a49a1685d79cab41b6ba38cdbf74",
-    "processed_hash": "b5129ea0cfa6a49a1685d79cab41b6ba38cdbf74",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "03846b6a6d98087fe216d6c0aae0946ad854c8fd",
+    "processed_hash": "03846b6a6d98087fe216d6c0aae0946ad854c8fd",
+    "last_processed": "2026-10-15"
   },
   "https://anhava.com/exhibitions/": {
     "consecutive_failures": 0,
     "sources": [
       "Galerie Anhava"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "c52248e6fc139a0052189829d9b989c7f379e7da",
     "processed_hash": "c52248e6fc139a0052189829d9b989c7f379e7da",
     "last_processed": "2026-10-05"
@@ -322,14 +326,14 @@
     "sources": [
       "Galleria ARS Longa"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "a75de2e6cc65ea413e5f46a640410957aa325f31",
-    "processed_hash": "a75de2e6cc65ea413e5f46a640410957aa325f31",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "1ba040345f424c999edf474ddcddffe719393738",
+    "processed_hash": "1ba040345f424c999edf474ddcddffe719393738",
+    "last_processed": "2026-10-15"
   },
   "https://www.artkaarisilta.fi/nayttelyt": {
     "consecutive_failures": 1,
@@ -349,39 +353,39 @@
       "HAA Galleria",
       "Malmitalon galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "303fe2483fce660e569872ed334f791bb75cfca7",
-    "processed_hash": "303fe2483fce660e569872ed334f791bb75cfca7",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "c3b01b7bce3becf65108942413c8351bcf2eec6c",
+    "processed_hash": "c3b01b7bce3becf65108942413c8351bcf2eec6c",
+    "last_processed": "2026-10-15"
   },
   "https://www.bronda.fi/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria Bronda"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "6647d8f3e790158234c993d2b18f0c975f1ffb42",
-    "processed_hash": "6647d8f3e790158234c993d2b18f0c975f1ffb42",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "1d915a26e8b10b38a893b152b84f087bf444aeb3",
+    "processed_hash": "1d915a26e8b10b38a893b152b84f087bf444aeb3",
+    "last_processed": "2026-10-15"
   },
   "http://www.galleriacontempo.fi/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria Contempo"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "b0d70f951999c49a48aa93ef52ee41b7224c1a3e",
     "processed_hash": "b0d70f951999c49a48aa93ef52ee41b7224c1a3e",
     "last_processed": "2026-10-05"
@@ -391,81 +395,81 @@
     "sources": [
       "Galleria Duetto"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
-    "method": "playwright",
+    "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "143b73e1589e279181c64653a126abc1863c1fe7",
-    "processed_hash": "143b73e1589e279181c64653a126abc1863c1fe7",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "e55770567424062f16d78243340a194265b68e98",
+    "processed_hash": "e55770567424062f16d78243340a194265b68e98",
+    "last_processed": "2026-10-15"
   },
   "https://www.fogga.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria Fogga"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "9b45572ef523c754130eb04f4b373bf50dff111d",
-    "processed_hash": "9b45572ef523c754130eb04f4b373bf50dff111d",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "1e8b9ea4c0e7720d481a4ab0782cfb87af56d5d4",
+    "processed_hash": "1e8b9ea4c0e7720d481a4ab0782cfb87af56d5d4",
+    "last_processed": "2026-10-15"
   },
   "https://galerieforsblom.com/exhibitions/": {
     "consecutive_failures": 0,
     "sources": [
       "Galerie Forsblom"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "f0cc906e9e6b3b6197988ee1179c2c930953a497",
-    "processed_hash": "f0cc906e9e6b3b6197988ee1179c2c930953a497",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "da0087e848d8bd47c8ec4076e0102cb917df6852",
+    "processed_hash": "da0087e848d8bd47c8ec4076e0102cb917df6852",
+    "last_processed": "2026-10-15"
   },
   "https://forumbox.fi/": {
     "consecutive_failures": 0,
     "sources": [
       "Forum Box"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "512a0c4bda7bc25f67a3e363ddc334c6b87019e1",
-    "processed_hash": "512a0c4bda7bc25f67a3e363ddc334c6b87019e1",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "6e8082abfa885d46ffb03ccf44d3fa07fa62fc2c",
+    "processed_hash": "6e8082abfa885d46ffb03ccf44d3fa07fa62fc2c",
+    "last_processed": "2026-10-15"
   },
   "https://www.galleria12.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "G12 Helsinki"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "b0f08362ad21e8b8a9465719070ff54c5c84a4c3",
-    "processed_hash": "b0f08362ad21e8b8a9465719070ff54c5c84a4c3",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "19a1386f2ccdeaca06a669da6af782b51f081c40",
+    "processed_hash": "19a1386f2ccdeaca06a669da6af782b51f081c40",
+    "last_processed": "2026-10-15"
   },
   "https://galleryhalmetoja.com/exhibitions/": {
     "consecutive_failures": 0,
     "sources": [
       "Gallery Halmetoja"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "f81f663c99a3b92a484176bb3742d0fb9225b188",
     "processed_hash": "f81f663c99a3b92a484176bb3742d0fb9225b188",
     "last_processed": "2026-10-05"
@@ -475,39 +479,39 @@
     "sources": [
       "Galleria Heino"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "c918494356b35ecb54ba70141199328f97ae5e65",
-    "processed_hash": "c918494356b35ecb54ba70141199328f97ae5e65",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "0c6b9d5f213a7c1c0587962c399a855b074cf56e",
+    "processed_hash": "0c6b9d5f213a7c1c0587962c399a855b074cf56e",
+    "last_processed": "2026-10-15"
   },
   "https://www.galleriaheino.fi/nayttelyt/tulevat/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria Heino"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "playwright",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "2e4473800c92bb61c818f6b9f525169499f91d73",
-    "processed_hash": "2e4473800c92bb61c818f6b9f525169499f91d73",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "8fd02d434dff96748e3fa78919a1491cf8ad9b2d",
+    "processed_hash": "8fd02d434dff96748e3fa78919a1491cf8ad9b2d",
+    "last_processed": "2026-10-15"
   },
   "https://helsinkicontemporary.com/exhibitions": {
     "consecutive_failures": 0,
     "sources": [
       "Helsinki Contemporary"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "fe7c9eec05d73764b67690644786ca5fcb6f2464",
     "processed_hash": "fe7c9eec05d73764b67690644786ca5fcb6f2464",
     "last_processed": "2026-10-05"
@@ -517,11 +521,11 @@
     "sources": [
       "Helsinki Contemporary"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "f0f46f8d353132f7217304f16e0efc2f3b3faada",
     "processed_hash": "f0f46f8d353132f7217304f16e0efc2f3b3faada",
     "last_processed": "2026-10-05"
@@ -531,45 +535,53 @@
     "sources": [
       "Valokuvagalleria Hippolyte"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "94912b7d872eea230d7693092b0ef4c6473abcd2",
     "processed_hash": "94912b7d872eea230d7693092b0ef4c6473abcd2",
     "last_processed": "2026-10-05"
   },
   "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "sources": [
       "Galleria Huuto"
     ],
-    "last_checked": "2026-10-05",
-    "status": 0,
-    "method": "",
-    "error": "playwright: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/\", waiting until \"domcontentloaded\"\n"
+    "last_checked": "2026-10-15",
+    "status": 200,
+    "method": "requests",
+    "error": "",
+    "last_ok": "2026-10-15",
+    "hash": "2cde017b405e14f0401b9af2d7ff08428927a4cc",
+    "processed_hash": "2cde017b405e14f0401b9af2d7ff08428927a4cc",
+    "last_processed": "2026-10-15"
   },
   "https://www.galleriahuuto.fi/": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "sources": [
       "Galleria Huuto"
     ],
-    "last_checked": "2026-10-05",
-    "status": 0,
-    "method": "",
-    "error": "playwright: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://www.galleriahuuto.fi/\", waiting until \"domcontentloaded\"\n"
+    "last_checked": "2026-10-15",
+    "status": 200,
+    "method": "requests",
+    "error": "",
+    "last_ok": "2026-10-15",
+    "hash": "9d1f688233229ba4d710a23d17b15ed2b464fda3",
+    "processed_hash": "9d1f688233229ba4d710a23d17b15ed2b464fda3",
+    "last_processed": "2026-10-15"
   },
   "https://kameraseura.fi/nayttelyt/kamera-galleria/": {
     "consecutive_failures": 0,
     "sources": [
       "Kamera-galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "59986affbe6035e34bb350c39f0b5a7f73183fdf",
     "processed_hash": "59986affbe6035e34bb350c39f0b5a7f73183fdf",
     "last_processed": "2026-10-05"
@@ -579,35 +591,35 @@
     "sources": [
       "Kohta"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "ae06ba7c972d0b4d4176d08b6108b428f92b7183",
-    "processed_hash": "ae06ba7c972d0b4d4176d08b6108b428f92b7183",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "b28d16c7086e4f0f2ef34954aafe8f782c20eade",
+    "processed_hash": "b28d16c7086e4f0f2ef34954aafe8f782c20eade",
+    "last_processed": "2026-10-15"
   },
   "https://www.uniarts.fi/kuva-tila/": {
     "consecutive_failures": 0,
     "sources": [
       "Kuva/Tila"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "def093012d77ece4a6d7db96d91377a104940e47",
-    "processed_hash": "def093012d77ece4a6d7db96d91377a104940e47",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "7ab16d6452152182b1b6b52271c711cd1a8a2554",
+    "processed_hash": "7ab16d6452152182b1b6b52271c711cd1a8a2554",
+    "last_processed": "2026-10-15"
   },
   "https://kuvittajat.fi/galleriakuvitus/": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "sources": [
       "Galleria Kuvitus"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "playwright",
     "error": ""
@@ -617,25 +629,25 @@
     "sources": [
       "Laterna Magica"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "3a2cdd71c7315768b94a01076561b2d403549da2",
-    "processed_hash": "3a2cdd71c7315768b94a01076561b2d403549da2",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "d297463267abc32f860d50bbd3fde90bcdadc8f8",
+    "processed_hash": "d297463267abc32f860d50bbd3fde90bcdadc8f8",
+    "last_processed": "2026-10-15"
   },
   "https://lokalhelsinki.com/exhibitions/": {
     "consecutive_failures": 0,
     "sources": [
       "LOKAL"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "9d5f006bc502c9b2c534dcba1db432e5602e0c57",
     "processed_hash": "9d5f006bc502c9b2c534dcba1db432e5602e0c57",
     "last_processed": "2026-10-05"
@@ -645,14 +657,14 @@
     "sources": [
       "MUU Helsinki nykytaidekeskus"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "playwright",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "b76210161811a13b0217647e18778c4da54f052b",
-    "processed_hash": "b76210161811a13b0217647e18778c4da54f052b",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "1a166811ef1b443ca3830713aae1416d8b9cce1e",
+    "processed_hash": "1a166811ef1b443ca3830713aae1416d8b9cce1e",
+    "last_processed": "2026-10-15"
   },
   "http://www.myymala2.com/exhibitions/": {
     "consecutive_failures": 1,
@@ -669,11 +681,11 @@
     "sources": [
       "OHO Galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "07ea18e51e5ab28438d7decb979d100f3e1c175f",
     "processed_hash": "07ea18e51e5ab28438d7decb979d100f3e1c175f",
     "last_processed": "2026-10-05"
@@ -683,31 +695,31 @@
     "sources": [
       "Oksasenkatu 11 -galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "playwright",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "e856e10252562711fa4eea7ba1e68aec93d5d2d1",
     "processed_hash": "e856e10252562711fa4eea7ba1e68aec93d5d2d1",
     "last_processed": "2026-10-05"
   },
   "https://galleria.pirkkoliisatopelius.com/nayttelyt/": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "sources": [
       "Galleria Pirkko-Liisa Topelius"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 0,
     "method": "",
     "error": "playwright: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://galleria.pirkkoliisatopelius.com/nayttelyt/\", waiting until \"domcontentloaded\"\n"
   },
   "https://galleria.pirkkoliisatopelius.com/tulevat-nayttelyt/": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "sources": [
       "Galleria Pirkko-Liisa Topelius"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 0,
     "method": "",
     "error": "playwright: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://galleria.pirkkoliisatopelius.com/tulevat-nayttelyt/\", waiting until \"domcontentloaded\"\n"
@@ -717,25 +729,25 @@
     "sources": [
       "Galleria Rankka"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "130cd73aae24a42d1a1759913e1a524d66e844a1",
-    "processed_hash": "130cd73aae24a42d1a1759913e1a524d66e844a1",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "2a987def00cecbbaea1709a86a08c356ae3a17df",
+    "processed_hash": "2a987def00cecbbaea1709a86a08c356ae3a17df",
+    "last_processed": "2026-10-15"
   },
   "https://sculptors.fi/nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Galleria Sculptor"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "be1cc6911d0341a8f6dbda81d307dffe4f32646d",
     "processed_hash": "be1cc6911d0341a8f6dbda81d307dffe4f32646d",
     "last_processed": "2026-10-05"
@@ -745,53 +757,53 @@
     "sources": [
       "Taidesalonki Piirto"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "00cff601a33886c602176a63ba6da5b81f610991",
-    "processed_hash": "00cff601a33886c602176a63ba6da5b81f610991",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "86d3fd750cf9285b664899270fc7f50a48dc54d8",
+    "processed_hash": "86d3fd750cf9285b664899270fc7f50a48dc54d8",
+    "last_processed": "2026-10-15"
   },
   "https://www.piirto.com/fi/tulevat-nayttelyt/": {
     "consecutive_failures": 0,
     "sources": [
       "Taidesalonki Piirto"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "0a4f41ab170824b073cdb71f022290037270749e",
-    "processed_hash": "0a4f41ab170824b073cdb71f022290037270749e",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "298c24a4a01eccce2d508bf4e8c917d480e046a8",
+    "processed_hash": "298c24a4a01eccce2d508bf4e8c917d480e046a8",
+    "last_processed": "2026-10-15"
   },
   "https://painters.fi/tmgalleria/": {
     "consecutive_failures": 0,
     "sources": [
       "tm•galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
-    "hash": "d6dfa570d18a0ad7b0a69c17fd7d9f6eafa9045a",
-    "processed_hash": "d6dfa570d18a0ad7b0a69c17fd7d9f6eafa9045a",
-    "last_processed": "2026-10-05"
+    "last_ok": "2026-10-15",
+    "hash": "0c438aa7fb671e5e9551dac153cbf5c05fe7aa7e",
+    "processed_hash": "0c438aa7fb671e5e9551dac153cbf5c05fe7aa7e",
+    "last_processed": "2026-10-15"
   },
   "https://www.yory.fi/": {
     "consecutive_failures": 0,
     "sources": [
       "Yö Galleria"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "3fed025f8ab1b851a98193f00202e6ac74a93b10",
     "processed_hash": "3fed025f8ab1b851a98193f00202e6ac74a93b10",
     "last_processed": "2026-10-05"
@@ -801,11 +813,11 @@
     "sources": [
       "Zetterberg Gallery"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "c175db8e926e8cc515f7c2846eb4c2a6e4f09246",
     "processed_hash": "c175db8e926e8cc515f7c2846eb4c2a6e4f09246",
     "last_processed": "2026-10-05"
@@ -815,13 +827,27 @@
     "sources": [
       "Zetterberg Gallery"
     ],
-    "last_checked": "2026-10-05",
+    "last_checked": "2026-10-15",
     "status": 200,
     "method": "requests",
     "error": "",
-    "last_ok": "2026-10-05",
+    "last_ok": "2026-10-15",
     "hash": "f8faced82820b575e37a26599239181f2d48d7b5",
     "processed_hash": "f8faced82820b575e37a26599239181f2d48d7b5",
     "last_processed": "2026-10-05"
+  },
+  "http://www.myymala2.com/": {
+    "consecutive_failures": 0,
+    "sources": [
+      "Myymälä2"
+    ],
+    "last_checked": "2026-10-15",
+    "status": 200,
+    "method": "playwright",
+    "error": "",
+    "last_ok": "2026-10-15",
+    "hash": "37519a907b546fb8f65795a511d5d43aee119d79",
+    "processed_hash": "37519a907b546fb8f65795a511d5d43aee119d79",
+    "last_processed": "2026-10-15"
   }
 }
