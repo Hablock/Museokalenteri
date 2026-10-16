@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <title>Helsingin seudun taidenäyttelyt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta name="description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden ja gallerioiden näyttelyitä" />
   
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://museokalenteri.fi/" />
   <meta property="og:title" content="Helsingin seudun Museokalenteri" />
-  <meta property="og:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta property="og:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden ja gallerioiden näyttelyitä" />
   <meta property="og:image" content="https://hablock.github.io/Museokalenteri/img/museokalenteri_og_image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="628" />
@@ -19,7 +19,7 @@
   
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Helsingin seudun Museokalenteri" />
-  <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden näyttelyitä" />
+  <meta name="twitter:description" content="Helsingin seudun taidenäyttelyt - selaa ja suodata museoiden ja gallerioiden näyttelyitä" />
   <meta name="twitter:image" content="https://hablock.github.io/Museokalenteri/img/museokalenteri_og_image.png" />
   <meta name="twitter:image:alt" content="Helsingin seudun Museokalenteri" />
 
@@ -165,6 +165,8 @@
     .section .section-title { margin: 0 0 var(--space-sm) 0; font-size: 0.95rem; color: var(--title-gray); font-weight: 600; }
     .section-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-sm); }
     .section-head .section-title { margin: 0; }
+    .section-title--icon { display: flex; align-items: center; gap: 0.4rem; }
+    .section-title--icon img { flex-shrink: 0; }
     .sidebar .section:last-child { margin-bottom: 0; }
     .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
     .museum-filter-bar .museum-btn.special + .museum-btn.special { margin-top: var(--space-xs); }
@@ -385,12 +387,27 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">Museot</h2>
+        <h2 class="section-title section-title--icon">
+          <img src="./img/museokalenteri_museo.marker.svg" width="32" height="32" alt="">
+          Museot
+        </h2>
         <div class="museum-filter-bar">
           <button id="select-all-museums" class="museum-btn special" type="button">Valitse kaikki</button>
-          <button id="deselect-all-museums" class="museum-btn special">Poista valinnat</button>
+          <button id="deselect-all-museums" class="museum-btn special" type="button">Poista valinnat</button>
         </div>
         <div id="museum-checkbox-list"></div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title section-title--icon">
+          <img src="./img/museokalenteri_galleria.marker.svg" width="32" height="32" alt="">
+          Galleriat
+        </h2>
+        <div class="museum-filter-bar">
+          <button id="select-all-galleries" class="museum-btn special" type="button">Valitse kaikki</button>
+          <button id="deselect-all-galleries" class="museum-btn special" type="button">Poista valinnat</button>
+        </div>
+        <div id="gallery-checkbox-list"></div>
       </div>
 
       <div class="section">
@@ -405,7 +422,8 @@
 
       <div class="section">
         <p id="today" class="sidebar-meta"></p>
-        <p id="last-updated" class="sidebar-meta"></p>
+        <p id="last-updated-museo" class="sidebar-meta"></p>
+        <p id="last-updated-gallery" class="sidebar-meta"></p>
       </div>
 
     </aside>
@@ -420,6 +438,28 @@
   const museoDataPromise = fetch('./museot.json')
     .then(res => res.json())
     .then(data => { data.forEach(m => { museumData[m.nimi] = m; }); })
+    .catch(() => {});
+
+  // Galleriatiedot haetaan galleriat.json:sta
+  let galleryData = [];
+  let galleryExhibitions = [];
+  let gallerySet = [];
+  let activeGalleries = new Set();
+  let galleriesReady = false;
+  let refilterExhibitions = null;  // initExhibitions asettaa
+  let resetGalleries = null;       // initGalleries asettaa
+  fetch('./galleriat.json')
+    .then(res => res.json())
+    // Ei-aktiivisia gallerioita (sivusto ei vastaa eikä tulevia näyttelyitä) ei näytetä
+    .then(data => { galleryData = data.filter(g => g.aktiivinen !== 'ei-aktiivinen'); initGalleries(); })
+    .catch(() => {});
+
+  // Gallerianäyttelyt haetaan automaattiajon gallerianayttelyt-auto.json:sta ja yhdistetään korttilistaan.
+  // Normalisoidaan gallery -> museum, jotta sama renderöinti/suodatus toimii sellaisenaan.
+  fetch('./gallerianayttelyt-auto.json')
+    .then(res => res.ok ? res.json() : [])
+    .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery, isGallery: true })); })
+    .then(() => { if (refilterExhibitions) refilterExhibitions(); })
     .catch(() => {});
 
   // Mustavalkoinen markkeri-SVG
@@ -446,6 +486,14 @@
     popupAnchor: [0, -20]
   });
 
+  const galleryMarkerIcon = L.divIcon({
+    html: '<img src="./img/museokalenteri_galleria.marker.svg" width="32" height="32" alt="">',
+    className: '',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -20]
+  });
+
   // Kartta
   const map = L.map('map').setView([60.1680, 24.9200], 12);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -453,8 +501,9 @@
     maxZoom: 19
   }).addTo(map);
 
-  // Markkerikerros – päivitetään museovalinnan mukaan
+  // Markkerikerrokset – päivitetään museo- ja galleriavalinnan mukaan
   let markerLayer = L.layerGroup().addTo(map);
+  let galleryMarkerLayer = L.layerGroup().addTo(map);
 
   function parseDate(s) {
     if (!s) return new Date(NaN);
@@ -497,11 +546,79 @@
         <p class="popup-address">${info.osoite || ''}</p>
         <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Museon verkkosivut →</a>
       `;
-      L.marker([info.lat, info.lng], { icon: markerIcon, title: museumName })
+      const icon = (info.tyyppi === 'galleria') ? galleryMarkerIcon : markerIcon;
+      L.marker([info.lat, info.lng], { icon, title: museumName })
         .on('add', function() { this.getElement()?.setAttribute('aria-label', museumName); })
         .addTo(markerLayer)
         .bindPopup(popupHtml, { maxWidth: 240 });
     });
+  }
+
+  function updateGalleryMap(activeGalleries) {
+    galleryMarkerLayer.clearLayers();
+    activeGalleries.forEach(name => {
+      const info = galleryData.find(g => g.nimi === name);
+      if (!info || !info.lat || !info.lng) return;
+      const popupHtml = `
+        <p class="popup-title">${name}</p>
+        <p class="popup-address">${info.osoite || ''}</p>
+        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Gallerian verkkosivut →</a>
+      `;
+      L.marker([info.lat, info.lng], { icon: galleryMarkerIcon, title: name })
+        .on('add', function() { this.getElement()?.setAttribute('aria-label', name); })
+        .addTo(galleryMarkerLayer)
+        .bindPopup(popupHtml, { maxWidth: 240 });
+    });
+  }
+
+  function initGalleries() {
+    const galleryList = galleryData.map(g => g.nimi).sort();
+    gallerySet = galleryList;
+    activeGalleries = new Set(galleryList);
+    galleriesReady = true;
+
+    const checkboxContainer = document.getElementById('gallery-checkbox-list');
+    if (checkboxContainer) {
+      checkboxContainer.innerHTML = '';
+      galleryList.forEach(name => {
+        const id = 'gcb-' + name.replace(/\s+/g, '-');
+        const item = document.createElement('div');
+        item.className = 'museum-checkbox-item';
+        item.innerHTML = `<input type="checkbox" id="${id}" value="${name}" checked><label for="${id}">${name}</label>`;
+        checkboxContainer.appendChild(item);
+      });
+      checkboxContainer.addEventListener('change', () => {
+        activeGalleries = new Set(
+          Array.from(checkboxContainer.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(cb => cb.value)
+        );
+        updateGalleryMap(activeGalleries);
+        if (refilterExhibitions) refilterExhibitions();
+      });
+    }
+
+    document.getElementById('select-all-galleries').addEventListener('click', () => {
+      checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      activeGalleries = new Set(galleryList);
+      updateGalleryMap(activeGalleries);
+      if (refilterExhibitions) refilterExhibitions();
+    });
+
+    document.getElementById('deselect-all-galleries').addEventListener('click', () => {
+      checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      activeGalleries = new Set();
+      updateGalleryMap(activeGalleries);
+      if (refilterExhibitions) refilterExhibitions();
+    });
+
+    resetGalleries = () => {
+      if (checkboxContainer) checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+      activeGalleries = new Set(galleryList);
+      updateGalleryMap(activeGalleries);
+    };
+
+    updateGalleryMap(activeGalleries);
+    if (refilterExhibitions) refilterExhibitions();
   }
 
   // ------- Alkuperäinen kalenteri-logiikka -------
@@ -516,23 +633,21 @@
     }
   })();
 
-  fetch('./museonayttelyt_meta.json')
+  fetch('./museonayttelyt-auto_meta.json')
     .then(res => res.ok ? res.json() : null)
-    .then(meta => { if (meta && meta.createdAt) updateLastUpdated(meta.createdAt); })
+    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('museo', meta.createdAt); })
     .catch(() => {});
 
-  const nayttelytPromise = fetch('./museonayttelyt.json')
-    .then(async res => {
-      const lastModified = res.headers ? res.headers.get('Last-Modified') : null;
-      const data = await res.json();
-      return { data, lastModified };
-    });
+  fetch('./gallerianayttelyt-auto_meta.json')
+    .then(res => res.ok ? res.json() : null)
+    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('gallery', meta.createdAt); })
+    .catch(() => {});
+
+  const nayttelytPromise = fetch('./museonayttelyt-auto.json').then(res => res.json());
 
   Promise.all([nayttelytPromise, museoDataPromise])
-    .then(([{ data, lastModified }]) => {
+    .then(([data]) => {
       exhibitions = data;
-      const el = document.getElementById('last-updated');
-      if (el && !el.textContent && lastModified) updateLastUpdated(lastModified);
       initExhibitions();
     })
     .catch(err => {
@@ -579,11 +694,19 @@
     // Alkupiirto kartalle
     updateMap(activeMuseums);
 
+    // Näkyvät näyttelyt ennen aikasuodatusta: museot (museovalinnan mukaan) +
+    // gallerianäyttelyt (galleriavalinnan mukaan). Galleriat näytetään kaikki,
+    // kunnes galleriavalinta on alustettu (galleriesReady).
+    function getVisibleBase() {
+      const m = exhibitions.filter(ex => activeMuseums.has(ex.museum));
+      const g = galleryExhibitions.filter(ex => !galleriesReady || activeGalleries.has(ex.museum));
+      return m.concat(g);
+    }
+
     function getFilteredExhibitions(statusType) {
       const now = new Date();
       const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
-      return exhibitions.filter(ex => {
-        if (!activeMuseums.has(ex.museum)) return false;
+      return getVisibleBase().filter(ex => {
         if (statusType === "CURRENT" || statusType === "UPCOMING" || statusType === "PAST")
           return computeStatus(ex) === statusType;
         if (statusType === "ALL") return true;
@@ -631,12 +754,13 @@
         if (linkUrl) { card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer"; }
         const descHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : '';
         const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true">\u2197</span>` : '';
+        const markerSrc = ex.isGallery ? './img/museokalenteri_galleria.marker.svg' : './img/museokalenteri_museo.marker.svg';
         card.innerHTML = `
           ${linkIndicator}
           <div class="exhibition-row">
             <div class="exhibition-rail">
               <div class="exhibition-image">
-                <img src="./img/museokalenteri_museo.marker.svg" alt="" class="image-marker-fallback" />
+                <img src="${markerSrc}" alt="" class="image-marker-fallback" />
                 ${imageUrl ? `<img src="${imageUrl}" alt="" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
               </div>
               <span class="status-pill">${getStatusLabel(st)}</span>
@@ -664,8 +788,7 @@
     }
     function updateStatusCounts() {
       const counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
-      exhibitions.forEach(ex => {
-        if (!activeMuseums.has(ex.museum)) return;
+      getVisibleBase().forEach(ex => {
         counts.ALL++;
         const st = computeStatus(ex);
         if (st in counts) counts[st]++;
@@ -691,8 +814,10 @@
 
     function updateResultsBar(shown) {
       if (!resultsBar || !resultsCount) return;
-      const total = exhibitions.length;
-      const filtersActive = activeStatus !== "ALL" || activeMuseums.size !== museumSet.length;
+      const total = exhibitions.length + galleryExhibitions.length;
+      const filtersActive = activeStatus !== "ALL"
+        || activeMuseums.size !== museumSet.length
+        || (galleriesReady && activeGalleries.size !== gallerySet.length);
       resultsCount.innerHTML = `Näytetään <strong>${shown}</strong> / ${total} näyttelyä`;
       resultsBar.classList.toggle("filtered", filtersActive);
     }
@@ -702,6 +827,7 @@
       activeMuseums = new Set(museumSet);
       document.querySelectorAll('#museum-checkbox-list input[type="checkbox"]').forEach(cb => cb.checked = true);
       updateMap(activeMuseums);
+      if (resetGalleries) resetGalleries();
       applyFilter("ALL");
     }
 
@@ -742,14 +868,17 @@
 
     updateStatusCounts();
     applyFilter("ALL");
+    refilterExhibitions = () => applyFilter(activeStatus);
   }
 
-  function updateLastUpdated(header) {
-    const el = document.getElementById('last-updated');
+  function updateLastUpdated(type, dateStr) {
+    const id = type === 'gallery' ? 'last-updated-gallery' : 'last-updated-museo';
+    const el = document.getElementById(id);
     if (!el) return;
-    const d = new Date(header);
+    const d = new Date(dateStr);
     if (isNaN(d)) return;
-    el.textContent = `Tiedot päivitetty: ${d.toLocaleDateString('fi-FI', { year:'numeric', month:'long', day:'numeric' })}`;
+    const label = type === 'gallery' ? 'Galleriatiedot' : 'Museotiedot';
+    el.textContent = `${label} päivitetty: ${d.toLocaleDateString('fi-FI', { year:'numeric', month:'long', day:'numeric' })}`;
   }
 
   // Mobiili-drawer
