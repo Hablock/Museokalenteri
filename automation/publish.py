@@ -2,7 +2,6 @@
 
 Käyttö: python3 automation/publish.py
 """
-import json
 import shutil
 import sys
 from pathlib import Path
@@ -23,14 +22,14 @@ def main():
         prod = k["base"]
         before = {(r[k["key"]], r["title"]) for r in load(prod, [])}
         after = {(r[k["key"]], r["title"]) for r in load(k["auto"], [])}
+        auto_meta, prod_meta = k["auto"].replace(".json", "_meta.json"), prod.replace(".json", "_meta.json")
+        if not (ROOT / auto_meta).exists():
+            sys.exit(f"Julkaisu keskeytetty: {auto_meta} puuttuu.")
         shutil.copyfile(ROOT / k["auto"], ROOT / prod)
-        auto_meta = load(k["auto"].replace(".json", "_meta.json"), {})
-        if auto_meta.get("createdAt"):
-            (ROOT / prod.replace(".json", "_meta.json")).write_text(
-                json.dumps({"createdAt": auto_meta["createdAt"]}, indent=2) + "\n", encoding="utf-8")
-        print(f"{prod}: {len(before)} -> {len(after)} näyttelyä "
-              f"(+{len(after - before)} uutta, -{len(before - after)} poistunutta), "
-              f"päivitetty {auto_meta.get('createdAt', '?')}")
+        shutil.copyfile(ROOT / auto_meta, ROOT / prod_meta)
+        print(f"{k['auto']} -> {prod}: {len(before)} -> {len(after)} näyttelyä "
+              f"(+{len(after - before)} uutta, -{len(before - after)} poistunutta)")
+        print(f"{auto_meta} -> {prod_meta}: päivitetty {load(prod_meta, {}).get('createdAt', '?')}")
 
 
 if __name__ == "__main__":
