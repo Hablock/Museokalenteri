@@ -31,11 +31,12 @@ No single museum or gallery maintains a cross-venue exhibition calendar; Museoka
 ## Capabilities and Constraints
 
 - Static HTML/CSS/vanilla JS only, no framework and no bundler/build step. This is a deliberate, durable choice, confirmed by the user — not a gap for future work to "fix."
-- Three-file workflow, all durable:
-  - `Museokalenteri_beta.html` — development/experimentation build; also currently the only build with gallery features (gallery map markers, gallery filters, gallery exhibition cards). Don't port gallery features to the other two builds without an explicit request.
-  - `Museokalenteri.html` — stable build at the publicly shared URL. No direct experiments here; changes land after being proven in beta.
-  - `Museokalenteri_design.html` — a "dummy" build with all JSON data embedded inline via `<script type="application/json">` blocks, because the Claude Design preview environment has no filesystem (`fetch` fails there). Its `loadJson()` falls back from `fetch` to the embedded data. Kept in sync for Design-preview and redesign work.
-- Data is fetched primarily by the update skills against each venue's own pages; manual supplementation of the JSON is acceptable, not a workaround to avoid.
+- Four-page workflow, all durable:
+  - `Museokalenteri.html` — production build at the publicly shared URL, with museum and gallery features. Reads the production data (`museonayttelyt.json`, `gallerianayttelyt.json` and their `_meta` files). No direct experiments here; changes land after being proven in beta.
+  - `Museokalenteri_beta.html` — test build for new UX features. Reads the same data as production.
+  - `Museokalenteri-auto.html` — test environment for the automated data fetch. Reads its own `*-auto.json` files (noindex, no analytics).
+  - `Museokalenteri_design.html` — static, lightweight version of production for visual design AI tools (e.g. Claude Design, Pencil). Same styles and code as production, but a small embedded data sample (`#design-data`) that covers every card type and status once, and a fixed "today" so statuses don't drift. `fetch` is replaced by `designFetch()` because design preview environments have no filesystem. Regenerate it from production when production's UI changes.
+- Data flow: the scheduled GitHub Actions job (`automation/`) updates only the `*-auto.json` files; the user reviews its report and corrects the -auto files; data moves to production only on the user's explicit command (`python3 automation/publish.py`). Nothing is published to production automatically. The manual update skills also write to the -auto files.
 - The stable `Museokalenteri.html` URL is shared publicly and with the user's close circle — treat it with the care of a small public service, not a scratchpad.
 
 ## Brand Commitments
