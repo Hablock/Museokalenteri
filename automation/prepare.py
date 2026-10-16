@@ -154,7 +154,8 @@ def update_status(sources, results, today):
             if r["ok"]:
                 st["last_ok"] = today.isoformat()
                 st["consecutive_failures"] = 0
-                st["hash"] = text_hash(r["text"])
+                embedded = r.get("embedded") or []
+                st["hash"] = text_hash(r["text"] + ("\n" + json.dumps(embedded, ensure_ascii=False) if embedded else ""))
             elif st.get("_counted") != today.isoformat():
                 st["consecutive_failures"] = st.get("consecutive_failures", 0) + 1
             st["_counted"] = today.isoformat()

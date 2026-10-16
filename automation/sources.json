@@ -64,8 +64,7 @@
       "note": "Päivämäärät ovat yksittäisen näyttelysivun tekstissä muodossa '15.10. — 20.12.2026'. Listaussivulla ei ole päivämääriä."
     },
     "Galleria Kuvitus": {
-      "browser": true,
-      "note": "Listaus suodatetaan JavaScriptillä. Jos listaus on tyhjä, kirjaa needs_user-listaan; yksittäiset sivut ovat muotoa kuvittajat.fi/galleriakuvitus/<nimi>/."
+      "note": "Päivämäärät ovat vain listaussivun upotetussa datassa (UPOTETUT TIEDOT -osio). Yksittäisillä sivuilla lukee usein vain 'Lisätietoa tulossa'; hae niistä kuitenkin OG:IMAGE."
     },
     "MUU Helsinki nykytaidekeskus": {
       "browser": true,

@@ -83,9 +83,16 @@ def main():
     unc, need = changes["uncertain"], list(changes["needs_user"])
     for url, st in sorted(status.items()):
         if st.get("consecutive_failures", 0) >= 2:
+            code = st.get("status") or 0
+            if 200 <= code < 400:
+                cause = "Sivu vastaa, mutta siitä ei saatu tekstiä (todennäköisesti JavaScript-sivu)."
+            elif code:
+                cause = "Url on todennäköisesti vaihtunut."
+            else:
+                cause = "Palvelin ei vastaa (sivusto alhaalla tai estää pilvipalvelimet)."
             need.append({"name": ", ".join(st.get("sources", [])), "url": url,
                          "reason": f"Haku epäonnistunut {st['consecutive_failures']} ajoa peräkkäin "
-                                   f"(viimeisin tila {st.get('status')}). Url on todennäköisesti vaihtunut."})
+                                   f"(viimeisin tila {code}). {cause}"})
 
     lines = [f"# Kalenterin automaattipäivitys {today.isoformat()}", "",
              f"**{len(rem)}** poistettu · **{len(add)}** lisätty · **{len(upd)}** korjattu · "

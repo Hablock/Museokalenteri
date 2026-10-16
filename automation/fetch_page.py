@@ -120,6 +120,52 @@ def _json_ld_events(soup):
     return events
 
 
+DATE_KEYS = ("start_date", "end_date", "startDate", "endDate", "date_start", "date_end", "start", "end")
+TITLE_KEYS = ("post_title", "title", "name")
+LINK_KEYS = ("link", "url", "permalink")
+MAX_EMBEDDED = 80
+
+
+def _embedded_items(soup):
+    """Poimi JavaScript-komponenttien attribuutteihin upotettu data (esim. Vue: data-raw='{...}')."""
+    items = []
+
+    def first_str(d, keys):
+        for k in keys:
+            v = d.get(k)
+            if isinstance(v, dict):
+                v = v.get("rendered")
+            if isinstance(v, (str, int)) and str(v).strip():
+                return str(v).strip()
+        return ""
+
+    def walk(node):
+        if len(items) >= MAX_EMBEDDED:
+            return
+        if isinstance(node, dict):
+            if any(k in node for k in DATE_KEYS) and any(k in node for k in TITLE_KEYS):
+                start = first_str(node, ("start_date", "startDate", "date_start", "start"))
+                end = first_str(node, ("end_date", "endDate", "date_end", "end"))
+                if start or end:
+                    items.append({"title": first_str(node, TITLE_KEYS), "start": start, "end": end,
+                                  "link": first_str(node, LINK_KEYS)})
+                    return
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    for el in soup.find_all(True):
+        for value in el.attrs.values():
+            if isinstance(value, str) and len(value) > 200 and value.lstrip()[:1] in "[{":
+                try:
+                    walk(json.loads(value))
+                except ValueError:
+                    continue
+    return items
+
+
 def _links(soup, base):
     host = urlparse(base).netloc.replace("www.", "")
     seen, links = set(), []
@@ -156,7 +202,7 @@ def fetch(url, force_browser=False, allow_browser=True):
     """Palauttaa dictin: ok, status, final_url, method, note, text, meta, events, links, images, error.
     allow_browser=False palauttaa needs_browser=True selainta vaativille sivuille selainta käynnistämättä."""
     result = {"url": url, "ok": False, "status": 0, "final_url": url, "method": "", "note": "",
-              "text": "", "meta": {}, "events": [], "links": [], "images": [], "error": "",
+              "text": "", "meta": {}, "events": [], "embedded": [], "links": [], "images": [], "error": "",
               "needs_browser": False}
     if urlparse(url).scheme not in ("http", "https"):
         result["error"] = "vain http(s)-osoitteet sallittu"
@@ -189,10 +235,11 @@ def fetch(url, force_browser=False, allow_browser=True):
     base = result["final_url"]
     result["meta"] = _meta(soup, base)
     result["events"] = _json_ld_events(soup)
+    result["embedded"] = _embedded_items(soup)
     result["links"] = _links(soup, base)
     result["images"] = _images(soup, base)
     result["text"] = _clean_text(soup)
-    result["ok"] = result["status"] < 400 and len(result["text"]) >= 50
+    result["ok"] = result["status"] < 400 and (len(result["text"]) >= 50 or bool(result["embedded"]))
     return result
 
 
@@ -209,6 +256,9 @@ def render(r):
               f"KUVAUS: {meta.get('description', '')}"]
     if r["events"]:
         lines.append("JSON-LD-TAPAHTUMAT: " + json.dumps(r["events"], ensure_ascii=False)[:2000])
+    if r.get("embedded"):
+        lines += ["", "=== UPOTETUT TIEDOT (sivun data-attribuuteista, sanatarkka) ==="]
+        lines += [f"- {e['title']} | {e['start']} – {e['end']} | {e['link']}" for e in r["embedded"]]
     text = r["text"]
     if len(text) > MAX_TEXT:
         text = text[:MAX_TEXT] + f"\n[... katkaistu, {len(r['text'])} merkkiä yhteensä]"
