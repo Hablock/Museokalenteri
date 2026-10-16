@@ -454,9 +454,9 @@
     .then(data => { galleryData = data.filter(g => g.aktiivinen !== 'ei-aktiivinen'); initGalleries(); })
     .catch(() => {});
 
-  // Gallerianäyttelyt haetaan automaattiajon gallerianayttelyt-auto.json:sta ja yhdistetään korttilistaan.
+  // Gallerianäyttelyt haetaan gallerianayttelyt.json:sta ja yhdistetään korttilistaan.
   // Normalisoidaan gallery -> museum, jotta sama renderöinti/suodatus toimii sellaisenaan.
-  fetch('./gallerianayttelyt-auto.json')
+  fetch('./gallerianayttelyt.json')
     .then(res => res.ok ? res.json() : [])
     .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery, isGallery: true })); })
     .then(() => { if (refilterExhibitions) refilterExhibitions(); })
@@ -633,17 +633,17 @@
     }
   })();
 
-  fetch('./museonayttelyt-auto_meta.json')
+  fetch('./museonayttelyt_meta.json')
     .then(res => res.ok ? res.json() : null)
     .then(meta => { if (meta && meta.createdAt) updateLastUpdated('museo', meta.createdAt); })
     .catch(() => {});
 
-  fetch('./gallerianayttelyt-auto_meta.json')
+  fetch('./gallerianayttelyt_meta.json')
     .then(res => res.ok ? res.json() : null)
     .then(meta => { if (meta && meta.createdAt) updateLastUpdated('gallery', meta.createdAt); })
     .catch(() => {});
 
-  const nayttelytPromise = fetch('./museonayttelyt-auto.json').then(res => res.json());
+  const nayttelytPromise = fetch('./museonayttelyt.json').then(res => res.json());
 
   Promise.all([nayttelytPromise, museoDataPromise])
     .then(([data]) => {

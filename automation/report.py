@@ -124,7 +124,7 @@ def main():
              f"**{len(unc)}** epävarmaa · **{len(need)}** tarvitsee sinua", "",
              f"Käsitellyt lähteet: {len(worklist) - len(unprocessed)}/{len(worklist)} muuttunutta. "
              "Muuttumattomat lähteet ohitettiin.", "",
-             "Julkaistu: https://hablock.github.io/Museokalenteri/Museokalenteri.html", ""]
+             "Esikatselu (ei vielä tuotannossa): https://hablock.github.io/Museokalenteri/Museokalenteri-auto.html", ""]
     if unprocessed:
         lines += [f"⚠️ Käsittelemättä jäi: {', '.join(unprocessed)}. Ne yritetään uudelleen seuraavassa ajossa.", ""]
     lines += ["## Tarvitsee sinulta", "",
