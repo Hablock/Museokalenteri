@@ -1,6 +1,7 @@
 [
   {
     "nimi": "Galleria 4-kuus",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Uudenmaankatu 4-6, 00120 Helsinki",
     "lat": null,
@@ -11,6 +12,7 @@
   },
   {
     "nimi": "Galleria A2",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Annankatu 12, 00120 Helsinki",
     "lat": null,
@@ -21,6 +23,7 @@
   },
   {
     "nimi": "AKVART Galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Humalistonkatu 1, 00250 Helsinki",
     "lat": 60.1850508,
@@ -31,6 +34,7 @@
   },
   {
     "nimi": "Galerie Anhava",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Fredrikinkatu 43, 00120 Helsinki",
     "lat": 60.1656392,
@@ -41,6 +45,7 @@
   },
   {
     "nimi": "Galleria ARS Longa",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Annankatu 12, 00120 Helsinki",
     "lat": 60.1645018,
@@ -51,6 +56,7 @@
   },
   {
     "nimi": "Galleria Arthur",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Rikhardinkatu 3, 00130 Helsinki",
     "lat": null,
@@ -61,6 +67,7 @@
   },
   {
     "nimi": "Galleria Bronda",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Annankatu 16, 00120 Helsinki",
     "lat": 60.1652898,
@@ -71,6 +78,7 @@
   },
   {
     "nimi": "Galleria Contempo",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Lönnrotinkatu 23, 00120 Helsinki",
     "lat": 60.1648541,
@@ -81,6 +89,7 @@
   },
   {
     "nimi": "Galleria Duetto",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Kalevankatu 15, 00100 Helsinki",
     "lat": null,
@@ -91,6 +100,7 @@
   },
   {
     "nimi": "Galleria Fogga",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Lauttasaarentie 6, 00200 Helsinki",
     "lat": null,
@@ -101,6 +111,7 @@
   },
   {
     "nimi": "Galerie Forsblom",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Yrjönkatu 22, 00120 Helsinki",
     "lat": 60.167115,
@@ -111,6 +122,7 @@
   },
   {
     "nimi": "Forum Box",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Ruoholahdenranta 3 A, 00180 Helsinki",
     "lat": 60.1616062,
@@ -121,6 +133,7 @@
   },
   {
     "nimi": "G12 Helsinki",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Annankatu 16, 00120 Helsinki",
     "lat": 60.1653308,
@@ -131,6 +144,7 @@
   },
   {
     "nimi": "HAA Galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Suomenlinna C 1, 00190 Helsinki",
     "lat": 60.1488913,
@@ -141,6 +155,7 @@
   },
   {
     "nimi": "Gallery Halmetoja",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Kalevankatu 16, 00100 Helsinki",
     "lat": null,
@@ -151,6 +166,7 @@
   },
   {
     "nimi": "Galleria Heino",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Erottajankatu 9, 00130 Helsinki",
     "lat": null,
@@ -161,6 +177,7 @@
   },
   {
     "nimi": "Helsinki Contemporary",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Bulevardi 10, 00120 Helsinki",
     "lat": 60.165561,
@@ -171,6 +188,7 @@
   },
   {
     "nimi": "Valokuvagalleria Hippolyte",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Yrjönkatu 8-10, 00120 Helsinki",
     "lat": 60.1645544,
@@ -181,6 +199,7 @@
   },
   {
     "nimi": "Galleria Huuto",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Panimokatu 1, 00580 Helsinki",
     "lat": null,
@@ -191,6 +210,7 @@
   },
   {
     "nimi": "Kamera-galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Tallberginkatu 1 B, 00180 Helsinki",
     "lat": null,
@@ -201,6 +221,7 @@
   },
   {
     "nimi": "Kamiter-Ars",
+    "aktiivinen": "ei-aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Kaarlenkatu 12, 00530 Helsinki",
     "lat": null,
@@ -211,6 +232,7 @@
   },
   {
     "nimi": "Galleria Katariina",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Rikhardinkatu 1, 00130 Helsinki",
     "lat": null,
@@ -221,6 +243,7 @@
   },
   {
     "nimi": "Kohta",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Työpajankatu 2 B, 00580 Helsinki",
     "lat": 60.1897703,
@@ -231,6 +254,7 @@
   },
   {
     "nimi": "Kuva/Tila",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Sörnäisten rantatie 19, 00530 Helsinki",
     "lat": null,
@@ -241,6 +265,7 @@
   },
   {
     "nimi": "Galleria Kuvitus",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Hämeentie 28, 00530 Helsinki",
     "lat": 60.1831962,
@@ -251,6 +276,7 @@
   },
   {
     "nimi": "Laterna Magica",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Rauhankatu 7, 00170 Helsinki",
     "lat": null,
@@ -261,6 +287,7 @@
   },
   {
     "nimi": "LOKAL",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Annankatu 9, 00120 Helsinki",
     "lat": 60.1640453,
@@ -271,6 +298,7 @@
   },
   {
     "nimi": "Malmitalon galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Ala-Malmin tori 1, 00700 Helsinki",
     "lat": 60.250688,
@@ -281,6 +309,7 @@
   },
   {
     "nimi": "MUU Helsinki nykytaidekeskus",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Tallberginkatu 1 C, 00180 Helsinki",
     "lat": null,
@@ -291,6 +320,7 @@
   },
   {
     "nimi": "Myymälä2",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Uudenmaankatu 23, 00120 Helsinki",
     "lat": 60.1638936,
@@ -301,6 +331,7 @@
   },
   {
     "nimi": "OHO Galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Pursimiehenkatu 29-31 A, 00150 Helsinki",
     "lat": 60.1586143,
@@ -311,6 +342,7 @@
   },
   {
     "nimi": "Oksasenkatu 11 -galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Oksasenkatu 11, 00100 Helsinki",
     "lat": 60.1759649,
@@ -321,6 +353,7 @@
   },
   {
     "nimi": "Galleria Pirkko-Liisa Topelius",
+    "aktiivinen": "ei-aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Hietalahdenranta 17, 00180 Helsinki",
     "lat": 60.1614368,
@@ -331,6 +364,7 @@
   },
   {
     "nimi": "Galleria Rankka",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Eerikinkatu 36, 00180 Helsinki",
     "lat": 60.1651232,
@@ -341,6 +375,7 @@
   },
   {
     "nimi": "Galleria Sculptor",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Eteläranta 12, 00130 Helsinki",
     "lat": 60.1659042,
@@ -351,6 +386,7 @@
   },
   {
     "nimi": "Taidesalonki Piirto",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Salakkakuja 4 A, 00210 Helsinki",
     "lat": null,
@@ -361,6 +397,7 @@
   },
   {
     "nimi": "tm•galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Erottajankatu 9 B, 00130 Helsinki",
     "lat": 60.1650773,
@@ -371,6 +408,7 @@
   },
   {
     "nimi": "Yö Galleria",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Lönnrotinkatu 33, 00180 Helsinki",
     "lat": null,
@@ -381,6 +419,7 @@
   },
   {
     "nimi": "Zetterberg Gallery",
+    "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Ludviginkatu 3-5 A, 00130 Helsinki",
     "lat": 60.165875,

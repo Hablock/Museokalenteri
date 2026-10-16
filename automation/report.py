@@ -58,6 +58,26 @@ def mark_processed(worklist, changes, today):
     return [w["name"] for w in worklist if w["name"] not in done]
 
 
+def suggest_state_changes(galleries, status, today):
+    """Sääntö: sivusto ei vastaa (2+ ajoa) eikä tulevia näyttelyitä -> ei-aktiivinen; vastaa taas -> aktiivinen."""
+    rows = load("gallerianayttelyt-auto.json", [])
+    out = []
+    for g in galleries:
+        urls = [u for u in dict.fromkeys([g.get("nayttelysivu"), g.get("tulevanayttelysivu")]) if u]
+        sts = [status[u] for u in urls if u in status]
+        if not sts:
+            continue
+        down = all(st.get("consecutive_failures", 0) >= 2 and not 200 <= (st.get("status") or 0) < 400 for st in sts)
+        responds_now = any(st.get("last_ok") == today.isoformat() for st in sts)
+        upcoming = any(r.get("gallery") == g["nimi"] and r.get("end", "") >= today.isoformat() for r in rows)
+        if g.get("aktiivinen") != "ei-aktiivinen" and down and not upcoming:
+            out.append((g["nimi"], "aktiivinen → ei-aktiivinen",
+                        "Sivusto ei ole vastannut kahteen ajoon, eikä tulevia näyttelyitä ole."))
+        elif g.get("aktiivinen") == "ei-aktiivinen" and responds_now:
+            out.append((g["nimi"], "ei-aktiivinen → aktiivinen", "Sivusto vastaa taas. Tarkista näyttelyt."))
+    return out
+
+
 def table(headers, rows):
     if not rows:
         return "_Ei yhtään._\n"
@@ -81,7 +101,12 @@ def main():
 
     rem, add, upd = removed["removed"], changes["added"], changes["updated"]
     unc, need = changes["uncertain"], list(changes["needs_user"])
+    galleries = load("galleriat.json", [])
+    inactive = {g["nimi"] for g in galleries if g.get("aktiivinen") == "ei-aktiivinen"}
+    state_changes = suggest_state_changes(galleries, status, today)
     for url, st in sorted(status.items()):
+        if st.get("sources") and set(st["sources"]) <= inactive:
+            continue
         if st.get("consecutive_failures", 0) >= 2:
             code = st.get("status") or 0
             if 200 <= code < 400:
@@ -103,7 +128,11 @@ def main():
     if unprocessed:
         lines += [f"⚠️ Käsittelemättä jäi: {', '.join(unprocessed)}. Ne yritetään uudelleen seuraavassa ajossa.", ""]
     lines += ["## Tarvitsee sinulta", "",
-              table(["Lähde", "Syy", "Url"], [(n.get("name"), n.get("reason"), n.get("url", "")) for n in need]),
+              table(["Lähde", "Syy", "Url"], [(n.get("name"), n.get("reason"), n.get("url", "")) for n in need])]
+    if state_changes:
+        lines += ["## Ehdotetut tilamuutokset (galleriat.json, kenttä aktiivinen)", "",
+                  table(["Galleria", "Muutos", "Peruste"], state_changes)]
+    lines += [
               "## Lisätyt", "",
               table(["Tyyppi", "Paikka", "Näyttely", "Ajankohta", "Kuva", "Lähde"],
                     [(TYPE_LABEL.get(a.get("type"), a.get("type")), a.get("name"), a.get("title"),

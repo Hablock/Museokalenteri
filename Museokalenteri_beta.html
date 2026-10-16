@@ -450,7 +450,8 @@
   let resetGalleries = null;       // initGalleries asettaa
   fetch('./galleriat.json')
     .then(res => res.json())
-    .then(data => { galleryData = data; initGalleries(); })
+    // Ei-aktiivisia gallerioita (sivusto ei vastaa eikä tulevia näyttelyitä) ei näytetä
+    .then(data => { galleryData = data.filter(g => g.aktiivinen !== 'ei-aktiivinen'); initGalleries(); })
     .catch(() => {});
 
   // Gallerianäyttelyt haetaan gallerianayttelyt.json:sta ja yhdistetään korttilistaan.

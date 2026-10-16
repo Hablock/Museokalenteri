@@ -108,7 +108,7 @@ def collect_sources(overrides):
             urls = [u for u in [s.get("nayttelysivu"), s.get(k["later"])] + ov.get("extra_urls", []) if u]
             urls = list(dict.fromkeys(urls))
             sources.append({"type": k["kind"], "name": s["nimi"], "kotisivu": s.get("kotisivu", ""),
-                            "urls": urls, "overrides": ov})
+                            "aktiivinen": s.get("aktiivinen", "aktiivinen"), "urls": urls, "overrides": ov})
     return sources
 
 
@@ -184,9 +184,12 @@ def build_worklist(sources, results, status, today, full):
             any_ok |= r["ok"]
             pages.append({"url": u, "cache_file": str(cache_file.relative_to(ROOT)), "ok": r["ok"],
                           "status": r["status"], "changed": is_changed})
+        if s["aktiivinen"] == "ei-aktiivinen" and not any_ok:
+            continue  # sivusto yhä alhaalla: ei Claudea eikä pyyntöjä käyttäjälle
         if full or changed or not any_ok:
             worklist.append({"type": s["type"], "name": s["name"], "kotisivu": s["kotisivu"],
-                             "pages": pages, "all_failed": not any_ok, "overrides": s["overrides"]})
+                             "aktiivinen": s["aktiivinen"], "pages": pages, "all_failed": not any_ok,
+                             "overrides": s["overrides"]})
     return worklist
 
 
