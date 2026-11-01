@@ -28,15 +28,6 @@
   },
   {
     "museum": "Amos Rex",
-    "title": "Natasha Tontey: The Phantom Combatants and the Metabolism of Disobedient Organs",
-    "start": "2026-05-09",
-    "end": "2026-10-25",
-    "description": "Amos Rexin ja LAS Art Foundationin tilausteos, joka esitetään Ateneo Venetossa Venetsiassa. Tonteyn tähän mennessä kunnianhimoisin teos on multimediainstallaatio, joka seuraa 1950-luvun indonesialaisen naispuolisen vastarintataistelijan tarinaa.",
-    "Link": "https://amosrex.fi/nayttelyt/natasha-tontey/",
-    "Image": "https://amosrex.fi/wp-content/uploads/2025/12/4_LAS-Art-Foundation-x-Amos-Rex_Portrait-Natasha-Tontey_c-Stella-Ojala-1600x1113.jpg"
-  },
-  {
-    "museum": "Amos Rex",
     "title": "The Other Side of the Mountain",
     "start": "2026-10-14",
     "end": "2027-03-21",
@@ -145,12 +136,12 @@
   },
   {
     "museum": "Hakasalmen huvila",
-    "title": "PUNK",
+    "title": "PUNK! 50 vuotta säpinää Helsingin kaduilla",
     "start": "2026-10-23",
     "end": "2027-08-29",
     "description": "Punkin 50-vuotista taivalta Helsingissä juhlistava näyttely. Punkmuseo valtaa Hakasalmen huvilan: hikiset keikat, repaleiset julisteet ja äänivalli, joka ei suostu hiljenemään. Näyttely kattaa punkin historian marginaalista tähän päivään.",
     "Link": "https://hakasalmenhuvila.fi/nayttelyt/punk/",
-    "Image": "https://www.helsinginkaupunginmuseo.fi/app/themes/hkmini/minisite-css/img/2_fi.png"
+    "Image": "https://www.helsinginkaupunginmuseo.fi/app/uploads/sites/2/2026/03/artikkelikuva_825x513px_Punk_nahkarotsi_HH_syksy26.jpeg"
   },
   {
     "museum": "HAM Helsingin taidemuseo",
