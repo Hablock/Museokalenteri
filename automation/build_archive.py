@@ -187,6 +187,52 @@ def cluster(versions):
     return clusters
 
 
+def stale_version(kind, row, running):
+    """Rivi on vanha versio jostakin running-listan (käynnissä/tulossa) näyttelystä:
+    sama paikka ja alkupäivä, tai nimi sisältää toisen ja alku alle 200 pv päässä.
+    Vuoden välein toistuvat (esim. joulu) eivät täytä ehtoa."""
+    k = KEY[kind]
+    return any(r[k] == row[k] and (
+        r["start"] == row["start"] or (contains(r["title"], row["title"]) and near(r, row, 200)))
+        for r in running)
+
+
+def write_archive(kind, rows):
+    rows.sort(key=lambda r: (r["end"], r["start"], r[KEY[kind]]), reverse=True)
+    (ROOT / OUT[kind]).write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def archive_removed(kind, old_rows, new_rows, today, write=True):
+    """Julkaisun arkistointi: tuotannosta poistuvat päättyneet rivit arkistoon.
+
+    old_rows = tuotanto ennen julkaisua, new_rows = julkaistava data. Rivi
+    arkistoidaan, jos se puuttuu uudesta datasta, on päättynyt ennen päivää
+    today eikä ole vanha versio uuden datan käynnissä olevasta näyttelystä.
+    Arkistossa jo oleva sama näyttely (paikka, nimi, alku) korvataan.
+    Palauttaa arkistoidut rivit."""
+    k = KEY[kind]
+    path = ROOT / OUT[kind]
+    archive = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    ident = lambda r: (r[k], norm(r["title"]), r["start"])  # noqa: E731
+    kept = {ident(r) for r in new_rows}
+    running = [r for r in new_rows if r.get("end", "") >= today]
+    added = []
+    for r in old_rows:
+        row = {k: clean(r.get(k))}
+        for f in FIELDS:
+            row[f] = iso(r.get(f, "")) if f in ("start", "end") else clean(r.get(f, ""))
+        if not (row["title"] and row["start"] and row["end"]) or ident(row) in kept:
+            continue
+        if row["end"] >= today or stale_version(kind, row, running):
+            continue
+        archive = [a for a in archive if ident(a) != ident(row)]
+        archive.append(row)
+        added.append(row)
+    if write and added:
+        write_archive(kind, archive)
+    return added
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--today", default=date.today().isoformat())
@@ -204,15 +250,10 @@ def main():
     # (esim. nimi ja loppupäivä muuttuneet) ei ole päättynyt näyttely.
     # Myös saman nimen aiempi arvaus eri päivillä (alku alle 200 pv päässä) on
     # vanha versio; vuoden välein toistuvat (esim. joulu) jäävät arkistoon.
-    running = [(kind, r) for kind, f in (("museo", "museonayttelyt.json"), ("galleria", "gallerianayttelyt.json"))
-               for r in json.loads((ROOT / f).read_text(encoding="utf-8"))
-               if r.get("end", "") >= args.today]
-
-    def is_stale(kind, row):
-        return any(k == kind and r[KEY[k]] == row[KEY[kind]] and (
-            r["start"] == row["start"] or (contains(r["title"], row["title"]) and near(r, row, 200)))
-            for k, r in running)
-    out = {"museo": [], "galleria": []}
+    running = {kind: [r for r in json.loads((ROOT / f).read_text(encoding="utf-8"))
+                      if r.get("end", "") >= args.today]
+               for kind, f in (("museo", "museonayttelyt.json"), ("galleria", "gallerianayttelyt.json"))}
+    out ={"museo": [], "galleria": []}
     review = {"stale": [], "auto_only": [], "removed_early": [], "same_dates": [], "unknown_venue": [], "titles": []}
 
     for c in cluster(versions):
@@ -225,7 +266,7 @@ def main():
         venue = row[KEY[kind]]
         if (venue, row["title"]) in EXCLUDE:
             continue
-        if is_stale(kind, row):
+        if stale_version(kind, row, running[kind]):
             review["stale"].append(f"{venue} / {row['title']} ({row['start']} – {row['end']})")
             continue
         label = f"{venue} / {row['title']} ({row['start']} – {row['end']})"
@@ -250,8 +291,7 @@ def main():
         for r in rows:
             seen.setdefault((r[KEY[kind]], r["start"], r["end"]), []).append(r["title"])
         review["same_dates"] += [f"{v} ({s} – {e}): {' | '.join(ts)}" for (v, s, e), ts in seen.items() if len(ts) > 1]
-        rows.sort(key=lambda r: (r["end"], r["start"], r[KEY[kind]]), reverse=True)
-        (ROOT / OUT[kind]).write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_archive(kind, rows)
         print(f"{OUT[kind]}: {len(rows)} näyttelyä")
 
     if args.review:

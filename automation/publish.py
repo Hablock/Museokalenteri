@@ -1,5 +1,8 @@
 """Siirrä tarkistettu -auto-data tuotantoon. Ajetaan vain käyttäjän käskystä, ei koskaan automaattisesti.
 
+Tuotannosta poistuvat päättyneet näyttelyt lisätään samalla arkistoon
+(museonayttelyt-arkisto.json, gallerianayttelyt-arkisto.json).
+
 Käyttö: python3 automation/publish.py
 """
 import shutil
@@ -9,10 +12,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from prepare import KINDS, ROOT, load, run_date  # noqa: E402
 from validate import check_rows  # noqa: E402
+from build_archive import OUT, archive_removed  # noqa: E402
 
 
 def main():
-    errors, _, _ = check_rows(run_date())
+    today = run_date()
+    errors, _, _ = check_rows(today)
     if errors:
         print("Julkaisu keskeytetty, -auto-datassa on virheitä:")
         for e in errors:
@@ -25,11 +30,13 @@ def main():
         auto_meta, prod_meta = k["auto"].replace(".json", "_meta.json"), prod.replace(".json", "_meta.json")
         if not (ROOT / auto_meta).exists():
             sys.exit(f"Julkaisu keskeytetty: {auto_meta} puuttuu.")
+        archived = archive_removed(k["kind"], load(prod, []), load(k["auto"], []), today.isoformat())
         shutil.copyfile(ROOT / k["auto"], ROOT / prod)
         shutil.copyfile(ROOT / auto_meta, ROOT / prod_meta)
         print(f"{k['auto']} -> {prod}: {len(before)} -> {len(after)} näyttelyä "
               f"(+{len(after - before)} uutta, -{len(before - after)} poistunutta)")
         print(f"{auto_meta} -> {prod_meta}: päivitetty {load(prod_meta, {}).get('createdAt', '?')}")
+        print(f"{OUT[k['kind']]}: +{len(archived)} päättynyttä arkistoon")
 
 
 if __name__ == "__main__":
