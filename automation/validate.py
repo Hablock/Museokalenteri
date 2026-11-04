@@ -10,7 +10,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from prepare import CACHE, KINDS, ROOT, load, run_date  # noqa: E402
+from prepare import AUTO, CACHE, KINDS, ROOT, load, run_date  # noqa: E402
 
 warnings.filterwarnings("ignore")
 REQUIRED = ["title", "start", "end", "description", "Link", "Image"]
@@ -24,6 +24,8 @@ def norm_title(t):
 
 def check_rows(today):
     errors, warns, index = [], [], {}
+    overrides = load(AUTO / "sources.json", {}).get("sources", {})
+    no_images = {n for n, ov in overrides.items() if ov.get("no_images")}
     for k in KINDS:
         rows = load(k["auto"])
         if not isinstance(rows, list):
@@ -65,7 +67,7 @@ def check_rows(today):
                 errors.append(f"{where}: Link ei ole http(s)-osoite")
             if row["Image"] and not row["Image"].startswith(("http://", "https://")):
                 errors.append(f"{where}: Image ei ole http(s)-osoite")
-            if not row["Image"]:
+            if not row["Image"] and row[k["key"]] not in no_images:
                 warns.append(f"{where}: ei kuvaa")
             key = (row[k["key"]], norm_title(row["title"]))
             if key in seen:

@@ -117,8 +117,8 @@
       "logo": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
     },
     "Galleria 4-kuus": {
-      "logo": "https://galleria4-kuus.fi/files/galleria4-kuus.fi/G4Kuus-logo-2014-RGB.jpg",
-      "note": "Sivusto (one.com-palvelin) ei vastannut GitHubin palvelimilta 2026-10-05: jos haku epäonnistuu taas, kirjaa needs_user-listaan ja jätä rivit ennalleen."
+      "no_images": true,
+      "note": "Galleria ei julkaise kuvia tulevista näyttelyistä, ja vanha logo-url palauttaa 404 (2026-11-04): puuttuva kuva ei ole virhe. Sivusto (one.com-palvelin) ei vastannut GitHubin palvelimilta 2026-10-05: jos haku epäonnistuu taas, kirjaa needs_user-listaan ja jätä rivit ennalleen."
     },
     "Galleria A2": {
       "logo": "https://www.galleria-a2.fi/wp-content/uploads/2025/05/galleria-a2-web.jpg"
