@@ -161,12 +161,12 @@
     .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--whisper-gray); font-size: 1.05rem; line-height: 1; }
     .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--space-lg); }
     .section.header { text-align: center; }
-    /* Arkistotila (?arkisto) */
-    .archive-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-md); padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-lg); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-left: 4px solid var(--status-past); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); color: var(--charcoal); font-size: 0.95rem; }
-    .archive-bar p { margin: 0; line-height: 1.45; }
-    .archive-bar strong { font-weight: 600; }
-    .archive-bar a, .archive-link { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; min-height: var(--touch-min); display: inline-flex; align-items: center; }
-    .archive-bar a:hover, .archive-link:hover { color: var(--ink-black); text-decoration-thickness: 2px; }
+    /* Infopalkki logon alla: arkistotila (?arkisto) ja -auto-sivu */
+    .info-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-md); padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-lg); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-left: 4px solid var(--status-past); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); color: var(--charcoal); font-size: 0.95rem; }
+    .info-bar p { margin: 0; line-height: 1.45; }
+    .info-bar strong { font-weight: 600; }
+    .info-bar a, .archive-link { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; min-height: var(--touch-min); display: inline-flex; align-items: center; }
+    .info-bar a:hover, .archive-link:hover { color: var(--ink-black); text-decoration-thickness: 2px; }
     .archive-link { margin-top: var(--space-sm); font-size: 0.9rem; }
     .section.header .logo-wrapper { margin-bottom: var(--space-lg); }
     .section .section-title { margin: 0 0 var(--space-sm) 0; font-size: 0.95rem; color: var(--title-gray); font-weight: 600; }
@@ -178,8 +178,11 @@
     .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
     .museum-filter-bar .museum-btn.special + .museum-btn.special { margin-top: var(--space-xs); }
     #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
-    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; }
-    .sidebar-meta + .sidebar-meta { margin-top: 0.2rem; }
+    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; line-height: 1.4; }
+    /* Puolen rivin väli kappaleiden välissä */
+    .sidebar-meta + .sidebar-meta { margin-top: 0.7em; }
+    .sidebar-meta a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; }
+    .sidebar-meta a:hover { color: var(--ink-black); text-decoration-thickness: 2px; }
     .list-message { margin: 0; padding: var(--space-lg) 0; color: var(--body-gray); font-size: 0.9rem; }
     .list-message--error { color: var(--status-closing-soon); }
 
@@ -338,7 +341,7 @@
     </button>
   </header>
 
-  <div id="archive-bar" class="archive-bar" hidden>
+  <div id="archive-bar" class="info-bar" hidden>
     <p><strong>Katselet arkistoa.</strong> Kaikki kuvat eivät enää lataudu, eivätkä linkit näyttelyiden sivuille välttämättä toimi.</p>
     <a id="archive-back-link" href="?">Palaa ajantasaiseen versioon.</a>
   </div>
@@ -437,6 +440,8 @@
         <p id="today" class="sidebar-meta"></p>
         <p id="last-updated-museo" class="sidebar-meta"></p>
         <p id="last-updated-gallery" class="sidebar-meta"></p>
+        <p id="next-auto-update" class="sidebar-meta"></p>
+        <p id="newer-auto-link" class="sidebar-meta" hidden><a href="Museokalenteri-auto.html">Saatavilla myös tekoälyn automaattisesti päivittämä tuoreempi versio.</a></p>
       </div>
 
     </aside>
@@ -456,9 +461,41 @@
     document.getElementById('archive-bar').hidden = false;
     document.getElementById('archive-back-link').href = location.pathname;
     document.getElementById('status-filter-section').hidden = true;
-    ['last-updated-museo', 'last-updated-gallery'].forEach(id => document.getElementById(id).hidden = true);
+    ['last-updated-museo', 'last-updated-gallery', 'next-auto-update'].forEach(id => document.getElementById(id).hidden = true);
     const sortSel = document.getElementById('sort-select');
     sortSel.add(new Option('Viimeksi päättyneet ensin', 'CLOSING_DATE_DESC', true, true), 0);
+  }
+
+  // Automaattipäivitys ajetaan kuun 1. ja 15. päivänä klo 04 UTC
+  // (.github/workflows/auto-update.yml).
+  function nextAutoUpdate(now = new Date()) {
+    const y = now.getUTCFullYear(), m = now.getUTCMonth();
+    return [Date.UTC(y, m, 1, 4), Date.UTC(y, m, 15, 4), Date.UTC(y, m + 1, 1, 4)]
+      .map(t => new Date(t)).find(d => d > now);
+  }
+  const fiLongDate = d => d.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('next-auto-update').textContent =
+    `Seuraava automaattinen päivitys: ${fiLongDate(nextAutoUpdate())}`;
+
+  // Jos automaattiajo on tuottanut dataa, jota ei ole vielä julkaistu,
+  // tarjotaan linkki -auto-sivulle (publish.py kopioi -auto-metan tuotantoon).
+  if (!ARCHIVE) {
+    const metaDate = url => fetch(url).then(r => r.ok ? r.json() : null)
+      .then(m => (m && m.createdAt) || '').catch(() => '');
+    Promise.all(['museonayttelyt', 'gallerianayttelyt'].flatMap(n =>
+        [metaDate(`./${n}_meta.json`), metaDate(`./${n}-auto_meta.json`)]))
+      .then(([museoProd, museoAuto, galleriaProd, galleriaAuto]) => {
+        if (museoAuto > museoProd || galleriaAuto > galleriaProd)
+          document.getElementById('newer-auto-link').hidden = false;
+      });
+
+    // Arkisto-linkkiin arkistoitujen näyttelyiden määrä, kuten aikasuodattimissa
+    Promise.all(['museonayttelyt', 'gallerianayttelyt'].map(n =>
+        fetch(`./${n}-arkisto.json`).then(r => r.ok ? r.json() : []).catch(() => [])))
+      .then(lists => {
+        const n = lists.reduce((sum, l) => sum + (Array.isArray(l) ? l.length : 0), 0);
+        if (n) document.getElementById('archive-link').textContent = `Arkisto (${n})`;
+      });
   }
 
   // Museotiedot haetaan museot.json:sta; arkistossa myös kalenterista
