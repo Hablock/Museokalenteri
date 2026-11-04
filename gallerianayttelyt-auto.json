@@ -144,6 +144,15 @@
     "Image": "https://www.galleria-a2.fi/wp-content/uploads/2026/10/Piia-Rossi.jpeg"
   },
   {
+    "gallery": "Galleria A2",
+    "title": "William Dennisuk: Gravity and Light",
+    "start": "2027-01-06",
+    "end": "2027-01-24",
+    "description": "William Dennisukin hiilipiirroksia kasveista kodin ympäristössä; painovoima ja valo osana teosten syntyä.",
+    "Link": "https://www.galleria-a2.fi/exhibition/william-dennisuk-gravity-and-light/",
+    "Image": "https://www.galleria-a2.fi/wp-content/uploads/2026/10/lime-green1-2-1024x747.jpg"
+  },
+  {
     "gallery": "AKVART Galleria",
     "title": "Metsän aarteita",
     "start": "2026-10-13",
@@ -456,6 +465,15 @@
     "end": "2027-06-29",
     "description": "Maria Aaltosen maalauksia.",
     "Link": "https://www.galleria12.fi/nayttely/maria-aaltonen-maalauksia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "G12 Helsinki",
+    "title": "Henna Maria Vienola",
+    "start": "2027-07-01",
+    "end": "2027-07-27",
+    "description": "Henna Maria Vienolan maalauksia.",
+    "Link": "https://www.galleria12.fi/nayttely/henna-maria-vienola-maalauksia/",
     "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
   },
   {
@@ -883,12 +901,12 @@
   },
   {
     "gallery": "LOKAL",
-    "title": "Mari Isopahkala",
+    "title": "Mari Isopahkala: Aika, Time",
     "start": "2026-10-30",
     "end": "2026-11-28",
     "description": "Mari Isopahkalan näyttely Lokalin päägalleriassa.",
-    "Link": "https://lokalhelsinki.com/exhibitions/upcoming/",
-    "Image": ""
+    "Link": "https://lokalhelsinki.com/exhibition-111-mari-isopahkala-aika-time/",
+    "Image": "https://lokalhelsinki.com/wp-content/uploads/2026/10/mariisopahkala_glass_artwork_sculpture_exhibition_installation_lokalhelsinki2026-2.jpg"
   },
   {
     "gallery": "LOKAL",
