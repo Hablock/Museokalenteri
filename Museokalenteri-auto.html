@@ -513,8 +513,15 @@
     return new Date(Date.UTC(y, m - 1, d));
   }
 
+  // Tämä päivä samassa muodossa kuin parseDate (UTC-keskiyö), jotta vertailu
+  // tehdään päivätasolla: näyttely on käynnissä myös alku- ja loppupäivänään.
+  function todayUtc() {
+    const d = new Date();
+    return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  }
+
   function computeStatus(ex) {
-    const now = new Date();
+    const now = todayUtc();
     const start = parseDate(ex.start);
     const end   = parseDate(ex.end);
     const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
@@ -702,21 +709,12 @@
     }
 
     function getFilteredExhibitions(statusType) {
-      const now = new Date();
-      const in2w = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
       return getVisibleBase().filter(ex => {
-        if (statusType === "CURRENT" || statusType === "UPCOMING" || statusType === "PAST")
-          return computeStatus(ex) === statusType;
         if (statusType === "ALL") return true;
-        if (statusType === "OPENING_SOON") {
-          const start = parseDate(ex.start);
-          return start >= now && start <= in2w;
-        }
-        if (statusType === "CLOSING_SOON") {
-          const end = parseDate(ex.end);
-          return end >= now && end <= in2w;
-        }
-        return true;
+        const st = computeStatus(ex);
+        // Päättyy pian on käynnissä olevien alajoukko: Käynnissä näyttää molemmat.
+        if (statusType === "CURRENT") return st === "CURRENT" || st === "CLOSING_SOON";
+        return st === statusType;
       });
     }
 
@@ -790,6 +788,7 @@
         counts.ALL++;
         const st = computeStatus(ex);
         if (st in counts) counts[st]++;
+        if (st === "CLOSING_SOON") counts.CURRENT++;
       });
       statusButtons.forEach(btn => {
         const t = btn.dataset.filter;
