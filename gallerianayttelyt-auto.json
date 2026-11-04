@@ -154,15 +154,6 @@
   },
   {
     "gallery": "AKVART Galleria",
-    "title": "Metsän aarteita",
-    "start": "2026-10-13",
-    "end": "2026-11-01",
-    "description": "Akvartin kuvataiteilija Kalle Turakka Purhosen juryttämä vuosinäyttely, jossa esillä 44 metsäaiheista maalausta 28 taiteilijalta.",
-    "Link": "https://akvart.fi/2026/09/30/metsan-aarteita/",
-    "Image": "https://akvart.fi/wp-content/uploads/2026/09/kuule-maisema-scaled.jpg"
-  },
-  {
-    "gallery": "AKVART Galleria",
     "title": "Kaleidoskooppi",
     "start": "2026-11-03",
     "end": "2026-11-22",
@@ -190,15 +181,6 @@
   },
   {
     "gallery": "Galleria ARS Longa",
-    "title": "Antti Virkkunen",
-    "start": "2026-10-09",
-    "end": "2026-11-01",
-    "description": "Antti Virkkusen näyttely.",
-    "Link": "https://www.arslonga.fi/items",
-    "Image": "https://static.wixstatic.com/media/e0490d_889c3e9f0d2c4ab69bd56eed4e1b381c%7Emv2.png"
-  },
-  {
-    "gallery": "Galleria ARS Longa",
     "title": "ONE LIFE IN ONE SUITCASE",
     "start": "2026-11-06",
     "end": "2026-11-22",
@@ -214,15 +196,6 @@
     "description": "Ilari Kähösen hierspiirroksia, näyttely koostuu 60 teoksesta, jotka on ripustettu näyttelytilan kahdelle seinälle.",
     "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/viimeinen-valssi-hierspiirroksia",
     "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/wider_liftup/public/exhibition/2026-10/Ilari%20K%C3%A4h%C3%B6nen.jpg?itok=uZn29Qu9"
-  },
-  {
-    "gallery": "Galleria Bronda",
-    "title": "Rosa Liksom",
-    "start": "2026-10-07",
-    "end": "2026-11-01",
-    "description": "Rosa Liksomin näyttely.",
-    "Link": "http://www.bronda.fi/",
-    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
     "gallery": "Galleria Bronda",
@@ -943,15 +916,6 @@
     "description": "Amado Peñan Smoking Mirror 1 on obsidiaanin sirpaleista, hartsista ja heijastavasta kalvosta kootun peilirakenteen avulla tehty tutkielma heijastavista rajatiloista, kuraattorina Monika Eva Hauck.",
     "Link": "http://www.myymala2.com/?p=10859",
     "Image": ""
-  },
-  {
-    "gallery": "Myymälä2",
-    "title": "Alan Bulfin: The Leather Garden and Militants of Becoming Otherwise",
-    "start": "2026-10-09",
-    "end": "2026-11-01",
-    "description": "Alan Bulfinin näyttely, joka tarkastelee materiaalisen, ekologisen ja kollektiivisen anteliaisuuden muotoja elävien materiaalien kasvattamisen kautta. Näyttely pohtii ihmiskehoa osana laajempaa elävää ekosysteemiä ja keskinäistä riippuvuutta.",
-    "Link": "http://www.myymala2.com/",
-    "Image": "http://www.myymala2.com/wp-content/uploads/2026/01/1080x1920_Bulfin_poster_myymäla2_outlines.jpg"
   },
   {
     "gallery": "Myymälä2",
