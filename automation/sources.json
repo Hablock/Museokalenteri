@@ -85,6 +85,8 @@
       "note": "Sivulla on ollut vuosilukuvirhe (2027 vs 2026). Historia on aikajärjestyksessä: käytä järjestystä vuoden päättelyyn ja kirjaa uncertain-listaan."
     },
     "Galleria ARS Longa": {
+      "no_images": true,
+      "note": "Galleria ei näytä kuvia tulevista näyttelyistä (2026-11-04): puuttuva kuva ei ole virhe. Sivun yleiset kuvat voivat kuulua edelliseen näyttelyyn, älä käytä niitä.",
       "exclude_patterns": [
         "varattu",
         "haettavissa"
