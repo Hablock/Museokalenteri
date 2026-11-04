@@ -153,7 +153,7 @@
     .PAST .status-pill { background: var(--status-past); }
     .OPENING_SOON .status-pill { background: var(--status-opening-soon); }
     .CLOSING_SOON .status-pill { background: var(--status-closing-soon); }
-    .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; }
+    .exhibition-content { flex: 1; min-width: 0; padding-right: 1.2rem; overflow-wrap: anywhere; }
     .exhibition-content h3 { margin: 0 0 0.25rem 0; font-size: 1.12rem; font-weight: 700; line-height: 1.25; color: var(--ink-black); text-wrap: pretty; }
     .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--label-gray); }
     .exhibition-dates { margin: 0; font-size: 0.88rem; color: var(--meta-gray); }
@@ -161,6 +161,13 @@
     .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--whisper-gray); font-size: 1.05rem; line-height: 1; }
     .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--space-lg); }
     .section.header { text-align: center; }
+    /* Infopalkki logon alla: arkistotila (?arkisto) ja -auto-sivu */
+    .info-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-md); padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-lg); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-left: 4px solid var(--status-past); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); color: var(--charcoal); font-size: 0.95rem; }
+    .info-bar p { margin: 0; line-height: 1.45; }
+    .info-bar strong { font-weight: 600; }
+    .info-bar a, .archive-link { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; min-height: var(--touch-min); display: inline-flex; align-items: center; }
+    .info-bar a:hover, .archive-link:hover { color: var(--ink-black); text-decoration-thickness: 2px; }
+    .archive-link { margin-top: var(--space-sm); font-size: 0.9rem; }
     .section.header .logo-wrapper { margin-bottom: var(--space-lg); }
     .section .section-title { margin: 0 0 var(--space-sm) 0; font-size: 0.95rem; color: var(--title-gray); font-weight: 600; }
     .section-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); margin-bottom: var(--space-sm); }
@@ -171,8 +178,11 @@
     .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
     .museum-filter-bar .museum-btn.special + .museum-btn.special { margin-top: var(--space-xs); }
     #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
-    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; }
-    .sidebar-meta + .sidebar-meta { margin-top: 0.2rem; }
+    .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; line-height: 1.4; }
+    /* Puolen rivin väli kappaleiden välissä */
+    .sidebar-meta + .sidebar-meta { margin-top: 0.7em; }
+    .sidebar-meta a { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; }
+    .sidebar-meta a:hover { color: var(--ink-black); text-decoration-thickness: 2px; }
     .list-message { margin: 0; padding: var(--space-lg) 0; color: var(--body-gray); font-size: 0.9rem; }
     .list-message--error { color: var(--status-closing-soon); }
 
@@ -331,6 +341,11 @@
     </button>
   </header>
 
+  <div id="archive-bar" class="info-bar" hidden>
+    <p><strong>Katselet arkistoa.</strong> Kaikki kuvat eivät enää lataudu, eivätkä linkit näyttelyiden sivuille välttämättä toimi.</p>
+    <a id="archive-back-link" href="?">Palaa ajantasaiseen versioon.</a>
+  </div>
+
   <div id="sidebar-overlay" aria-hidden="true"></div>
 
   <main class="page-layout">
@@ -375,6 +390,16 @@
       </button>
 
       <div class="section">
+        <h2 class="section-title">Järjestys</h2>
+        <select id="sort-select" aria-label="Järjestä lista">
+          <option value="MUSEUM">Museon mukaan</option>
+          <option value="TITLE">Näyttelyn nimen mukaan</option>
+          <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
+          <option value="OPENING_DATE" selected>Avautumispäivän mukaan</option>
+        </select>
+      </div>
+
+      <div class="section" id="status-filter-section">
         <h2 class="section-title">Aikasuodattimet</h2>
         <div class="filter-bar" role="group" aria-label="Aikasuodattimet">
           <button class="filter-btn active" data-filter="ALL" aria-pressed="true">Kaikki</button>
@@ -384,6 +409,7 @@
           <button class="filter-btn" data-filter="CLOSING_SOON" aria-pressed="false">Päättyy pian</button>
           <button class="filter-btn" data-filter="PAST" aria-pressed="false">Päättyneet</button>
         </div>
+        <a id="archive-link" class="archive-link" href="?arkisto">Arkisto</a>
       </div>
 
       <div class="section">
@@ -411,19 +437,11 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title">Järjestys</h2>
-        <select id="sort-select" aria-label="Järjestä lista">
-          <option value="MUSEUM">Museon mukaan</option>
-          <option value="TITLE">Näyttelyn nimen mukaan</option>
-          <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
-          <option value="OPENING_DATE" selected>Avautumispäivän mukaan</option>
-        </select>
-      </div>
-
-      <div class="section">
         <p id="today" class="sidebar-meta"></p>
         <p id="last-updated-museo" class="sidebar-meta"></p>
         <p id="last-updated-gallery" class="sidebar-meta"></p>
+        <p id="next-auto-update" class="sidebar-meta"></p>
+        <p id="newer-auto-link" class="sidebar-meta" hidden><a href="Museokalenteri-auto.html">Saatavilla myös tekoälyn automaattisesti päivittämä tuoreempi versio.</a></p>
       </div>
 
     </aside>
@@ -433,12 +451,60 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script>
 
-  // Museotiedot haetaan museot.json:sta
+  // Arkistotila: sama sivu osoitteella ?arkisto näyttää päättyneet näyttelyt
+  // *-arkisto.json-tiedostoista. Linkit rakennetaan nykyisestä polusta, joten
+  // tuotanto linkittää aina tuotantoon ja beta betaan.
+  const ARCHIVE = new URLSearchParams(location.search).has('arkisto');
+  const DATA_SUFFIX = ARCHIVE ? '-arkisto' : '';
+  if (ARCHIVE) {
+    document.title += ' – arkisto';
+    document.getElementById('archive-bar').hidden = false;
+    document.getElementById('archive-back-link').href = location.pathname;
+    document.getElementById('status-filter-section').hidden = true;
+    ['last-updated-museo', 'last-updated-gallery', 'next-auto-update'].forEach(id => document.getElementById(id).hidden = true);
+    const sortSel = document.getElementById('sort-select');
+    sortSel.add(new Option('Viimeksi päättyneet ensin', 'CLOSING_DATE_DESC', true, true), 0);
+  }
+
+  // Automaattipäivitys ajetaan kuun 1. ja 15. päivänä klo 04 UTC
+  // (.github/workflows/auto-update.yml).
+  function nextAutoUpdate(now = new Date()) {
+    const y = now.getUTCFullYear(), m = now.getUTCMonth();
+    return [Date.UTC(y, m, 1, 4), Date.UTC(y, m, 15, 4), Date.UTC(y, m + 1, 1, 4)]
+      .map(t => new Date(t)).find(d => d > now);
+  }
+  const fiLongDate = d => d.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('next-auto-update').textContent =
+    `Seuraava automaattinen päivitys: ${fiLongDate(nextAutoUpdate())}`;
+
+  // Jos automaattiajo on tuottanut dataa, jota ei ole vielä julkaistu,
+  // tarjotaan linkki -auto-sivulle (publish.py kopioi -auto-metan tuotantoon).
+  if (!ARCHIVE) {
+    const metaDate = url => fetch(url).then(r => r.ok ? r.json() : null)
+      .then(m => (m && m.createdAt) || '').catch(() => '');
+    Promise.all(['museonayttelyt', 'gallerianayttelyt'].flatMap(n =>
+        [metaDate(`./${n}_meta.json`), metaDate(`./${n}-auto_meta.json`)]))
+      .then(([museoProd, museoAuto, galleriaProd, galleriaAuto]) => {
+        if (museoAuto > museoProd || galleriaAuto > galleriaProd)
+          document.getElementById('newer-auto-link').hidden = false;
+      });
+
+    // Arkisto-linkkiin arkistoitujen näyttelyiden määrä, kuten aikasuodattimissa
+    Promise.all(['museonayttelyt', 'gallerianayttelyt'].map(n =>
+        fetch(`./${n}-arkisto.json`).then(r => r.ok ? r.json() : []).catch(() => [])))
+      .then(lists => {
+        const n = lists.reduce((sum, l) => sum + (Array.isArray(l) ? l.length : 0), 0);
+        if (n) document.getElementById('archive-link').textContent = `Arkisto (${n})`;
+      });
+  }
+
+  // Museotiedot haetaan museot.json:sta; arkistossa myös kalenterista
+  // poistuneiden museoiden museot-arkisto.json:sta.
   let museumData = {};
-  const museoDataPromise = fetch('./museot.json')
-    .then(res => res.json())
-    .then(data => { data.forEach(m => { museumData[m.nimi] = m; }); })
-    .catch(() => {});
+  const museoDataPromise = Promise.all(
+      (ARCHIVE ? ['./museot.json', './museot-arkisto.json'] : ['./museot.json'])
+        .map(url => fetch(url).then(res => res.ok ? res.json() : []).catch(() => [])))
+    .then(lists => { lists.flat().forEach(m => { museumData[m.nimi] = m; }); });
 
   // Galleriatiedot haetaan galleriat.json:sta
   let galleryData = [];
@@ -450,13 +516,14 @@
   let resetGalleries = null;       // initGalleries asettaa
   fetch('./galleriat.json')
     .then(res => res.json())
-    // Ei-aktiivisia gallerioita (sivusto ei vastaa eikä tulevia näyttelyitä) ei näytetä
-    .then(data => { galleryData = data.filter(g => g.aktiivinen !== 'ei-aktiivinen'); initGalleries(); })
+    // Ei-aktiivisia gallerioita (sivusto ei vastaa eikä tulevia näyttelyitä) ei näytetä,
+    // paitsi arkistossa, jossa niiden menneet näyttelyt ovat yhä kiinnostavia.
+    .then(data => { galleryData = ARCHIVE ? data : data.filter(g => g.aktiivinen !== 'ei-aktiivinen'); initGalleries(); })
     .catch(() => {});
 
   // Gallerianäyttelyt haetaan gallerianayttelyt.json:sta ja yhdistetään korttilistaan.
   // Normalisoidaan gallery -> museum, jotta sama renderöinti/suodatus toimii sellaisenaan.
-  fetch('./gallerianayttelyt.json')
+  fetch(`./gallerianayttelyt${DATA_SUFFIX}.json`)
     .then(res => res.ok ? res.json() : [])
     .then(data => { galleryExhibitions = data.map(g => ({ ...g, museum: g.gallery, isGallery: true })); })
     .then(() => { if (refilterExhibitions) refilterExhibitions(); })
@@ -640,17 +707,19 @@
     }
   })();
 
-  fetch('./museonayttelyt_meta.json')
-    .then(res => res.ok ? res.json() : null)
-    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('museo', meta.createdAt); })
-    .catch(() => {});
+  if (!ARCHIVE) {
+    fetch('./museonayttelyt_meta.json')
+      .then(res => res.ok ? res.json() : null)
+      .then(meta => { if (meta && meta.createdAt) updateLastUpdated('museo', meta.createdAt); })
+      .catch(() => {});
 
-  fetch('./gallerianayttelyt_meta.json')
-    .then(res => res.ok ? res.json() : null)
-    .then(meta => { if (meta && meta.createdAt) updateLastUpdated('gallery', meta.createdAt); })
-    .catch(() => {});
+    fetch('./gallerianayttelyt_meta.json')
+      .then(res => res.ok ? res.json() : null)
+      .then(meta => { if (meta && meta.createdAt) updateLastUpdated('gallery', meta.createdAt); })
+      .catch(() => {});
+  }
 
-  const nayttelytPromise = fetch('./museonayttelyt.json').then(res => res.json());
+  const nayttelytPromise = fetch(`./museonayttelyt${DATA_SUFFIX}.json`).then(res => res.json());
 
   Promise.all([nayttelytPromise, museoDataPromise])
     .then(([data]) => {
@@ -728,6 +797,7 @@
         case "MUSEUM":       copy.sort((a,b) => byStr(a,b,e=>e.museum)); break;
         case "TITLE":        copy.sort((a,b) => byStr(a,b,e=>e.title)); break;
         case "CLOSING_DATE": copy.sort((a,b) => byDate(a,b,e=>e.end)); break;
+        case "CLOSING_DATE_DESC": copy.sort((a,b) => byDate(b,a,e=>e.end)); break;
         default:             copy.sort((a,b) => byDate(a,b,e=>e.start)); break;
       }
       return copy;
