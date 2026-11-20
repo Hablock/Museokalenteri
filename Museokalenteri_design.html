@@ -166,8 +166,19 @@
     .section-title--icon { display: flex; align-items: center; gap: 0.4rem; }
     .section-title--icon img { flex-shrink: 0; }
     .sidebar .section:last-child { margin-bottom: 0; }
-    .sidebar .museum-filter-bar { margin: 0 0 var(--space-sm); }
-    .museum-filter-bar .museum-btn.special + .museum-btn.special { margin-top: var(--space-xs); }
+    /* Museot- ja Galleriat-haitarit: otsikkorivi avaa listan, valintanapit näkyvät aina */
+    .accordion-toggle { display: flex; align-items: center; gap: 0.4rem; width: 100%; min-height: var(--touch-min); padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+    .accordion-toggle img { flex-shrink: 0; }
+    .accordion-toggle .chevron { width: 18px; height: 18px; margin-left: auto; flex-shrink: 0; color: var(--charcoal); transition: transform 0.2s ease; }
+    .accordion-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .accordion-toggle:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; border-radius: var(--rounded-sm); }
+    .list-status { margin: 0 0 var(--space-sm); font-size: 0.8rem; line-height: 1.4; color: var(--body-gray); }
+    .list-status:empty { display: none; }
+    .list-status strong { font-weight: 600; }
+    .list-status--partial { color: var(--charcoal); }
+    .list-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs); }
+    .list-action-btn { justify-content: center; padding: 0.25rem 0.5rem; font-size: 0.8rem; border-radius: var(--rounded-sm); }
+    .list-actions + .checkbox-list { margin-top: var(--space-sm); }
     #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
     .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; }
     .sidebar-meta + .sidebar-meta { margin-top: 0.2rem; }
@@ -252,7 +263,7 @@
 
     /* Liikeherkkyys: tilanmuutokset säilyvät (varjo, väri), siirtymät ja nosto poistuvat */
     @media (prefers-reduced-motion: reduce) {
-      .exhibition, .museum-btn.special, #reset-filters-btn, .ghost-btn, .sidebar, #map, .exhibition-photo { transition: none; }
+      .exhibition, .museum-btn.special, #reset-filters-btn, .ghost-btn, .sidebar, #map, .exhibition-photo, .accordion-toggle .chevron { transition: none; }
       .exhibition:hover { transform: none; }
     }
 
@@ -405,27 +416,35 @@
       </div>
 
       <div class="section">
-        <h2 class="section-title section-title--icon">
-          <img src="./img/museokalenteri_museo.marker.svg" width="32" height="32" alt="">
-          Museot
+        <h2 class="section-title">
+          <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="museum-checkbox-list">
+            <img src="./img/museokalenteri_museo.marker.svg" width="32" height="32" alt="">
+            Museot
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
         </h2>
-        <div class="museum-filter-bar">
-          <button id="select-all-museums" class="museum-btn special" type="button">Valitse kaikki</button>
-          <button id="deselect-all-museums" class="museum-btn special" type="button">Poista valinnat</button>
+        <p id="museum-list-status" class="list-status" aria-live="polite"></p>
+        <div class="list-actions" role="group" aria-label="Museoiden valinta">
+          <button id="select-all-museums" class="ghost-btn list-action-btn" type="button">Valitse kaikki</button>
+          <button id="deselect-all-museums" class="ghost-btn list-action-btn" type="button">Piilota kaikki</button>
         </div>
-        <div id="museum-checkbox-list"></div>
+        <div id="museum-checkbox-list" class="checkbox-list" hidden></div>
       </div>
 
       <div class="section">
-        <h2 class="section-title section-title--icon">
-          <img src="./img/museokalenteri_galleria.marker.svg" width="32" height="32" alt="">
-          Galleriat
+        <h2 class="section-title">
+          <button class="accordion-toggle" type="button" aria-expanded="false" aria-controls="gallery-checkbox-list">
+            <img src="./img/museokalenteri_galleria.marker.svg" width="32" height="32" alt="">
+            Galleriat
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
         </h2>
-        <div class="museum-filter-bar">
-          <button id="select-all-galleries" class="museum-btn special" type="button">Valitse kaikki</button>
-          <button id="deselect-all-galleries" class="museum-btn special" type="button">Poista valinnat</button>
+        <p id="gallery-list-status" class="list-status" aria-live="polite"></p>
+        <div class="list-actions" role="group" aria-label="Gallerioiden valinta">
+          <button id="select-all-galleries" class="ghost-btn list-action-btn" type="button">Valitse kaikki</button>
+          <button id="deselect-all-galleries" class="ghost-btn list-action-btn" type="button">Piilota kaikki</button>
         </div>
-        <div id="gallery-checkbox-list"></div>
+        <div id="gallery-checkbox-list" class="checkbox-list" hidden></div>
       </div>
 
       <div class="section">
@@ -783,7 +802,24 @@
     return parseDate(s).toLocaleDateString('fi-FI', { day: 'numeric', month: 'numeric', year: 'numeric' });
   }
 
+  // Status-rivi otsikon alla: "x / y museota valittu". Luetaan checkboxeista, joten
+  // kaikki valintapolut (checkbox, napit, rajausten tyhjennys) päivittävät sen.
+  const LIST_STATUS = {
+    museum: ['museum-checkbox-list', 'museum-list-status', 'museota'],
+    gallery: ['gallery-checkbox-list', 'gallery-list-status', 'galleriaa'],
+  };
+  function updateListStatus(kind) {
+    const [listId, statusId, noun] = LIST_STATUS[kind];
+    const el = document.getElementById(statusId);
+    const boxes = document.querySelectorAll(`#${listId} input[type="checkbox"]`);
+    if (!el || !boxes.length) return;
+    const checked = Array.from(boxes).filter(cb => cb.checked).length;
+    el.innerHTML = `<strong>${checked}</strong> / ${boxes.length} ${noun} valittu`;
+    el.classList.toggle('list-status--partial', checked !== boxes.length);
+  }
+
   function updateMap(activeMuseums) {
+    updateListStatus('museum');
     markerLayer.clearLayers();
     activeMuseums.forEach(museumName => {
       const info = museumData[museumName];
@@ -802,6 +838,7 @@
   }
 
   function updateGalleryMap(activeGalleries) {
+    updateListStatus('gallery');
     galleryMarkerLayer.clearLayers();
     activeGalleries.forEach(name => {
       const info = galleryData.find(g => g.nimi === name);
@@ -871,6 +908,17 @@
   // ------- Alkuperäinen kalenteri-logiikka -------
 
   let exhibitions = [];
+
+  // Museot- ja Galleriat-haitarit: otsikkorivin nappi näyttää tai piilottaa checkbox-listan
+  document.querySelectorAll('.accordion-toggle').forEach(btn => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+    });
+  });
 
   (function setTodayDate() {
     const el = document.getElementById('today');
