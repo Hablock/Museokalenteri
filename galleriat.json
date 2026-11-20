@@ -213,11 +213,11 @@
     "aktiivinen": "aktiivinen",
     "kaupunki": "Helsinki",
     "osoite": "Tallberginkatu 1 B, 00180 Helsinki",
-    "lat": null,
-    "lng": null,
+    "lat": 60.1619658,
+    "lng": 24.9041746,
     "kotisivu": "https://kameraseura.fi/",
-    "nayttelysivu": "https://kameraseura.fi/nayttelyt/kamera-galleria/",
-    "tulevanayttelysivu": "https://kameraseura.fi/nayttelyt/kamera-galleria/"
+    "nayttelysivu": "https://kameraseura.fi/galleriat/kamera-galleria/",
+    "tulevanayttelysivu": "https://kameraseura.fi/galleriat/kamera-galleria/"
   },
   {
     "nimi": "Kamiter-Ars",
