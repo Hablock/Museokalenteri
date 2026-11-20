@@ -4,5 +4,8 @@ _DESIGN_HANDOFFS/
 archive/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+# Impeccable-kritiikit ja live-tilan työkansio pidetään lokaalina
+.impeccable/critique/
+.impeccable/live/
 automation/cache/
 __pycache__/
