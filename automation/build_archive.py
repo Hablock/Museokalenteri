@@ -215,7 +215,10 @@ def archive_removed(kind, old_rows, new_rows, today, write=True):
     archive = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
     ident = lambda r: (r[k], norm(r["title"]), r["start"])  # noqa: E731
     kept = {ident(r) for r in new_rows}
-    running = [r for r in new_rows if r.get("end", "") >= today]
+    # Vanhan rivin uusi versio on uusi rivi. Tuotannossa jo valmiiksi ollut rivi on eri
+    # näyttely, vaikka paikka ja alkupäivä olisivat samat (esim. Kohdan päätila ja studio).
+    old_idents = {(clean(r.get(k)), norm(r.get("title", "")), iso(r.get("start", ""))) for r in old_rows}
+    running = [r for r in new_rows if r.get("end", "") >= today and ident(r) not in old_idents]
     added = []
     for r in old_rows:
         row = {k: clean(r.get(k))}
