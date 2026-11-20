@@ -1,5 +1,122 @@
 [
   {
+    "gallery": "G12 Helsinki",
+    "title": "Kyllikki Haavisto: Asetelmia",
+    "start": "2026-10-29",
+    "end": "2026-11-17",
+    "description": "Kyllikki Haaviston asetelmia.",
+    "Link": "https://www.galleria12.fi/nayttely/asetelmia/",
+    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
+  },
+  {
+    "gallery": "Kuva/Tila",
+    "title": "Sild/Silta (Yhteistyönäyttely: Kuvataideakatemia & Viron taideakatemia, EKA)",
+    "start": "2026-10-23",
+    "end": "2026-11-15",
+    "description": "Kuvataideakatemian ja Viron taidekatemian opiskelijoiden vaihtonäyttelykokonaisuuden ensimmäinen osa, kymmenen opiskelijaa kummastakin akatemiasta.",
+    "Link": "https://www.uniarts.fi/tapahtumat/vaihtonayttely-viron-taidekatemian-eka-opiskelijoita/",
+    "Image": "https://www.uniarts.fi/app/uploads/2026/03/Sild_vaaka_-scaled.jpg"
+  },
+  {
+    "gallery": "HAA Galleria",
+    "title": "Outo laakso",
+    "start": "2026-10-23",
+    "end": "2026-11-15",
+    "description": "Marja Patrikaisen ja Tuukka Peltosen yhteisnäyttely, joka koostuu kierrätysmateriaaleista tehdyistä sekatekniikkaveistoksista ja puupiirroksista.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/outo-laakso",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-10/Yhdistetyt-Patrikainen-Peltonen-pieni.jpg?itok=z1ksNWpP"
+  },
+  {
+    "gallery": "MUU Helsinki nykytaidekeskus",
+    "title": "Salla Myllylä & Sari Palosaari: CHIM",
+    "start": "2026-10-17",
+    "end": "2026-11-15",
+    "description": "Salla Myllylän ja Sari Palosaaren video- ja veistosinstallaatioita, jotka ammentavat taiteilijoiden päällekkäisistä aika- ja paikkakokemuksista Kemistä Meri-Lapissa.",
+    "Link": "https://www.muu.fi/muuspace/exhibitons/salla-myllyla-and-sari-palosaari-chim/",
+    "Image": "https://muu.fi/site/assets/files/5739/salla-myllyla_kajavakari_2025-2026_web.png"
+  },
+  {
+    "gallery": "Valokuvagalleria Hippolyte",
+    "title": "Naomi & Wanda Holopainen",
+    "start": "2026-10-16",
+    "end": "2026-11-15",
+    "description": "Valokuvanäyttely Valokuvagalleria Hippolytessa.",
+    "Link": "https://hippolyte.fi/nayttely/naomi-wanda-holopainen/",
+    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
+  },
+  {
+    "gallery": "Valokuvagalleria Hippolyte",
+    "title": "Antti Jussila",
+    "start": "2026-10-16",
+    "end": "2026-11-15",
+    "description": "Antti Jussilan näyttely Hippolyte Studiossa.",
+    "Link": "https://hippolyte.fi/nayttely/antti-jussila/",
+    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
+  },
+  {
+    "gallery": "Kohta",
+    "title": "Dorothee Sauter: Walking the Unknown (studio)",
+    "start": "2026-10-15",
+    "end": "2026-11-15",
+    "description": "Kohta esittelee sveitsiläisen Dorothee Sauterin uusien keraamisten veistosten sarjan Walking the Unknown.",
+    "Link": "https://kohta.fi/exhibition/dorothee-sauter-walking-the-unknown-studio/",
+    "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:auto/h:auto/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/09/XY7B1183-Kopie-scaled.jpg"
+  },
+  {
+    "gallery": "Laterna Magica",
+    "title": "Saara Kartimo: Tappauksia, akvarelleja",
+    "start": "2026-10-28",
+    "end": "2026-11-14",
+    "description": "Akvarelliteoksia, jotka pohjautuvat outoihin tarinoihin taiteilijan lapsuudesta Hailuodossa.",
+    "Link": "https://www.laterna.net/nayttelyt/tappauksia-akvarelleja",
+    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6a296aa518b05bf52564a9e7_Saara%20Kartimo%20Suolsolmu%201200.jpg"
+  },
+  {
+    "gallery": "Laterna Magica",
+    "title": "Olli Philippe Lautenbacher: La ville sans nom - Stadin kulkija - Translated Images, valokuvia",
+    "start": "2026-10-28",
+    "end": "2026-11-14",
+    "description": "Mustavalkoista katukuvausta ja pohdintaa kuvien lukemisesta ja tulkinnasta.",
+    "Link": "https://www.laterna.net/nayttelyt/la-ville-sans-nom---stadin-kulkija---translated-images-valokuvia",
+    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6a450b1902192d9fae488d3d_Olli%20Philippe%20Lautenbacher%20The%20Hood%201200.jpg"
+  },
+  {
+    "gallery": "Malmitalon galleria",
+    "title": "Flow",
+    "start": "2026-10-22",
+    "end": "2026-11-14",
+    "description": "Sebastian Boulterin öljy- ja vesivärimaalauksia viidestä kreikkalaisesta joesta ja niiden arkeologisista löydöistä.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/flow",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-10/Symposium%2C%20o%CC%88ljy%20kankaalle%2C%20100x100cm%2C%202024-pieni.jpg?itok=c9x4WrcK"
+  },
+  {
+    "gallery": "Taidesalonki Piirto",
+    "title": "Tapani Piirto & Marja Uusiluoto-Raaska: STILLNESS",
+    "start": "2026-10-06",
+    "end": "2026-11-12",
+    "description": "Piirron öljymaalauksia ja Uusiluoto-Raaskan veistoksia.",
+    "Link": "https://www.piirto.com/fi/vierailevat-taiteilijat-2/menossa-olevaa/",
+    "Image": "https://piirto.com/wp-content/uploads/2026/08/VIESTI-2-10.8-200x300.jpg"
+  },
+  {
+    "gallery": "Galleria Fogga",
+    "title": "Mielen Typografia",
+    "start": "2026-10-20",
+    "end": "2026-11-10",
+    "description": "Kimmo Laitisen, Maritta Neronin ja Kaisa Nyströmin yhteisnäyttely typografiasta ja mielestä.",
+    "Link": "https://www.fogga.fi/to-be-nominated-28/",
+    "Image": "https://www.fogga.fi/wp-content/uploads/2021/03/Galleria_Fogga.png"
+  },
+  {
+    "gallery": "Galleria A2",
+    "title": "Carita Maury: Eräs matka / En resa",
+    "start": "2026-10-21",
+    "end": "2026-11-08",
+    "description": "Carita Mauryn juhlanäyttely, aikamatka taiteilijan uran eri vaiheisiin öljy-, tempera- ja tussimaalausten sekä installaatioiden kautta.",
+    "Link": "https://www.galleria-a2.fi/exhibition/carita-maury-eras-matka-en-resa/",
+    "Image": "https://www.galleria-a2.fi/wp-content/uploads/2026/09/1-Carita-Maury-Voimaa-Kraft-oljymaalaus-176x190-1984.jpg"
+  },
+  {
     "gallery": "AKVART Galleria",
     "title": "Metsän aarteita",
     "start": "2026-10-13",

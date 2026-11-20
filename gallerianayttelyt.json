@@ -19,7 +19,7 @@
   },
   {
     "gallery": "Galleria 4-kuus",
-    "title": "Auli Rantala, Arja Leinonen, Lea Karvala, Ritva Isteri",
+    "title": "Auli Rantala, Arja Leinonen, Lea Karvala, Ritva Isteri: Sävyeroja",
     "start": "2027-01-03",
     "end": "2027-01-29",
     "description": "Maalauksia.",
@@ -127,15 +127,6 @@
   },
   {
     "gallery": "Galleria A2",
-    "title": "Carita Maury: Eräs matka / En resa",
-    "start": "2026-10-21",
-    "end": "2026-11-08",
-    "description": "Carita Mauryn juhlanäyttely, aikamatka taiteilijan uran eri vaiheisiin öljy-, tempera- ja tussimaalausten sekä installaatioiden kautta.",
-    "Link": "https://www.galleria-a2.fi/exhibition/carita-maury-eras-matka-en-resa/",
-    "Image": "https://www.galleria-a2.fi/wp-content/uploads/2026/09/1-Carita-Maury-Voimaa-Kraft-oljymaalaus-176x190-1984.jpg"
-  },
-  {
-    "gallery": "Galleria A2",
     "title": "Piia Rossi: Stratum",
     "start": "2026-12-02",
     "end": "2026-12-20",
@@ -162,6 +153,15 @@
     "Image": "https://akvart.fi/wp-content/uploads/2026/10/img-20261013-wa0013.jpg"
   },
   {
+    "gallery": "AKVART Galleria",
+    "title": "Risto Puutio: Hehku ja hämärä",
+    "start": "2026-11-23",
+    "end": "2026-12-05",
+    "description": "Risto Puution yksityisnäyttely akvarellimaalauksista, joissa havainnoidaan metsän ja puiden luonnonvalon vivahteita.",
+    "Link": "https://akvart.fi/2026/11/03/risto-puutio-hehku-ja-hamara/",
+    "Image": "https://akvart.fi/wp-content/uploads/2026/11/risto-puutio-5-scaled.jpeg"
+  },
+  {
     "gallery": "Galerie Anhava",
     "title": "Eeva-Leena Eklund",
     "start": "2026-10-29",
@@ -185,6 +185,15 @@
     "start": "2026-11-06",
     "end": "2026-11-22",
     "description": "Näyttely ARS Longa galleriassa, avajaiset torstaina 5.11.2026.",
+    "Link": "https://www.arslonga.fi/items",
+    "Image": ""
+  },
+  {
+    "gallery": "Galleria ARS Longa",
+    "title": "Joulusalonki",
+    "start": "2026-11-28",
+    "end": "2026-12-31",
+    "description": "ARS Longan Joulusalonki kokoaa yhteen valittuja teoksia useilta taiteilijoilta. Avajaiset torstaina 27.11.2026.",
     "Link": "https://www.arslonga.fi/items",
     "Image": ""
   },
@@ -234,12 +243,39 @@
     "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
   },
   {
+    "gallery": "Galleria Bronda",
+    "title": "Jenni Vakkilainen",
+    "start": "2027-03-10",
+    "end": "2027-04-04",
+    "description": "Jenni Vakkilaisen maalauksia.",
+    "Link": "http://www.bronda.fi/nayttely/330",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
+  },
+  {
+    "gallery": "Galleria Bronda",
+    "title": "Elina Ruohonen",
+    "start": "2027-04-07",
+    "end": "2027-05-02",
+    "description": "Elina Ruohosen maalauksia.",
+    "Link": "http://www.bronda.fi/nayttely/331",
+    "Image": "http://www.bronda.fi/css/2012/img/gallera-bronda-logo.png"
+  },
+  {
+    "gallery": "Galleria Contempo",
+    "title": "Elossa",
+    "start": "2026-11-06",
+    "end": "2026-11-28",
+    "description": "Essi Peltosen Elossa on matka ihmisyyden eri kerroksiin, tunteisiin ja kokemuksiin, joista elämä rakentuu. Teoksissa herkkyys ja voima, valo ja varjo sekä liike ja pysähtyneisyys kohtaavat toisensa.",
+    "Link": "https://galleriacontempo.fi/exhibition-elossa",
+    "Image": "https://galleriacontempo.fi/img/elossa-card.jpg"
+  },
+  {
     "gallery": "Galleria Duetto",
     "title": "Inari Krohn",
     "start": "2026-10-29",
     "end": "2026-11-22",
     "description": "Inari Krohnin näyttely.",
-    "Link": "https://www.galleriaduetto.fi/",
+    "Link": "https://www.galleriaduetto.fi/inari-krohn-2026",
     "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
   },
   {
@@ -248,17 +284,62 @@
     "start": "2026-11-26",
     "end": "2026-12-20",
     "description": "Hannu Hyrskeen näyttely.",
+    "Link": "https://www.galleriaduetto.fi/hannu-hyrske_kuvat26",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
+  },
+  {
+    "gallery": "Galleria Duetto",
+    "title": "Anu Torikka",
+    "start": "2027-01-07",
+    "end": "2027-01-31",
+    "description": "Anu Torikan näyttely.",
     "Link": "https://www.galleriaduetto.fi/",
     "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
   },
   {
-    "gallery": "Galleria Fogga",
-    "title": "Mielen Typografia",
-    "start": "2026-10-20",
-    "end": "2026-11-10",
-    "description": "Kimmo Laitisen, Maritta Neronin ja Kaisa Nyströmin yhteisnäyttely typografiasta ja mielestä.",
-    "Link": "https://www.fogga.fi/to-be-nominated-28/",
-    "Image": "https://www.fogga.fi/wp-content/uploads/2021/03/Galleria_Fogga.png"
+    "gallery": "Galleria Duetto",
+    "title": "Harri Kalhan muistonäyttely",
+    "start": "2027-02-04",
+    "end": "2027-02-28",
+    "description": "Harri Kalhan muistonäyttely.",
+    "Link": "https://www.galleriaduetto.fi/",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
+  },
+  {
+    "gallery": "Galleria Duetto",
+    "title": "Matti Hintikka",
+    "start": "2027-03-04",
+    "end": "2027-03-28",
+    "description": "Matti Hintikan näyttely.",
+    "Link": "https://www.galleriaduetto.fi/",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
+  },
+  {
+    "gallery": "Galleria Duetto",
+    "title": "Eeva-Kaisa Takala",
+    "start": "2027-04-01",
+    "end": "2027-04-25",
+    "description": "Eeva-Kaisa Takalan näyttely.",
+    "Link": "https://www.galleriaduetto.fi/",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
+  },
+  {
+    "gallery": "Galleria Duetto",
+    "title": "Raija Jokinen & Vaula Siiskonen",
+    "start": "2027-04-29",
+    "end": "2027-05-23",
+    "description": "Raija Jokisen ja Vaula Siiskosen näyttely.",
+    "Link": "https://www.galleriaduetto.fi/",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
+  },
+  {
+    "gallery": "Galleria Duetto",
+    "title": "Alexandra Rosa Koskinen",
+    "start": "2027-05-27",
+    "end": "2027-06-20",
+    "description": "Alexandra Rosa Koskisen näyttely.",
+    "Link": "https://www.galleriaduetto.fi/",
+    "Image": "http://static1.squarespace.com/static/5b72a80ec258b4ec0555c6e2/t/5b72b55a8a922d2ba98b2c90/1534244189565/DUETTO_Logo+copy.png"
   },
   {
     "gallery": "Galleria Fogga",
@@ -322,15 +403,6 @@
     "description": "Hemuloordin, Jan Anderzénin ja Inka-Maaria Jurvasen yhteisnäyttely, joka sisältää keramiikkaa, videoita, kollaaseja ja lyijykynäpiirroksia.",
     "Link": "https://forumbox.fi/exhibition/hemuloordi-jan-anderzen-inka-maaria-jurvanen/",
     "Image": "https://forumbox.fi/hallinta/wp-content/uploads/2025/05/janderzen2026-874x1268.jpg"
-  },
-  {
-    "gallery": "G12 Helsinki",
-    "title": "Kyllikki Haavisto: Asetelmia",
-    "start": "2026-10-29",
-    "end": "2026-11-17",
-    "description": "Kyllikki Haaviston asetelmia.",
-    "Link": "https://www.galleria12.fi/nayttely/asetelmia/",
-    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
   },
   {
     "gallery": "G12 Helsinki",
@@ -459,13 +531,22 @@
     "Image": "https://galleryhalmetoja.com/wp-content/uploads/2026/10/hetki-ikuisuutta-oljy-80x65cm-2026.jpg"
   },
   {
+    "gallery": "Gallery Halmetoja",
+    "title": "Kimmel",
+    "start": "2026-11-27",
+    "end": "2026-12-20",
+    "description": "Kaisu Koiviston näyttely Kimmel.",
+    "Link": "https://galleryhalmetoja.com/exhibitions/kimmel/",
+    "Image": "https://galleryhalmetoja.com/wp-content/uploads/2026/11/kimmel-glimmer1-2-1024x576.jpg"
+  },
+  {
     "gallery": "HAA Galleria",
-    "title": "Outo laakso",
-    "start": "2026-10-23",
-    "end": "2026-11-15",
-    "description": "Marja Patrikaisen ja Tuukka Peltosen yhteisnäyttely, joka koostuu kierrätysmateriaaleista tehdyistä sekatekniikkaveistoksista ja puupiirroksista.",
-    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/outo-laakso",
-    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-10/Yhdistetyt-Patrikainen-Peltonen-pieni.jpg?itok=z1ksNWpP"
+    "title": "Arvokas taide",
+    "start": "2026-11-20",
+    "end": "2026-12-13",
+    "description": "Espoon Taiteilijakillan ryhmänäyttely, jossa espoolaiset ammattitaiteilijat esittelevät teoksiaan HAA Galleriassa.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/arvokas-taide",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-11/Ruotsalainen%20Topi%2C%20Haalariva%CC%88en%20talvi%2C%20o%CC%88ljy%20kankaalle%2C%2041%20x%2033%20cm%2C%202026%2C%201500%20%E2%82%AC%20-pieni.jpg?itok=mdHKWslq"
   },
   {
     "gallery": "Helsinki Contemporary",
@@ -496,7 +577,7 @@
   },
   {
     "gallery": "Galleria Heino",
-    "title": "Tamara Piilola",
+    "title": "Tamara Piilola: Ikuisuuden pilarit",
     "start": "2026-11-28",
     "end": "2026-12-20",
     "description": "Tamara Piilolan näyttely.",
@@ -541,39 +622,39 @@
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Riikka Wesamaa",
-    "start": "2026-12-03",
+    "title": "Riikka Wesamaa: Haikea polku – maalauksia",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Riikka Wesamaan näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/riikka-wesamaa-3/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/RiikkaWesamaa.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Hele Okkonen",
-    "start": "2026-12-03",
+    "title": "Hele Okkonen: Kitka",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Hele Okkosen näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/hele-okkonen/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/Hele-Okkonen2-heijastus-kuva-Ida-Lindgren.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Susanna Autio",
-    "start": "2026-12-03",
+    "title": "Susanna Autio: Duck and Cover",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Susanna Aution näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/susanna-autio-3/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/SusannaAutio-ennakko.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Antti Tolvi",
-    "start": "2026-12-03",
+    "title": "Antti Tolvi: Tuuli",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Antti Tolvin näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/antti-tolvi-2/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/3-Orkesteri-by-Antti-Tolvi-1.jpg"
   },
   {
     "gallery": "Galleria Huuto",
@@ -622,24 +703,6 @@
   },
   {
     "gallery": "Valokuvagalleria Hippolyte",
-    "title": "Naomi & Wanda Holopainen",
-    "start": "2026-10-16",
-    "end": "2026-11-15",
-    "description": "Valokuvanäyttely Valokuvagalleria Hippolytessa.",
-    "Link": "https://hippolyte.fi/nayttely/naomi-wanda-holopainen/",
-    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
-  },
-  {
-    "gallery": "Valokuvagalleria Hippolyte",
-    "title": "Antti Jussila",
-    "start": "2026-10-16",
-    "end": "2026-11-15",
-    "description": "Antti Jussilan näyttely Hippolyte Studiossa.",
-    "Link": "https://hippolyte.fi/nayttely/antti-jussila/",
-    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
-  },
-  {
-    "gallery": "Valokuvagalleria Hippolyte",
     "title": "Tuomas Lehtomaa & Tuure Leppänen",
     "start": "2026-11-20",
     "end": "2026-12-20",
@@ -657,6 +720,15 @@
     "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
   },
   {
+    "gallery": "Kamera-galleria",
+    "title": "Susanna Mansner: Hetkiä ajassa",
+    "start": "2026-11-02",
+    "end": "2026-12-05",
+    "description": "Susanna Mansnerin mustavalkoinen valokuvasarja, joka kuljettaa katsojan auringonkukan elämänkaaren läpi nupusta hiipumiseen.",
+    "Link": "https://kameraseura.fi/tapahtumat/susanna-mansner-hetkia-ajassa/",
+    "Image": "https://kameraseura.fi/wp-content/uploads/2026/10/hetkia-ajassa-kameraseura-banneri-1080x1350px.jpg"
+  },
+  {
     "gallery": "Kohta",
     "title": "Magdalena Åberg: Folding in Two Dimensions",
     "start": "2026-10-15",
@@ -667,17 +739,8 @@
   },
   {
     "gallery": "Kohta",
-    "title": "Dorothee Sauter: Walking the Unknown (studio)",
-    "start": "2026-10-15",
-    "end": "2026-11-15",
-    "description": "Kohta esittelee sveitsiläisen Dorothee Sauterin uusien keraamisten veistosten sarjan Walking the Unknown.",
-    "Link": "https://kohta.fi/exhibition/dorothee-sauter-walking-the-unknown-studio/",
-    "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:auto/h:auto/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/09/XY7B1183-Kopie-scaled.jpg"
-  },
-  {
-    "gallery": "Kohta",
     "title": "Ville Laurinkoski: Domesticity (studio)",
-    "start": "2026-11-18",
+    "start": "2026-11-19",
     "end": "2026-12-20",
     "description": "Ville Laurinkosken installaatio Domesticity koostuu kotitalousesineistä.",
     "Link": "https://kohta.fi/exhibition/ville-laurinkoski-domesticity-studio/",
@@ -691,15 +754,6 @@
     "description": "Erno Peltosen öljyvärimaalauksia, joissa aiheena ovat hylätyt polkupyörät.",
     "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/gathering",
     "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/wider_liftup/public/exhibition/2026-10/TIEDOTUSgathering1-pieni.jpg?itok=rW71U13t"
-  },
-  {
-    "gallery": "Kuva/Tila",
-    "title": "Sild/Silta (Yhteistyönäyttely: Kuvataideakatemia & Viron taideakatemia, EKA)",
-    "start": "2026-10-23",
-    "end": "2026-11-15",
-    "description": "Kuvataideakatemian ja Viron taidekatemian opiskelijoiden vaihtonäyttelykokonaisuuden ensimmäinen osa, kymmenen opiskelijaa kummastakin akatemiasta.",
-    "Link": "https://www.uniarts.fi/tapahtumat/vaihtonayttely-viron-taidekatemian-eka-opiskelijoita/",
-    "Image": "https://www.uniarts.fi/app/uploads/2026/03/Sild_vaaka_-scaled.jpg"
   },
   {
     "gallery": "Kuva/Tila",
@@ -730,12 +784,12 @@
   },
   {
     "gallery": "Galleria Kuvitus",
-    "title": "World Illustration Awards",
+    "title": "World Illustration Awards 2026",
     "start": "2027-01-09",
     "end": "2027-01-31",
     "description": "World Illustration Awards -näyttely.",
     "Link": "https://kuvittajat.fi/galleriakuvitus/world-illustration-awards/",
-    "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/unnamed.png"
+    "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/WIA2026-Touring-Exhibition-SQ.png"
   },
   {
     "gallery": "Galleria Kuvitus",
@@ -779,7 +833,7 @@
     "start": "2027-08-20",
     "end": "2027-09-19",
     "description": "Menghui Huangin ja Maisa Immosen näyttely.",
-    "Link": "https://kuvittajat.fi/galleriakuvitus/",
+    "Link": "https://kuvittajat.fi/galleriakuvitus/menghui-huang-maisa-immonen/",
     "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/wonder-machine-1116x1536.jpg"
   },
   {
@@ -788,7 +842,7 @@
     "start": "2027-09-24",
     "end": "2027-10-24",
     "description": "Annika Wreden näyttely.",
-    "Link": "https://kuvittajat.fi/galleriakuvitus/",
+    "Link": "https://kuvittajat.fi/galleriakuvitus/annika-wrede/",
     "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/Rinnakkain-piiri-1466x1536.jpg"
   },
   {
@@ -797,7 +851,7 @@
     "start": "2027-10-29",
     "end": "2027-11-28",
     "description": "Rakastaja Robertin näyttely.",
-    "Link": "https://kuvittajat.fi/galleriakuvitus/",
+    "Link": "https://kuvittajat.fi/galleriakuvitus/rakastaja-robert/",
     "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/Kuvittajat-kansi-1024x1024.png"
   },
   {
@@ -806,26 +860,8 @@
     "start": "2027-12-03",
     "end": "2028-01-09",
     "description": "Sari Airolan näyttely.",
-    "Link": "https://kuvittajat.fi/galleriakuvitus/",
+    "Link": "https://kuvittajat.fi/galleriakuvitus/sari-airola/",
     "Image": "https://kuvittajat.fi/wp-content/uploads/2026/10/airola_kuvitusgalleria-1920x1785.jpg"
-  },
-  {
-    "gallery": "Laterna Magica",
-    "title": "Saara Kartimo: Tappauksia, akvarelleja",
-    "start": "2026-10-28",
-    "end": "2026-11-14",
-    "description": "Akvarelliteoksia, jotka pohjautuvat outoihin tarinoihin taiteilijan lapsuudesta Hailuodossa.",
-    "Link": "https://www.laterna.net/nayttelyt/tappauksia-akvarelleja",
-    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6a296aa518b05bf52564a9e7_Saara%20Kartimo%20Suolsolmu%201200.jpg"
-  },
-  {
-    "gallery": "Laterna Magica",
-    "title": "Olli Philippe Lautenbacher: La ville sans nom - Stadin kulkija - Translated Images, valokuvia",
-    "start": "2026-10-28",
-    "end": "2026-11-14",
-    "description": "Mustavalkoista katukuvausta ja pohdintaa kuvien lukemisesta ja tulkinnasta.",
-    "Link": "https://www.laterna.net/nayttelyt/la-ville-sans-nom---stadin-kulkija---translated-images-valokuvia",
-    "Image": "https://cdn.prod.website-files.com/5c6978b12e43da77683cf59d/6a450b1902192d9fae488d3d_Olli%20Philippe%20Lautenbacher%20The%20Hood%201200.jpg"
   },
   {
     "gallery": "Laterna Magica",
@@ -892,30 +928,12 @@
   },
   {
     "gallery": "Malmitalon galleria",
-    "title": "Flow",
-    "start": "2026-10-22",
-    "end": "2026-11-14",
-    "description": "Sebastian Boulterin öljy- ja vesivärimaalauksia viidestä kreikkalaisesta joesta ja niiden arkeologisista löydöistä.",
-    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/flow",
-    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-10/Symposium%2C%20o%CC%88ljy%20kankaalle%2C%20100x100cm%2C%202024-pieni.jpg?itok=c9x4WrcK"
-  },
-  {
-    "gallery": "MUU Helsinki nykytaidekeskus",
-    "title": "Salla Myllylä & Sari Palosaari: CHIM",
-    "start": "2026-10-17",
-    "end": "2026-11-15",
-    "description": "Salla Myllylän ja Sari Palosaaren video- ja veistosinstallaatioita, jotka ammentavat taiteilijoiden päällekkäisistä aika- ja paikkakokemuksista Kemistä Meri-Lapissa.",
-    "Link": "https://www.muu.fi/muuspace/exhibitons/salla-myllyla-and-sari-palosaari-chim/",
-    "Image": "https://muu.fi/site/assets/files/5739/salla-myllyla_kajavakari_2025-2026_web.png"
-  },
-  {
-    "gallery": "Myymälä2",
-    "title": "Amado Peña: Smoking Mirror 1",
-    "start": "2026-11-11",
-    "end": "2026-11-22",
-    "description": "Amado Peñan Smoking Mirror 1 on obsidiaanin sirpaleista, hartsista ja heijastavasta kalvosta kootun peilirakenteen avulla tehty tutkielma heijastavista rajatiloista, kuraattorina Monika Eva Hauck.",
-    "Link": "http://www.myymala2.com/?p=10859",
-    "Image": ""
+    "title": "On the way",
+    "start": "2026-11-19",
+    "end": "2026-12-12",
+    "description": "Kirsi Julkun öljyvärimaalauksia, joissa hän tarkastelee ihmisyyttä, identiteettiä ja ruumiillisuutta luurangon kautta.",
+    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/way",
+    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-11/Sticks%20and%20stones%2C%20%C3%B6ljy%20kankaalle%2C140x104cm%2C%202026.%20Kirsi%20Julku%20-pieni.jpg?itok=7PNQ3kKn"
   },
   {
     "gallery": "Myymälä2",
@@ -927,13 +945,31 @@
     "Image": ""
   },
   {
-    "gallery": "Taidesalonki Piirto",
-    "title": "Tapani Piirto & Marja Uusiluoto-Raaska: STILLNESS",
-    "start": "2026-10-06",
-    "end": "2026-11-12",
-    "description": "Piirron öljymaalauksia ja Uusiluoto-Raaskan veistoksia.",
-    "Link": "https://www.piirto.com/fi/vierailevat-taiteilijat-2/menossa-olevaa/",
-    "Image": "https://piirto.com/wp-content/uploads/2026/08/VIESTI-2-10.8-200x300.jpg"
+    "gallery": "Myymälä2",
+    "title": "Mark Maher: Moon Goddess Villa",
+    "start": "2026-11-19",
+    "end": "2026-11-29",
+    "description": "Mark Maherin Process Wall -näyttely, jossa Chromaluxe-vedoksia Đà Lạtin Moon Goddess Villa -puutarhasta.",
+    "Link": "http://www.myymala2.com/?p=10859",
+    "Image": "http://www.myymala2.com/wp-content/uploads/2026/07/MARK-MAHER-FINAL-740x1047.png"
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Anni Vainio: Katoavuus / Ephemerality",
+    "start": "2026-11-06",
+    "end": "2026-11-29",
+    "description": "Anni Vainion ensimmäinen yksityisnäyttely: kierrätysmateriaaleista tehtyjä tekstiiliteoksia kehollisista kokemuksista, kosketuksesta ja katoavuudesta. Kuraattorina Ramiro Camelo.",
+    "Link": "http://www.myymala2.com/?page_id=10537",
+    "Image": "http://www.myymala2.com/wp-content/uploads/2026/01/Na%CC%88ytto%CC%88kuva-2026-10-21-kello-16.04.08.png"
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Sjors Hoogerdijk: Recalling",
+    "start": "2026-12-04",
+    "end": "2026-12-20",
+    "description": "Sjors Hoogerdijkin interaktiivisia ääni-installaatioita, jotka tutkivat muistia, aisteja ja tiedon tallentamista.",
+    "Link": "http://www.myymala2.com/?page_id=10539",
+    "Image": "http://www.myymala2.com/wp-content/uploads/2026/01/Recalling-myymala-Poster.jpg"
   },
   {
     "gallery": "Galleria Sculptor",
@@ -995,8 +1031,8 @@
     "start": "2026-10-09",
     "end": "2026-11-22",
     "description": "Ryhmänäyttely, taiteilijoina mm. Tero Antero, Vilja Joensuu, Lauri Mäkimurto ja Erkki Nampajärvi.",
-    "Link": "https://galleriarankka.com/post/829290936951521280/galleria-rankka",
-    "Image": ""
+    "Link": "https://galleriarankka.com/exhibition61",
+    "Image": "https://64.media.tumblr.com/6b4b111dfc962a7f3e57e7ba5c3efde2/tumblr_inline_topuutC0y11u7tjq0_500.gif"
   },
   {
     "gallery": "tm•galleria",
@@ -1132,5 +1168,14 @@
     "description": "Lin Dan näyttely Huokoinen portti. Näyttelyyn liittyy Ars of Intimacy -ryhmäesitys pe 20.11., pe 27.11. ja la 28.11.",
     "Link": "https://oksasenkatu11.fi/",
     "Image": "https://images.squarespace-cdn.com/content/v1/5dcd957bce42fc626350b4c6/0e014e2c-b6b5-4385-b451-368f6790dc49/Huokoinen-portti_vaalea_Lin_Martikainen.jpeg"
+  },
+  {
+    "gallery": "Zetterberg Gallery",
+    "title": "Erwin Laiho: Protect Me from What I Want",
+    "start": "2026-11-27",
+    "end": "2026-12-20",
+    "description": "Erwin Laihon näyttely Zetterberg Galleriassa. Näyttelyyn liittyy Niilo Rantalan ja taiteilijan välinen keskustelu esipuheena.",
+    "Link": "https://zetterberggallery.com/autumn-2026/",
+    "Image": "https://zetterberggallery.com/wp2020/wp-content/uploads/2026/10/Nayttokuva-2026-11-03-kello-17.19.17-e1793719254954.png"
   }
 ]

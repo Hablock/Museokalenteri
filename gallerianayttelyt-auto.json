@@ -406,15 +406,6 @@
   },
   {
     "gallery": "G12 Helsinki",
-    "title": "Kyllikki Haavisto: Asetelmia",
-    "start": "2026-10-29",
-    "end": "2026-11-17",
-    "description": "Kyllikki Haaviston asetelmia.",
-    "Link": "https://www.galleria12.fi/nayttely/asetelmia/",
-    "Image": "https://www.galleria12.fi/app/themes/g12-theme/resources/assets/images/logo.jpg"
-  },
-  {
-    "gallery": "G12 Helsinki",
     "title": "Tuija Suutari",
     "start": "2026-11-19",
     "end": "2026-12-08",
@@ -547,15 +538,6 @@
     "description": "Kaisu Koiviston näyttely Kimmel.",
     "Link": "https://galleryhalmetoja.com/exhibitions/kimmel/",
     "Image": "https://galleryhalmetoja.com/wp-content/uploads/2026/11/kimmel-glimmer1-2-1024x576.jpg"
-  },
-  {
-    "gallery": "HAA Galleria",
-    "title": "Outo laakso",
-    "start": "2026-10-23",
-    "end": "2026-11-15",
-    "description": "Marja Patrikaisen ja Tuukka Peltosen yhteisnäyttely, joka koostuu kierrätysmateriaaleista tehdyistä sekatekniikkaveistoksista ja puupiirroksista.",
-    "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/outo-laakso",
-    "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-10/Yhdistetyt-Patrikainen-Peltonen-pieni.jpg?itok=z1ksNWpP"
   },
   {
     "gallery": "HAA Galleria",
@@ -721,24 +703,6 @@
   },
   {
     "gallery": "Valokuvagalleria Hippolyte",
-    "title": "Naomi & Wanda Holopainen",
-    "start": "2026-10-16",
-    "end": "2026-11-15",
-    "description": "Valokuvanäyttely Valokuvagalleria Hippolytessa.",
-    "Link": "https://hippolyte.fi/nayttely/naomi-wanda-holopainen/",
-    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
-  },
-  {
-    "gallery": "Valokuvagalleria Hippolyte",
-    "title": "Antti Jussila",
-    "start": "2026-10-16",
-    "end": "2026-11-15",
-    "description": "Antti Jussilan näyttely Hippolyte Studiossa.",
-    "Link": "https://hippolyte.fi/nayttely/antti-jussila/",
-    "Image": "https://hippolyte.fi/wp-content/uploads/2019/08/fav.png"
-  },
-  {
-    "gallery": "Valokuvagalleria Hippolyte",
     "title": "Tuomas Lehtomaa & Tuure Leppänen",
     "start": "2026-11-20",
     "end": "2026-12-20",
@@ -775,15 +739,6 @@
   },
   {
     "gallery": "Kohta",
-    "title": "Dorothee Sauter: Walking the Unknown (studio)",
-    "start": "2026-10-15",
-    "end": "2026-11-15",
-    "description": "Kohta esittelee sveitsiläisen Dorothee Sauterin uusien keraamisten veistosten sarjan Walking the Unknown.",
-    "Link": "https://kohta.fi/exhibition/dorothee-sauter-walking-the-unknown-studio/",
-    "Image": "https://mlaygxxmuaqg.i.optimole.com/cb:H4aU.37fec/w:auto/h:auto/q:mauto/f:best/https://kohta.fi/wp-content/uploads/2026/09/XY7B1183-Kopie-scaled.jpg"
-  },
-  {
-    "gallery": "Kohta",
     "title": "Ville Laurinkoski: Domesticity (studio)",
     "start": "2026-11-19",
     "end": "2026-12-20",
@@ -799,15 +754,6 @@
     "description": "Erno Peltosen öljyvärimaalauksia, joissa aiheena ovat hylätyt polkupyörät.",
     "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/gathering",
     "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/wider_liftup/public/exhibition/2026-10/TIEDOTUSgathering1-pieni.jpg?itok=rW71U13t"
-  },
-  {
-    "gallery": "Kuva/Tila",
-    "title": "Sild/Silta (Yhteistyönäyttely: Kuvataideakatemia & Viron taideakatemia, EKA)",
-    "start": "2026-10-23",
-    "end": "2026-11-15",
-    "description": "Kuvataideakatemian ja Viron taidekatemian opiskelijoiden vaihtonäyttelykokonaisuuden ensimmäinen osa, kymmenen opiskelijaa kummastakin akatemiasta.",
-    "Link": "https://www.uniarts.fi/tapahtumat/vaihtonayttely-viron-taidekatemian-eka-opiskelijoita/",
-    "Image": "https://www.uniarts.fi/app/uploads/2026/03/Sild_vaaka_-scaled.jpg"
   },
   {
     "gallery": "Kuva/Tila",
@@ -988,15 +934,6 @@
     "description": "Kirsi Julkun öljyvärimaalauksia, joissa hän tarkastelee ihmisyyttä, identiteettiä ja ruumiillisuutta luurangon kautta.",
     "Link": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/way",
     "Image": "https://www.helsingintaiteilijaseura.fi/sites/default/files/styles/full/public/exhibition/2026-11/Sticks%20and%20stones%2C%20%C3%B6ljy%20kankaalle%2C140x104cm%2C%202026.%20Kirsi%20Julku%20-pieni.jpg?itok=7PNQ3kKn"
-  },
-  {
-    "gallery": "MUU Helsinki nykytaidekeskus",
-    "title": "Salla Myllylä & Sari Palosaari: CHIM",
-    "start": "2026-10-17",
-    "end": "2026-11-15",
-    "description": "Salla Myllylän ja Sari Palosaaren video- ja veistosinstallaatioita, jotka ammentavat taiteilijoiden päällekkäisistä aika- ja paikkakokemuksista Kemistä Meri-Lapissa.",
-    "Link": "https://www.muu.fi/muuspace/exhibitons/salla-myllyla-and-sari-palosaari-chim/",
-    "Image": "https://muu.fi/site/assets/files/5739/salla-myllyla_kajavakari_2025-2026_web.png"
   },
   {
     "gallery": "Myymälä2",
