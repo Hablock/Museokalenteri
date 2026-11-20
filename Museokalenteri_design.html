@@ -100,6 +100,8 @@
     .page-layout { display: flex; gap: var(--space-xl); align-items: flex-start; }
     .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--space-lg); }
     .main-content { flex: 1; min-width: 0; }
+    /* Sivupalkki on DOMissa ennen listaa (ruudunlukija ja sarkain saavat rajaukset ensin), mutta näkyy oikealla */
+    .page-layout > .sidebar { order: 2; }
     .sidebar .filter-bar { flex-direction: column; gap: var(--space-xs); margin-bottom: 0; }
     .sidebar .filter-btn { text-align: left; width: 100%; }
     .sidebar #museum-select { width: 100%; min-width: unset; max-width: unset; }
@@ -156,7 +158,7 @@
     .exhibition-museum { margin: 0 0 0.28rem 0; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--label-gray); }
     .exhibition-dates { margin: 0; font-size: 0.88rem; color: var(--meta-gray); }
     .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid var(--divider-gray); font-size: 0.9rem; line-height: 1.55; color: var(--body-gray); text-wrap: pretty; }
-    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--whisper-gray); font-size: 1.05rem; line-height: 1; }
+    .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--slate); font-size: 1.05rem; line-height: 1; }
     .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--space-lg); }
     .section.header { text-align: center; }
     .section.header .logo-wrapper { margin-bottom: var(--space-lg); }
@@ -324,6 +326,12 @@
       .exhibition-image { width: 80px; height: 80px; }
       #map { height: 300px; }
     }
+    /* Yhtenäinen näppäimistöfokus kaikille ohjaimille (WCAG 2.4.7) */
+    :where(a, button, select, input, [tabindex]):focus-visible { outline: 2px solid var(--charcoal); outline-offset: 2px; }
+    #exhibitionList:focus { outline: none; }
+    /* Ohituslinkki: näkyy vain näppäimistöfokuksessa */
+    .skip-link { position: fixed; top: var(--space-sm); left: var(--space-sm); z-index: 10001; padding: var(--space-sm) var(--space-lg); background: var(--charcoal); color: var(--gallery-white); border-radius: var(--rounded-sm); font-size: 0.9rem; text-decoration: none; transform: translateY(-200%); }
+    .skip-link:focus { transform: none; }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
@@ -349,6 +357,8 @@
 -->
 
 
+  <a class="skip-link" href="#exhibitionList">Siirry näyttelyihin</a>
+
   <header class="section header">
     <h1 class="visually-hidden">Helsingin seudun Museokalenteri</h1>
     <div class="logo-wrapper">
@@ -363,37 +373,6 @@
   <div id="sidebar-overlay" aria-hidden="true"></div>
 
   <main class="page-layout">
-
-    <!-- PÄÄSISÄLTÖ -->
-    <div class="main-content">
-
-      <!-- KARTTA -->
-      <div class="section" id="map-section">
-        <div class="section-head">
-          <h2 class="section-title" id="map-section-title">Valitut museot kartalla</h2>
-          <button id="map-toggle-btn" class="ghost-btn" type="button" aria-expanded="true" aria-controls="map">Piilota kartta</button>
-        </div>
-        <div class="map-canvas">
-          <button id="map-fullscreen-btn" type="button" title="Koko näyttö" aria-label="Kartta koko näytölle" aria-pressed="false">
-            <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            </svg>
-            <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
-              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
-            </svg>
-          </button>
-          <div id="map"></div>
-        </div>
-      </div>
-
-      <div id="results-status-bar">
-        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true"></p>
-        <button id="reset-filters-btn" type="button">Nollaa suodattimet</button>
-      </div>
-
-      <div id="exhibitionList"></div>
-
-    </div><!-- /.main-content -->
 
     <!-- SIVUPALKKI -->
     <aside class="sidebar" id="sidebar" aria-label="Rajaukset">
@@ -423,7 +402,7 @@
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </h2>
-        <p id="museum-list-status" class="list-status" aria-live="polite"></p>
+        <p id="museum-list-status" class="list-status"></p>
         <div class="list-actions" role="group" aria-label="Museoiden valinta">
           <button id="select-all-museums" class="ghost-btn list-action-btn" type="button">Valitse kaikki</button>
           <button id="deselect-all-museums" class="ghost-btn list-action-btn" type="button">Piilota kaikki</button>
@@ -439,7 +418,7 @@
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </h2>
-        <p id="gallery-list-status" class="list-status" aria-live="polite"></p>
+        <p id="gallery-list-status" class="list-status"></p>
         <div class="list-actions" role="group" aria-label="Gallerioiden valinta">
           <button id="select-all-galleries" class="ghost-btn list-action-btn" type="button">Valitse kaikki</button>
           <button id="deselect-all-galleries" class="ghost-btn list-action-btn" type="button">Piilota kaikki</button>
@@ -464,6 +443,38 @@
       </div>
 
     </aside>
+
+    <!-- PÄÄSISÄLTÖ -->
+    <div class="main-content">
+
+      <!-- KARTTA -->
+      <div class="section" id="map-section">
+        <div class="section-head">
+          <h2 class="section-title" id="map-section-title">Valitut museot ja galleriat kartalla</h2>
+          <button id="map-toggle-btn" class="ghost-btn" type="button" aria-expanded="true" aria-controls="map">Piilota kartta</button>
+        </div>
+        <div class="map-canvas">
+          <button id="map-fullscreen-btn" type="button" title="Koko näyttö" aria-label="Kartta koko näytölle" aria-pressed="false">
+            <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg id="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
+            </svg>
+          </button>
+          <div id="map"></div>
+        </div>
+      </div>
+
+      <h2 id="exhibitions-heading" class="visually-hidden">Näyttelyt</h2>
+      <div id="results-status-bar">
+        <p id="results-count" class="results-count" aria-live="polite" aria-atomic="true"></p>
+        <button id="reset-filters-btn" type="button">Nollaa suodattimet</button>
+      </div>
+
+      <div id="exhibitionList" tabindex="-1" aria-labelledby="exhibitions-heading"></div>
+
+    </div><!-- /.main-content -->
 
   </main><!-- /.page-layout -->
 
@@ -759,7 +770,8 @@
   });
 
   // Kartta
-  const map = L.map('map').setView([60.1680, 24.9200], 12);
+  const map = L.map('map', { zoomControl: false }).setView([60.1680, 24.9200], 12);
+  L.control.zoom({ zoomInTitle: 'Lähennä', zoomOutTitle: 'Loitonna' }).addTo(map);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19
@@ -827,7 +839,7 @@
       const popupHtml = `
         <p class="popup-title">${museumName}</p>
         <p class="popup-address">${info.osoite || ''}</p>
-        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Museon verkkosivut →</a>
+        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Museon verkkosivut <span aria-hidden="true">→</span><span class="visually-hidden"> (avautuu uuteen välilehteen)</span></a>
       `;
       const icon = (info.tyyppi === 'galleria') ? galleryMarkerIcon : markerIcon;
       L.marker([info.lat, info.lng], { icon, title: museumName })
@@ -846,7 +858,7 @@
       const popupHtml = `
         <p class="popup-title">${name}</p>
         <p class="popup-address">${info.osoite || ''}</p>
-        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Gallerian verkkosivut →</a>
+        <a class="popup-link" href="${info.kotisivu}" target="_blank" rel="noopener">Gallerian verkkosivut <span aria-hidden="true">→</span><span class="visually-hidden"> (avautuu uuteen välilehteen)</span></a>
       `;
       L.marker([info.lat, info.lng], { icon: galleryMarkerIcon, title: name })
         .on('add', function() { this.getElement()?.setAttribute('aria-label', name); })
@@ -1031,14 +1043,21 @@
         container.innerHTML = "<p class='list-message'>Suodattimillasi ei löydy näyttelyitä.</p>";
         return;
       }
-      list.forEach(ex => {
+      list.forEach((ex, i) => {
         const st = computeStatus(ex);
+        const uid = `ex-${i}`;
         const linkUrl  = ex.Link || ex.link || "";
         const imageUrl = ex.Image || ex.image || "";
         const card = document.createElement(linkUrl ? "a" : "div");
         card.className = `exhibition ${st}`;
-        if (linkUrl) { card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer"; }
-        const descHtml = ex.description && ex.description.trim() ? `<p class="exhibition-description">${ex.description}</p>` : '';
+        const hasDesc = !!(ex.description && ex.description.trim());
+        if (linkUrl) {
+          card.href = linkUrl; card.target = "_blank"; card.rel = "noopener noreferrer";
+          card.setAttribute('aria-labelledby', `${uid}-t ${uid}-m ${uid}-d ${uid}-s ${uid}-n`);
+          if (hasDesc) card.setAttribute('aria-describedby', `${uid}-x`);
+        }
+        const descHtml = hasDesc ? `<p class="exhibition-description" id="${uid}-x">${ex.description}</p>` : '';
+        const newTabNote = linkUrl ? `<span class="visually-hidden" id="${uid}-n">(avautuu uuteen välilehteen)</span>` : '';
         const linkIndicator = linkUrl ? `<span class="exhibition-link-indicator" aria-hidden="true">\u2197</span>` : '';
         const markerSrc = ex.isGallery ? './img/museokalenteri_galleria.marker.svg' : './img/museokalenteri_museo.marker.svg';
         card.innerHTML = `
@@ -1049,13 +1068,13 @@
                 <img src="${markerSrc}" alt="" class="image-marker-fallback" />
                 ${imageUrl ? `<img src="${imageUrl}" alt="" class="exhibition-photo" loading="lazy" decoding="async" />` : ''}
               </div>
-              <span class="status-pill">${getStatusLabel(st)}</span>
+              <span class="status-pill" id="${uid}-s">${getStatusLabel(st)}</span>
             </div>
             <div class="exhibition-content">
-              <p class="exhibition-museum">${ex.museum}</p>
-              <h3>${ex.title}</h3>
-              <p class="exhibition-dates">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
-              ${descHtml}
+              <p class="exhibition-museum" id="${uid}-m">${ex.museum}</p>
+              <h3 id="${uid}-t">${ex.title}</h3>
+              <p class="exhibition-dates" id="${uid}-d">${formatDate(ex.start)} \u2013 ${formatDate(ex.end)}</p>
+              ${descHtml}${newTabNote}
             </div>
           </div>`;
         container.appendChild(card);
@@ -1212,15 +1231,17 @@
   const mapSectionTitle = document.getElementById('map-section-title');
   const mapFullscreenBtn = document.getElementById('map-fullscreen-btn');
   let mapVisible = true;
-  mapToggleBtn.addEventListener('click', () => {
-    mapVisible = !mapVisible;
+  function setMapVisible(visible) {
+    mapVisible = visible;
     mapEl.style.display = mapVisible ? '' : 'none';
     mapFullscreenBtn.style.display = mapVisible ? '' : 'none';
-    mapSectionTitle.style.display = mapVisible ? '' : 'none';
     mapToggleBtn.textContent = mapVisible ? 'Piilota kartta' : 'Näytä kartta';
     mapToggleBtn.setAttribute('aria-expanded', String(mapVisible));
     if (mapVisible) setTimeout(() => map.invalidateSize(), 50);
-  });
+  }
+  mapToggleBtn.addEventListener('click', () => setMapVisible(!mapVisible));
+  // Mobiilissa kartta on oletuksena piilossa, jotta näyttelyt näkyvät heti
+  if (window.matchMedia('(max-width: 768px)').matches) setMapVisible(false);
 
   // Kartan koko näyttö -toiminto
   document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
