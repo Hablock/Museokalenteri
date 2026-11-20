@@ -79,6 +79,10 @@
       --space-xl: 1.5rem;
       --space-2xl: 2rem;
 
+      /* Pystysuuntaiset välit: listakorttien välissä 12 px, kaikkien muiden laatikoiden välissä 18 px */
+      --gutter-card: 0.75rem;
+      --gutter-box: 1.125rem;
+
       /* Touch target floor */
       --touch-min: 44px;
 
@@ -100,7 +104,7 @@
     [hidden] { display: none !important; }
     body { font-family: Roboto, Arial, sans-serif; padding: var(--space-2xl); max-width: 980px; margin: auto; background: var(--paper-fog); }
     .page-layout { display: flex; gap: var(--space-xl); align-items: flex-start; }
-    .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--space-lg); }
+    .sidebar { flex: 0 0 240px; width: 240px; display: flex; flex-direction: column; gap: var(--gutter-box); }
     .main-content { flex: 1; min-width: 0; }
     /* Sivupalkki on DOMissa ennen listaa (ruudunlukija ja sarkain saavat rajaukset ensin), mutta näkyy oikealla */
     .page-layout > .sidebar { order: 2; }
@@ -125,14 +129,14 @@
     .museum-btn.special { background-color: var(--charcoal); color: var(--gallery-white); width: 100%; text-align: center; justify-content: center; box-shadow: var(--shadow-action-rest); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
     .museum-btn.special:hover { background-color: var(--charcoal-hover); box-shadow: var(--shadow-action-hover); }
     .museum-btn.special:active { background-color: var(--charcoal-active); }
-    #results-status-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; padding: 0.6rem 0.85rem; margin: 0.25rem 0 var(--space-sm); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); }
+    #results-status-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; padding: 0.6rem 0.85rem; margin: 0 0 var(--gutter-box); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); }
     .results-count { margin: 0; font-size: 0.9rem; color: var(--charcoal); }
     .results-count strong { color: var(--ink-black); }
     #reset-filters-btn { display: none; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; font-size: 0.82rem; font-weight: 500; border: 1px solid var(--border-gray); border-radius: var(--rounded-btn); background: var(--gallery-white); color: var(--charcoal); white-space: nowrap; cursor: pointer; min-height: var(--touch-min); transition: background-color 0.15s ease, border-color 0.15s ease; }
     #reset-filters-btn:hover { background: var(--hover-tint); border-color: var(--border-hover-gray); }
     #reset-filters-btn:active { background: var(--active-tint); }
     #results-status-bar.filtered #reset-filters-btn { display: inline-flex; }
-    #exhibitionList { display: flex; flex-direction: column; gap: var(--space-md); }
+    #exhibitionList { display: flex; flex-direction: column; gap: var(--gutter-card); }
     .exhibition { background: var(--gallery-white); margin: 0; padding: 0.95rem 1.05rem 1rem 0.95rem; border-left: 4px solid var(--slate); border-radius: var(--rounded-lg); display: block; position: relative; text-decoration: none; color: inherit; font-family: Roboto, Arial, sans-serif; box-shadow: var(--shadow-ambient-rest); transition: box-shadow 0.2s ease, transform 0.2s ease; overflow: hidden; }
     .exhibition:hover { box-shadow: var(--shadow-hover-lift); transform: translateY(-2px); }
     .exhibition:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 4px; }
@@ -161,10 +165,10 @@
     .exhibition-dates { margin: 0; font-size: 0.88rem; color: var(--meta-gray); }
     .exhibition-description { margin: 0.8rem 0 0 0; padding-top: 0.8rem; border-top: 1px solid var(--divider-gray); font-size: 0.9rem; line-height: 1.55; color: var(--body-gray); text-wrap: pretty; }
     .exhibition-link-indicator { position: absolute; top: 0.7rem; right: 0.85rem; color: var(--slate); font-size: 1.05rem; line-height: 1; }
-    .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--space-lg); }
+    .section { background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-radius: var(--rounded-md); padding: var(--space-lg); box-shadow: var(--shadow-ambient-panel); margin-bottom: var(--gutter-box); }
     .section.header { text-align: center; }
     /* Infopalkki logon alla: arkistotila (?arkisto) ja -auto-sivu */
-    .info-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-md); padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-lg); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-left: 4px solid var(--status-past); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); color: var(--charcoal); font-size: 0.95rem; }
+    .info-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-md); padding: var(--space-md) var(--space-lg); margin-bottom: var(--gutter-box); background: var(--gallery-white); border: 1px solid var(--hairline-gray); border-left: 4px solid var(--status-past); border-radius: var(--rounded-md); box-shadow: var(--shadow-ambient-panel); color: var(--charcoal); font-size: 0.95rem; }
     .info-bar p { margin: 0; line-height: 1.45; }
     .info-bar strong { font-weight: 600; }
     .info-bar a, .archive-link { color: var(--charcoal); text-decoration: underline; text-underline-offset: 0.2em; min-height: var(--touch-min); display: inline-flex; align-items: center; }
@@ -176,7 +180,7 @@
     .section-head .section-title { margin: 0; }
     .section-title--icon { display: flex; align-items: center; gap: 0.4rem; }
     .section-title--icon img { flex-shrink: 0; }
-    .sidebar .section:last-child { margin-bottom: 0; }
+    .sidebar .section { margin-bottom: 0; }
     /* Museot- ja Galleriat-haitarit: otsikkorivi avaa listan, valintanapit näkyvät aina */
     .accordion-toggle { display: flex; align-items: center; gap: 0.4rem; width: 100%; min-height: var(--touch-min); padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
     .accordion-toggle img { flex-shrink: 0; }
@@ -190,7 +194,9 @@
     .list-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs); }
     .list-action-btn { justify-content: center; padding: 0.25rem 0.5rem; font-size: 0.8rem; border-radius: var(--rounded-sm); }
     .list-actions + .checkbox-list { margin-top: var(--space-sm); }
-    #sort-select { padding: 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); background: var(--gallery-white); border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); }
+    /* Oma chevron selaimen nuolen tilalle: sama piirros kuin haitareissa, irti reunasta */
+    #sort-select { appearance: none; -webkit-appearance: none; padding: 0.4rem 2.25rem 0.4rem 0.6rem; font-size: 0.85rem; min-height: var(--touch-min); color: var(--charcoal); cursor: pointer; background: var(--gallery-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 0.7rem center / 16px 16px; border: 1px solid var(--border-gray); border-radius: var(--rounded-sm); transition: border-color 0.15s ease; }
+    #sort-select:hover { border-color: var(--border-hover-gray); }
     .sidebar-meta { margin: 0; color: var(--charcoal); font-size: 0.8rem; line-height: 1.4; }
     /* Puolen rivin väli kappaleiden välissä */
     .sidebar-meta + .sidebar-meta { margin-top: 0.7em; }
@@ -205,7 +211,7 @@
     .ghost-btn:active { background: var(--active-tint); }
     .ghost-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
     .drawer-btn { padding: 0.45rem 0.8rem; font-size: 0.85rem; border-radius: var(--rounded-btn); }
-    #sulje-btn { justify-content: space-between; width: 100%; margin-bottom: 0.25rem; }
+    #sulje-btn { justify-content: space-between; width: 100%; }
     #map-toggle-btn { padding: 0.25rem 0.6rem; font-size: 0.8rem; border-radius: var(--rounded-sm); }
 
     /* Checkbox-museolista */
@@ -316,7 +322,7 @@
         flex: unset;
         display: flex;
         flex-direction: column;
-        gap: var(--space-lg);
+        gap: var(--gutter-box);
       }
       .sidebar.open { transform: translateX(0); visibility: visible; transition: transform 0.25s ease, visibility 0s; }
 
@@ -384,8 +390,8 @@
         <select id="sort-select" aria-label="Järjestä lista">
           <option value="MUSEUM">Museon mukaan</option>
           <option value="TITLE">Näyttelyn nimen mukaan</option>
-          <option value="CLOSING_DATE">Päättymispäivän mukaan</option>
-          <option value="OPENING_DATE" selected>Avautumispäivän mukaan</option>
+          <option value="CLOSING_DATE" selected>Päättymispäivän mukaan</option>
+          <option value="OPENING_DATE">Avautumispäivän mukaan</option>
         </select>
       </div>
 
@@ -825,7 +831,7 @@
     const resultsBar      = document.getElementById("results-status-bar");
     const resultsCount    = document.getElementById("results-count");
     const resetFiltersBtn = document.getElementById("reset-filters-btn");
-    let activeSort = sortSelect ? sortSelect.value : "OPENING_DATE";
+    let activeSort = sortSelect ? sortSelect.value : "CLOSING_DATE";
 
     // Alkupiirto kartalle
     updateMap(activeMuseums);
@@ -1070,8 +1076,8 @@
     if (mapVisible) setTimeout(() => map.invalidateSize(), 50);
   }
   mapToggleBtn.addEventListener('click', () => setMapVisible(!mapVisible));
-  // Mobiilissa kartta on oletuksena piilossa, jotta näyttelyt näkyvät heti
-  if (window.matchMedia('(max-width: 768px)').matches) setMapVisible(false);
+  // Kartta on oletuksena piilossa, jotta näyttelyt näkyvät heti
+  setMapVisible(false);
 
   // Kartan koko näyttö -toiminto
   document.getElementById('map-fullscreen-btn').addEventListener('click', () => {
