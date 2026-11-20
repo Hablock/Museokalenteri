@@ -4,9 +4,21 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from prepare import AUTO, CACHE, KINDS, STATUS_FILE, dump, load, run_date  # noqa: E402
+from prepare import AUTO, CACHE, KINDS, STATUS_FILE, dump, load, not_fetched, run_date  # noqa: E402
 
 TYPE_LABEL = {"museo": "Museo", "galleria": "Galleria"}
+
+
+def manual_checks(overrides):
+    """Käsin tarkistettavat lähteet: seuraava näyttelysivu juoksevasta numeroinnista."""
+    rows = []
+    for name, ov in overrides.items():
+        mc = ov.get("manual_check")
+        if not mc:
+            continue
+        nxt = mc["url"].replace("{n}", str(mc["last_known"] + 1)) if "{n}" in mc.get("url", "") else mc.get("url", "")
+        rows.append((name, nxt, mc.get("reason", "")))
+    return rows
 
 
 def load_changes():
@@ -58,11 +70,13 @@ def mark_processed(worklist, changes, today):
     return [w["name"] for w in worklist if w["name"] not in done]
 
 
-def suggest_state_changes(galleries, status, today):
+def suggest_state_changes(galleries, status, today, skipped=frozenset()):
     """Sääntö: sivusto ei vastaa (2+ ajoa) eikä tulevia näyttelyitä -> ei-aktiivinen; vastaa taas -> aktiivinen."""
     rows = load("gallerianayttelyt-auto.json", [])
     out = []
     for g in galleries:
+        if g["nimi"] in skipped:
+            continue
         urls = [u for u in dict.fromkeys([g.get("nayttelysivu"), g.get("tulevanayttelysivu")]) if u]
         sts = [status[u] for u in urls if u in status]
         if not sts:
@@ -102,8 +116,11 @@ def main():
     rem, add, upd = removed["removed"], changes["added"], changes["updated"]
     unc, need = changes["uncertain"], list(changes["needs_user"])
     galleries = load("galleriat.json", [])
-    inactive = {g["nimi"] for g in galleries if g.get("aktiivinen") == "ei-aktiivinen"}
-    state_changes = suggest_state_changes(galleries, status, today)
+    overrides = load(AUTO / "sources.json", {}).get("sources", {})
+    skipped = {name for name, ov in overrides.items() if not_fetched(ov)}
+    manual = manual_checks(overrides)
+    inactive = {g["nimi"] for g in galleries if g.get("aktiivinen") == "ei-aktiivinen"} | skipped
+    state_changes = suggest_state_changes(galleries, status, today, skipped)
     for url, st in sorted(status.items()):
         if st.get("sources") and set(st["sources"]) <= inactive:
             continue
@@ -129,6 +146,10 @@ def main():
         lines += [f"⚠️ Käsittelemättä jäi: {', '.join(unprocessed)}. Ne yritetään uudelleen seuraavassa ajossa.", ""]
     lines += ["## Tarvitsee sinulta", "",
               table(["Lähde", "Syy", "Url"], [(n.get("name"), n.get("reason"), n.get("url", "")) for n in need])]
+    if manual:
+        lines += ["## Tarkista käsin", "",
+                  "Näitä lähteitä ei haeta automaattisesti. Avaa url selaimella.", "",
+                  table(["Lähde", "Avaa", "Miksi ja miten"], manual)]
     if state_changes:
         lines += ["## Ehdotetut tilamuutokset (galleriat.json, kenttä aktiivinen)", "",
                   table(["Galleria", "Muutos", "Peruste"], state_changes)]

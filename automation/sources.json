@@ -82,6 +82,11 @@
       "note": "Tulevilla näyttelyillä ei usein ole omaa sivua. Vanhat urlit (esim. eeva-leena-eklund-best-wishes) voivat osoittaa aiempaan näyttelyyn: tarkista vuosi."
     },
     "Galleria Rankka": {
+      "manual_check": {
+        "url": "https://galleriarankka.com/exhibition{n}",
+        "last_known": 61,
+        "reason": "Tumblr-sivuston selaintarkistus estää automaattiset haut (2026-10-15 alkaen). Näyttelysivut on numeroitu juoksevasti: avaa seuraava numero selaimella. Jos sivu on julki, lisää näyttely ja kasvata last_known-arvoa."
+      },
       "note": "Sivulla on ollut vuosilukuvirhe (2027 vs 2026). Historia on aikajärjestyksessä: käytä järjestystä vuoden päättelyyn ja kirjaa uncertain-listaan."
     },
     "Galleria ARS Longa": {

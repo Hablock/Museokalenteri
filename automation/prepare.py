@@ -100,6 +100,11 @@ def seed_and_prune(today):
     return removed, renamed
 
 
+def not_fetched(overrides):
+    """Lähteet, joita ei haeta automaattisesti: pois käytöstä (inactive) tai käsin tarkistettavat (manual_check)."""
+    return bool(overrides.get("inactive") or overrides.get("manual_check"))
+
+
 def collect_sources(overrides):
     sources = []
     for k in KINDS:
@@ -115,7 +120,7 @@ def collect_sources(overrides):
 def fetch_all(sources):
     unique = {}
     for s in sources:
-        if s["overrides"].get("inactive"):
+        if not_fetched(s["overrides"]):
             continue
         for u in s["urls"]:
             unique.setdefault(u, {"browser": False})
@@ -168,7 +173,7 @@ def update_status(sources, results, today):
 def build_worklist(sources, results, status, today, full):
     worklist = []
     for s in sources:
-        if s["overrides"].get("inactive"):
+        if not_fetched(s["overrides"]):
             continue
         pages, changed, any_ok = [], False, False
         for u in s["urls"]:
