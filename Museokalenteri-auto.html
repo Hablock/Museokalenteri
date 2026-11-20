@@ -123,6 +123,9 @@
     .filter-btn[data-filter="PAST"]::before { background: var(--status-past); }
     .filter-btn[data-filter="OPENING_SOON"]::before { background: var(--status-opening-soon); }
     .filter-btn[data-filter="CLOSING_SOON"]::before { background: var(--status-closing-soon); }
+    /* Menneet omaksi ryhmäkseen erotinviivan alle: Kaikki kattaa vain ylemmän ryhmän */
+    .filter-past { display: flex; flex-direction: column; gap: var(--space-xs); margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--hairline-gray); }
+    .filter-past .archive-link { margin-top: 0; align-self: flex-start; }
     .museum-filter-bar { flex-direction: column; align-items: stretch; }
     .museum-btn.special { background-color: var(--charcoal); color: var(--gallery-white); width: 100%; text-align: center; justify-content: center; box-shadow: var(--shadow-action-rest); transition: background-color 0.2s ease, box-shadow 0.2s ease; }
     .museum-btn.special:hover { background-color: var(--charcoal-hover); box-shadow: var(--shadow-action-hover); }
@@ -388,7 +391,9 @@
           <button class="filter-btn" data-filter="OPENING_SOON" aria-pressed="false">Aukeaa pian</button>
           <button class="filter-btn" data-filter="CURRENT" aria-pressed="false">Käynnissä</button>
           <button class="filter-btn" data-filter="CLOSING_SOON" aria-pressed="false">Päättyy pian</button>
-          <button class="filter-btn" data-filter="PAST" aria-pressed="false">Päättyneet</button>
+        </div>
+        <div class="filter-past" role="group" aria-label="Menneet näyttelyt">
+          <button class="filter-btn" data-filter="PAST" aria-pressed="false">Äskettäin päättyneet</button>
         </div>
       </div>
 
@@ -565,7 +570,10 @@
 
   // Tämä päivä samassa muodossa kuin parseDate (UTC-keskiyö), jotta vertailu
   // tehdään päivätasolla: näyttely on käynnissä myös alku- ja loppupäivänään.
+  // Testipäivä: ?tanaan=2026-11-26 näyttää sivun ikään kuin olisi kyseinen päivä
+  const TEST_TODAY = (v => /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : null)(new URLSearchParams(location.search).get('tanaan'));
   function todayUtc() {
+    if (TEST_TODAY) return parseDate(TEST_TODAY);
     const d = new Date();
     return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
   }
@@ -712,8 +720,9 @@
   (function setTodayDate() {
     const el = document.getElementById('today');
     if (el) {
-      const f = new Date().toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
-      el.textContent = `Tänään on ${f}`;
+      const d = TEST_TODAY ? parseDate(TEST_TODAY) : new Date();
+      const f = d.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+      el.textContent = TEST_TODAY ? `Testipäivä: ${f}` : `Tänään on ${f}`;
     }
   })();
 
@@ -801,9 +810,12 @@
       return m.concat(g);
     }
 
+    // Kaikki = ei-päättyneet. Päättyneet näkyvät omasta napistaan, kunnes ne arkistoidaan.
+    const inAll = ex => computeStatus(ex) !== "PAST";
+
     function getFilteredExhibitions(statusType) {
       return getVisibleBase().filter(ex => {
-        if (statusType === "ALL") return true;
+        if (statusType === "ALL") return inAll(ex);
         const st = computeStatus(ex);
         // Päättyy pian on käynnissä olevien alajoukko: Käynnissä näyttää molemmat.
         if (statusType === "CURRENT") return st === "CURRENT" || st === "CLOSING_SOON";
@@ -885,7 +897,7 @@
     function updateStatusCounts() {
       const counts = { ALL:0, CURRENT:0, UPCOMING:0, PAST:0, OPENING_SOON:0, CLOSING_SOON:0 };
       getVisibleBase().forEach(ex => {
-        counts.ALL++;
+        if (inAll(ex)) counts.ALL++;
         const st = computeStatus(ex);
         if (st in counts) counts[st]++;
         if (st === "CLOSING_SOON") counts.CURRENT++;
@@ -911,7 +923,7 @@
 
     function updateResultsBar(shown) {
       if (!resultsBar || !resultsCount) return;
-      const total = exhibitions.length + galleryExhibitions.length;
+      const total = exhibitions.concat(galleryExhibitions).filter(inAll).length;
       const filtersActive = activeStatus !== "ALL"
         || activeMuseums.size !== museumSet.length
         || (galleriesReady && activeGalleries.size !== gallerySet.length);
