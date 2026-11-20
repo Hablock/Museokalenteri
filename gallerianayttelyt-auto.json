@@ -640,39 +640,39 @@
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Riikka Wesamaa",
-    "start": "2026-12-03",
+    "title": "Riikka Wesamaa: Haikea polku – maalauksia",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Riikka Wesamaan näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/riikka-wesamaa-3/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/RiikkaWesamaa.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Hele Okkonen",
-    "start": "2026-12-03",
+    "title": "Hele Okkonen: Kitka",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Hele Okkosen näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/hele-okkonen/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/Hele-Okkonen2-heijastus-kuva-Ida-Lindgren.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Susanna Autio",
-    "start": "2026-12-03",
+    "title": "Susanna Autio: Duck and Cover",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Susanna Aution näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/susanna-autio-3/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/SusannaAutio-ennakko.jpg"
   },
   {
     "gallery": "Galleria Huuto",
-    "title": "Antti Tolvi",
-    "start": "2026-12-03",
+    "title": "Antti Tolvi: Tuuli",
+    "start": "2026-12-04",
     "end": "2027-01-03",
     "description": "Antti Tolvin näyttely galleria Huudon uudessa tilassa Itämerentalossa.",
-    "Link": "https://www.galleriahuuto.fi/syksyn-2026-nayttelyt/",
-    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/themes/galleriahuuto2016/assets/images/huuto_logo.png"
+    "Link": "https://www.galleriahuuto.fi/antti-tolvi-2/",
+    "Image": "https://usercontent.one/wp/www.galleriahuuto.fi/wp-content/uploads/3-Orkesteri-by-Antti-Tolvi-1.jpg"
   },
   {
     "gallery": "Galleria Huuto",
@@ -1000,15 +1000,6 @@
   },
   {
     "gallery": "Myymälä2",
-    "title": "Amado Peña: Smoking Mirror 1",
-    "start": "2026-11-11",
-    "end": "2026-11-22",
-    "description": "Amado Peñan Smoking Mirror 1 on obsidiaanin sirpaleista, hartsista ja heijastavasta kalvosta kootun peilirakenteen avulla tehty tutkielma heijastavista rajatiloista, kuraattorina Monika Eva Hauck.",
-    "Link": "http://www.myymala2.com/?p=10859",
-    "Image": ""
-  },
-  {
-    "gallery": "Myymälä2",
     "title": "Alejandro Ramirez",
     "start": "2026-12-09",
     "end": "2026-12-17",
@@ -1024,6 +1015,24 @@
     "description": "Mark Maherin Process Wall -näyttely, jossa Chromaluxe-vedoksia Đà Lạtin Moon Goddess Villa -puutarhasta.",
     "Link": "http://www.myymala2.com/?p=10859",
     "Image": "http://www.myymala2.com/wp-content/uploads/2026/07/MARK-MAHER-FINAL-740x1047.png"
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Anni Vainio: Katoavuus / Ephemerality",
+    "start": "2026-11-06",
+    "end": "2026-11-29",
+    "description": "Anni Vainion ensimmäinen yksityisnäyttely: kierrätysmateriaaleista tehtyjä tekstiiliteoksia kehollisista kokemuksista, kosketuksesta ja katoavuudesta. Kuraattorina Ramiro Camelo.",
+    "Link": "http://www.myymala2.com/?page_id=10537",
+    "Image": "http://www.myymala2.com/wp-content/uploads/2026/01/Na%CC%88ytto%CC%88kuva-2026-10-21-kello-16.04.08.png"
+  },
+  {
+    "gallery": "Myymälä2",
+    "title": "Sjors Hoogerdijk: Recalling",
+    "start": "2026-12-04",
+    "end": "2026-12-20",
+    "description": "Sjors Hoogerdijkin interaktiivisia ääni-installaatioita, jotka tutkivat muistia, aisteja ja tiedon tallentamista.",
+    "Link": "http://www.myymala2.com/?page_id=10539",
+    "Image": "http://www.myymala2.com/wp-content/uploads/2026/01/Recalling-myymala-Poster.jpg"
   },
   {
     "gallery": "Galleria Sculptor",
